@@ -65,3 +65,38 @@
                 color: #000000;
                 text-decoration: underline;
             }
+            /* Breakpoints */
+            
+            @media screen and (max-width: 1080px) {
+                .text-box {
+                    width: 80%;
+                    max-width: none;
+                    left: 20px;
+                    top: 40px;
+                    padding: 20px;
+                }
+                .rive-canvas iframe {
+                    height: 840px;
+                    width: 480px;
+                }
+            }
+            
+            @media screen and (max-width: 480px) {
+                .text-box {
+                    width: 80%;
+                    left: 16px;
+                    top: 80px;
+                    padding: 16px;
+                    border-width: 4px;
+                }
+                h1 {
+                    font-size: 24px;
+                }
+                p {
+                    font-size: 14px;
+                }
+                .rive-canvas iframe {
+                    height: 1080px;
+                    width: 320px;
+                }
+            }
