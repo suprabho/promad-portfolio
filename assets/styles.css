@@ -1,102 +1,105 @@
+        body {
+            font-family: "Manrope", sans-serif;
+            background-image: url(./images/banner.webp), linear-gradient(to bottom, #000000, #000000);
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            vertical-align: middle;
+            padding: 48px;
+        }
+        
+        p {
+            font-family: "Manrope", sans-serif;
+            font-size: 16px;
+            font-weight: normal;
+        }
+        
+        .banner-container {
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+        }
+        
+        .rive-canvas {
+            width: 100%;
+            min-height: 300px;
+            height: auto;
+            margin-top: 0;
+        }
+        
+        .text-box {
+            background-color: rgb(224, 241, 31);
+            color: #000000;
+            font-weight: normal;
+            text-align: left;
+            margin-top: 10px;
+            padding: 40px;
+            border-top-left-radius: 64px;
+            border-bottom-right-radius: 64px;
+            border: #000000 solid 8px;
+            width: 80%;
+            max-width: 400px;
+            position: relative;
+            top: 80px;
+            left: 80px;
+        }
+        
+        .pro {
+            color: #000000;
+            font-weight: bold;
+        }
+        
+        .mad {
+            font-family: "Playfair Display";
+            font-weight: bold;
+        }
+        
+        a {
+            font-family: "Playfair Display", serif;
+            font-style: italic;
+            font-weight: 700;
+            color: #000000;
+            text-decoration: underline;
+        }
+        /* Breakpoints */
+        
+        @media screen and (max-width: 1080px) {
             body {
-                font-family: "Manrope", sans-serif;
-                background-image: url(./images/banner.webp), linear-gradient(to bottom, #000000, #000000);
-                background-size: cover;
-                background-position: center;
-                background-repeat: no-repeat;
-                background-attachment: fixed;
-                vertical-align: middle;
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                padding: 48px;
+                padding: 20px;
             }
-            
-            p {
-                font-family: "Manrope", sans-serif;
-                font-size: 16px;
-                font-weight: normal;
+            .text-box {
+                width: 80%;
+                max-width: none;
+                left: 20px;
+                top: 40px;
+                padding: 20px;
             }
-            
-            .banner-container {
-                display: block;
+            .rive-canvas {
+                margin-left: -200px;
             }
-            
+        }
+        
+        @media screen and (max-width: 786px) {
+            .rive-canvas {
+                margin-left: -600px;
+            }
+        }
+        
+        @media screen and (max-width: 480px) {
+            body {
+                padding: 8px;
+            }
             .rive-canvas {
                 width: 100%;
-                /* Match text box width or adjust as needed */
-                height: auto;
-                /* Adjust height as needed */
-                margin-top: 24px;
-                /* Space between text and animation */
+                margin-left: -200px;
             }
-            
             .text-box {
-                background-color: rgb(224, 241, 31);
-                color: #000000;
-                font-weight: normal;
-                text-align: left;
-                margin-top: 10px;
-                padding: 40px;
-                border-top-left-radius: 64px;
-                border-bottom-right-radius: 64px;
-                border: #000000 solid 8px;
                 width: 80%;
-                max-width: 400px;
-                position: absolute;
-                top: 80px;
-                left: 80px;
+                max-width: none;
+                left: 16px;
+                top: 120px;
+                padding: 40px;
+                border-width: 4px;
             }
-            
-            .pro {
-                color: #000000;
-                font-weight: bold;
-            }
-            
-            .mad {
-                font-family: "Playfair Display";
-                font-weight: bold;
-            }
-            
-            a {
-                font-family: "Playfair Display", serif;
-                font-style: italic;
-                font-weight: 700;
-                color: #000000;
-                text-decoration: underline;
-            }
-            /* Breakpoints */
-            
-            @media screen and (max-width: 1080px) {
-                .text-box {
-                    width: 80%;
-                    max-width: none;
-                    left: 20px;
-                    top: 40px;
-                    padding: 20px;
-                }
-                .rive-canvas iframe {
-                    height: 840px;
-                    width: 480px;
-                }
-            }
-            
-            @media screen and (max-width: 480px) {
-                .text-box {
-                    width: 80%;
-                    left: 16px;
-                    top: 80px;
-                    padding: 16px;
-                    border-width: 4px;
-                }
-                h1 {
-                    font-size: 24px;
-                }
-                p {
-                    font-size: 14px;
-                }
-                .rive-canvas iframe {
-                    height: 1080px;
-                    width: 320px;
-                }
-            }
+        }
