@@ -11,31 +11,31 @@ interface LogoTextProps {
 const sizeClasses = {
   h1: {
     container: "text-4xl md:text-6xl lg:text-7xl",
-    pro: "text-6xl",
+    pro: "text-4xl md:text-5xl lg:text-6xl",
   },
   h2: {
     container: "text-3xl md:text-5xl lg:text-6xl",
-    pro: "text-5xl",
+    pro: "text-3xl md:text-4xl lg:text-5xl",
   },
   h3: {
     container: "text-2xl md:text-4xl lg:text-5xl",
-    pro: "text-4xl",
+    pro: "text-2xl md:text-3xl lg:text-4xl",
   },
   h4: {
     container: "text-xl md:text-3xl lg:text-4xl",
-    pro: "text-3xl",
+    pro: "text-xl md:text-2xl lg:text-3xl",
   },
   h5: {
     container: "text-lg md:text-2xl lg:text-3xl",
-    pro: "text-2xl",
+    pro: "text-lg md:text-xl lg:text-2xl",
   },
   h6: {
     container: "text-base md:text-xl lg:text-2xl",
-    pro: "text-xl",
+    pro: "text-base md:text-lg lg:text-xl",
   },
   p: {
-    container: "text-sm md:text-base lg:text-lg",
-    pro: "text-base",
+    container: "text-sm",
+    pro: "text-xs",
   },
 }
 

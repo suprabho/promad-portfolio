@@ -1,4 +1,4 @@
-import { LinkedinLogo, InstagramLogo, TwitterLogo } from "@phosphor-icons/react/dist/ssr"
+import { LinkedinLogo, InstagramLogo, XLogo } from "@phosphor-icons/react/dist/ssr"
 import Link from "next/link"
 import { LogoText } from "@/components/logo-text"
 
@@ -71,7 +71,7 @@ export function Footer() {
                 rel="noopener noreferrer"
                 className="text-muted-foreground hover:text-primary transition-colors"
               >
-                <TwitterLogo weight="fill" className="w-6 h-6" />
+                <XLogo weight="fill" className="w-6 h-6" />
               </a>
             </div>
           </div>

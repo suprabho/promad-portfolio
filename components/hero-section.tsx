@@ -24,9 +24,9 @@ export function HeroSection() {
       {/* Content */}
       <div className="relative z-10 flex min-h-screen items-center">
         <div className="container mx-auto px-4">
-          <div className="flex items-center justify-between">
+          <div className="flex flex-col md:flex-row items-center justify-between">
             {/* Text Content */}
-            <div className="max-w-2xl">
+            <div className="xl:w-2/3 lg:w-1/2 w-full h-full">
               <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold tracking-tight">
                 <LogoText />
               </h1>
@@ -36,10 +36,11 @@ export function HeroSection() {
             </div>
 
             {/* Spline Scene */}
-            <div className="relative w-[500px] h-[500px]">
+            <div className="xl:w-1/3 lg:w-1/2 w-full">
               <Spline
                 scene="/spline/scene.splinecode"
-                className="w-full h-full"
+                className="w-full h-full" 
+              style={{ aspectRatio: '1/1' }}
               />
             </div>
           </div>
