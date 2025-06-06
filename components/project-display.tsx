@@ -7,7 +7,7 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion"
-import { CaseStudy } from "@/components/case-study"
+import { ProjectActions } from "@/components/project-actions"
 
 interface CaseStudyDetails {
   title: string
@@ -42,6 +42,8 @@ interface Project {
   thumbnail: string
   tags: string[]
   details?: string | CaseStudyDetails
+  url?: string
+  urlText?: string
 }
 
 interface ProjectDisplayProps {
@@ -50,8 +52,6 @@ interface ProjectDisplayProps {
 }
 
 export function ProjectDisplay({ project, index }: ProjectDisplayProps) {
-  const hasCaseStudy = project.details && typeof project.details === 'object'
-
   return (
     <div className="space-y-8">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -67,11 +67,11 @@ export function ProjectDisplay({ project, index }: ProjectDisplayProps) {
                   </Badge>
                 ))}
               </div>
-              {hasCaseStudy && typeof project.details === 'object' && (
-              <div className="mt-4">
-                <CaseStudy details={project.details} />
-              </div>
-            )}
+              <ProjectActions 
+                url={project.url}
+                urlText={project.urlText}
+                details={project.details}
+              />
             </div>
             <div className="relative h-48 w-full bg-muted rounded-lg overflow-hidden">
               <Image
@@ -81,7 +81,6 @@ export function ProjectDisplay({ project, index }: ProjectDisplayProps) {
                 className="object-cover"
               />
             </div>
-            
           </>
         ) : (
           <>
@@ -103,18 +102,15 @@ export function ProjectDisplay({ project, index }: ProjectDisplayProps) {
                   </Badge>
                 ))}
               </div>
+              <ProjectActions 
+                url={project.url}
+                urlText={project.urlText}
+                details={project.details}
+              />
             </div>
-            {hasCaseStudy && typeof project.details === 'object' && (
-              <div className="mt-4">
-                <CaseStudy details={project.details} />
-              </div>
-            )}
           </>
         )}
       </div>
-
-      
-
     </div>
   )
 } 

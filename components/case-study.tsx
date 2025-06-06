@@ -3,7 +3,7 @@
 import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from "@/components/ui/sheet"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
-import { FileText } from "lucide-react"
+import { FileTextIcon } from "@phosphor-icons/react"
 
 interface CaseStudyProps {
   details: {
@@ -39,7 +39,7 @@ export function CaseStudy({ details }: CaseStudyProps) {
     <Sheet>
       <SheetTrigger asChild>
         <Button variant="outline" size="sm">
-          <FileText className="mr-2 h-4 w-4" />
+          <FileTextIcon className="mr-2 h-4 w-4" />
           View Case Study
         </Button>
       </SheetTrigger>

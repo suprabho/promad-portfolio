@@ -42,40 +42,6 @@ interface Company {
 export function CompaniesGrid() {
   const [selectedCompany, setSelectedCompany] = useState<Company | null>(null)
 
-  const renderItem = (item: CompanyItem | string) => {
-    if (typeof item === 'string') {
-      return (
-        <Badge variant="secondary">
-          {item}
-        </Badge>
-      )
-    }
-    
-    return (
-      <div className="flex flex-col p-6 rounded-xl bg-card border">
-        <div className="relative w-12 h-12 mb-4 rounded-lg overflow-hidden bg-muted">
-          <Image
-            src={item.thumbnail}
-            alt={item.name}
-            fill
-            className="object-cover"
-          />
-        </div>
-        <h3 className="text-xl font-semibold mb-2">{item.name}</h3>
-        <p className="text-muted-foreground mb-4">{item.description}</p>
-        {item.tags && (
-          <div className="flex flex-wrap gap-2 mt-auto">
-            {item.tags.map((tag, index) => (
-              <Badge key={index} variant="secondary" className="rounded-full">
-                {tag}
-              </Badge>
-            ))}
-          </div>
-        )}
-      </div>
-    )
-  }
-
   return (
     <section className="py-24 bg-muted/30">
       <div className="container mx-auto px-4">
@@ -89,58 +55,73 @@ export function CompaniesGrid() {
           </Link>
         </div>
         
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {companiesData.map((company, index) => (
-            <Sheet key={index}>
-              <SheetTrigger asChild>
-                <Card className="group cursor-pointer transform transition-all duration-300 hover:scale-[1.02] hover:shadow-xl active:scale-[0.98]">
-                  <div className="relative h-48 w-full bg-muted overflow-hidden">
-                    <Image
-                      src="/images/placeholder-company.png"
-                      alt={`${company.name} thumbnail`}
-                      fill
-                      className="object-cover transition-transform duration-300 group-hover:scale-110"
-                    />
-                  </div>
-                  <CardHeader>
-                    <div className="flex items-center justify-between">
-                      <CardTitle className="text-xl group-hover:text-primary transition-colors">
-                        {company.name}
-                      </CardTitle>
-                      <Badge variant="outline" className="flex items-center gap-1">
-                        <Calendar className="w-3 h-3" />
-                        {company.period}
-                      </Badge>
+        <div className="mt-10 grid gap-4 sm:mt-16">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+            {companiesData.map((company, index) => {
+              // Define card styles based on position
+              const isLargeCard = index === 0;
+              const cardStyles = `
+                group cursor-pointer transform transition-all duration-300 
+                hover:scale-[1.02] hover:shadow-xl active:scale-[0.98] 
+                relative overflow-hidden bg-card
+                ${isLargeCard ? 'md:row-span-2' : ''}
+              `;
+
+              return (
+                <Sheet key={index}>
+                  <SheetTrigger asChild>
+                    <Card className={cardStyles}>
+                      <div className={`relative ${isLargeCard ? 'h-[400px]' : 'h-48'} w-full bg-muted overflow-hidden`}>
+                        <Image
+                          src="/images/placeholder-company.png"
+                          alt={`${company.name} thumbnail`}
+                          fill
+                          className="object-cover transition-transform duration-300 group-hover:scale-110"
+                        />
+                        <div className="absolute inset-0 bg-gradient-to-b from-black/0 to-black/60" />
+                        <div className="absolute bottom-0 left-0 right-0 p-6 text-white">
+                          <h3 className="text-2xl font-semibold mb-2">{company.name}</h3>
+                          <p className="text-sm text-white/80">{company.description}</p>
+                        </div>
+                      </div>
+                      <CardHeader className="relative">
+                        <div className="flex items-center justify-between">
+                          <Badge variant="outline" className="flex items-center gap-1">
+                            <Calendar className="w-3 h-3" />
+                            {company.period}
+                          </Badge>
+                        </div>
+                      </CardHeader>
+                      <CardContent>
+                        <div className="w-full text-center text-sm text-muted-foreground">
+                          Click to view details
+                        </div>
+                      </CardContent>
+                      <div className="pointer-events-none absolute inset-px rounded-lg shadow-sm ring-1 ring-black/5" />
+                    </Card>
+                  </SheetTrigger>
+                  <SheetContent className="overflow-y-auto w-[90vw] max-w-[1200px] sm:max-w-[1200px] p-0">
+                    <div className="sticky top-0 z-10 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 border-b">
+                      <SheetHeader className="p-6">
+                        <SheetTitle className="flex items-center gap-2">
+                          <Building2 className="w-5 h-5" />
+                          {company.name}
+                        </SheetTitle>
+                        <SheetDescription>{company.description}</SheetDescription>
+                      </SheetHeader>
                     </div>
-                    <CardDescription className="mt-2">{company.description}</CardDescription>
-                  </CardHeader>
-                  <CardContent>
-                    <div className="w-full text-center text-sm text-muted-foreground opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                      Click to view details
+                    <div className="p-6 mt-2 space-y-8">
+                      {company.projects.map((project, projectIndex) => (
+                        <div key={projectIndex}>
+                          <ProjectDisplay project={project} index={projectIndex} />
+                        </div>
+                      ))}
                     </div>
-                  </CardContent>
-                </Card>
-              </SheetTrigger>
-              <SheetContent className="overflow-y-auto w-[90vw] max-w-[1200px] sm:max-w-[1200px] p-0">
-                <div className="sticky top-0 z-10 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 border-b">
-                  <SheetHeader className="p-6">
-                    <SheetTitle className="flex items-center gap-2">
-                      <Building2 className="w-5 h-5" />
-                      {company.name}
-                    </SheetTitle>
-                    <SheetDescription>{company.description}</SheetDescription>
-                  </SheetHeader>
-                </div>
-                <div className="p-6 mt-2 space-y-8">
-                  {company.projects.map((project, projectIndex) => (
-                    <div key={projectIndex}>
-                      <ProjectDisplay project={project} index={projectIndex} />
-                    </div>
-                  ))}
-                </div>
-              </SheetContent>
-            </Sheet>
-          ))}
+                  </SheetContent>
+                </Sheet>
+              );
+            })}
+          </div>
         </div>
       </div>
     </section>
