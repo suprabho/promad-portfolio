@@ -32,6 +32,10 @@ interface CaseStudyDetails {
 
 interface Project {
   name: string
+  logo?: {
+    dark: string
+    light: string
+  }
   description: string
   thumbnail: string
   tags: string[]

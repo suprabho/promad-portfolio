@@ -4,6 +4,11 @@
             "period": "Apr 2022 - Present",
             "description": "Building an award-winning app for kids with the help of AI",
             "thumbnail": "/images/projects/kidzovo/thumbnail.png",
+            "logo": {
+                "dark": "/images/projects/kidzovo/kidzovo_logo.png",
+                "light": "/images/projects/kidzovo/kidzovo_logo.png"
+            },
+
             "projects": [{
                     "name": "Core app interactions",
                     "description": "Designed intuitive and engaging interactions for children's learning experience",

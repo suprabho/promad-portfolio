@@ -13,7 +13,6 @@ import {
   SheetTitle,
   SheetTrigger,
 } from "@/components/ui/sheet"
-import { Building2, Calendar } from "lucide-react"
 import Link from "next/link"
 import { ProjectDisplay } from "@/components/project-display"
 
@@ -133,12 +132,22 @@ export function CompaniesGrid() {
                   </SheetTrigger>
                   <SheetContent className="overflow-y-auto w-[90vw] max-w-[1200px] sm:max-w-[1200px] p-0">
                     <div className="sticky top-0 z-10 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 border-b">
-                      <SheetHeader className="p-6">
-                        <SheetTitle className="flex items-center gap-2">
-                          <Building2 className="w-5 h-5" />
-                          {company.name}
-                        </SheetTitle>
-                        <SheetDescription>{company.description}</SheetDescription>
+                      <SheetHeader className="p-6 flex items-center gap-2">
+                        <Image
+                            src={company.logo?.dark || company.logo?.light || ""}
+                            alt={`${company.name} logo`}
+                            width={60}
+                            height={60}  
+                            className="object-contain"
+                          />
+                         <div>
+                          <SheetTitle className="flex gap-2">
+                            {company.name}
+                          </SheetTitle>
+                          <SheetDescription>{company.description}</SheetDescription>
+                        </div> 
+                        
+                        
                       </SheetHeader>
                     </div>
                     <div className="p-6 mt-2 space-y-8">

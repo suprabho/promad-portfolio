@@ -18,7 +18,7 @@ export function HeroSection() {
           quality={100}
         />
         {/* Overlay */}
-        <div className="absolute inset-0 bg-black/40" />
+        <div className="absolute inset-0 bg-black/30" />
       </div>
 
       {/* Content */}
