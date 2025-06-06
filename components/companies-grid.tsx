@@ -63,39 +63,41 @@ export function CompaniesGrid() {
               switch(index) {
                 // Column 1
                 case 0:
-                  gridClass = 'md:col-span-4 md:row-span-6 md:col-start-1 md:row-start-1'; // Large card
+                  gridClass = 'lg:col-span-4 lg:row-span-6 lg:col-start-1 lg:row-start-1 md:col-span-6 md:row-span-6 md:col-start-1 md:row-start-1 col-span-1 row-span-4'; // Large card
                   break;
                 case 1:
-                  gridClass = 'md:col-span-2 md:row-span-2 md:col-start-1 md:row-start-7'; // Small card
+                  gridClass = 'lg:col-span-2 lg:row-span-2 lg:col-start-1 lg:row-start-7 md:col-span-3 md:row-span-3 md:col-start-1 md:row-start-7 col-span-1 row-span-3'; // Small card
                   break;
                 case 2:
-                  gridClass = 'md:col-span-2 md:row-span-2 md:col-start-3 md:row-start-7'; // Small card
+                  gridClass = 'lg:col-span-2 lg:row-span-2 lg:col-start-3 lg:row-start-7 md:col-span-3 md:row-span-3 md:col-start-4 md:row-start-7 col-span-1 row-span-3'; // Small card
                   break;
 
                 // Column 2
                 case 3:
-                  gridClass = 'md:col-span-4 md:row-span-3 md:col-start-5 md:row-start-1'; // Wide card top
+                  gridClass = 'lg:col-span-4 lg:row-span-3 lg:col-start-5 lg:row-start-1 md:col-span-6 md:row-span-3 md:col-start-7 md:row-start-1 col-span-1 row-span-4'; // Wide card top
                   break;
                 case 4:
-                  gridClass = 'md:col-span-4 md:row-span-3 md:col-start-5 md:row-start-4'; // Wide card middle
+                  gridClass = 'lg:col-span-4 lg:row-span-3 lg:col-start-5 lg:row-start-4 md:col-span-6 md:row-span-3 md:col-start-7 md:row-start-4 col-span-1 row-span-3'; // Wide card middle
                   break;
                 case 5:
-                  gridClass = 'md:col-span-2 md:row-span-2 md:col-start-5 md:row-start-7'; // Small card bottom left
+                  gridClass = 'lg:col-span-2 lg:row-span-2 lg:col-start-5 lg:row-start-7 md:col-span-3 md:row-span-3 md:col-start-7 md:row-start-7 col-span-1 row-span-3'; // Small card bottom left
                   break;
-
+                case 6:
+                  gridClass = 'lg:col-span-2 lg:row-span-2 lg:col-start-9 lg:row-start-1 md:col-span-3 md:row-span-3 md:col-start-10 md:row-start-7 col-span-1 row-span-2'; // Small card top left
+                  break;
                 // Column 3
                 case 7:
-                  gridClass = 'md:col-span-2 md:row-span-2 md:col-start-9 md:row-start-1'; // Small card top left
+                  gridClass = 'lg:col-span-2 lg:row-span-2 lg:col-start-9 lg:row-start-1 md:col-span-6 md:row-span-3 md:col-start-1 md:row-start-10 col-span-1 row-span-3'; // Small card top left
                   break;
                 case 8:
-                  gridClass = 'md:col-span-2 md:row-span-2 md:col-start-11 md:row-start-1'; // Small card top right
+                  gridClass = 'lg:col-span-2 lg:row-span-2 lg:col-start-11 lg:row-start-1 md:col-span-6 md:row-span-3 md:col-start-1 md:row-start-14 col-span-1 row-span-3'; // Small card top right
                   break;
                 case 9:
-                  gridClass = 'md:col-span-4 md:row-span-6 md:col-start-9 md:row-start-3'; // Large card bottom
-                  break;
+                  gridClass = 'lg:col-span-4 lg:row-span-6 lg:col-start-9 lg:row-start-3 md:col-span-6 md:row-span-6 md:col-start-7 md:row-start-10 col-span-1 row-span-4'; // Large card bottom
+                  break;  
 
                 default:
-                  gridClass = 'md:col-span-2 md:row-span-2'; // Default small
+                  gridClass = 'lg:col-span-2 lg:row-span-2 md:col-span-6 md:row-span-4 col-span-1 row-span-4'; // Default small
               }
 
               const cardStyles = `
@@ -103,7 +105,6 @@ export function CompaniesGrid() {
                 hover:scale-[1.02] hover:shadow-xl active:scale-[0.98] 
                 relative overflow-hidden bg-card rounded-tr-0 rounded-br-3xl rounded-tl-3xl rounded-tl-0
                 ${gridClass}
-                h-full
               `;
 
               return (
@@ -126,7 +127,7 @@ export function CompaniesGrid() {
                           <div>
                             <h3 className="text-2xl font-semibold mb-2 text-white">{company.name}</h3>
                             <p className="text-sm text-white/80 mb-4">{company.description}</p>
-                            <div className="text-sm text-white/70 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                            <div className="text-sm text-white/70">
                               Click to view details
                             </div>
                           </div>

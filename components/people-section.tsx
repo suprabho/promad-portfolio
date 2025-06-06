@@ -16,23 +16,23 @@ const people: PersonCard[] = teamData.team
 
 export function PeopleSection() {
   return (
-    <section className="py-24 bg-background">
-      <div className="container mx-auto px-4">
-        <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">Our Team</h2>
-          <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
+    <section className="py-12 sm:py-16 md:py-24 bg-background">
+      <div className="container mx-auto px-4 sm:px-6">
+        <div className="text-center mb-8 sm:mb-12 md:mb-16">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-3 sm:mb-4">Our Team</h2>
+          <p className="text-lg sm:text-xl text-muted-foreground max-w-2xl mx-auto">
             Meet the talented individuals behind our success
           </p>
         </div>
 
-        <div className="grid md:grid-cols-2 gap-8 max-w-6xl mx-auto">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-6 sm:gap-8 max-w-7xl mx-auto">
           {people.map((person, index) => (
             <Card 
               key={index} 
-              className="group hover:shadow-xl transition-all duration-300 hover:-translate-y-2"
+              className="group hover:shadow-xl transition-all duration-300 hover:-translate-y-2 flex flex-col"
             >
-              <CardHeader className="text-center">
-                <div className="relative w-24 h-24 mx-auto mb-4 group-hover:scale-110 transition-transform">
+              <CardHeader className="text-center flex-grow">
+                <div className="relative w-20 h-20 sm:w-24 sm:h-24 mx-auto mb-4 group-hover:scale-110 transition-transform">
                   <Image
                     src={person.image}
                     alt={person.name}
@@ -40,14 +40,18 @@ export function PeopleSection() {
                     className="rounded-full object-cover"
                   />
                 </div>
-                <CardTitle className="text-2xl">{person.name}</CardTitle>
-                <CardDescription className="text-base">{person.role}</CardDescription>
+                <CardTitle className="text-xl sm:text-2xl">{person.name}</CardTitle>
+                <CardDescription className="text-sm sm:text-base">{person.role}</CardDescription>
               </CardHeader>
               <CardContent className="space-y-4 mx-auto">
                 {person.skills && (
-                  <div className="flex flex-wrap gap-2 mx-auto justify-center">
+                  <div className="flex flex-wrap gap-1.5 sm:gap-2 mx-auto justify-center">
                     {person.skills.map((skill) => (
-                      <Badge key={skill} variant="secondary" className="text-sm">
+                      <Badge 
+                        key={skill} 
+                        variant="secondary" 
+                        className="text-xs sm:text-sm px-2 py-0.5"
+                      >
                         {skill}
                       </Badge>
                     ))}
@@ -58,9 +62,9 @@ export function PeopleSection() {
                     href={person.linkedin}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center justify-center gap-2 text-primary hover:text-primary/80 transition-colors"
+                    className="flex items-center justify-center gap-1.5 sm:gap-2 text-primary hover:text-primary/80 transition-colors text-sm sm:text-base"
                   >
-                    <LinkedinLogoIcon weight="fill" className="w-4 h-4" />
+                    <LinkedinLogoIcon weight="fill" className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
                     <span>LinkedIn Profile</span>
                   </a>
                 )}
