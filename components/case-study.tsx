@@ -4,6 +4,7 @@ import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from "@/co
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import { FileTextIcon } from "@phosphor-icons/react"
+import Image from "next/image"
 
 interface CaseStudyProps {
   details: {
@@ -32,9 +33,10 @@ interface CaseStudyProps {
     }
     conclusion: string
   }
+  thumbnail: string
 }
 
-export function CaseStudy({ details }: CaseStudyProps) {
+export function CaseStudy({ details, thumbnail }: CaseStudyProps) {
   return (
     <Sheet>
       <SheetTrigger asChild>
@@ -52,7 +54,7 @@ export function CaseStudy({ details }: CaseStudyProps) {
           <div className="space-y-4">
             <p className="text-muted-foreground">{details.projectOverview}</p>
           </div>
-
+          <Image src={thumbnail} alt={details.title} width={1000} height={1000} />
           <section>
             <h3 className="text-lg font-semibold mb-4">{details.theChallenge.heading}</h3>
             <div className="space-y-4">

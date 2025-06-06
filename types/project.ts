@@ -27,10 +27,14 @@ export interface CaseStudyDetails {
 
 export interface Project {
   name: string
+  logo?: {
+    dark: string
+    light: string
+  }
   description: string
   thumbnail: string
   tags: string[]
   details?: string | CaseStudyDetails
   url?: string
-  urlText?: string
+  urlName?: string
 } 

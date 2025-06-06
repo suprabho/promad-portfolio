@@ -10,9 +10,9 @@
             },
 
             "projects": [{
-                    "name": "Core app interactions",
+                    "name": "Kidzovo App",
                     "description": "Designed intuitive and engaging interactions for children's learning experience",
-                    "thumbnail": "https://placehold.co/50x50/FCD34D/000000?text=Core",
+                    "thumbnail": "/images/projects/kidzovo/project-image-1.jpg",
                     "tags": ["Product Design", "UX/UI", "Education"],
                     "details": {
                         "title": "Case Study: Designing \"Kidzovo\" - An AI-Powered Learning Platform for Young Minds",

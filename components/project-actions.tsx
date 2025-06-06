@@ -7,9 +7,10 @@ interface ProjectActionsProps {
   url?: string
   urlName?: string
   details?: string | CaseStudyDetails
+  thumbnail: string
 }
 
-export function ProjectActions({ url, urlName, details }: ProjectActionsProps) {
+export function ProjectActions({ url, urlName, details, thumbnail }: ProjectActionsProps) {
   const hasCaseStudy = details && typeof details === 'object'
 
   return (
@@ -31,7 +32,7 @@ export function ProjectActions({ url, urlName, details }: ProjectActionsProps) {
         </Button>
       )}
       {hasCaseStudy && typeof details === 'object' && (
-        <CaseStudy details={details} />
+        <CaseStudy details={details} thumbnail={thumbnail} />
       )}
     </div>
   )
