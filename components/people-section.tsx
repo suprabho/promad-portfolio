@@ -2,6 +2,7 @@ import Image from 'next/image'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { LinkedinLogoIcon } from "@phosphor-icons/react/dist/ssr"
+import teamData from "@/data/team.json"
 
 interface PersonCard {
   name: string
@@ -11,23 +12,7 @@ interface PersonCard {
   skills?: string[]
 }
 
-const people: PersonCard[] = [
-  {
-    name: "John Doe",
-    role: "CEO & Founder",
-    image: "/team/john-doe.jpg",
-    linkedin: "https://linkedin.com/in/johndoe",
-    skills: ["Leadership", "Strategy", "Product Vision", "Business Development"]
-  },
-  {
-    name: "Jane Smith",
-    role: "Lead Designer",
-    image: "/team/jane-smith.jpg",
-    linkedin: "https://linkedin.com/in/janesmith",
-    skills: ["UI/UX", "Brand Design", "Motion Graphics", "Design Systems"]
-  },
-  // Add more team members as needed
-]
+const people: PersonCard[] = teamData.team
 
 export function PeopleSection() {
   return (
@@ -58,9 +43,9 @@ export function PeopleSection() {
                 <CardTitle className="text-2xl">{person.name}</CardTitle>
                 <CardDescription className="text-base">{person.role}</CardDescription>
               </CardHeader>
-              <CardContent className="space-y-4">
+              <CardContent className="space-y-4 mx-auto">
                 {person.skills && (
-                  <div className="flex flex-wrap gap-2">
+                  <div className="flex flex-wrap gap-2 mx-auto justify-center">
                     {person.skills.map((skill) => (
                       <Badge key={skill} variant="secondary" className="text-sm">
                         {skill}
