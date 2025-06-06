@@ -108,169 +108,9 @@
                 }
             ]
         },
-        {
-            "name": "Merkle Science",
-            "period": "Aug 2021 - Sep 2022",
-            "description": "Product design for blockchain analytics and compliance solutions",
-            "thumbnail": "https://placehold.co/100x100/3B82F6/ffffff?text=Merkle",
-            "projects": [{
-                    "name": "Compass",
-                    "description": "Blockchain analytics dashboard for tracking and monitoring cryptocurrency transactions",
-                    "thumbnail": "https://placehold.co/50x50/60A5FA/000000?text=Comp",
-                    "tags": ["Product Design", "Product Management", "UX/UI"],
-                    "details": "Designed a comprehensive dashboard for crypto transaction analysis.",
-                    "url": "https://example.com/merkle-compass",
-                    "urlName": "Explore Compass"
-                },
-                {
-                    "name": "Tracker",
-                    "description": "Real-time transaction monitoring system for crypto compliance",
-                    "thumbnail": "https://placehold.co/50x50/60A5FA/000000?text=Track",
-                    "tags": ["Product Design", "Analytics", "UX/UI"],
-                    "details": "Implemented real-time data visualization for compliance.",
-                    "url": "https://example.com/merkle-tracker",
-                    "urlName": "View Tracker"
-                },
-                {
-                    "name": "KYBB",
-                    "description": "Know Your Business Blockchain compliance tool for enterprise",
-                    "thumbnail": "https://placehold.co/50x50/60A5FA/000000?text=KYBB",
-                    "tags": ["Product Design", "Enterprise", "Compliance"],
-                    "details": "Streamlined onboarding and compliance processes for businesses.",
-                    "url": "https://example.com/merkle-kybb",
-                    "urlName": "Learn about KYBB"
-                },
-                {
-                    "name": "Design System",
-                    "description": "Unified design language and component system for all products",
-                    "thumbnail": "https://placehold.co/50x50/60A5FA/000000?text=DS",
-                    "tags": ["Design System", "Documentation", "Components"],
-                    "details": "Developed a robust design system for consistent UI/UX.",
-                    "url": "https://example.com/merkle-ds",
-                    "urlName": "Design System Docs"
-                }
-            ]
-        },
-        {
-            "name": "1mg",
-            "period": "2020 - 2021",
-            "description": "Healthcare platform design and motion graphics",
-            "thumbnail": "https://placehold.co/100x100/EF4444/ffffff?text=1mg",
-            "projects": [{
-                    "name": "RX Medicine",
-                    "description": "Prescription management and ordering system",
-                    "thumbnail": "https://placehold.co/50x50/F87171/000000?text=RX",
-                    "tags": ["Healthcare", "Product Design", "UX/UI"],
-                    "details": "Improved prescription ordering flow for better user experience.",
-                    "url": "https://example.com/1mg-rx",
-                    "urlName": "View RX Medicine"
-                },
-                {
-                    "name": "User Experience",
-                    "description": "Optimized user flows and interaction patterns",
-                    "thumbnail": "https://placehold.co/50x50/F87171/000000?text=UX",
-                    "tags": ["UX/UI", "Research", "Healthcare"],
-                    "details": "Conducted user research to identify pain points and optimize flows.",
-                    "url": "https://example.com/1mg-ux",
-                    "urlName": "UX Case Study"
-                },
-                {
-                    "name": "Brand Animations",
-                    "description": "Created engaging brand animations and motion graphics",
-                    "thumbnail": "https://placehold.co/50x50/F87171/000000?text=Brand",
-                    "tags": ["Motion", "Branding", "Animation"],
-                    "details": "Developed animations to enhance brand identity and user engagement.",
-                    "url": "https://example.com/1mg-brand-animations",
-                    "urlName": "Watch Animations"
-                },
-                {
-                    "name": "Product Demos",
-                    "description": "Developed interactive product demonstrations",
-                    "thumbnail": "https://placehold.co/50x50/F87171/000000?text=Demo",
-                    "tags": ["Motion", "Product", "Education"],
-                    "details": "Created interactive demos to showcase new features and products.",
-                    "url": "https://example.com/1mg-demos",
-                    "urlName": "See Demos"
-                }
-            ]
-        },
-        {
-            "name": "ClearTax",
-            "period": "Dec 2019 - Jul 2021",
-            "description": "Product design for tax compliance and financial solutions",
-            "thumbnail": "https://placehold.co/100x100/10B981/ffffff?text=ClearTax",
-            "projects": [{
-                    "name": "GST Platform",
-                    "description": "End-to-end GST compliance and filing platform",
-                    "thumbnail": "https://placehold.co/50x50/34D399/000000?text=GST",
-                    "tags": ["Product Design", "Tax", "Enterprise"],
-                    "details": "Designed a comprehensive platform for GST filing and compliance.",
-                    "url": "https://example.com/cleartax-gst",
-                    "urlName": "Explore GST Platform"
-                },
-                {
-                    "name": "Reconciliation Tool",
-                    "description": "Automated financial reconciliation system",
-                    "thumbnail": "https://placehold.co/50x50/34D399/000000?text=Recon",
-                    "tags": ["Product Design", "Finance", "Analytics"],
-                    "details": "Developed a tool to automate reconciliation of financial data.",
-                    "url": "https://example.com/cleartax-recon",
-                    "urlName": "View Reconciliation"
-                },
-                {
-                    "name": "MaxITC",
-                    "description": "Input tax credit optimization platform",
-                    "thumbnail": "https://placehold.co/50x50/34D399/000000?text=MaxITC",
-                    "tags": ["Product Design", "Tax", "Analytics"],
-                    "details": "Optimized input tax credit claims for businesses.",
-                    "url": "https://example.com/cleartax-maxitc",
-                    "urlName": "Learn about MaxITC"
-                },
-                {
-                    "name": "Design System",
-                    "description": "Unified component library and design guidelines",
-                    "thumbnail": "https://placehold.co/50x50/34D399/000000?text=DS",
-                    "tags": ["Design System", "Documentation", "Components"],
-                    "details": "Created a scalable design system for consistent product development.",
-                    "url": "https://example.com/cleartax-ds",
-                    "urlName": "Design System Docs"
-                }
-            ]
-        },
-        {
-            "name": "Microsoft",
-            "period": "Jun 2017 - Aug 2019",
-            "description": "Product design for enterprise solutions",
-            "thumbnail": "https://placehold.co/100x100/2563EB/ffffff?text=MSFT",
-            "projects": [{
-                    "name": "Bing Places for Business",
-                    "description": "Business listing and management platform",
-                    "thumbnail": "https://placehold.co/50x50/60A5FA/000000?text=Bing",
-                    "tags": ["Product Design", "Enterprise", "Maps"],
-                    "details": "Improved local business visibility and management tools.",
-                    "url": "https://example.com/microsoft-bing",
-                    "urlName": "Bing Places"
-                },
-                {
-                    "name": "SharePoint Desktop",
-                    "description": "Desktop application for SharePoint collaboration",
-                    "thumbnail": "https://placehold.co/50x50/60A5FA/000000?text=SP",
-                    "tags": ["Product Design", "Enterprise", "Collaboration"],
-                    "details": "Enhanced desktop collaboration features for SharePoint users.",
-                    "url": "https://example.com/microsoft-sharepoint",
-                    "urlName": "SharePoint Details"
-                },
-                {
-                    "name": "Product Training",
-                    "description": "Created product demonstration and training content",
-                    "thumbnail": "https://placehold.co/50x50/60A5FA/000000?text=Train",
-                    "tags": ["Education", "Video", "Documentation"],
-                    "details": "Developed engaging training materials for new product features.",
-                    "url": "https://example.com/microsoft-training",
-                    "urlName": "Training Videos"
-                }
-            ]
-        },
+
+
+
         {
             "name": "TOPGreen / Turing / SpaceAge Labs",
             "period": "Feb 2019 - Jul 2019, Apr 2020 - Apr 2022",
@@ -336,6 +176,49 @@
                     "details": "Created an intuitive platform for job seekers to find and apply for jobs.",
                     "url": "https://example.com/proffy-seeker",
                     "urlName": "Job Seeker Platform"
+                }
+            ]
+        },
+        {
+            "name": "ClearTax",
+            "period": "Dec 2019 - Jul 2021",
+            "description": "Product design for tax compliance and financial solutions",
+            "thumbnail": "https://placehold.co/100x100/10B981/ffffff?text=ClearTax",
+            "projects": [{
+                    "name": "GST Platform",
+                    "description": "End-to-end GST compliance and filing platform",
+                    "thumbnail": "https://placehold.co/50x50/34D399/000000?text=GST",
+                    "tags": ["Product Design", "Tax", "Enterprise"],
+                    "details": "Designed a comprehensive platform for GST filing and compliance.",
+                    "url": "https://example.com/cleartax-gst",
+                    "urlName": "Explore GST Platform"
+                },
+                {
+                    "name": "Reconciliation Tool",
+                    "description": "Automated financial reconciliation system",
+                    "thumbnail": "https://placehold.co/50x50/34D399/000000?text=Recon",
+                    "tags": ["Product Design", "Finance", "Analytics"],
+                    "details": "Developed a tool to automate reconciliation of financial data.",
+                    "url": "https://example.com/cleartax-recon",
+                    "urlName": "View Reconciliation"
+                },
+                {
+                    "name": "MaxITC",
+                    "description": "Input tax credit optimization platform",
+                    "thumbnail": "https://placehold.co/50x50/34D399/000000?text=MaxITC",
+                    "tags": ["Product Design", "Tax", "Analytics"],
+                    "details": "Optimized input tax credit claims for businesses.",
+                    "url": "https://example.com/cleartax-maxitc",
+                    "urlName": "Learn about MaxITC"
+                },
+                {
+                    "name": "Design System",
+                    "description": "Unified component library and design guidelines",
+                    "thumbnail": "https://placehold.co/50x50/34D399/000000?text=DS",
+                    "tags": ["Design System", "Documentation", "Components"],
+                    "details": "Created a scalable design system for consistent product development.",
+                    "url": "https://example.com/cleartax-ds",
+                    "urlName": "Design System Docs"
                 }
             ]
         },
@@ -424,6 +307,128 @@
             ]
         },
         {
+            "name": "1mg",
+            "period": "2020 - 2021",
+            "description": "Healthcare platform design and motion graphics",
+            "thumbnail": "https://placehold.co/100x100/EF4444/ffffff?text=1mg",
+            "projects": [{
+                    "name": "RX Medicine",
+                    "description": "Prescription management and ordering system",
+                    "thumbnail": "https://placehold.co/50x50/F87171/000000?text=RX",
+                    "tags": ["Healthcare", "Product Design", "UX/UI"],
+                    "details": "Improved prescription ordering flow for better user experience.",
+                    "url": "https://example.com/1mg-rx",
+                    "urlName": "View RX Medicine"
+                },
+                {
+                    "name": "User Experience",
+                    "description": "Optimized user flows and interaction patterns",
+                    "thumbnail": "https://placehold.co/50x50/F87171/000000?text=UX",
+                    "tags": ["UX/UI", "Research", "Healthcare"],
+                    "details": "Conducted user research to identify pain points and optimize flows.",
+                    "url": "https://example.com/1mg-ux",
+                    "urlName": "UX Case Study"
+                },
+                {
+                    "name": "Brand Animations",
+                    "description": "Created engaging brand animations and motion graphics",
+                    "thumbnail": "https://placehold.co/50x50/F87171/000000?text=Brand",
+                    "tags": ["Motion", "Branding", "Animation"],
+                    "details": "Developed animations to enhance brand identity and user engagement.",
+                    "url": "https://example.com/1mg-brand-animations",
+                    "urlName": "Watch Animations"
+                },
+                {
+                    "name": "Product Demos",
+                    "description": "Developed interactive product demonstrations",
+                    "thumbnail": "https://placehold.co/50x50/F87171/000000?text=Demo",
+                    "tags": ["Motion", "Product", "Education"],
+                    "details": "Created interactive demos to showcase new features and products.",
+                    "url": "https://example.com/1mg-demos",
+                    "urlName": "See Demos"
+                }
+            ]
+        },
+
+
+        {
+            "name": "Microsoft",
+            "period": "Jun 2017 - Aug 2019",
+            "description": "Product design for enterprise solutions",
+            "thumbnail": "https://placehold.co/100x100/2563EB/ffffff?text=MSFT",
+            "projects": [{
+                    "name": "Bing Places for Business",
+                    "description": "Business listing and management platform",
+                    "thumbnail": "https://placehold.co/50x50/60A5FA/000000?text=Bing",
+                    "tags": ["Product Design", "Enterprise", "Maps"],
+                    "details": "Improved local business visibility and management tools.",
+                    "url": "https://example.com/microsoft-bing",
+                    "urlName": "Bing Places"
+                },
+                {
+                    "name": "SharePoint Desktop",
+                    "description": "Desktop application for SharePoint collaboration",
+                    "thumbnail": "https://placehold.co/50x50/60A5FA/000000?text=SP",
+                    "tags": ["Product Design", "Enterprise", "Collaboration"],
+                    "details": "Enhanced desktop collaboration features for SharePoint users.",
+                    "url": "https://example.com/microsoft-sharepoint",
+                    "urlName": "SharePoint Details"
+                },
+                {
+                    "name": "Product Training",
+                    "description": "Created product demonstration and training content",
+                    "thumbnail": "https://placehold.co/50x50/60A5FA/000000?text=Train",
+                    "tags": ["Education", "Video", "Documentation"],
+                    "details": "Developed engaging training materials for new product features.",
+                    "url": "https://example.com/microsoft-training",
+                    "urlName": "Training Videos"
+                }
+            ]
+        },
+        {
+            "name": "Merkle Science",
+            "period": "Aug 2021 - Sep 2022",
+            "description": "Product design for blockchain analytics and compliance solutions",
+            "thumbnail": "https://placehold.co/100x100/3B82F6/ffffff?text=Merkle",
+            "projects": [{
+                    "name": "Compass",
+                    "description": "Blockchain analytics dashboard for tracking and monitoring cryptocurrency transactions",
+                    "thumbnail": "https://placehold.co/50x50/60A5FA/000000?text=Comp",
+                    "tags": ["Product Design", "Product Management", "UX/UI"],
+                    "details": "Designed a comprehensive dashboard for crypto transaction analysis.",
+                    "url": "https://example.com/merkle-compass",
+                    "urlName": "Explore Compass"
+                },
+                {
+                    "name": "Tracker",
+                    "description": "Real-time transaction monitoring system for crypto compliance",
+                    "thumbnail": "https://placehold.co/50x50/60A5FA/000000?text=Track",
+                    "tags": ["Product Design", "Analytics", "UX/UI"],
+                    "details": "Implemented real-time data visualization for compliance.",
+                    "url": "https://example.com/merkle-tracker",
+                    "urlName": "View Tracker"
+                },
+                {
+                    "name": "KYBB",
+                    "description": "Know Your Business Blockchain compliance tool for enterprise",
+                    "thumbnail": "https://placehold.co/50x50/60A5FA/000000?text=KYBB",
+                    "tags": ["Product Design", "Enterprise", "Compliance"],
+                    "details": "Streamlined onboarding and compliance processes for businesses.",
+                    "url": "https://example.com/merkle-kybb",
+                    "urlName": "Learn about KYBB"
+                },
+                {
+                    "name": "Design System",
+                    "description": "Unified design language and component system for all products",
+                    "thumbnail": "https://placehold.co/50x50/60A5FA/000000?text=DS",
+                    "tags": ["Design System", "Documentation", "Components"],
+                    "details": "Developed a robust design system for consistent UI/UX.",
+                    "url": "https://example.com/merkle-ds",
+                    "urlName": "Design System Docs"
+                }
+            ]
+        },
+        {
             "name": "Cubical Labs",
             "period": "Jun 2017 - Jan 2019",
             "description": "Redesigned mobile app and developed analytics dashboards",
@@ -448,5 +453,6 @@
                 }
             ]
         }
+
     ]
 }

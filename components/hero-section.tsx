@@ -18,12 +18,12 @@ export function HeroSection() {
           quality={100}
         />
         {/* Overlay */}
-        <div className="absolute inset-0 bg-black/10" />
+        <div className="absolute inset-0 bg-black/40" />
       </div>
 
       {/* Content */}
       <div className="relative z-10 flex min-h-screen items-center">
-        <div className="container mx-auto px-4">
+        <div className="container mx-auto px-4 mt-32">
           <div className="flex flex-col md:flex-row items-center justify-between">
             {/* Text Content */}
             <div className="xl:w-2/3 lg:w-1/2 w-full h-full">

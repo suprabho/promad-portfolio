@@ -127,7 +127,7 @@ export function CompaniesGrid() {
                           <div>
                             <h3 className="text-2xl font-semibold mb-2 text-white">{company.name}</h3>
                             <p className="text-sm text-white/80 mb-4">{company.description}</p>
-                            <div className="text-sm text-white/70">
+                            <div className="text-sm text-white/70 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                               Click to view details
                             </div>
                           </div>
