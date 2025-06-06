@@ -60,35 +60,44 @@ export function CompaniesGrid() {
             {companiesData.map((company, index) => {
               let gridClass = '';
               
-              // First column pattern
-              if (index % 9 === 0) {
-                gridClass = 'lg:col-span-4 lg:row-span-6 lg:col-start-1 lg:row-start-1 md:col-span-6 md:row-span-6 md:col-start-1 md:row-start-1 col-span-1 row-span-4'; // Large card
-              }
-              else if (index % 9 === 1) {
-                gridClass = 'lg:col-span-2 lg:row-span-2 lg:col-start-1 lg:row-start-7 md:col-span-3 md:row-span-3 md:col-start-1 md:row-start-7 col-span-1 row-span-3'; // Small card
-              }
-              else if (index % 9 === 2) {
-                gridClass = 'lg:col-span-2 lg:row-span-2 lg:col-start-3 lg:row-start-7 md:col-span-3 md:row-span-3 md:col-start-4 md:row-start-7 col-span-1 row-span-3'; // Small card
-              }
-              // Second column pattern
-              else if (index % 9 === 3) {
-                gridClass = 'lg:col-span-4 lg:row-span-3 lg:col-start-5 lg:row-start-1 md:col-span-6 md:row-span-3 md:col-start-7 md:row-start-1 col-span-1 row-span-4'; // Wide card top
-              }
-              else if (index % 9 === 4) {
-                gridClass = 'lg:col-span-4 lg:row-span-3 lg:col-start-5 lg:row-start-4 md:col-span-6 md:row-span-3 md:col-start-7 md:row-start-4 col-span-1 row-span-3'; // Wide card middle
-              }
-              else if (index % 9 === 5) {
-                gridClass = 'lg:col-span-2 lg:row-span-2 lg:col-start-5 lg:row-start-7 md:col-span-3 md:row-span-3 md:col-start-7 md:row-start-7 col-span-1 row-span-3'; // Small card bottom left
-              }
-              else if (index % 9 === 6) {
-                gridClass = 'lg:col-span-2 lg:row-span-2 lg:col-start-7 lg:row-start-7 md:col-span-3 md:row-span-3 md:col-start-10 md:row-start-7 col-span-1 row-span-2'; // Small card top left
-              }
-              // Third column pattern
-              else if (index % 9 === 7) {
-                gridClass = 'lg:col-span-2 lg:row-span-2 lg:col-start-9 lg:row-start-1 md:col-span-6 md:row-span-3 md:col-start-1 md:row-start-10 col-span-1 row-span-3'; // Small card top left
-              }
-              else if (index % 9 === 8) {
-                gridClass = 'lg:col-span-2 lg:row-span-2 lg:col-start-11 lg:row-start-1 md:col-span-6 md:row-span-3 md:col-start-1 md:row-start-14 col-span-1 row-span-3'; // Small card top right
+              switch(index) {
+                // Column 1
+                case 0:
+                  gridClass = 'lg:col-span-4 lg:row-span-6 lg:col-start-1 lg:row-start-1 md:col-span-6 md:row-span-6 md:col-start-1 md:row-start-1 col-span-1 row-span-4'; // Large card
+                  break;
+                case 1:
+                  gridClass = 'lg:col-span-2 lg:row-span-2 lg:col-start-1 lg:row-start-7 md:col-span-3 md:row-span-3 md:col-start-1 md:row-start-7 col-span-1 row-span-3'; // Small card
+                  break;
+                case 2:
+                  gridClass = 'lg:col-span-2 lg:row-span-2 lg:col-start-3 lg:row-start-7 md:col-span-3 md:row-span-3 md:col-start-4 md:row-start-7 col-span-1 row-span-3'; // Small card
+                  break;
+
+                // Column 2
+                case 3:
+                  gridClass = 'lg:col-span-4 lg:row-span-3 lg:col-start-5 lg:row-start-1 md:col-span-6 md:row-span-3 md:col-start-7 md:row-start-1 col-span-1 row-span-4'; // Wide card top
+                  break;
+                case 4:
+                  gridClass = 'lg:col-span-4 lg:row-span-3 lg:col-start-5 lg:row-start-4 md:col-span-6 md:row-span-3 md:col-start-7 md:row-start-4 col-span-1 row-span-3'; // Wide card middle
+                  break;
+                case 5:
+                  gridClass = 'lg:col-span-2 lg:row-span-2 lg:col-start-5 lg:row-start-7 md:col-span-3 md:row-span-3 md:col-start-7 md:row-start-7 col-span-1 row-span-3'; // Small card bottom left
+                  break;
+                case 6:
+                  gridClass = 'lg:col-span-2 lg:row-span-2 lg:col-start-7 lg:row-start-7 md:col-span-3 md:row-span-3 md:col-start-10 md:row-start-7 col-span-1 row-span-2'; // Small card top left
+                  break;
+                // Column 3
+                case 7:
+                  gridClass = 'lg:col-span-2 lg:row-span-2 lg:col-start-9 lg:row-start-1 md:col-span-6 md:row-span-3 md:col-start-1 md:row-start-10 col-span-1 row-span-3'; // Small card top left
+                  break;
+                case 8:
+                  gridClass = 'lg:col-span-2 lg:row-span-2 lg:col-start-11 lg:row-start-1 md:col-span-6 md:row-span-3 md:col-start-1 md:row-start-14 col-span-1 row-span-3'; // Small card top right
+                  break;
+                case 9:
+                  gridClass = 'lg:col-span-4 lg:row-span-6 lg:col-start-9 lg:row-start-3 md:col-span-6 md:row-span-6 md:col-start-7 md:row-start-10 col-span-1 row-span-4'; // Large card bottom
+                  break;  
+
+                default:
+                  gridClass = 'lg:col-span-2 lg:row-span-2 md:col-span-6 md:row-span-4 col-span-1 row-span-4'; // Default small
               }
 
               const cardStyles = `
@@ -104,17 +113,13 @@ export function CompaniesGrid() {
                     <Card className={cardStyles}>
                       <div className="relative w-full h-full bg-muted overflow-hidden">
                         <Image
-                          src="/images/placeholder-company.png"
+                          src={company.thumbnail}
                           alt={`${company.name} thumbnail`}
                           fill
                           className="object-cover transition-transform duration-300 group-hover:scale-110"
                         />
                         <div className="absolute inset-0 bg-gradient-to-b from-black/0 via-black/20 to-black/80" />
-                        <div className="absolute inset-0 p-6 flex flex-col justify-between">
-                          <Badge variant="outline" className="w-fit flex items-center gap-1 bg-background/80 text-foreground">
-                            <Calendar className="w-3 h-3" />
-                            {company.period}
-                          </Badge>
+                        <div className="absolute inset-0 p-6 flex flex-col justify-end">
                           <div>
                             <h3 className="text-2xl font-semibold mb-2 text-white">{company.name}</h3>
                             <p className="text-sm text-white/80 mb-4">{company.description}</p>

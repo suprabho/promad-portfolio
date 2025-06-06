@@ -3,7 +3,7 @@
             "name": "Kidzovo",
             "period": "Apr 2022 - Present",
             "description": "Building an award-winning app for kids with the help of AI",
-            "thumbnail": "https://placehold.co/100x100/A78BFA/ffffff?text=Kidzovo",
+            "thumbnail": "/images/projects/kidzovo/thumbnail.png",
             "projects": [{
                     "name": "Core app interactions",
                     "description": "Designed intuitive and engaging interactions for children's learning experience",
@@ -180,7 +180,7 @@
             "name": "ClearTax",
             "period": "Dec 2019 - Jul 2021",
             "description": "Product design for tax compliance and financial solutions",
-            "thumbnail": "https://placehold.co/100x100/10B981/ffffff?text=ClearTax",
+            "thumbnail": "/images/projects/clear/thumbnail.png",
             "projects": [{
                     "name": "GST Platform",
                     "description": "End-to-end GST compliance and filing platform",
@@ -307,7 +307,7 @@
             "name": "1mg",
             "period": "2020 - 2021",
             "description": "Healthcare platform design and motion graphics",
-            "thumbnail": "https://placehold.co/100x100/EF4444/ffffff?text=1mg",
+            "thumbnail": "/images/projects/1mg/thumbnail.png",
             "projects": [{
                     "name": "RX Medicine",
                     "description": "Prescription management and ordering system",
@@ -386,7 +386,7 @@
             "name": "Merkle Science",
             "period": "Aug 2021 - Sep 2022",
             "description": "Product design for blockchain analytics and compliance solutions",
-            "thumbnail": "https://placehold.co/100x100/3B82F6/ffffff?text=Merkle",
+            "thumbnail": "/images/projects/merkle/thumbnail.png",
             "projects": [{
                     "name": "Compass",
                     "description": "Blockchain analytics dashboard for tracking and monitoring cryptocurrency transactions",
