@@ -55,23 +55,62 @@ export function CompaniesGrid() {
           </Link>
         </div>
         
-        <div className="mt-10 grid gap-4 sm:mt-16">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+        <div className="mt-10 sm:mt-16">
+          <div className="grid grid-cols-1 md:grid-cols-12 gap-4 auto-rows-[100px]">
             {companiesData.map((company, index) => {
-              // Define card styles based on position
-              const isLargeCard = index === 0;
+              let gridClass = '';
+              
+              switch(index) {
+                // Column 1
+                case 0:
+                  gridClass = 'md:col-span-4 md:row-span-6 md:col-start-1 md:row-start-1'; // Large card
+                  break;
+                case 1:
+                  gridClass = 'md:col-span-2 md:row-span-2 md:col-start-1 md:row-start-7'; // Small card
+                  break;
+                case 2:
+                  gridClass = 'md:col-span-2 md:row-span-2 md:col-start-3 md:row-start-7'; // Small card
+                  break;
+
+                // Column 2
+                case 3:
+                  gridClass = 'md:col-span-4 md:row-span-3 md:col-start-5 md:row-start-1'; // Wide card top
+                  break;
+                case 4:
+                  gridClass = 'md:col-span-4 md:row-span-3 md:col-start-5 md:row-start-4'; // Wide card middle
+                  break;
+                case 5:
+                  gridClass = 'md:col-span-2 md:row-span-2 md:col-start-5 md:row-start-7'; // Small card bottom left
+                  break;
+
+                // Column 3
+                case 7:
+                  gridClass = 'md:col-span-2 md:row-span-2 md:col-start-9 md:row-start-1'; // Small card top left
+                  break;
+                case 8:
+                  gridClass = 'md:col-span-2 md:row-span-2 md:col-start-11 md:row-start-1'; // Small card top right
+                  break;
+                case 9:
+                  gridClass = 'md:col-span-4 md:row-span-6 md:col-start-9 md:row-start-3'; // Large card bottom
+                  break;
+
+                default:
+                  gridClass = 'md:col-span-2 md:row-span-2'; // Default small
+              }
+
               const cardStyles = `
                 group cursor-pointer transform transition-all duration-300 
                 hover:scale-[1.02] hover:shadow-xl active:scale-[0.98] 
-                relative overflow-hidden bg-card
-                ${isLargeCard ? 'md:row-span-2' : ''}
+                relative overflow-hidden bg-card rounded-tr-0 rounded-br-3xl rounded-tl-3xl rounded-tl-0
+                ${gridClass}
+                h-full
               `;
 
               return (
                 <Sheet key={index}>
                   <SheetTrigger asChild>
                     <Card className={cardStyles}>
-                      <div className="relative w-full h-full aspect-[4/3] bg-muted overflow-hidden">
+                      <div className="relative w-full h-full bg-muted overflow-hidden">
                         <Image
                           src="/images/placeholder-company.png"
                           alt={`${company.name} thumbnail`}
