@@ -76,8 +76,8 @@
                         },
                         "conclusion": "Building Kidzovo demonstrated that AI can revolutionize children's education by providing truly personalized and engaging experiences. By prioritizing user-friendly interfaces and integrating AI thoughtfully, we created a platform that not only teaches but also inspires young learners to explore and discover."
                     },
-                    "url": "https://example.com/kidzovo-core-app",
-                    "urlName": "View Core App"
+                    "url": "https://link.kidovo.com/RL7v/promad",
+                    "urlName": "Download Kidzovo App"
                 },
                 {
                     "name": "Interactive animations",
@@ -109,9 +109,9 @@
             ]
         },
         {
-            "name": "TOPGreen / Turing / SpaceAge Labs",
+            "name": "Turing",
             "period": "Feb 2019 - Jul 2019, Apr 2020 - Apr 2022",
-            "description": "IoT and environmental solutions design",
+            "description": "DesigningI for Industry scale IoT applications",
             "thumbnail": "https://placehold.co/100x100/059669/ffffff?text=IoT",
             "projects": [{
                     "name": "Water IoT Platform",
@@ -220,10 +220,10 @@
             ]
         },
         {
-            "name": "Gostops",
+            "name": "goStops",
             "period": "2016 - 2017",
-            "description": "Travel platform branding and product design",
-            "thumbnail": "https://placehold.co/100x100/8B5CF6/ffffff?text=Gostops",
+            "description": "Travel platform branding and product design for goStops",
+            "thumbnail": "/images/projects/gostops/thumbnail.png",
             "projects": [{
                     "name": "Brand Identity",
                     "description": "Developed comprehensive brand identity and guidelines",
@@ -352,7 +352,7 @@
             "name": "Microsoft",
             "period": "Jun 2017 - Aug 2019",
             "description": "Product design for enterprise solutions",
-            "thumbnail": "https://placehold.co/100x100/2563EB/ffffff?text=MSFT",
+            "thumbnail": "/images/projects/microsoft/thumbnail.png",
             "projects": [{
                     "name": "Bing Places for Business",
                     "description": "Business listing and management platform",
