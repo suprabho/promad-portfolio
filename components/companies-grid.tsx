@@ -71,33 +71,28 @@ export function CompaniesGrid() {
                 <Sheet key={index}>
                   <SheetTrigger asChild>
                     <Card className={cardStyles}>
-                      <div className={`relative ${isLargeCard ? 'h-[400px]' : 'h-48'} w-full bg-muted overflow-hidden`}>
+                      <div className="relative w-full h-full aspect-[4/3] bg-muted overflow-hidden">
                         <Image
                           src="/images/placeholder-company.png"
                           alt={`${company.name} thumbnail`}
                           fill
                           className="object-cover transition-transform duration-300 group-hover:scale-110"
                         />
-                        <div className="absolute inset-0 bg-gradient-to-b from-black/0 to-black/60" />
-                        <div className="absolute bottom-0 left-0 right-0 p-6 text-white">
-                          <h3 className="text-2xl font-semibold mb-2">{company.name}</h3>
-                          <p className="text-sm text-white/80">{company.description}</p>
-                        </div>
-                      </div>
-                      <CardHeader className="relative">
-                        <div className="flex items-center justify-between">
-                          <Badge variant="outline" className="flex items-center gap-1">
+                        <div className="absolute inset-0 bg-gradient-to-b from-black/0 via-black/20 to-black/80" />
+                        <div className="absolute inset-0 p-6 flex flex-col justify-between">
+                          <Badge variant="outline" className="w-fit flex items-center gap-1 bg-background/80 text-foreground">
                             <Calendar className="w-3 h-3" />
                             {company.period}
                           </Badge>
+                          <div>
+                            <h3 className="text-2xl font-semibold mb-2 text-white">{company.name}</h3>
+                            <p className="text-sm text-white/80 mb-4">{company.description}</p>
+                            <div className="text-sm text-white/70">
+                              Click to view details
+                            </div>
+                          </div>
                         </div>
-                      </CardHeader>
-                      <CardContent>
-                        <div className="w-full text-center text-sm text-muted-foreground">
-                          Click to view details
-                        </div>
-                      </CardContent>
-                      <div className="pointer-events-none absolute inset-px rounded-lg shadow-sm ring-1 ring-black/5" />
+                      </div>
                     </Card>
                   </SheetTrigger>
                   <SheetContent className="overflow-y-auto w-[90vw] max-w-[1200px] sm:max-w-[1200px] p-0">

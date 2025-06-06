@@ -5,11 +5,11 @@ import { CaseStudyDetails } from "@/types/project"
 
 interface ProjectActionsProps {
   url?: string
-  urlText?: string
+  urlName?: string
   details?: string | CaseStudyDetails
 }
 
-export function ProjectActions({ url, urlText, details }: ProjectActionsProps) {
+export function ProjectActions({ url, urlName, details }: ProjectActionsProps) {
   const hasCaseStudy = details && typeof details === 'object'
 
   return (
@@ -26,7 +26,7 @@ export function ProjectActions({ url, urlText, details }: ProjectActionsProps) {
             rel="noopener noreferrer" 
           >
             <ArrowSquareOutIcon />
-            {urlText || 'Visit Project'}
+            {urlName || 'Visit Project'}
           </a>
         </Button>
       )}

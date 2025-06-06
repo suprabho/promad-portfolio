@@ -1,4 +1,5 @@
 import { useContext, ReactNode } from 'react'
+import { cn } from "@/lib/utils"
 
 interface LogoTextProps {
   className?: string
@@ -41,7 +42,7 @@ const sizeClasses = {
 
 export function LogoText({ 
   className = "", 
-  textColor = "text-white",
+  textColor,
   size = "h1",
   children,
   showPrefix = true
@@ -51,7 +52,12 @@ export function LogoText({
 
   return (
     <span 
-      className={`${sizeClass.container} ${className} ${textColor}`}
+      className={cn(
+        sizeClass.container,
+        "text-foreground",
+        textColor,
+        className
+      )}
       aria-label={fullText}
     >
       {showPrefix && "We are "}{" "}

@@ -6,7 +6,7 @@ import { LogoText } from "@/components/logo-text"
 
 export function HeroSection() {
   return (
-    <section className="relative min-h-screen">
+    <section className="relative min-h-screen mt-[-100px]">
       {/* Background Image */}
       <div className="absolute inset-0 z-0">
         <Image
@@ -18,7 +18,7 @@ export function HeroSection() {
           quality={100}
         />
         {/* Overlay */}
-        <div className="absolute inset-0 bg-black/50" />
+        <div className="absolute inset-0 bg-black/10" />
       </div>
 
       {/* Content */}
@@ -28,7 +28,7 @@ export function HeroSection() {
             {/* Text Content */}
             <div className="xl:w-2/3 lg:w-1/2 w-full h-full">
               <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold tracking-tight">
-                <LogoText />
+                <LogoText textColor="text-white" />
               </h1>
               <p className="mt-6 text-xl md:text-2xl text-gray-200 leading-relaxed">
                 A remote - first, global Product Studio. We love to solve problems and make everyone's life a little easier with great experiences. We primarily specialize in UX design, front end development, branding and motion design and are well versed in all aspects of delivering quality and user-friendly products.

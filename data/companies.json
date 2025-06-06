@@ -2,7 +2,7 @@
     "companies": [{
             "name": "Kidzovo",
             "period": "Apr 2022 - Present",
-            "description": "Leading product design and branding for children's educational platform",
+            "description": "Building an award-winning app for kids with the help of AI",
             "thumbnail": "https://placehold.co/100x100/A78BFA/ffffff?text=Kidzovo",
             "projects": [{
                     "name": "Core app interactions",
@@ -94,8 +94,8 @@
                     "thumbnail": "https://placehold.co/50x50/FCD34D/000000?text=Char",
                     "tags": ["Character Design", "Animation", "Rive"],
                     "details": "Brought characters to life with expressive movements.",
-                    "url": "https://example.com/kidzovo-characters",
-                    "urlName": "Character Portfolio"
+                    "url": "https://ovo.app.promad.design",
+                    "urlName": "Play with Ovo"
                 },
                 {
                     "name": "Webflow Website",

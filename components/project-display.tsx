@@ -1,12 +1,6 @@
 import Image from "next/image"
 import { Badge } from "@/components/ui/badge"
-import { Card, CardContent } from "@/components/ui/card"
-import {
-  Accordion,
-  AccordionContent,
-  AccordionItem,
-  AccordionTrigger,
-} from "@/components/ui/accordion"
+
 import { ProjectActions } from "@/components/project-actions"
 
 interface CaseStudyDetails {
@@ -43,7 +37,7 @@ interface Project {
   tags: string[]
   details?: string | CaseStudyDetails
   url?: string
-  urlText?: string
+  urlName?: string
 }
 
 interface ProjectDisplayProps {
@@ -69,7 +63,7 @@ export function ProjectDisplay({ project, index }: ProjectDisplayProps) {
               </div>
               <ProjectActions 
                 url={project.url}
-                urlText={project.urlText}
+                urlName={project.urlName}
                 details={project.details}
               />
             </div>
@@ -104,7 +98,7 @@ export function ProjectDisplay({ project, index }: ProjectDisplayProps) {
               </div>
               <ProjectActions 
                 url={project.url}
-                urlText={project.urlText}
+                urlName={project.urlName}
                 details={project.details}
               />
             </div>
