@@ -117,7 +117,7 @@
             "name": "Turing",
             "period": "Feb 2019 - Jul 2019, Apr 2020 - Apr 2022",
             "description": "DesigningI for Industry scale IoT applications",
-            "thumbnail": "https://placehold.co/100x100/059669/ffffff?text=IoT",
+            "thumbnail": "/images/projects/turing/thumbnail.png",
             "projects": [{
                     "name": "Water IoT Platform",
                     "description": "Mobile and dashboard solution for water management",
@@ -160,7 +160,7 @@
             "name": "Proffy",
             "period": "2017 - 2018",
             "description": "Job matching platform design",
-            "thumbnail": "https://placehold.co/100x100/F97316/ffffff?text=Proffy",
+            "thumbnail": "/images/projects/proffy/thumbnail.png",
             "projects": [{
                     "name": "Employer Platform",
                     "description": "Recruitment and candidate management system",
@@ -250,10 +250,10 @@
             ]
         },
         {
-            "name": "TMP",
+            "name": "The Manufacturing Project",
             "period": "2015 - 2016",
             "description": "Marketing and branding solutions",
-            "thumbnail": "https://placehold.co/100x100/EC4899/ffffff?text=TMP",
+            "thumbnail": "/images/projects/tmp/thumbnail.png",
             "projects": [{
                     "name": "Brand Strategy",
                     "description": "Developed brand strategy and visual identity",
@@ -287,7 +287,7 @@
             "name": "myAIcademy",
             "period": "Mar 2025 - Present",
             "description": "Designing an MVP app for a gamified AI learning experience",
-            "thumbnail": "https://placehold.co/100x100/6B7280/ffffff?text=Aimy",
+            "thumbnail": "/images/projects/myAicademy/thumbnail.png",
             "projects": [{
                     "name": "Learning Platform",
                     "description": "Gamified AI learning application design",

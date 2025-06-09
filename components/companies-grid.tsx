@@ -7,6 +7,7 @@ import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import {
   Sheet,
+  SheetClose,
   SheetContent,
   SheetDescription,
   SheetHeader,
@@ -17,6 +18,7 @@ import Link from "next/link"
 import { ProjectDisplay } from "@/components/project-display"
 
 // Using the same data structure from companies-timeline
+import { XIcon } from "@phosphor-icons/react/dist/ssr"  
 import { companiesData } from "@/components/companies-timeline"
 
 interface CompanyItem {
@@ -108,7 +110,22 @@ export function CompaniesGrid() {
 
               return (
                 <Sheet key={index}>
-                  <SheetTrigger asChild>
+                  <SheetTrigger asChild onClick={() => {
+                    // Pause Rive animation
+                    const riveContainer = document.querySelector('.RiveContainer');
+                    if (riveContainer) {
+                      const riveInstance = (riveContainer as any)._rive;
+                      if (riveInstance) {
+                        riveInstance.pause();
+                      }
+                    }
+                    
+                    // Pause Spline animation
+                    const splineContainer = document.querySelector('spline-viewer');
+                    if (splineContainer) {
+                      (splineContainer as any)?.pause?.();
+                    }
+                  }}>
                     <Card className={cardStyles}>
                       <div className="relative w-full h-full bg-muted overflow-hidden">
                         <Image
@@ -145,6 +162,28 @@ export function CompaniesGrid() {
                             {company.name}
                           </SheetTitle>
                           <SheetDescription>{company.description}</SheetDescription>
+                          <SheetClose 
+                            className="absolute right-4 top-4 rounded-sm opacity-70 ring-offset-background transition-opacity hover:opacity-100 focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 disabled:pointer-events-none data-[state=open]:bg-secondary"
+                            onClick={() => {
+                              // Resume Rive animation
+                              const riveContainer = document.querySelector('.RiveContainer');
+                              if (riveContainer) {
+                                const riveInstance = (riveContainer as any)._rive;
+                                if (riveInstance) {
+                                  riveInstance.play();
+                                }
+                              }
+                              
+                              // Resume Spline animation  
+                              const splineContainer = document.querySelector('spline-viewer');
+                              if (splineContainer) {
+                                (splineContainer as any)?.play?.();
+                              }
+                            }}
+                          >
+                            <XIcon className="h-4 w-4" />
+                            <span className="sr-only">Close</span>
+                          </SheetClose>
                         </div> 
                         
                         

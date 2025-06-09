@@ -43,17 +43,26 @@ export function ProjectCard({ project, isReversed = false }: ProjectCardProps) {
   return (
     <div className="space-y-8">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-        {isReversed ? (
-          <>
+      {isReversed ? (
+        <>
+          <div className="md:col-start-2">
             <ImageSection />
+          </div>
+          <div className="md:col-start-1 md:row-start-1">
             <ContentSection />
-          </>
-        ) : (
-          <>
-            <ContentSection />
+          </div>
+        </>
+      ) : (
+        <>
+          <div>
             <ImageSection />
-          </>
-        )}
+          </div>
+          <div>
+            <ContentSection />
+          </div>
+        </>
+      )}
+        
       </div>
     </div>
   )
