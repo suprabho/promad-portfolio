@@ -13,6 +13,7 @@ const config: Config = {
   		fontFamily: {
   			sans: ['var(--font-manrope)'],
   			serif: ['var(--font-playfair)'],
+			mono: ['var(--font-space-mono)'],
   		},
   		colors: {
   			background: 'hsl(var(--background))',

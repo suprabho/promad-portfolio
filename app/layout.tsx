@@ -1,6 +1,6 @@
 import type { Metadata } from 'next'
 import './globals.css'
-import { Manrope, Playfair_Display } from 'next/font/google'
+import { Manrope, Playfair_Display, Space_Mono } from 'next/font/google'
 import { ThemeProvider } from '@/components/theme-provider'
 
 const manrope = Manrope({ 
@@ -11,6 +11,12 @@ const manrope = Manrope({
 const playfair = Playfair_Display({
   subsets: ['latin'],
   variable: '--font-playfair',
+})
+
+const spaceMono = Space_Mono({
+  subsets: ['latin'],
+  variable: '--font-space-mono',
+  weight: ['400', '700'],
 })
 
 export const metadata: Metadata = {
@@ -34,7 +40,7 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="en" className={`${manrope.variable} ${playfair.variable}`}>
+    <html lang="en" className={`${manrope.variable} ${playfair.variable} ${spaceMono.variable}`}>
       <body>
         <ThemeProvider
           attribute="class"

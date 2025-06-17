@@ -5,11 +5,13 @@ import {
   Alignment,
   useStateMachineInput,
 } from "@rive-app/react-canvas";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useTheme } from "next-themes";
 
 export const LogoRive = () => {
   const { theme } = useTheme();
+  const [mounted, setMounted] = useState(false);
+  
   const { rive, RiveComponent } = useRive({
     src: "/rive/promad.riv",
     stateMachines: "nav_logo",
@@ -22,11 +24,15 @@ export const LogoRive = () => {
 
   const mode = useStateMachineInput(rive, "nav_logo", "mode");
   
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+  
   useEffect(() => { 
-    if (mode && theme) {
+    if (mode && theme && mounted) {
       mode.value = theme === 'light' ? 1 : 0;
     }
-  }, [mode, theme]);
+  }, [mode, theme, mounted]);
 
   return <RiveComponent />;
 };

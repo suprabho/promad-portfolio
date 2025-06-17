@@ -1,8 +1,8 @@
 import { Button } from "@/components/ui/button"
 import { ArrowRight, Download } from "lucide-react"
 import Image from "next/image"
-import Spline from "@splinetool/react-spline/next"
 import { LogoText } from "@/components/logo-text"
+import Spline from '@splinetool/react-spline'
 
 export function HeroSection() {
   return (
@@ -36,7 +36,7 @@ export function HeroSection() {
               </p>
             </div>
 
-            {/* Spline Scene */}
+            {/* Placeholder for 3D Scene */}
             <div className="xl:w-1/3 lg:w-1/2 w-full">
               <Spline
                 scene="/spline/scene.splinecode"

@@ -41,7 +41,7 @@
         "@radix-ui/react-tooltip": "1.1.6",
         "@rive-app/react-canvas": "^4.21.1",
         "@splinetool/react-spline": "^4.0.0",
-        "@thesysai/genui-sdk": "^0.6.19",
+        "@thesysai/genui-sdk": "^0.6.22",
         "class-variance-authority": "^0.7.1",
         "clsx": "^2.1.1",
         "cmdk": "1.0.4",
