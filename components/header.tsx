@@ -27,7 +27,7 @@ export default function Header() {
               <NavigationMenuList>
                 <NavigationMenuItem>
                   <NavigationMenuLink asChild>
-                    <Link href="chat.promad.design" className="group inline-flex h-10 w-max items-center justify-center rounded-md bg-background px-4 py-2 text-sm font-medium transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground focus:outline-none disabled:pointer-events-none disabled:opacity-50 data-[active]:bg-accent/50 data-[state=open]:bg-accent/50">
+                    <Link href="https://chat.promad.design" className="group inline-flex h-10 w-max items-center justify-center rounded-md bg-background px-4 py-2 text-sm font-medium transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground focus:outline-none disabled:pointer-events-none disabled:opacity-50 data-[active]:bg-accent/50 data-[state=open]:bg-accent/50">
                       Chat with AI
                     </Link>
                   </NavigationMenuLink>
@@ -50,18 +50,9 @@ export default function Header() {
             </DropdownMenuTrigger>
             <DropdownMenuContent className="w-screen border-b border-border/40 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 mt-2" align="end">
               <nav className="flex flex-col gap-1">
-                <Link href="/" className="flex w-full items-center px-2 py-1.5 text-base hover:bg-accent hover:text-accent-foreground rounded-sm">
-                  Home
-                </Link>
-                <Link href="#about" className="flex w-full items-center px-2 py-1.5 text-base hover:bg-accent hover:text-accent-foreground rounded-sm">
-                  About
-                </Link>
-                <Link href="#projects" className="flex w-full items-center px-2 py-1.5 text-base hover:bg-accent hover:text-accent-foreground rounded-sm">
-                  Projects
-                </Link>
-                <Link href="#contact" className="flex w-full items-center px-2 py-1.5 text-base hover:bg-accent hover:text-accent-foreground rounded-sm">
-                  Contact
-                </Link>
+                <Link href="https://chat.promad.design" className="flex w-full items-center px-2 py-1.5 text-base hover:bg-accent hover:text-accent-foreground rounded-sm">
+                  Chat with AI
+                </Link> 
               </nav>
             </DropdownMenuContent>
           </DropdownMenu>
