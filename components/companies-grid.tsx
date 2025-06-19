@@ -165,20 +165,7 @@ export function CompaniesGrid() {
                           <SheetClose 
                             className="absolute right-4 top-4 rounded-sm opacity-70 ring-offset-background transition-opacity hover:opacity-100 focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 disabled:pointer-events-none data-[state=open]:bg-secondary"
                             onClick={() => {
-                              // Resume Rive animation
-                              const riveContainer = document.querySelector('.RiveContainer');
-                              if (riveContainer) {
-                                const riveInstance = (riveContainer as any)._rive;
-                                if (riveInstance) {
-                                  riveInstance.play();
-                                }
-                              }
-                              
-                              // Resume Spline animation  
-                              const splineContainer = document.querySelector('spline-viewer');
-                              if (splineContainer) {
-                                (splineContainer as any)?.play?.();
-                              }
+                             
                             }}
                           >
                             <XIcon className="h-4 w-4" />

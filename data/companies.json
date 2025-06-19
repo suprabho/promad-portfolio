@@ -84,26 +84,128 @@
                     "url": "https://link.kidovo.com/RL7v/promad",
                     "urlName": "Download Kidzovo App"
                 },
+
                 {
-                    "name": "Interactive animations",
+                    "name": "Character design and animation",
+                    "description": "Designed and animated playful character states and expressions",
+                    "thumbnail": "/images/projects/kidzovo/project-image-2.jpg",
+                    "tags": ["Character Design", "Animation", "Rive"],
+                    "details": {
+                        "title": "Case Study: Building a Scalable Mascot with Rive",
+                        "projectOverview": "The goal was to create a lively, interactive mascot for the Kidzovo app to guide and engage young users. We needed a solution that was not only expressive but also highly performant and scalable across multiple platforms. Rive was chosen to bring our character, 'Ovo', to life with real-time vector animations.",
+                        "theChallenge": {
+                            "heading": "The Challenge: A Dynamic, Performant, and Scalable Mascot",
+                            "description": "Traditional animation formats like GIFs or video files were not a viable option. They are large, not easily scalable without quality loss, and offer limited interactivity. The challenge was to create complex character animations that were lightweight, crisp on any screen size, and could respond to user interactions in real-time.",
+                            "animationGoals": [
+                                "Scalability: Animations must be vector-based to look sharp on any device.",
+                                "Performance: The animation solution needed a small footprint to keep the app fast and responsive.",
+                                "Interactivity: The mascot needed to react dynamically to a child's learning progress and inputs.",
+                                "Ease of Iteration: We needed a workflow that allowed designers to quickly create and modify complex animations without writing code."
+                            ]
+                        },
+                        "ourApproach": {
+                            "heading": "Our Approach: Real-time Vector Animation with a State Machine",
+                            "description": "We chose Rive for its powerful real-time vector animation capabilities and its state machine, which allows for complex interactive logic to be built visually. This approach solved our core challenges around performance, scalability, and interactivity.",
+                            "phases": [{
+                                    "name": "Phase 1: Character Rigging and State Planning",
+                                    "points": [
+                                        "Mascot Design: Finalizing the design of 'Ovo' the mascot for animation-friendliness.",
+                                        "State Definition: Defining all the character's states, such as 'idle', 'happy', 'thinking', 'guiding', and 'celebrating'.",
+                                        "State Machine Logic: Visually mapping out the transitions between these states in the Rive editor based on potential user interactions (e.g., correct answer, wrong answer, inactivity)."
+                                    ]
+                                },
+                                {
+                                    "name": "Phase 2: Animation and Implementation",
+                                    "points": [
+                                        "Animating in Rive: Building the animations for each state using Rive's powerful toolset, including bones for efficient rigging.",
+                                        "Integrating with Rive Runtimes: Using the Rive runtimes for iOS, Android, and web to load the animations into the Kidzovo app.",
+                                        "Connecting Logic: Triggering state changes in the Rive state machine from the application code based on user actions, making 'Ovo' feel truly alive."
+                                    ]
+                                }
+                            ]
+                        },
+                        "keyOutcomes": {
+                            "heading": "Key Outcomes",
+                            "points": [
+                                "Enhanced User Engagement: The interactive and expressive mascot led to a more engaging and delightful user experience for children.",
+                                "High Performance, Low Footprint: Rive animations were extremely lightweight, ensuring the app's performance was not compromised.",
+                                "Seamless Scalability: The vector-based mascot animations were perfectly crisp across all screen sizes and resolutions.",
+                                "Accelerated Workflow: Rive's collaborative tools allowed our designers to create and iterate on complex interactive animations independently, freeing up developer time."
+                            ]
+                        },
+                        "lessonsLearned": {
+                            "heading": "Lessons Learned",
+                            "points": [
+                                "State Machines Empower Designers: Rive's state machine allows designers to control complex logic and interactivity without needing to code.",
+                                "Vector is Superior for UI Animation: For application UIs, vector animations provide a level of quality and flexibility that raster formats can't match.",
+                                "Interactive Animation Drives Connection: Making the mascot respond to a child's actions created a stronger, more personal bond with the user.",
+                                "A Single Source of Truth: Having one Rive file for all platforms simplified asset management and ensured a consistent experience everywhere."
+                            ]
+                        },
+                        "conclusion": "Using Rive to build the Kidzovo mascot was a definitive success. It allowed us to create a highly interactive, performant, and scalable character that has become a core part of the learning experience. This approach set a new standard for how we will approach character animation in future projects."
+                    },
+                    "url": "https://ovo.app.promad.design",
+                    "urlName": "Play with Ovo"
+                },
+                {
+                    "name": "Kids' content using AI",
+                    "description": "Developed coloring sheets, puzzles and music videos for kids using AI",
+                    "thumbnail": "https://placehold.co/50x50/FCD34D/000000?text=Anim",
+                    "tags": ["Generative AI", "Midjourney", "DALL-E", "Suno", "Udio", "Runway",
+                        "Prompt Engineering"
+                    ],
+                    "details": {
+                        "heading": "Innovative Use of AI in Kids' Content",
+                        "description": "Leveraged cutting-edge AI technologies to create engaging and educational content for children.",
+                        "phases": [{
+                                "name": "Generating easily vectorizable Coloring Sheets",
+                                "points": [
+                                    "Using Midjourney to generate a large number of coloring sheet ideas.",
+                                    "Using DALL-E to generate a large number of coloring sheet ideas.",
+
+                                    "Using Prompt Engineering to generate a large number of coloring sheet ideas.",
+                                    "Using AI tools like Midjourney and DALL-E for generating initial content ideas."
+                                ]
+                            },
+                            {
+                                "name": "Generating Puzzles ",
+                                "points": [
+                                    "Using DALL-E and Midjourney to generate a large number of puzzle ideas."
+                                ]
+                            },
+                            {
+                                "name": "Generating music videos",
+                                "points": [
+                                    "Using Suno and Udio to songs",
+                                    "Using Runway to turn images from midjourney into videos"
+                                ]
+                            }
+                        ],
+                        "keyOutcomes": {
+                            "heading": "Key Outcomes",
+                            "points": [
+                                "Enhanced Creativity: AI tools expanded the creative possibilities for content creation.",
+                                "Efficient Production: Streamlined content creation process, reducing time and resources needed.",
+                                "Positive User Feedback: Children and parents appreciated the innovative and engaging content."
+                            ]
+                        }
+                    },
+                    "url": "https://example.com/kidzovo-animations",
+                    "urlName": "See Animations"
+
+                },
+                {
+                    "name": "Branding, social media and growth",
                     "description": "Developed engaging interactive animations for enhanced user engagement",
                     "thumbnail": "https://placehold.co/50x50/FCD34D/000000?text=Anim",
                     "tags": ["Animation", "Interactive", "Rive"],
                     "details": "Utilized Rive for scalable and performant animations.",
                     "url": "https://example.com/kidzovo-animations",
                     "urlName": "See Animations"
+
                 },
                 {
-                    "name": "Character animations",
-                    "description": "Designed and animated playful character states and expressions",
-                    "thumbnail": "https://placehold.co/50x50/FCD34D/000000?text=Char",
-                    "tags": ["Character Design", "Animation", "Rive"],
-                    "details": "Brought characters to life with expressive movements.",
-                    "url": "https://ovo.app.promad.design",
-                    "urlName": "Play with Ovo"
-                },
-                {
-                    "name": "Webflow Website",
+                    "name": "Website design and development",
                     "description": "Built responsive and interactive websites",
                     "thumbnail": "https://placehold.co/50x50/FCD34D/000000?text=Web",
                     "tags": ["No-code", "Web Design", "Responsive"],

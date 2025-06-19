@@ -4,7 +4,8 @@ export interface CaseStudyDetails {
   theChallenge: {
     heading: string
     description: string
-    interfaceQualities: string[]
+    interfaceQualities?: string[]
+    animationGoals?: string[]
   }
   ourApproach: {
     heading: string
@@ -25,6 +26,19 @@ export interface CaseStudyDetails {
   conclusion: string
 }
 
+export interface SimpleDetails {
+  heading: string
+  description: string
+  phases?: {
+    name: string
+    points: string[]
+  }[]
+  keyOutcomes?: {
+    heading: string
+    points: string[]
+  }
+}
+
 export interface Project {
   name: string
   logo?: {
@@ -34,7 +48,7 @@ export interface Project {
   description: string
   thumbnail: string
   tags: string[]
-  details?: string | CaseStudyDetails
+  details?: string | CaseStudyDetails | SimpleDetails
   url?: string
   urlName?: string
 } 

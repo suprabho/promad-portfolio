@@ -13,7 +13,8 @@ interface CaseStudyProps {
     theChallenge: {
       heading: string
       description: string
-      interfaceQualities: string[]
+      interfaceQualities?: string[]
+      animationGoals?: string[]
     }
     ourApproach: {
       heading: string
@@ -60,8 +61,11 @@ export function CaseStudy({ details, thumbnail }: CaseStudyProps) {
             <div className="space-y-4">
               <p>{details.theChallenge.description}</p>
               <ul className="list-disc pl-6 space-y-2">
-                {details.theChallenge.interfaceQualities.map((quality, index) => (
+                {details.theChallenge.interfaceQualities?.map((quality, index) => (
                   <li key={index}>{quality}</li>
+                ))}
+                {details.theChallenge.animationGoals?.map((goal, index) => (
+                  <li key={index}>{goal}</li>
                 ))}
               </ul>
             </div>
