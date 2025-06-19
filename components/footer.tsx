@@ -17,8 +17,8 @@ export function Footer() {
               front-end development, branding and motion design.
             </p>
           </div>
-
-          {/* Quick Links */}
+ {/* 
+         
           <div>
             <h4 className="font-semibold mb-4">Quick Links</h4>
             <ul className="space-y-2">
@@ -45,7 +45,7 @@ export function Footer() {
             </ul>
           </div>
 
-          {/* Contact Info */}
+       
           <div>
             <h4 className="font-semibold mb-4">Connect With Us</h4>
             <div className="flex space-x-4">
@@ -74,10 +74,10 @@ export function Footer() {
                 <XLogo weight="fill" className="w-6 h-6" />
               </a>
             </div>
-          </div>
+          </div> */}
+          
         </div>
 
-        {/* Copyright */}
         <div className="border-t mt-12 pt-8 text-center text-sm text-muted-foreground">
           <p>© {new Date().getFullYear()} <LogoText size="p" ></LogoText>. All rights reserved.</p>
         </div>
