@@ -150,7 +150,7 @@
                 {
                     "name": "Kids' content using AI",
                     "description": "Developed coloring sheets, puzzles and music videos for kids using AI",
-                    "thumbnail": "https://placehold.co/50x50/FCD34D/000000?text=Anim",
+                    "thumbnail": "/images/projects/kidzovo/project-image-3.jpg",
                     "tags": ["Generative AI", "Midjourney", "DALL-E", "Suno", "Udio", "Runway",
                         "Prompt Engineering"
                     ],
@@ -189,35 +189,34 @@
                                 "Positive User Feedback: Children and parents appreciated the innovative and engaging content."
                             ]
                         }
-                    },
-                    "url": "https://example.com/kidzovo-animations",
-                    "urlName": "See Animations"
+                    }
+
 
                 },
                 {
                     "name": "Branding, social media and growth",
                     "description": "Developed engaging interactive animations for enhanced user engagement",
-                    "thumbnail": "https://placehold.co/50x50/FCD34D/000000?text=Anim",
+                    "thumbnail": "/images/projects/kidzovo/project-image-4.jpg",
                     "tags": ["Animation", "Interactive", "Rive"],
                     "details": "Utilized Rive for scalable and performant animations.",
-                    "url": "https://example.com/kidzovo-animations",
-                    "urlName": "See Animations"
+                    "url": "https://linktr.ee/kidzovo",
+                    "urlName": "See Socials"
 
                 },
                 {
                     "name": "Website design and development",
                     "description": "Built responsive and interactive websites",
-                    "thumbnail": "https://placehold.co/50x50/FCD34D/000000?text=Web",
+                    "thumbnail": "/images/projects/kidzovo/project-image-5.jpg",
                     "tags": ["No-code", "Web Design", "Responsive"],
                     "details": "Managed full lifecycle of website development using Webflow.",
-                    "url": "https://example.com/kidzovo-webflow",
+                    "url": "https://kidzovo.com",
                     "urlName": "Visit Website"
                 }
             ]
         },
         {
             "name": "Proffy",
-            "period": "2017 - 2018",
+            "period": "2024 - 2025",
             "description": "Job matching platform design",
             "thumbnail": "/images/projects/proffy/thumbnail.png",
             "logo": {
