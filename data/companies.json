@@ -220,10 +220,14 @@
             "period": "2017 - 2018",
             "description": "Job matching platform design",
             "thumbnail": "/images/projects/proffy/thumbnail.png",
+            "logo": {
+                "dark": "/images/projects/proffy/proffy_logo_dark.png",
+                "light": "/images/projects/proffy/proffy_logo_white.png"
+            },
             "projects": [{
                     "name": "Employer Platform",
                     "description": "Recruitment and candidate management system",
-                    "thumbnail": "https://placehold.co/50x50/FB923C/000000?text=Emp",
+                    "thumbnail": "/images/projects/proffy/project-image-1.jpg",
                     "tags": ["Product Design", "Recruitment", "HR"],
                     "details": "Designed tools for employers to efficiently manage job postings and candidates.",
                     "url": "https://example.com/proffy-employer",
@@ -232,7 +236,7 @@
                 {
                     "name": "Job Seeker Platform",
                     "description": "Job search and application management system",
-                    "thumbnail": "https://placehold.co/50x50/FB923C/000000?text=Seek",
+                    "thumbnail": "/images/projects/proffy/project-image-2.jpg",
                     "tags": ["Product Design", "Job Search", "UX/UI"],
                     "details": "Created an intuitive platform for job seekers to find and apply for jobs.",
                     "url": "https://example.com/proffy-seeker",
@@ -245,10 +249,14 @@
             "period": "Mar 2025 - Present",
             "description": "Designing an MVP app for a gamified AI learning experience",
             "thumbnail": "/images/projects/myAIcademy/thumbnail.png",
+            "logo": {
+                "dark": "/images/projects/myAIcademy/myAIcademy_logo_dark.png",
+                "light": "/images/projects/myAIcademy/myAIcademy_logo_white.png"
+            },
             "projects": [{
-                    "name": "Learning Platform",
+                    "name": "myAIcademy learning app",
                     "description": "Gamified AI learning application design",
-                    "thumbnail": "https://placehold.co/50x50/9CA3AF/000000?text=Learn",
+                    "thumbnail": "/images/projects/myAIcademy/project-image-1.jpg",
                     "tags": ["Product Design", "Education", "Gamification"],
                     "details": "Developing an engaging platform for AI-powered learning.",
                     "url": "https://example.com/aimy-learning",
@@ -271,41 +279,52 @@
             "period": "Dec 2019 - Jul 2021",
             "description": "Product design for tax compliance and financial solutions",
             "thumbnail": "/images/projects/clear/thumbnail.png",
+            "logo": {
+                "dark": "/images/projects/clear/clear_logo.png",
+                "light": "/images/projects/clear/clear_logo.png"
+            },
             "projects": [{
-                    "name": "GST Platform",
-                    "description": "End-to-end GST compliance and filing platform",
-                    "thumbnail": "https://placehold.co/50x50/34D399/000000?text=GST",
-                    "tags": ["Product Design", "Tax", "Enterprise"],
-                    "details": "Designed a comprehensive platform for GST filing and compliance.",
-                    "url": "https://example.com/cleartax-gst",
-                    "urlName": "Explore GST Platform"
-                },
-                {
-                    "name": "Reconciliation Tool",
+                    "name": "E-Invoicing and E-Waybill Tool",
                     "description": "Automated financial reconciliation system",
-                    "thumbnail": "https://placehold.co/50x50/34D399/000000?text=Recon",
+                    "thumbnail": "/images/projects/clear/project-image-1.jpg",
                     "tags": ["Product Design", "Finance", "Analytics"],
                     "details": "Developed a tool to automate reconciliation of financial data.",
-                    "url": "https://example.com/cleartax-recon",
-                    "urlName": "View Reconciliation"
+                    "url": "https://cleartax.in/s/e-invoicing-enterprise-software",
+                    "urlName": "View E-Invoicing and E-Waybill Tool"
                 },
                 {
                     "name": "MaxITC",
                     "description": "Input tax credit optimization platform",
-                    "thumbnail": "https://placehold.co/50x50/34D399/000000?text=MaxITC",
+                    "thumbnail": "/images/projects/clear/project-image-2.jpg",
                     "tags": ["Product Design", "Tax", "Analytics"],
                     "details": "Optimized input tax credit claims for businesses.",
-                    "url": "https://example.com/cleartax-maxitc",
-                    "urlName": "Learn about MaxITC"
+                    "url": "https://cleartax.in/s/max-itc",
+                    "urlName": "Learn about Max ITC"
+                },
+                {
+                    "name": "AP and Vendor Management Portal",
+                    "description": "Input tax credit optimization platform",
+                    "thumbnail": "/images/projects/clear/project-image-3.jpg",
+                    "tags": ["Product Design", "Tax", "Analytics"],
+                    "details": "Elevate your accounts payable with AI automation. Get vendor delight, working capital visibility and unrivaled process quality.",
+                    "url": "https://www.clear.in/ap-automation-software",
+                    "urlName": "Learn about Clear AP"
+                },
+                {
+                    "name": "GST Platform",
+                    "description": "End-to-end GST compliance and filing platform",
+                    "thumbnail": "/images/projects/clear/project-image-4.jpg",
+                    "tags": ["Product Design", "Tax", "Enterprise"],
+                    "details": "Designed a comprehensive platform for GST filing and compliance.",
+                    "url": "https://cleartax.in/gst",
+                    "urlName": "Explore GST Platform"
                 },
                 {
                     "name": "Design System",
                     "description": "Unified component library and design guidelines",
-                    "thumbnail": "https://placehold.co/50x50/34D399/000000?text=DS",
+                    "thumbnail": "/images/projects/clear/project-image-5.jpg",
                     "tags": ["Design System", "Documentation", "Components"],
-                    "details": "Created a scalable design system for consistent product development.",
-                    "url": "https://example.com/cleartax-ds",
-                    "urlName": "Design System Docs"
+                    "details": "Created a scalable design system for the entire Enterprise product suite to ensure consistent product development at speed."
                 }
             ]
         },
@@ -314,6 +333,10 @@
             "period": "Feb 2019 - Jul 2019, Apr 2020 - Apr 2022",
             "description": "DesigningI for Industry scale IoT applications",
             "thumbnail": "/images/projects/turing/thumbnail.png",
+            "logo": {
+                "dark": "/images/projects/turing/turing_logo.png",
+                "light": "/images/projects/turing/turing_logo.png"
+            },
             "projects": [{
                     "name": "Water IoT Platform",
                     "description": "Mobile and dashboard solution for water management",
@@ -357,6 +380,10 @@
             "period": "2015 - 2016",
             "description": "Marketing and branding solutions",
             "thumbnail": "/images/projects/TMP/thumbnail.png",
+            "logo": {
+                "dark": "/images/projects/TMP/tmp_logo.png",
+                "light": "/images/projects/TMP/tmp_logo.png"
+            },
             "projects": [{
                     "name": "Brand Strategy",
                     "description": "Developed brand strategy and visual identity",
@@ -387,37 +414,41 @@
             ]
         },
 
-
         {
-            "name": "Cubical Labs",
-            "period": "Jun 2017 - Jan 2019",
-            "description": "Redesigned mobile app and developed analytics dashboards",
-            "thumbnail": "https://placehold.co/100x100/D97706/ffffff?text=Cubical",
+            "name": "goStops",
+            "period": "2016 - 2017",
+            "description": "Travel platform branding and product design for goStops",
+            "thumbnail": "/images/projects/gostops/thumbnail.png",
             "projects": [{
-                    "name": "Analytics Dashboard",
-                    "description": "Data visualization and reporting platform",
-                    "thumbnail": "https://placehold.co/50x50/FBBF24/000000?text=Analyt",
-                    "tags": ["Analytics", "Dashboard", "Data Viz"],
-                    "details": "Designed interactive dashboards for key performance indicators.",
-                    "url": "https://example.com/cubical-analytics",
-                    "urlName": "Analytics Demo"
+                    "name": "Brand Identity",
+                    "description": "Developed comprehensive brand identity and guidelines",
+                    "thumbnail": "https://placehold.co/50x50/A78BFA/000000?text=Brand",
+                    "tags": ["Branding", "Visual Design", "Guidelines"],
+                    "details": "Defined the visual and verbal identity for the travel brand.",
+                    "url": "https://example.com/gostops-brand",
+                    "urlName": "Brand Guidelines"
                 },
                 {
-                    "name": "Mobile App Redesign",
-                    "description": "Improved user experience and interface design",
-                    "thumbnail": "https://placehold.co/50x50/FBBF24/000000?text=Mobile",
-                    "tags": ["Mobile", "UX/UI", "Redesign"],
-                    "details": "Revamped mobile app for improved usability and modern aesthetics.",
-                    "url": "https://example.com/cubical-mobile",
-                    "urlName": "Mobile Redesign"
+                    "name": "Mobile App",
+                    "description": "Designed user interface for travel booking platform",
+                    "thumbnail": "https://placehold.co/50x50/A78BFA/000000?text=App",
+                    "tags": ["Mobile", "UX/UI", "Travel"],
+                    "details": "Created a seamless mobile experience for booking travel accommodations.",
+                    "url": "https://example.com/gostops-app",
+                    "urlName": "Mobile App Demo"
                 }
             ]
         },
+
         {
             "name": "1mg",
             "period": "2020 - 2021",
             "description": "Healthcare platform design and motion graphics",
             "thumbnail": "/images/projects/1mg/thumbnail.png",
+            "logo": {
+                "dark": "/images/projects/1mg/1mg_logo.png",
+                "light": "/images/projects/1mg/1mg_logo.png"
+            },
             "projects": [{
                     "name": "RX Medicine",
                     "description": "Prescription management and ordering system",
@@ -463,6 +494,10 @@
             "period": "Jun 2017 - Aug 2019",
             "description": "Product design for enterprise solutions",
             "thumbnail": "/images/projects/microsoft/thumbnail.png",
+            "logo": {
+                "dark": "/images/projects/microsoft/microsoft_logo.png",
+                "light": "/images/projects/microsoft/microsoft_logo.png"
+            },
             "projects": [{
                     "name": "Bing Places for Business",
                     "description": "Business listing and management platform",
@@ -497,6 +532,10 @@
             "period": "Aug 2021 - Sep 2022",
             "description": "Product design for blockchain analytics and compliance solutions",
             "thumbnail": "/images/projects/merkle/thumbnail.png",
+            "logo": {
+                "dark": "/images/projects/merkle/merklescience_logo_blue.png",
+                "light": "/images/projects/merkle/merklescience_logo_white.png"
+            },
             "projects": [{
                     "name": "Compass",
                     "description": "Blockchain analytics dashboard for tracking and monitoring cryptocurrency transactions",
@@ -536,30 +575,31 @@
             ]
         },
         {
-            "name": "goStops",
-            "period": "2016 - 2017",
-            "description": "Travel platform branding and product design for goStops",
-            "thumbnail": "/images/projects/gostops/thumbnail.png",
+            "name": "Cubical Labs",
+            "period": "Jun 2017 - Jan 2019",
+            "description": "Redesigned mobile app and developed analytics dashboards",
+            "thumbnail": "https://placehold.co/100x100/D97706/ffffff?text=Cubical",
             "projects": [{
-                    "name": "Brand Identity",
-                    "description": "Developed comprehensive brand identity and guidelines",
-                    "thumbnail": "https://placehold.co/50x50/A78BFA/000000?text=Brand",
-                    "tags": ["Branding", "Visual Design", "Guidelines"],
-                    "details": "Defined the visual and verbal identity for the travel brand.",
-                    "url": "https://example.com/gostops-brand",
-                    "urlName": "Brand Guidelines"
+                    "name": "Analytics Dashboard",
+                    "description": "Data visualization and reporting platform",
+                    "thumbnail": "https://placehold.co/50x50/FBBF24/000000?text=Analyt",
+                    "tags": ["Analytics", "Dashboard", "Data Viz"],
+                    "details": "Designed interactive dashboards for key performance indicators.",
+                    "url": "https://example.com/cubical-analytics",
+                    "urlName": "Analytics Demo"
                 },
                 {
-                    "name": "Mobile App",
-                    "description": "Designed user interface for travel booking platform",
-                    "thumbnail": "https://placehold.co/50x50/A78BFA/000000?text=App",
-                    "tags": ["Mobile", "UX/UI", "Travel"],
-                    "details": "Created a seamless mobile experience for booking travel accommodations.",
-                    "url": "https://example.com/gostops-app",
-                    "urlName": "Mobile App Demo"
+                    "name": "Mobile App Redesign",
+                    "description": "Improved user experience and interface design",
+                    "thumbnail": "https://placehold.co/50x50/FBBF24/000000?text=Mobile",
+                    "tags": ["Mobile", "UX/UI", "Redesign"],
+                    "details": "Revamped mobile app for improved usability and modern aesthetics.",
+                    "url": "https://example.com/cubical-mobile",
+                    "urlName": "Mobile Redesign"
                 }
             ]
         }
+
 
     ]
 }

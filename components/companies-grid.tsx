@@ -51,9 +51,9 @@ export function CompaniesGrid() {
           <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
             Explore our work experience and contributions
           </p>
-          <Link href="/timeline" className="inline-block mt-4">
+          {/* <Link href="/timeline" className="inline-block mt-4">
             <Button variant="outline">View Timeline</Button>
-          </Link>
+          </Link> */}
         </div>
         
         <div className="mt-10 sm:mt-16">
@@ -137,9 +137,8 @@ export function CompaniesGrid() {
                         <div className="absolute inset-0 bg-gradient-to-b from-black/0 via-black/20 to-black/80" />
                         <div className="absolute inset-0 p-6 flex flex-col justify-end">
                           <div>
-                            <h3 className="text-2xl font-semibold mb-2 text-white">{company.name}</h3>
-                            <p className="text-sm text-white/80 mb-4">{company.description}</p>
-                            <div className="text-sm text-white/70 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                            <h3 className="font-serif italic text-2xl font-semibold mb-2 text-white">{company.name}</h3>
+                            <div className="font-mono text-sm text-white/70 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                               Click to view details
                             </div>
                           </div>
