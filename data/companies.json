@@ -258,17 +258,15 @@
                     "thumbnail": "/images/projects/myAIcademy/project-image-1.jpg",
                     "tags": ["Product Design", "Education", "Gamification"],
                     "details": "Developing an engaging platform for AI-powered learning.",
-                    "url": "https://example.com/aimy-learning",
-                    "urlName": "Aimy Learning"
+
                 },
                 {
                     "name": "Visual Content",
                     "description": "Created educational videos and app illustrations",
-                    "thumbnail": "https://placehold.co/50x50/9CA3AF/000000?text=Visual",
+                    "thumbnail": "/images/projects/myAIcademy/project-image-2.jpg",
                     "tags": ["Animation", "Illustration", "Education"],
-                    "details": "Produced visual assets to enhance educational content.",
-                    "url": "https://example.com/aimy-visuals",
-                    "urlName": "Visual Content"
+                    "details": "Produced visual assets to enhance educational content."
+
                 }
             ]
         },
