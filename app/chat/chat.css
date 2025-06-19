@@ -1,0 +1,136 @@
+/* Force override all Crayon UI components to use Manrope */
+
+* {
+    --crayon-font-primary: var(--font-sans);
+    --crayon-font-title: 900 32px / 48px var(--font-sans);
+    --crayon-font-title-medium: var(--font-sans);
+    --crayon-font-title-small: var(--font-serif);
+    --crayon-font-body: var(--font-sans);
+    --crayon-font-subheading: var(--font-serif);
+    --crayon-font-body-link: var(--font-mono);
+    --crayon-font-body-heavy: var(--font-sans);
+    --crayon-font-body-medium: var(--font-sans);
+    --crayon-font-body-small-heavy: var(--font-sans);
+    --crayon-font-body-small: var(--font-sans);
+    --crayon-font-label: var(--font-sans);
+    --crayon-rounded-3xs: 0px;
+    --crayon-rounded-2xs: 2px;
+    --crayon-rounded-xs: 4px;
+    --crayon-rounded-s: 8px;
+    --crayon-rounded-m: 12px;
+    --crayon-rounded-l: 16px;
+    --crayon-rounded-xl: 20px;
+    --crayon-rounded-2xl: 24px;
+    --crayon-rounded-3xl: 32px;
+    --crayon-elevated-fills: #e1ff0020;
+}
+
+
+/* Apply specific styles to elements using these fonts */
+
+[class*="crayon-title-small"] {
+    font-family: var(--font-serif) !important;
+    font-weight: 900;
+    font-size: 16px;
+    line-height: 24px;
+    font-style: italic;
+}
+
+.crayon-button {
+    font-family: var(--font-mono);
+    font-size: 16px;
+    line-height: 24px;
+    font-weight: 400;
+}
+
+.crayon-tabs-trigger-text {
+    font-family: var(--font-mono) !important;
+    font-size: 16px;
+    line-height: 24px;
+    font-weight: 400;
+}
+
+.crayon-shell-new-chat-button {
+    font-family: var(--font-mono) !important;
+    font-size: 16px;
+    line-height: 24px;
+    font-weight: 400;
+}
+
+.crayon-header-bottom {
+    font-family: var(--font-serif) !important;
+    font-weight: 900;
+    font-style: italic;
+}
+
+[class*="crayon-body-link"] {
+    font-family: var(--font-mono) !important;
+}
+
+[class*="crayon-body-small-heavy"] {
+    font-weight: 900;
+}
+
+
+/* Force all Crayon components to inherit font */
+
+[class*="crayon-"] {
+    font-family: var(--font-sans);
+}
+
+.crayon-header-bottom {
+    font-family: var(--crayon-font-subheading);
+}
+
+.crayon-shell-thread-message-user__content {
+    font-family: var(--font-serif);
+    border-radius: 20px 0px 20px 20px;
+    font-style: italic;
+    font-weight: 900;
+}
+
+.crayon-shell-thread-message-user__content p {
+    font-family: var(--font-serif);
+    font-size: 1.2rem;
+}
+
+.crayon-shell-thread-message-user__content h1 {
+    font-family: var(--font-serif);
+}
+
+.crayon-shell-thread-message-assistant__content {
+    font-family: var(--font-sans);
+    font-size: 1.2rem;
+}
+
+.crayon-header-top {
+    font-family: var(--font-sans);
+    font-size: 1.2rem;
+}
+
+.crayon-shell-thread-message-assistant__content p {
+    font-family: var(--font-sans);
+    font-size: 1.2rem;
+}
+
+.crayon-card-card {
+    border-radius: var(--crayon-rounded-3xs) var(--crayon-rounded-3xl) var(--crayon-rounded-3xl) var(--crayon-rounded-3xl);
+    border-color: #e1ff00;
+}
+
+.crayon-shell-thread-message-assistant__logo {
+    border-radius: 0px;
+}
+
+.crayon-copilot-shell-container {
+    width: 100%;
+}
+
+.crayon-shell-sidebar-container {
+    width: 0px;
+    visibility: hidden;
+}
+
+.crayon-shell-thread-container {
+    height: 90%;
+}
