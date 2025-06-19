@@ -338,46 +338,52 @@
                 "light": "/images/projects/turing/turing_logo.png"
             },
             "projects": [{
-                    "name": "Water IoT Platform",
-                    "description": "Mobile and dashboard solution for water management",
-                    "thumbnail": "https://placehold.co/50x50/10B981/000000?text=Water",
-                    "tags": ["IoT", "Mobile", "Dashboard"],
-                    "details": "Designed a platform for efficient water resource monitoring.",
-                    "url": "https://example.com/iot-water",
-                    "urlName": "Water IoT"
-                },
-                {
-                    "name": "TRIM Dashboard",
-                    "description": "Tree management system for NParks",
-                    "thumbnail": "https://placehold.co/50x50/10B981/000000?text=TRIM",
+                    "name": "TOPGreen Planner and Intel Tools",
+                    "description": "AI - powered IoT solutions for landscaping",
+                    "thumbnail": "/images/projects/turing/project-image-1.png",
                     "tags": ["Dashboard", "Environmental", "Analytics"],
                     "details": "Developed a dashboard for managing urban tree populations.",
-                    "url": "https://example.com/iot-trim",
-                    "urlName": "TRIM Dashboard"
+                    "url": "https://topgreen.ai/",
+                    "urlName": "More about TOPGreen"
                 },
                 {
-                    "name": "Remote Eye IoT",
-                    "description": "Remote monitoring system for IoT devices",
-                    "thumbnail": "https://placehold.co/50x50/10B981/000000?text=Eye",
+                    "name": "urbanEye Dashboard",
+                    "description": "Landscaping management system for NParks",
+                    "thumbnail": "/images/projects/turing/project-image-2.png",
+                    "tags": ["Dashboard", "Environmental", "Analytics"],
+                    "details": "Developed a dashboard for managing urban tree populations."
+
+                },
+                {
+                    "name": "rEye IoT platform ",
+                    "description": "Mobile and dashboard solution for IoT water management solutions",
+                    "thumbnail": "/images/projects/turing/project-image-3.png",
+                    "tags": ["IoT", "Mobile", "Dashboard"],
+                    "details": "Designed a platform for efficient water resource monitoring."
+
+                },
+
+                {
+                    "name": "rEye Enterprise Dashboard",
+                    "description": "Remote monitoring system for IoT devices and Users",
+                    "thumbnail": "/images/projects/turing/project-image-4.png",
                     "tags": ["IoT", "Monitoring", "Dashboard"],
-                    "details": "Created a system for remote oversight of IoT sensor networks.",
-                    "url": "https://example.com/iot-remote-eye",
-                    "urlName": "Remote Eye"
+                    "details": "Created a system for remote oversight of IoT sensor networks."
                 },
                 {
                     "name": "Company Websites",
-                    "description": "Designed and developed company websites",
-                    "thumbnail": "https://placehold.co/50x50/10B981/000000?text=Web",
+                    "description": "Designed and developed company landing pages using Wix and Wordpress",
+                    "thumbnail": "/images/projects/turing/project-image-4.png",
                     "tags": ["Web Design", "WordPress", "Wix"],
                     "details": "Crafted engaging and informative websites for various companies.",
-                    "url": "https://example.com/iot-websites",
-                    "urlName": "Web Portfolio"
+                    "url": "https://topgreen.ai/",
+                    "urlName": "Latest iteration of the TOPGreen website"
                 }
             ]
         },
         {
             "name": "The Manufacturing Project",
-            "period": "2015 - 2016",
+            "period": "Feb 2025 - Present",
             "description": "Marketing and branding solutions",
             "thumbnail": "/images/projects/TMP/thumbnail.png",
             "logo": {
@@ -387,62 +393,67 @@
             "projects": [{
                     "name": "Brand Strategy",
                     "description": "Developed brand strategy and visual identity",
-                    "thumbnail": "https://placehold.co/50x50/F472B6/000000?text=Strat",
+                    "thumbnail": "/images/projects/TMP/project-image-1.jpg",
                     "tags": ["Branding", "Strategy", "Visual Design"],
-                    "details": "Formulated strategies to enhance brand recognition and market presence.",
-                    "url": "https://example.com/tmp-strategy",
-                    "urlName": "Brand Strategy"
+                    "details": "Formulated strategies to enhance brand recognition and market presence."
+
                 },
                 {
                     "name": "Website Design",
                     "description": "Created responsive website with content management",
-                    "thumbnail": "https://placehold.co/50x50/F472B6/000000?text=Web",
+                    "thumbnail": "/images/projects/TMP/project-image-3.jpg",
                     "tags": ["Web Design", "Wix", "CMS"],
-                    "details": "Designed and implemented user-friendly websites with integrated CMS.",
-                    "url": "https://example.com/tmp-website",
-                    "urlName": "Website Portfolio"
+                    "details": "Designed and implemented user-friendly websites with integrated CMS."
+
                 },
                 {
                     "name": "Marketing Materials",
                     "description": "Designed print and digital marketing collateral",
-                    "thumbnail": "https://placehold.co/50x50/F472B6/000000?text=Mktg",
+                    "thumbnail": "/images/projects/TMP/project-image-2.jpg",
                     "tags": ["Print", "Marketing", "Brochure"],
                     "details": "Produced various marketing materials for campaigns and promotions.",
-                    "url": "https://example.com/tmp-marketing",
-                    "urlName": "Marketing Samples"
+                    "url": "https://themfgproject.com",
+                    "urlName": "Visit Website"
                 }
             ]
         },
 
         {
             "name": "goStops",
-            "period": "2016 - 2017",
+            "period": "2017 - 2019, October - Decemnber 2023",
             "description": "Travel platform branding and product design for goStops",
             "thumbnail": "/images/projects/gostops/thumbnail.png",
             "projects": [{
                     "name": "Brand Identity",
                     "description": "Developed comprehensive brand identity and guidelines",
-                    "thumbnail": "https://placehold.co/50x50/A78BFA/000000?text=Brand",
+                    "thumbnail": "/images/projects/gostops/project-image-1.jpg",
                     "tags": ["Branding", "Visual Design", "Guidelines"],
                     "details": "Defined the visual and verbal identity for the travel brand.",
-                    "url": "https://example.com/gostops-brand",
+                    "url": "https://supro.promad.design/projects/4.html",
                     "urlName": "Brand Guidelines"
                 },
                 {
-                    "name": "Mobile App",
-                    "description": "Designed user interface for travel booking platform",
-                    "thumbnail": "https://placehold.co/50x50/A78BFA/000000?text=App",
+                    "name": "Poster Design",
+                    "description": "Designed posters for the goStops brand",
+                    "thumbnail": "/images/projects/gostops/project-image-2.jpg",
+                    "tags": ["Branding", "Visual Design", "Guidelines"],
+                    "details": "Defined the visual and verbal identity for the travel brand."
+
+                },
+                {
+                    "name": "Mobile App Improvements",
+                    "description": "Designed user interface for goStops",
+                    "thumbnail": "/images/projects/gostops/project-image-3.jpg",
                     "tags": ["Mobile", "UX/UI", "Travel"],
-                    "details": "Created a seamless mobile experience for booking travel accommodations.",
-                    "url": "https://example.com/gostops-app",
-                    "urlName": "Mobile App Demo"
+                    "details": "Created a seamless mobile experience for booking travel accommodations."
+
                 }
             ]
         },
 
         {
             "name": "1mg",
-            "period": "2020 - 2021",
+            "period": "January 2019 - August 2019",
             "description": "Healthcare platform design and motion graphics",
             "thumbnail": "/images/projects/1mg/thumbnail.png",
             "logo": {
@@ -450,40 +461,40 @@
                 "light": "/images/projects/1mg/1mg_logo.png"
             },
             "projects": [{
-                    "name": "RX Medicine",
-                    "description": "Prescription management and ordering system",
-                    "thumbnail": "https://placehold.co/50x50/F87171/000000?text=RX",
+                    "name": "UX of Prescription Drugs Detail Page",
+                    "description": "The bread and butter of the 1mg platform",
+                    "thumbnail": "/images/projects/1mg/project-image-1.jpg",
                     "tags": ["Healthcare", "Product Design", "UX/UI"],
-                    "details": "Improved prescription ordering flow for better user experience.",
-                    "url": "https://example.com/1mg-rx",
-                    "urlName": "View RX Medicine"
+                    "details": "The bread and butter of the 1mg platform",
+                    "url": "https://www.1mg.com/drugs/brufen-400-tablet-1002088",
+                    "urlName": "View Current design"
                 },
                 {
-                    "name": "User Experience",
-                    "description": "Optimized user flows and interaction patterns",
-                    "thumbnail": "https://placehold.co/50x50/F87171/000000?text=UX",
-                    "tags": ["UX/UI", "Research", "Healthcare"],
+                    "name": "Motion Design Guidelines",
+                    "description": "Motion Design Guidelines for the 1mg platform",
+                    "thumbnail": "/images/projects/1mg/project-image-2.jpg",
+                    "tags": ["Motion Design", "Micro-interactions", "Healthcare"],
                     "details": "Conducted user research to identify pain points and optimize flows.",
-                    "url": "https://example.com/1mg-ux",
-                    "urlName": "UX Case Study"
+                    "url": "https://docs.google.com/presentation/d/14nc7kSlizIbfCGv3G9dj_-TmDJPgAyIY/edit?usp=sharing&ouid=111513387998003419295&rtpof=true&sd=true",
+                    "urlName": "View Guidelines"
                 },
                 {
-                    "name": "Brand Animations",
-                    "description": "Created engaging brand animations and motion graphics",
-                    "thumbnail": "https://placehold.co/50x50/F87171/000000?text=Brand",
-                    "tags": ["Motion", "Branding", "Animation"],
-                    "details": "Developed animations to enhance brand identity and user engagement.",
-                    "url": "https://example.com/1mg-brand-animations",
-                    "urlName": "Watch Animations"
+                    "name": "Design System",
+                    "description": "Design System for the 1mg platform",
+                    "thumbnail": "/images/projects/1mg/project-image-3.jpg",
+                    "tags": ["Design System", "Documentation", "Components"],
+                    "details": "Developed a design system for the 1mg platform.",
+                    "url": "https://drive.google.com/file/d/128hnSykvNBKRYkgcdmOVfueBT7C9yc_7/view?usp=drive_link",
+                    "urlName": "View Design System"
                 },
                 {
-                    "name": "Product Demos",
-                    "description": "Developed interactive product demonstrations",
-                    "thumbnail": "https://placehold.co/50x50/F87171/000000?text=Demo",
-                    "tags": ["Motion", "Product", "Education"],
+                    "name": "Motion Design for the 1mg",
+                    "description": "Motion Design for the 1mg platform",
+                    "thumbnail": "/images/projects/1mg/project-image-2.jpg",
+                    "tags": ["Motion", "Product", "Healthcare"],
                     "details": "Created interactive demos to showcase new features and products.",
-                    "url": "https://example.com/1mg-demos",
-                    "urlName": "See Demos"
+                    "url": "https://drive.google.com/drive/folders/1nchrPXXEg1MyLzL076_Ca-YawDdgDKMW?usp=drive_link",
+                    "urlName": "Raw Dump of Motion Design"
                 }
             ]
         },
@@ -491,7 +502,7 @@
 
         {
             "name": "Microsoft",
-            "period": "Jun 2017 - Aug 2019",
+            "period": "June 2017 - August 2019",
             "description": "Product design for enterprise solutions",
             "thumbnail": "/images/projects/microsoft/thumbnail.png",
             "logo": {
@@ -501,29 +512,28 @@
             "projects": [{
                     "name": "Bing Places for Business",
                     "description": "Business listing and management platform",
-                    "thumbnail": "https://placehold.co/50x50/60A5FA/000000?text=Bing",
+                    "thumbnail": "/images/projects/microsoft/project-image-1.jpg",
                     "tags": ["Product Design", "Enterprise", "Maps"],
-                    "details": "Improved local business visibility and management tools.",
-                    "url": "https://example.com/microsoft-bing",
-                    "urlName": "Bing Places"
+                    "details": "Improved local business visibility and management tools."
+
                 },
                 {
-                    "name": "SharePoint Desktop",
-                    "description": "Desktop application for SharePoint collaboration",
-                    "thumbnail": "https://placehold.co/50x50/60A5FA/000000?text=SP",
+                    "name": "SharePoint Desktop App",
+                    "description": "Desktop application for SharePoint ",
+                    "thumbnail": "/images/projects/microsoft/project-image-2.jpg",
                     "tags": ["Product Design", "Enterprise", "Collaboration"],
-                    "details": "Enhanced desktop collaboration features for SharePoint users.",
-                    "url": "https://example.com/microsoft-sharepoint",
-                    "urlName": "SharePoint Details"
+                    "details": "Enhanced desktop experience for SharePoint intranet users."
+
                 },
                 {
-                    "name": "Product Training",
+                    "name": "Videos @ Microsoft",
                     "description": "Created product demonstration and training content",
-                    "thumbnail": "https://placehold.co/50x50/60A5FA/000000?text=Train",
+                    "thumbnail": "/images/projects/microsoft/project-image-3.jpg",
                     "tags": ["Education", "Video", "Documentation"],
                     "details": "Developed engaging training materials for new product features.",
-                    "url": "https://example.com/microsoft-training",
-                    "urlName": "Training Videos"
+                    "url": "https://drive.google.com/drive/folders/150pz4tZxuvEkk94QnlO-ZU2uJI-so6wg?usp=drive_link",
+                    "urlName": "Raw Dump of Videos"
+
                 }
             ]
         },
@@ -539,67 +549,31 @@
             "projects": [{
                     "name": "Compass",
                     "description": "Blockchain analytics dashboard for tracking and monitoring cryptocurrency transactions",
-                    "thumbnail": "https://placehold.co/50x50/60A5FA/000000?text=Comp",
+                    "thumbnail": "/images/projects/merkle/project-image-1.jpg",
                     "tags": ["Product Design", "Product Management", "UX/UI"],
                     "details": "Designed a comprehensive dashboard for crypto transaction analysis.",
-                    "url": "https://example.com/merkle-compass",
+                    "url": "https://www.merklescience.com/platform/transaction-wallet-monitoring",
                     "urlName": "Explore Compass"
                 },
                 {
                     "name": "Tracker",
                     "description": "Real-time transaction monitoring system for crypto compliance",
-                    "thumbnail": "https://placehold.co/50x50/60A5FA/000000?text=Track",
+                    "thumbnail": "/images/projects/merkle/project-image-2.jpg",
                     "tags": ["Product Design", "Analytics", "UX/UI"],
                     "details": "Implemented real-time data visualization for compliance.",
-                    "url": "https://example.com/merkle-tracker",
+                    "url": "https://www.merklescience.com/platform/cryptocrime-investigation",
                     "urlName": "View Tracker"
                 },
                 {
                     "name": "KYBB",
                     "description": "Know Your Business Blockchain compliance tool for enterprise",
-                    "thumbnail": "https://placehold.co/50x50/60A5FA/000000?text=KYBB",
+                    "thumbnail": "/images/projects/merkle/project-image-3.jpg",
                     "tags": ["Product Design", "Enterprise", "Compliance"],
                     "details": "Streamlined onboarding and compliance processes for businesses.",
-                    "url": "https://example.com/merkle-kybb",
+                    "url": "https://www.merklescience.com/platform/kybb-enterprise-compliance-tool",
                     "urlName": "Learn about KYBB"
-                },
-                {
-                    "name": "Design System",
-                    "description": "Unified design language and component system for all products",
-                    "thumbnail": "https://placehold.co/50x50/60A5FA/000000?text=DS",
-                    "tags": ["Design System", "Documentation", "Components"],
-                    "details": "Developed a robust design system for consistent UI/UX.",
-                    "url": "https://example.com/merkle-ds",
-                    "urlName": "Design System Docs"
-                }
-            ]
-        },
-        {
-            "name": "Cubical Labs",
-            "period": "Jun 2017 - Jan 2019",
-            "description": "Redesigned mobile app and developed analytics dashboards",
-            "thumbnail": "https://placehold.co/100x100/D97706/ffffff?text=Cubical",
-            "projects": [{
-                    "name": "Analytics Dashboard",
-                    "description": "Data visualization and reporting platform",
-                    "thumbnail": "https://placehold.co/50x50/FBBF24/000000?text=Analyt",
-                    "tags": ["Analytics", "Dashboard", "Data Viz"],
-                    "details": "Designed interactive dashboards for key performance indicators.",
-                    "url": "https://example.com/cubical-analytics",
-                    "urlName": "Analytics Demo"
-                },
-                {
-                    "name": "Mobile App Redesign",
-                    "description": "Improved user experience and interface design",
-                    "thumbnail": "https://placehold.co/50x50/FBBF24/000000?text=Mobile",
-                    "tags": ["Mobile", "UX/UI", "Redesign"],
-                    "details": "Revamped mobile app for improved usability and modern aesthetics.",
-                    "url": "https://example.com/cubical-mobile",
-                    "urlName": "Mobile Redesign"
                 }
             ]
         }
-
-
     ]
 }
