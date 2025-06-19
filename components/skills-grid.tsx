@@ -45,13 +45,13 @@ const skillsData = [
     skills: ["Information Architecture", "Complex Workflows", "Data Visualization", "Enterprise UX", "B2B Design", "System Design"],
     color: "bg-gradient-to-bl from-[#EFF100]/80 via-white to-[#EFF100]",
   },
-  {
-    name: "AI Design",
-    icon: RobotIcon,
-    description: "Designing intelligent and intuitive AI interfaces",
-    skills: ["Conversational UI", "AI Interaction", "Machine Learning UX", "Data-Driven Design", "Predictive Interfaces", "AI Ethics"],
-    color: "bg-gradient-to-r from-black/10 via-[#EFF100] to-white",
-  },
+  // {
+  //   name: "AI Design",
+  //   icon: RobotIcon,
+  //   description: "Designing intelligent and intuitive AI interfaces",
+  //   skills: ["Conversational UI", "AI Interaction", "Machine Learning UX", "Data-Driven Design", "Predictive Interfaces", "AI Ethics"],
+  //   color: "bg-gradient-to-r from-black/10 via-[#EFF100] to-white",
+  // },
   {
     name: "Branding",
     icon: PaintBrushIcon,

@@ -423,6 +423,10 @@
             "period": "2017 - 2019, October - Decemnber 2023",
             "description": "Travel platform branding and product design for goStops",
             "thumbnail": "/images/projects/gostops/thumbnail.png",
+            "logo": {
+                "dark": "/images/projects/gostops/gostops_logo_white.png",
+                "light": "/images/projects/gostops/gostops_logo_dark.png"
+            },
             "projects": [{
                     "name": "Brand Identity",
                     "description": "Developed comprehensive brand identity and guidelines",
