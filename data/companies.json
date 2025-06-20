@@ -257,15 +257,15 @@
                     "description": "Gamified AI learning application design",
                     "thumbnail": "/images/projects/myAIcademy/project-image-1.jpg",
                     "tags": ["Product Design", "Education", "Gamification"],
-                    "details": "Developing an engaging platform for AI-powered learning."
+                    "details": "Developing an engaging platform for learning AI in a gamified way, targetted at teens and tweens."
 
                 },
                 {
                     "name": "Visual Content",
                     "description": "Created educational videos and app illustrations",
                     "thumbnail": "/images/projects/myAIcademy/project-image-2.jpg",
-                    "tags": ["Animation", "Illustration", "Education"],
-                    "details": "Produced visual assets to enhance educational content."
+                    "tags": ["Animation", "Illustration", "Education", "AI"],
+                    "details": "Produced courses for the myAIcademy learning app, using AI to generate voiceovers and illustrations."
 
                 }
             ]
@@ -282,7 +282,7 @@
             },
             "projects": [{
                     "name": "E-Invoicing and E-Waybill Tool",
-                    "description": "Automated financial reconciliation system",
+                    "description": "Designed India's most user-friendly e-Invoicing & e-Way bill platform featuring an intuitive interface, real-time error detection, smart validation prompts, customizable dashboards, and seamless ERP integration, all wrapped in a modern design that processes invoices in under 200ms with enterprise-grade security and 24/7 expert support to ensure a frictionless compliance experience.",
                     "thumbnail": "/images/projects/clear/project-image-1.jpg",
                     "tags": ["Product Design", "Finance", "Analytics"],
                     "details": "Developed a tool to automate reconciliation of financial data.",
@@ -291,7 +291,7 @@
                 },
                 {
                     "name": "MaxITC",
-                    "description": "Input tax credit optimization platform",
+                    "description": "Revolutionized input tax credit management with an elegantly crafted AI platform that delivers a 7% profit boost through intelligent vendor management, seamless team collaboration, and automated reconciliation—all wrapped in an intuitive interface that transforms complex ITC claims into a visual, autopilot experience with real-time insights and smart suggestions.",
                     "thumbnail": "/images/projects/clear/project-image-2.jpg",
                     "tags": ["Product Design", "Tax", "Analytics"],
                     "details": "Optimized input tax credit claims for businesses.",
@@ -299,8 +299,8 @@
                     "urlName": "Learn about Max ITC"
                 },
                 {
-                    "name": "AP and Vendor Management Portal",
-                    "description": "Input tax credit optimization platform",
+                    "name": "AP Automationand Vendor Management Portal",
+                    "description": "Transformed accounts payable experience with an elegantly designed AI-powered platform that streamlines vendor relationships through intuitive onboarding flows, real-time communication channels, intelligent compliance checks, and automated payment processing—all unified in a clean, modern interface that makes managing vendor relationships as simple as a single click.",
                     "thumbnail": "/images/projects/clear/project-image-3.jpg",
                     "tags": ["Product Design", "Tax", "Analytics"],
                     "details": "Elevate your accounts payable with AI automation. Get vendor delight, working capital visibility and unrivaled process quality.",
@@ -309,7 +309,7 @@
                 },
                 {
                     "name": "GST Platform",
-                    "description": "End-to-end GST compliance and filing platform",
+                    "description": "Designed an end-to-end GST compliance and filing platform that streamlines tax management. It automates compliance checks, provides real-time insights, and offers smart reporting to compare GST returns, view stock/ledger/cash balances, and get summaries by HSN and suppliers.",
                     "thumbnail": "/images/projects/clear/project-image-4.jpg",
                     "tags": ["Product Design", "Tax", "Enterprise"],
                     "details": "Designed a comprehensive platform for GST filing and compliance.",

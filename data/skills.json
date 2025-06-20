@@ -4,44 +4,38 @@
             "icon": "DeviceMobileIcon",
             "iconWeight": "fill",
             "description": "Creating intuitive and engaging mobile experiences",
-            "skills": ["User Experience Design", "Interaction Design", "Wireframing", "Prototyping", "User Research", "Mobile Design Patterns"],
-            "color": "bg-gradient-to-br from-[#FAFF00] to-white"
+            "skills": ["User Experience Design", "Interaction Design", "Wireframing", "Prototyping", "User Research", "Mobile Design Patterns"]
         },
         {
             "name": "Website Design",
             "icon": "DesktopIcon",
             "description": "Crafting responsive and modern web experiences",
-            "skills": ["Responsive Design", "Web Architecture", "UI Components", "Design Systems", "Performance Optimization", "Accessibility"],
-            "color": "bg-gradient-to-tr from-[#FAFF00] via-white from-[#FAFF00]"
+            "skills": ["Responsive Design", "Web Architecture", "UI Components", "Design Systems", "Performance Optimization", "Accessibility"]
         },
         {
             "name": "Enterprise SaaS Design",
             "icon": "BriefcaseIcon",
             "description": "Building complex systems for business solutions",
-            "skills": ["Information Architecture", "Complex Workflows", "Data Visualization", "Enterprise UX", "B2B Design", "System Design"],
-            "color": "bg-gradient-to-bl from-[#FAFF00]/80 via-white to-[#FAFF00]"
+            "skills": ["Information Architecture", "Complex Workflows", "Data Visualization", "Enterprise UX", "B2B Design", "System Design"]
         },
         {
             "name": "Branding",
             "icon": "PaintBrushIcon",
             "description": "Creating memorable brand identities",
-            "skills": ["Logo Design", "Visual Identity", "Brand Guidelines", "Typography", "Color Theory", "Brand Strategy"],
-            "color": "bg-gradient-to-tl from-[#FAFF00]/80 via-white to-[#FAFF00]/10"
+            "skills": ["Logo Design", "Visual Identity", "Brand Guidelines", "Typography", "Color Theory", "Brand Strategy"]
         },
         {
             "name": "Motion",
             "icon": "SparkleIcon",
             "iconWeight": "fill",
             "description": "Creating engaging animations and motion graphics",
-            "skills": ["Animation Principles", "Motion Graphics", "Micro-interactions", "Storyboarding", "Character Animation", "Rive Animation"],
-            "color": "bg-gradient-to-l from-[#FAFF00] via-[#FAFF00]/60 to-white"
+            "skills": ["Animation Principles", "Motion Graphics", "Micro-interactions", "Storyboarding", "Character Animation", "Rive Animation"]
         },
         {
             "name": "Pitchdecks and Courses",
             "icon": "PresentationIcon",
             "description": "Creating compelling presentations and educational content",
-            "skills": ["Visual Storytelling", "Information Design", "Course Structure", "Learning Experience", "Presentation Design", "Content Strategy"],
-            "color": "bg-gradient-to-b from-white via-[#FAFF00]/70 to-[#FAFF00]/20"
+            "skills": ["Visual Storytelling", "Information Design", "Course Structure", "Learning Experience", "Presentation Design", "Content Strategy"]
         }
     ]
 }

@@ -34,6 +34,26 @@ const iconMap = {
   PresentationIcon,
 }
 
+// Map of skill names to their gradient colors
+const colorMap = {
+  appDesign: "bg-gradient-to-br from-[#FAFF00] to-white",
+  websiteDesign: "bg-gradient-to-tr from-[#FAFF00] via-white from-[#FAFF00]",
+  enterpriseSaas: "bg-gradient-to-bl from-[#FAFF00]/80 via-white to-[#FAFF00]",
+  branding: "bg-gradient-to-tl from-[#FAFF00]/80 via-white to-[#FAFF00]/10",
+  motion: "bg-gradient-to-l from-[#FAFF00] via-[#FAFF00]/60 to-white",
+  pitchdecks: "bg-gradient-to-b from-white via-[#FAFF00]/70 to-[#FAFF00]/20"
+}
+
+// Map skill names to color keys
+const skillColorKeys = {
+  "App Design": "appDesign",
+  "Website Design": "websiteDesign",
+  "Enterprise SaaS Design": "enterpriseSaas",
+  "Branding": "branding",
+  "Motion": "motion",
+  "Pitchdecks and Courses": "pitchdecks"
+}
+
 export function SkillsGrid() {
   return (
     <section className="py-24 bg-background">
@@ -48,11 +68,12 @@ export function SkillsGrid() {
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
           {skillsData.skills.map((skill) => {
             const IconComponent = iconMap[skill.icon as keyof typeof iconMap]
+            const colorKey = skillColorKeys[skill.name as keyof typeof skillColorKeys]
             return (
               <Card key={skill.name} className="group hover:shadow-xl transition-all duration-300 hover:-translate-y-2">
                 <CardHeader className="text-center">
                   <div
-                    className={`w-16 h-16 ${skill.color} rounded-full flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform`}
+                    className={`w-16 h-16 ${colorMap[colorKey as keyof typeof colorMap]} rounded-full flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform`}
                   >
                     <IconComponent
                       size={24}
@@ -83,7 +104,7 @@ export function SkillsGrid() {
                     <DialogContent className="max-w-2xl">
                       <DialogHeader>
                         <DialogTitle className="flex items-center gap-3">
-                          <div className={`w-12 h-12 ${skill.color} rounded-full flex items-center justify-center`}>
+                          <div className={`w-12 h-12 ${colorMap[colorKey as keyof typeof colorMap]} rounded-full flex items-center justify-center`}>
                             <IconComponent
                               size={24}
                               weight={(skill.iconWeight || "bold") as IconWeight}
