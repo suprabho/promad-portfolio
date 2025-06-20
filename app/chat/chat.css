@@ -134,3 +134,19 @@
 .crayon-shell-thread-container {
     height: 90%;
 }
+
+.crayon-shell-mobile-header {
+    display: none !important;
+    visibility: hidden !important;
+}
+
+.crayon-shell-thread-composer__input-wrapper {
+    border: 2px solid #e1ff00;
+    border-radius: 20px;
+}
+
+.crayon-shell-thread-composer__input {
+    border: none;
+    outline: none;
+    background-color: transparent;
+}

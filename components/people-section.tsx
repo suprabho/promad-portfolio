@@ -40,7 +40,7 @@ export function PeopleSection() {
                     className="rounded-full object-cover"
                   />
                 </div>
-                <CardTitle className="text-xl sm:text-2xl">{person.name}</CardTitle>
+                <CardTitle className="font-serif italic font-extrabold text-xl sm:text-2xl">{person.name}</CardTitle>
                 <CardDescription className="text-sm sm:text-base">{person.role}</CardDescription>
               </CardHeader>
               <CardContent className="space-y-4 mx-auto">
@@ -65,7 +65,7 @@ export function PeopleSection() {
                     className="flex items-center justify-center gap-1.5 sm:gap-2 text-primary hover:text-primary/80 transition-colors text-sm sm:text-base"
                   >
                     <LinkedinLogoIcon weight="fill" className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
-                    <span>LinkedIn Profile</span>
+                    <span className="font-mono">LinkedIn Profile</span>
                   </a>
                 )}
               </CardContent>

@@ -98,11 +98,11 @@ export function SkillsGrid() {
                   >
                     <IconComponent weight="bold" className="w-8 h-8 text-black" />
                   </div>
-                  <CardTitle className="text-2xl">{skill.name}</CardTitle>
+                  <CardTitle className="font-serif italic font-extrabold text-2xl">{skill.name}</CardTitle>
                   <CardDescription className="text-base">{skill.description}</CardDescription>
                 </CardHeader>
                 <CardContent className="space-y-4">
-                  <div className="flex flex-wrap gap-2">
+                  <div className="flex flex-wrap gap-2 justify-center mx-auto">
                     {skill.skills.slice(0, 4).map((skillItem) => (
                       <Badge key={skillItem} variant="secondary" className="text-sm">
                         {skillItem}
@@ -113,9 +113,9 @@ export function SkillsGrid() {
 
                   <Dialog>
                     <DialogTrigger asChild>
-                      <Button variant="outline" className="w-full group/btn">
-                        <ArrowsOutIcon className="w-4 h-4 mr-2 transition-transform group-hover/btn:scale-110" />
-                        View All Projects
+                      <Button variant="outline" className="font-mono w-full group/btn opacity-0 group-hover:opacity-100 transition-opacity">
+                        <ArrowsOutIcon className=" w-4 h-4 mr-2 transition-transform group-hover/btn:scale-110" />
+                        View All
                       </Button>
                     </DialogTrigger>
                     <DialogContent className="max-w-2xl">
