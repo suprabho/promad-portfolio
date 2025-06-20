@@ -57,14 +57,14 @@ export function CompaniesGrid() {
         </div>
         
         <div className="mt-10 sm:mt-16">
-          <div className="grid grid-cols-1 md:grid-cols-12 gap-4 auto-rows-[100px]">
+          <div className="grid grid-cols-2 md:grid-cols-12 gap-4 auto-rows-[100px]">
             {companiesData.map((company, index) => {
               let gridClass = '';
               
               switch(index) {
                 // Column 1
                 case 0:
-                  gridClass = 'lg:col-span-4 lg:row-span-6 lg:col-start-1 lg:row-start-1 md:col-span-6 md:row-span-6 md:col-start-1 md:row-start-1 col-span-1 row-span-4'; // Large card
+                  gridClass = 'lg:col-span-4 lg:row-span-6 lg:col-start-1 lg:row-start-1 md:col-span-6 md:row-span-6 md:col-start-1 md:row-start-1 col-span-2 row-span-4'; // Large card
                   break;
                 case 1:
                   gridClass = 'lg:col-span-2 lg:row-span-2 lg:col-start-1 lg:row-start-7 md:col-span-3 md:row-span-3 md:col-start-1 md:row-start-7 col-span-1 row-span-3'; // Small card
@@ -78,13 +78,13 @@ export function CompaniesGrid() {
                   gridClass = 'lg:col-span-4 lg:row-span-3 lg:col-start-5 lg:row-start-1 md:col-span-6 md:row-span-3 md:col-start-7 md:row-start-1 col-span-1 row-span-4'; // Wide card top
                   break;
                 case 4:
-                  gridClass = 'lg:col-span-4 lg:row-span-3 lg:col-start-5 lg:row-start-4 md:col-span-6 md:row-span-3 md:col-start-7 md:row-start-4 col-span-1 row-span-3'; // Wide card middle
+                  gridClass = 'lg:col-span-4 lg:row-span-3 lg:col-start-5 lg:row-start-4 md:col-span-6 md:row-span-3 md:col-start-7 md:row-start-4 col-span-1 row-span-4'; // Wide card middle
                   break;
                 case 5:
                   gridClass = 'lg:col-span-2 lg:row-span-2 lg:col-start-5 lg:row-start-7 md:col-span-3 md:row-span-3 md:col-start-7 md:row-start-7 col-span-1 row-span-3'; // Small card bottom left
                   break;
                 case 6:
-                  gridClass = 'lg:col-span-2 lg:row-span-2 lg:col-start-7 lg:row-start-7 md:col-span-3 md:row-span-3 md:col-start-10 md:row-start-7 col-span-1 row-span-2'; // Small card top left
+                  gridClass = 'lg:col-span-2 lg:row-span-2 lg:col-start-7 lg:row-start-7 md:col-span-3 md:row-span-3 md:col-start-10 md:row-start-7 col-span-1 row-span-3'; // Small card top left
                   break;
                 // Column 3
                 case 7:
@@ -94,7 +94,7 @@ export function CompaniesGrid() {
                   gridClass = 'lg:col-span-2 lg:row-span-2 lg:col-start-11 lg:row-start-1 md:col-span-6 md:row-span-3 md:col-start-1 md:row-start-14 col-span-1 row-span-3'; // Small card top right
                   break;
                 case 9:
-                  gridClass = 'lg:col-span-4 lg:row-span-6 lg:col-start-9 lg:row-start-3 md:col-span-6 md:row-span-6 md:col-start-7 md:row-start-10 col-span-1 row-span-4'; // Large card bottom
+                  gridClass = 'lg:col-span-4 lg:row-span-6 lg:col-start-9 lg:row-start-3 md:col-span-6 md:row-span-6 md:col-start-7 md:row-start-10 col-span-2 row-span-4'; // Large card bottom
                   break;  
 
                 default:

@@ -1,5 +1,6 @@
 import companiesData from '@/data/companies.json';
 import teamData from '@/data/team.json';
+import skillsData from '@/data/skills.json';
 
 export const systemPrompt = `
 You are a freelance product designer and creative strategist.
@@ -56,4 +57,6 @@ No talk about any numbers especially like revenue that you don't know about.
 ${JSON.stringify(companiesData, null, 2)}
 
 ${JSON.stringify(teamData, null, 2)}
+
+${JSON.stringify(skillsData, null, 2)}
 `;

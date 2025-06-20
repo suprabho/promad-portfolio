@@ -27,7 +27,7 @@ export function HeroSection() {
         <div className="container mx-auto px-4 mt-32 w-full">
           <div className="flex flex-col lg:flex-row gap-8">
             {/* Text Content */}
-            <div className="flex flex-col w-full lg:w-[60%] h-fit bg-[#E2FF3E] rounded-tl-[48px] rounded-br-[48px] border-tr-0 border-bl-0 p-8 md:p-12 shadow-2xl">
+            <div className="flex flex-col w-full lg:w-[60%] h-fit bg-[#FAFF00] rounded-tl-[48px] rounded-br-[48px] border-tr-0 border-bl-0 p-8 md:p-12 shadow-2xl">
               <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold tracking-tight">
                 <LogoText textColor="text-black" />
               </h1>
