@@ -36,7 +36,7 @@ export function HeroSection() {
               </p>
             </div>
             {/* Spline Scene */}
-            <div className="flex w-full lg:w-[40%] min-w-[600px] max-w-2xl mx-auto">
+            <div className="flex w-full lg:w-[40%] max-w-2xl mx-auto">
               <Spline
                 scene="/spline/scene.splinecode"
                 className="w-full"
