@@ -10,10 +10,10 @@ interface ProjectCardProps {
 
 export function ProjectCard({ project, isReversed = false }: ProjectCardProps) {
   const ContentSection = () => (
-    <div className="flex flex-col space-y-2 items-start h-full justify-center">
-      <h4 className="font-serif italic font-extrabold mb-4 text-3xl">{project.name}</h4>
+    <div className="flex flex-col items-start h-full justify-center">
+      <h4 className="font-serif italic font-extrabold text-3xl">{project.name}</h4>
       <p className="text-muted-foreground">{project.description}</p>
-      <div className="flex flex-wrap gap-2">
+      <div className="flex flex-wrap gap-2 my-4">
         {project.tags.map((tag, tagIndex) => (
           <Badge key={tagIndex} variant="secondary">
             {tag}

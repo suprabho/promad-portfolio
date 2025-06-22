@@ -1,12 +1,12 @@
 import { Button } from "@/components/ui/button"
 import { ArrowSquareOutIcon } from "@phosphor-icons/react"
 import { CaseStudy } from "@/components/case-study"
-import { CaseStudyDetails } from "@/types/project"
+import { CaseStudyDetails, SimpleDetails } from "@/types/project"
 
 interface ProjectActionsProps {
   url?: string
   urlName?: string
-  details?: string | CaseStudyDetails
+  details?: string | CaseStudyDetails | SimpleDetails
   thumbnail: string
 }
 
@@ -25,6 +25,7 @@ export function ProjectActions({ url, urlName, details, thumbnail }: ProjectActi
             href={url}
             target="_blank"
             rel="noopener noreferrer" 
+            className="font-mono hover:bg-[#FAFF00] hover:text-black"
           >
             <ArrowSquareOutIcon />
             {urlName || 'Visit Project'}

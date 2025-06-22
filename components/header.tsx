@@ -26,12 +26,12 @@ export default function Header({ onChatToggle }: HeaderProps) {
           {/* Desktop Navigation */}
           <div className="block">
             <Tabs value={pathname}>
-              <TabsList className="w-[300px] grid-cols-2 [&>*]:flex-1">
+              <TabsList className="w-[150px] sm:w-[400px] grid-cols-2 [&>*]:flex-1">
                 <Link href="/" className="w-full">
                   <TabsTrigger value="/" className="w-full text-base">Home</TabsTrigger>
                 </Link>
                 <Link href="/chat" className="w-full">
-                  <TabsTrigger value="/chat" className="w-full text-base">Chat with AI</TabsTrigger>
+                  <TabsTrigger value="/chat" className="w-full text-base">Chat</TabsTrigger>
                 </Link>
               </TabsList>
             </Tabs>
