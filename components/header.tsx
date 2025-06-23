@@ -8,6 +8,7 @@ import { ListIcon, XIcon } from "@phosphor-icons/react/dist/ssr"
 import { useState } from "react"
 import { Tabs, TabsList, TabsTrigger } from "./ui/tabs"
 import { usePathname } from "next/navigation"
+import { sendAnalyticsEvent } from "@/lib/analytics"
 
 interface HeaderProps {
   onChatToggle?: () => void
@@ -27,10 +28,28 @@ export default function Header({ onChatToggle }: HeaderProps) {
           <div className="block">
             <Tabs value={pathname}>
               <TabsList className="w-[150px] sm:w-[400px] grid-cols-2 [&>*]:flex-1">
-                <Link href="/" className="w-full">
+                <Link 
+                  href="/" 
+                  className="w-full"
+                  onClick={() => {
+                    sendAnalyticsEvent('tab_click', {
+                      tab_name: 'home',
+                      path: '/'
+                    })
+                  }}
+                >
                   <TabsTrigger value="/" className="w-full text-base">Home</TabsTrigger>
                 </Link>
-                <Link href="/chat" className="w-full">
+                <Link 
+                  href="/chat" 
+                  className="w-full"
+                  onClick={() => {
+                    sendAnalyticsEvent('tab_click', {
+                      tab_name: 'chat',
+                      path: '/chat'
+                    })
+                  }}
+                >
                   <TabsTrigger value="/chat" className="w-full text-base">Chat</TabsTrigger>
                 </Link>
               </TabsList>

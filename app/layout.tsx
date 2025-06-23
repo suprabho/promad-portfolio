@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import './globals.css'
 import { Manrope, Playfair_Display, Space_Mono } from 'next/font/google'
 import { ThemeProvider } from '@/components/theme-provider'
+import { GoogleAnalytics } from '@/components/google-analytics'
 
 const manrope = Manrope({ 
   subsets: ['latin'],
@@ -42,6 +43,7 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${manrope.variable} ${playfair.variable} ${spaceMono.variable}`}>
       <body>
+        <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GA_ID ?? ""} />
         <ThemeProvider
           attribute="class"
           defaultTheme="system"

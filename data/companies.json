@@ -666,7 +666,7 @@
     {
       "name": "Merkle Science",
       "period": "Aug 2021 - Sep 2022",
-      "description": "Product design for blockchain analytics and compliance solutions",
+      "description": "Product design and management for blockchain analytics and compliance solutions",
       "thumbnail": "/images/projects/merkle/thumbnail.png",
       "logo": {
         "dark": "/images/projects/merkle/merklescience_logo_blue.png",
@@ -675,27 +675,27 @@
       "projects": [
         {
           "name": "Compass",
-          "description": "Blockchain analytics dashboard for tracking and monitoring cryptocurrency transactions",
+          "description": "Revamped and enhaced the blockchain analytics dashboard for tracking and monitoring cryptocurrency transactions to handle scales of Crypto.com",
           "thumbnail": "/images/projects/merkle/project-image-1.jpg",
           "tags": [
             "Product Design",
             "Product Management",
-            "UX/UI"
+            "Data Visualization"
           ],
-          "details": "Designed a comprehensive dashboard for crypto transaction analysis.",
+          "details": "Revamped and enhaced the blockchain analytics dashboard for tracking and monitoring cryptocurrency transactions to handle scales of Crypto.com",
           "url": "https://www.merklescience.com/platform/transaction-wallet-monitoring",
           "urlName": "Explore Compass"
         },
         {
           "name": "Tracker",
-          "description": "Real-time transaction monitoring system for crypto compliance",
+          "description": "Designing a visualization tool to effortlessly track and trace cryptocurrency transactions to be used by Law Enforcement Agency",
           "thumbnail": "/images/projects/merkle/project-image-2.jpg",
           "tags": [
             "Product Design",
-            "Analytics",
-            "UX/UI"
+            "Visualization",
+            "Product Management"
           ],
-          "details": "Implemented real-time data visualization for compliance.",
+          "details": "Implemented real-time data visualization for investigation.",
           "url": "https://www.merklescience.com/platform/cryptocrime-investigation",
           "urlName": "View Tracker"
         },

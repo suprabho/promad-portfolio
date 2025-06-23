@@ -2,9 +2,7 @@
 
 import { useState } from "react"
 import Image from "next/image"
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
-import { Badge } from "@/components/ui/badge"
-import { Button } from "@/components/ui/button"
+import { Card} from "@/components/ui/card"
 import {
   Sheet,
   SheetClose,
@@ -14,12 +12,12 @@ import {
   SheetTitle,
   SheetTrigger,
 } from "@/components/ui/sheet"
-import Link from "next/link"
 import { ProjectDisplay } from "@/components/project-display"
 
 // Using the same data structure from companies-timeline
 import { XIcon } from "@phosphor-icons/react/dist/ssr"  
 import { companiesData } from "@/components/companies-timeline"
+import { sendAnalyticsEvent } from "@/lib/analytics"
 
 interface CompanyItem {
   name: string
@@ -37,7 +35,20 @@ interface Company {
   name: string
   period: string
   description: string
-  categories: Category[]
+  thumbnail: string
+  logo: {
+    dark: string
+    light: string
+  }
+  projects: {
+    name: string
+    description: string
+    thumbnail: string
+    tags: string[]
+    details: any
+    url: string
+    urlName: string
+  }[]
 }
 
 export function CompaniesGrid() {
@@ -111,20 +122,12 @@ export function CompaniesGrid() {
               return (
                 <Sheet key={index}>
                   <SheetTrigger asChild onClick={() => {
-                    // Pause Rive animation
-                    const riveContainer = document.querySelector('.RiveContainer');
-                    if (riveContainer) {
-                      const riveInstance = (riveContainer as any)._rive;
-                      if (riveInstance) {
-                        riveInstance.pause();
-                      }
-                    }
-                    
-                    // Pause Spline animation
-                    const splineContainer = document.querySelector('spline-viewer');
-                    if (splineContainer) {
-                      (splineContainer as any)?.pause?.();
-                    }
+                    sendAnalyticsEvent('company_card_click', {
+                      company_name: company.name,
+                      company_index: index
+                    })
+                    setSelectedCompany(company as Company)
+                    console.log("Selected company:", company)
                   }}>
                     <Card className={cardStyles}>
                       <div className="relative w-full h-full bg-muted overflow-hidden">

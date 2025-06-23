@@ -11,15 +11,16 @@ import { CaseStudyDetails, SimpleDetails } from "@/types/project"
 interface CaseStudyProps {
   details: CaseStudyDetails | SimpleDetails
   thumbnail: string
+  onClick?: () => void
 }
 
-export function CaseStudy({ details, thumbnail }: CaseStudyProps) {
+export function CaseStudy({ details, thumbnail, onClick }: CaseStudyProps) {
   const isCaseStudy = 'title' in details;
 
   return (
     <Sheet>
       <SheetTrigger asChild>
-        <Button variant="outline" size="sm">
+        <Button variant="outline" size="sm" onClick={onClick}>
           <FileTextIcon className="mr-2 h-4 w-4" />
           {isCaseStudy ? 'View Case Study' : 'View Details'}
         </Button>

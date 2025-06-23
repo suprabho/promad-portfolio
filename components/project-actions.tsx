@@ -2,6 +2,7 @@ import { Button } from "@/components/ui/button"
 import { ArrowSquareOutIcon } from "@phosphor-icons/react"
 import { CaseStudy } from "@/components/case-study"
 import { CaseStudyDetails, SimpleDetails } from "@/types/project"
+import { sendAnalyticsEvent } from "@/lib/analytics"
 
 interface ProjectActionsProps {
   url?: string
@@ -26,6 +27,12 @@ export function ProjectActions({ url, urlName, details, thumbnail }: ProjectActi
             target="_blank"
             rel="noopener noreferrer" 
             className="font-mono hover:bg-[#FAFF00] hover:text-black"
+            onClick={() => {
+              sendAnalyticsEvent('project_link_click', {
+                project_url: url,
+                project_name: urlName || 'Visit Project'
+              })
+            }}
           >
             <ArrowSquareOutIcon />
             {urlName || 'Visit Project'}
@@ -33,7 +40,15 @@ export function ProjectActions({ url, urlName, details, thumbnail }: ProjectActi
         </Button>
       )}
       {hasCaseStudy && typeof details === 'object' && (
-        <CaseStudy details={details} thumbnail={thumbnail} />
+        <CaseStudy 
+          details={details} 
+          thumbnail={thumbnail} 
+          onClick={() => {
+            sendAnalyticsEvent('case_study_click', {
+              project_name: (details as CaseStudyDetails).title || 'Untitled Project'
+            })
+          }}
+        />
       )}
     </div>
   )
