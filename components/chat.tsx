@@ -5,6 +5,7 @@ import "@crayonai/react-ui/styles/index.css";
 import { themePresets } from "@crayonai/react-ui";
 import { useTheme } from "next-themes";
 import { useEffect, useState } from "react";
+import { sendAnalyticsEvent } from "@/lib/analytics";
 
 interface ChatProps {
   onClose?: () => void;
@@ -33,9 +34,16 @@ export default function Chat({ onClose }: ChatProps) {
           theme={{
             ...themePresets.neon, 
             mode: theme === "dark" ? "dark" : "light"
-          }} 
+          }}
+          customizeC1={{
+            thinkComponent: (props) => {
+              return <div className="crayon-shell-thread-message-assistant__content">
+                <p>Thinking...</p>
+              </div>
+            }
+          }}
         />
       </div>
     </div>
   );
-}   
+}   1 

@@ -3,6 +3,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Badge } from "@/components/ui/badge"
 import { LinkedinLogoIcon } from "@phosphor-icons/react/dist/ssr"
 import teamData from "@/data/team.json"
+import { sendAnalyticsEvent } from "@/lib/analytics"
 
 interface PersonCard {
   name: string
@@ -27,49 +28,88 @@ export function PeopleSection() {
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-6 sm:gap-8 max-w-7xl mx-auto">
           {people.map((person, index) => (
-            <Card 
-              key={index} 
-              className="group hover:shadow-xl transition-all duration-300 hover:-translate-y-2 flex flex-col"
-            >
-              <CardHeader className="text-center flex-grow">
-                <div className="relative w-20 h-20 sm:w-24 sm:h-24 mx-auto mb-4 group-hover:scale-110 transition-transform">
-                  <Image
-                    src={person.image}
-                    alt={person.name}
-                    fill
-                    className="rounded-full object-cover"
-                  />
-                </div>
-                <CardTitle className="font-serif italic font-extrabold text-xl sm:text-2xl">{person.name}</CardTitle>
-                <CardDescription className="text-sm sm:text-base">{person.role}</CardDescription>
-              </CardHeader>
-              <CardContent className="space-y-4 mx-auto">
-                {person.skills && (
-                  <div className="flex flex-wrap gap-1.5 sm:gap-2 mx-auto justify-center">
-                    {person.skills.map((skill) => (
-                      <Badge 
-                        key={skill} 
-                        variant="secondary" 
-                        className="text-xs sm:text-sm px-2 py-0.5"
-                      >
-                        {skill}
-                      </Badge>
-                    ))}
+            person.linkedin ? (
+              <a 
+                key={index}
+                href={person.linkedin}
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={() => {
+                  sendAnalyticsEvent('team_member_click', {
+                    member_name: person.name,
+                    member_role: person.role
+                  })
+                }}
+                className="block"
+              >
+                <Card className="group hover:shadow-xl transition-all duration-300 hover:-translate-y-2 flex flex-col h-full">
+                  <CardHeader className="text-center flex-grow">
+                    <div className="relative w-20 h-20 sm:w-24 sm:h-24 mx-auto mb-4 group-hover:scale-110 transition-transform">
+                      <Image
+                        src={person.image}
+                        alt={person.name}
+                        fill
+                        className="rounded-full object-cover"
+                      />
+                    </div>
+                    <CardTitle className="font-serif italic font-extrabold text-xl sm:text-2xl">{person.name}</CardTitle>
+                    <CardDescription className="text-sm sm:text-base">{person.role}</CardDescription>
+                  </CardHeader>
+                  <CardContent className="space-y-4 mx-auto">
+                    {person.skills && (
+                      <div className="flex flex-wrap gap-1.5 sm:gap-2 mx-auto justify-center">
+                        {person.skills.map((skill) => (
+                          <Badge 
+                            key={skill} 
+                            variant="secondary" 
+                            className="text-xs sm:text-sm px-2 py-0.5"
+                          >
+                            {skill}
+                          </Badge>
+                        ))}
+                      </div>
+                    )}
+                    <div className="flex items-center justify-center gap-1.5 sm:gap-2 text-primary hover:text-primary/80 transition-colors text-sm sm:text-base">
+                      <LinkedinLogoIcon weight="fill" className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
+                      <span className="font-mono">LinkedIn Profile</span>
+                    </div>
+                  </CardContent>
+                </Card>
+              </a>
+            ) : (
+              <Card 
+                key={index} 
+                className="group hover:shadow-xl transition-all duration-300 hover:-translate-y-2 flex flex-col h-full"
+              >
+                <CardHeader className="text-center flex-grow">
+                  <div className="relative w-20 h-20 sm:w-24 sm:h-24 mx-auto mb-4 group-hover:scale-110 transition-transform">
+                    <Image
+                      src={person.image}
+                      alt={person.name}
+                      fill
+                      className="rounded-full object-cover"
+                    />
                   </div>
-                )}
-                {person.linkedin && (
-                  <a
-                    href={person.linkedin}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex items-center justify-center gap-1.5 sm:gap-2 text-primary hover:text-primary/80 transition-colors text-sm sm:text-base"
-                  >
-                    <LinkedinLogoIcon weight="fill" className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
-                    <span className="font-mono">LinkedIn Profile</span>
-                  </a>
-                )}
-              </CardContent>
-            </Card>
+                  <CardTitle className="font-serif italic font-extrabold text-xl sm:text-2xl">{person.name}</CardTitle>
+                  <CardDescription className="text-sm sm:text-base">{person.role}</CardDescription>
+                </CardHeader>
+                <CardContent className="space-y-4 mx-auto">
+                  {person.skills && (
+                    <div className="flex flex-wrap gap-1.5 sm:gap-2 mx-auto justify-center">
+                      {person.skills.map((skill) => (
+                        <Badge 
+                          key={skill} 
+                          variant="secondary" 
+                          className="text-xs sm:text-sm px-2 py-0.5"
+                        >
+                          {skill}
+                        </Badge>
+                      ))}
+                    </div>
+                  )}
+                </CardContent>
+              </Card>
+            )
           ))}
         </div>
       </div>
