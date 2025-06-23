@@ -127,7 +127,6 @@ export function CompaniesGrid() {
                       company_index: index
                     })
                     setSelectedCompany(company as Company)
-                    console.log("Selected company:", company)
                   }}>
                     <Card className={cardStyles}>
                       <div className="relative w-full h-full bg-muted overflow-hidden">
