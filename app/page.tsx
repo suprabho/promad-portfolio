@@ -8,6 +8,7 @@ import Header from "@/components/header"
 import { PeopleSection } from "@/components/people-section"
 import { Footer } from "@/components/footer"
 import Chat from "@/components/chat"
+import { ActionSection } from "@/components/action-section"
 
 export default function Portfolio() {
   const [isChatOpen, setIsChatOpen] = useState(false)
@@ -29,6 +30,7 @@ export default function Portfolio() {
       <CompaniesGrid />
       <PeopleSection />
       <SkillsGrid />
+      <ActionSection />
       <Footer />
       {isChatOpen && <Chat onClose={closeChat} />}
     </div>
