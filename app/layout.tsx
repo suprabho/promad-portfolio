@@ -23,6 +23,30 @@ const spaceMono = Space_Mono({
 export const metadata: Metadata = {
   title: 'Promad by Suprabho | Product Design & Creative Technologist Collective Portfolio',
   description: 'A showcase of creative design work and development projects',
+  metadataBase: new URL('https://promad.design'),
+  openGraph: {
+    title: 'Promad by Suprabho | Product Design & Creative Technologist',
+    description: 'A showcase of creative design work and development projects',
+    url: 'https://promad.design',
+    siteName: 'Promad Design',
+    images: [
+      {
+        url: '/images/hero-bg.webp',
+        width: 1200,
+        height: 630,
+        alt: 'Promad Design Portfolio',
+      },
+    ],
+    locale: 'en_US',
+    type: 'website',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Promad by Suprabho | Product Design & Creative Technologist',
+    description: 'A showcase of creative design work and development projects',
+    images: ['/images/hero-bg.webp'],
+    creator: '@suprabho',
+  },
   icons: {
     icon: [
       { url: "/images/icons/favicon.ico", sizes: "any" },
