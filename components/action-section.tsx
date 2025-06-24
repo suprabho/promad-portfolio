@@ -10,7 +10,7 @@ export function ActionSection() {
   return (
     <section className="container py-24 mx-auto mb-12 w-full space-y-8 bg-[#FAFF00] rounded-tl-[48px] rounded-br-[48px] border-tr-0 border-bl-0 p-8 md:p-12 shadow-2xl">
       <div className="text-center mb-16">
-        <h2 className="text-3xl md:text-4xl font-bold mb-4">Get in touch</h2>
+        <h2 className="text-3xl md:text-4xl font-bold mb-4 text-black">Get in touch</h2>
         <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
           Schedule a call or share your requirements with us
         </p>
@@ -47,21 +47,22 @@ export function ActionSection() {
       </div>
 
       <Dialog open={openDialog1} onOpenChange={setOpenDialog1}>
-        <DialogContent className="max-w-4xl">
+        <DialogContent className="max-w-full h-full">
           <iframe 
             src="https://calendar.google.com/calendar/appointments/AcZssZ2qCBIleZaAspRQAI7wGxjegaDvn87d46Bd950=?gv=true" 
-            className="w-full aspect-video rounded-lg"
+            className="w-full aspect-9/16 md:aspect-square rounded-lg"
+            style={{ width: "100%", height: "80vh", minHeight: "600px", borderRadius: "8px" }}
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
             allowFullScreen
           />
-        </DialogContent>
+        </DialogContent>    
       </Dialog>
 
       <Dialog open={openDialog2} onOpenChange={setOpenDialog2}>
-        <DialogContent className="max-w-4xl">
+        <DialogContent className="max-w-full h-full">
           <iframe 
             src="https://docs.google.com/forms/d/e/1FAIpQLSfPQf3IdIefSkE8ICbWKEgD36crLR1kHWgBbc6OFk95koMuAw/viewform?embedded=true"
-            className="w-full aspect-video rounded-lg"
+            style={{ width: "100%", height: "80vh", minHeight: "600px", borderRadius: "8px" }}
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
             allowFullScreen
           />
