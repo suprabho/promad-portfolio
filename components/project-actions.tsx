@@ -20,13 +20,14 @@ export function ProjectActions({ url, urlName, details, thumbnail }: ProjectActi
         <Button
           variant="outline"
           size="sm"
+          className="font-mono hover:bg-[#FAFF00] hover:text-black"
           asChild
         >
           <a 
             href={url}
             target="_blank"
             rel="noopener noreferrer" 
-            className="font-mono hover:bg-[#FAFF00] hover:text-black"
+            
             onClick={() => {
               sendAnalyticsEvent('project_link_click', {
                 project_url: url,
