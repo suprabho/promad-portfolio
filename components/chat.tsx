@@ -46,4 +46,4 @@ export default function Chat({ onClose }: ChatProps) {
       </div>
     </div>
   );
-}   1 
+}   
