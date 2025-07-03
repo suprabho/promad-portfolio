@@ -32,7 +32,7 @@ export function HeroSection() {
                 <LogoText textColor="text-black" />
               </h1>
               <p className="mt-6 text-xl md:text-2xl text-black leading-relaxed">
-                A remote - first, global Product Studio. We love to solve problems and make everyone's life a little easier with great experiences. We primarily specialize in UX design, front end development, branding and motion design and are well versed in all aspects of delivering quality and user-friendly products.
+                A remote-first, global creative collective. We love to solve problems and make everyone's life a little delightful with great experiences. We primarily specialize in strategizing and crafting excepectional products, brands and web experiences.
               </p>
             </div>
             {/* Spline Scene */}

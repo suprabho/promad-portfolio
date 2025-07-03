@@ -20,7 +20,7 @@ export function CaseStudy({ details, thumbnail, onClick }: CaseStudyProps) {
   return (
     <Sheet>
       <SheetTrigger asChild>
-        <Button variant="outline" size="sm" onClick={onClick}>
+        <Button variant="outline" size="sm" className="font-mono hover:bg-[#FAFF00] hover:text-black" onClick={onClick}>
           <FileTextIcon className="mr-2 h-4 w-4" />
           {isCaseStudy ? 'View Case Study' : 'View Details'}
         </Button>
