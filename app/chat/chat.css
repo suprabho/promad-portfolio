@@ -140,7 +140,7 @@
         border: 2px solid #faff00;
         border-radius: 20px;
         box-shadow: 0 0 22px -8px #faff00;
-        background-color: white;
+        background-color: var(--background);
     }
     
     .crayon-shell-thread-composer__input {
