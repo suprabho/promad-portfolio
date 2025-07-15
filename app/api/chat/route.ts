@@ -31,7 +31,7 @@ export async function POST(req: NextRequest) {
     messageStore.addMessage(prompt);
 
     const llmStream = await client.chat.completions.create({
-      model: "c1-nightly",
+      model: "c1/anthropic/claude-3.5-sonnet/v-20250617",
       messages: [
         {
           role: "system",
