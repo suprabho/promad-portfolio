@@ -25,36 +25,7 @@ export default function Header({ onChatToggle }: HeaderProps) {
         </div>
         <div className="flex items-center gap-4">
           {/* Desktop Navigation */}
-          <div className="block">
-            <Tabs value={pathname}>
-              <TabsList className="w-[150px] sm:w-[400px] grid-cols-2 [&>*]:flex-1">
-                <Link 
-                  href="/" 
-                  className="w-full"
-                  onClick={() => {
-                    sendAnalyticsEvent('tab_click', {
-                      tab_name: 'home',
-                      path: '/'
-                    })
-                  }}
-                >
-                  <TabsTrigger value="/" className="w-full text-base">Home</TabsTrigger>
-                </Link>
-                <Link 
-                  href="/chat" 
-                  className="w-full"
-                  onClick={() => {
-                    sendAnalyticsEvent('tab_click', {
-                      tab_name: 'chat',
-                      path: '/chat'
-                    })
-                  }}
-                >
-                  <TabsTrigger value="/chat" className="w-full text-base">Chat</TabsTrigger>
-                </Link>
-              </TabsList>
-            </Tabs>
-          </div>
+
 
 
           <ThemeToggle />
