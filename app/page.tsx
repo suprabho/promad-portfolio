@@ -25,7 +25,7 @@ export default function Portfolio() {
 
   return (
     <div className="min-h-screen bg-background">
-      <Header onChatToggle={toggleChat} />
+      <Header />
       <HeroSection />
       <CompaniesGrid />
       <PeopleSection />
