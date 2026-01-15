@@ -1,3 +1,5 @@
+"use client"
+
 import { useState } from "react"
 import { Card } from "./ui/card"
 import { Dialog, DialogContent } from "./ui/dialog"

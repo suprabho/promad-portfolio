@@ -2,24 +2,27 @@
 
 import { useState } from "react"
 import dynamic from "next/dynamic"
-import Header from "@/components/header"
-import "./chat.css";
 
 // Dynamically import Chat component to avoid SSR issues with browser-only dependencies
 const Chat = dynamic(() => import("@/components/chat"), { ssr: false })
 
-export default function ChatPage() {
-  const [isChatOpen, setIsChatOpen] = useState(true)
+export function PortfolioClient({ children }: { children: React.ReactNode }) {
+  const [isChatOpen, setIsChatOpen] = useState(false)
+
+  const toggleChat = () => {
+    setIsChatOpen(!isChatOpen)
+    console.log("Chat toggle clicked - chat is", !isChatOpen ? "opening" : "closing")
+  }
 
   const closeChat = () => {
     setIsChatOpen(false)
-    window.history.back() // Go back to previous page when chat is closed
+    console.log("Chat closed")
   }
 
   return (
-    <div className="min-h-dvh bg-background">
-      <Header />
+    <>
+      {children}
       {isChatOpen && <Chat onClose={closeChat} />}
-    </div>
+    </>
   )
-} 
+}

@@ -65,7 +65,7 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="en" className={`${manrope.variable} ${playfair.variable} ${spaceMono.variable}`}>
+    <html lang="en" suppressHydrationWarning className={`${manrope.variable} ${playfair.variable} ${spaceMono.variable}`}>
       <body>
         <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GA_ID ?? ""} />
         <ThemeProvider

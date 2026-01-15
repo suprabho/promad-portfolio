@@ -1,10 +1,36 @@
-import { Button } from "@/components/ui/button"
-import { ArrowRight, Download } from "lucide-react"
+"use client"
+
 import Image from "next/image"
+import { useEffect, useRef } from "react"
 import { LogoText } from "@/components/logo-text"
-import Spline from '@splinetool/react-spline'
 
 export function HeroSection() {
+  const canvasRef = useRef<HTMLCanvasElement>(null)
+
+  useEffect(() => {
+    let splineApp: any = null
+
+    const loadSpline = async () => {
+      if (!canvasRef.current) return
+
+      try {
+        const { Application } = await import('@splinetool/runtime')
+        splineApp = new Application(canvasRef.current)
+        await splineApp.load('/spline/scene.splinecode')
+      } catch (error) {
+        console.error('Failed to load Spline scene:', error)
+      }
+    }
+
+    loadSpline()
+
+    return () => {
+      if (splineApp) {
+        splineApp.dispose?.()
+      }
+    }
+  }, [])
+
   return (
     <section className="relative min-h-screen mt-[-100px]">
       {/* Background Image */}
@@ -36,12 +62,8 @@ export function HeroSection() {
               </p>
             </div>
             {/* Spline Scene */}
-            <div className="flex w-full lg:w-[40%] max-w-2xl mx-auto">
-              <Spline
-                scene="/spline/scene.splinecode"
-                className="w-full"
-                style={{ aspectRatio: '1/1' }}
-              />
+            <div className="flex w-full lg:w-[40%] max-w-2xl mx-auto" style={{ aspectRatio: '1/1' }}>
+              <canvas ref={canvasRef} className="w-full h-full" />
             </div>
           </div>
         </div>

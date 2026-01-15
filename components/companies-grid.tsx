@@ -13,46 +13,16 @@ import {
   SheetTrigger,
 } from "@/components/ui/sheet"
 import { ProjectDisplay } from "@/components/project-display"
-
-// Using the same data structure from companies-timeline
 import { XIcon } from "@phosphor-icons/react/dist/ssr"  
-import { companiesData } from "@/components/companies-timeline"
 import { sendAnalyticsEvent } from "@/lib/analytics"
+import type { CompanyWithProjects } from "@/lib/payload"
 
-interface CompanyItem {
-  name: string
-  description: string
-  thumbnail: string
-  tags?: string[]
+interface CompaniesGridProps {
+  companies: CompanyWithProjects[]
 }
 
-interface Category {
-  name: string
-  items: (CompanyItem | string)[]
-}
-
-interface Company {
-  name: string
-  period: string
-  description: string
-  thumbnail: string
-  logo: {
-    dark: string
-    light: string
-  }
-  projects: {
-    name: string
-    description: string
-    thumbnail: string
-    tags: string[]
-    details: any
-    url: string
-    urlName: string
-  }[]
-}
-
-export function CompaniesGrid() {
-  const [selectedCompany, setSelectedCompany] = useState<Company | null>(null)
+export function CompaniesGrid({ companies }: CompaniesGridProps) {
+  const [selectedCompany, setSelectedCompany] = useState<CompanyWithProjects | null>(null)
 
   return (
     <section className="py-24 bg-muted/30">
@@ -62,14 +32,11 @@ export function CompaniesGrid() {
           <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
             Explore our work experience and contributions
           </p>
-          {/* <Link href="/timeline" className="inline-block mt-4">
-            <Button variant="outline">View Timeline</Button>
-          </Link> */}
         </div>
         
         <div className="mt-10 sm:mt-16">
           <div className="grid grid-cols-2 md:grid-cols-12 gap-4 auto-rows-[100px]">
-            {companiesData.map((company, index) => {
+            {companies.map((company, index) => {
               let gridClass = '';
               
               switch(index) {
@@ -119,23 +86,36 @@ export function CompaniesGrid() {
                 ${gridClass}
               `;
 
+              // Transform project data for ProjectDisplay component
+              const transformedProjects = company.projects.map(project => ({
+                name: project.name,
+                description: project.description || '',
+                thumbnail: project.thumbnail || '',
+                tags: project.tags?.map(t => t.tag || '').filter(Boolean) || [],
+                details: project.details,
+                url: project.url || '',
+                urlName: project.urlName || '',
+              }))
+
               return (
-                <Sheet key={index}>
+                <Sheet key={company.id}>
                   <SheetTrigger asChild onClick={() => {
                     sendAnalyticsEvent('company_card_click', {
                       company_name: company.name,
                       company_index: index
                     })
-                    setSelectedCompany(company as Company)
+                    setSelectedCompany(company)
                   }}>
                     <Card className={cardStyles}>
                       <div className="relative w-full h-full bg-muted overflow-hidden">
-                        <Image
-                          src={company.thumbnail}
-                          alt={`${company.name} thumbnail`}
-                          fill
-                          className="object-cover transition-transform duration-300 group-hover:scale-110"
-                        />
+                        {company.thumbnail && (
+                          <Image
+                            src={company.thumbnail}
+                            alt={`${company.name} thumbnail`}
+                            fill
+                            className="object-cover transition-transform duration-300 group-hover:scale-110"
+                          />
+                        )}
                         <div className="absolute inset-0 bg-gradient-to-b from-black/0 via-black/20 to-black/80" />
                         <div className="absolute inset-0 p-6 flex flex-col justify-end">
                           <div>
@@ -151,34 +131,31 @@ export function CompaniesGrid() {
                   <SheetContent className="overflow-y-auto w-[90vw] max-w-[1200px] sm:max-w-[1200px] p-0">
                     <div className="sticky top-0 z-10 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 border-b">
                       <SheetHeader className="p-6 flex items-center gap-2">
-                        <Image
+                        {(company.logo?.dark || company.logo?.light) && (
+                          <Image
                             src={company.logo?.dark || company.logo?.light || ""}
                             alt={`${company.name} logo`}
                             width={60}
                             height={60}  
                             className="object-contain"
                           />
-                         <div>
+                        )}
+                        <div>
                           <SheetTitle className="flex gap-2">
                             {company.name}
                           </SheetTitle>
                           <SheetDescription>{company.description}</SheetDescription>
                           <SheetClose 
                             className="absolute right-4 top-4 rounded-sm opacity-70 ring-offset-background transition-opacity hover:opacity-100 focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 disabled:pointer-events-none data-[state=open]:bg-secondary"
-                            onClick={() => {
-                             
-                            }}
                           >
                             <XIcon className="h-4 w-4" />
                             <span className="sr-only">Close</span>
                           </SheetClose>
                         </div> 
-                        
-                        
                       </SheetHeader>
                     </div>
                     <div className="p-6 mt-2 space-y-8">
-                      {company.projects.map((project, projectIndex) => (
+                      {transformedProjects.map((project, projectIndex) => (
                         <div key={projectIndex}>
                           <ProjectDisplay project={project} index={projectIndex} />
                         </div>
@@ -193,4 +170,4 @@ export function CompaniesGrid() {
       </div>
     </section>
   )
-} 
+}
