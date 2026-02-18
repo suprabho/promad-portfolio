@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState } from "react"
 import { motion, useInView, useMotionValue, useTransform, animate } from "framer-motion"
+import Image from "next/image"
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
@@ -126,12 +127,14 @@ function LinkCard({
   description,
   href,
   icon: Icon,
+  iconSource,
   accent = false,
 }: {
   title: string
   description: string
   href: string
-  icon: React.ElementType
+  icon?: React.ElementType
+  iconSource?: string
   accent?: boolean
 }) {
   return (
@@ -143,15 +146,19 @@ function LinkCard({
           }`}
         >
           <CardHeader>
-            <div
-              className={`w-12 h-12 rounded-xl flex items-center justify-center mb-3 transition-transform group-hover:scale-110 ${
-                accent
-                  ? "bg-[#FAFF00] text-black"
-                  : "bg-secondary text-foreground"
-              }`}
-            >
-              <Icon size={24} weight="duotone" />
-            </div>
+            {iconSource ? (
+              <Image src={iconSource} alt={title} width={48} height={48} className="w-12 h-12 rounded-xl mb-3 transition-transform group-hover:scale-110" />
+            ) : Icon ? (
+              <div
+                className={`w-12 h-12 rounded-xl flex items-center justify-center mb-3 transition-transform group-hover:scale-110 ${
+                  accent
+                    ? "bg-[#FAFF00] text-black"
+                    : "bg-secondary text-foreground"
+                }`}
+              >
+                <Icon size={24} weight="duotone" />
+              </div>
+            ) : null}
             <CardTitle className="text-xl flex items-center gap-2">
               {title}
               <ArrowSquareOut
@@ -241,9 +248,9 @@ export default function AIPlaybook() {
       <Header />
 
       {/* ── Hero ─────────────────────────────────────────── */}
-      <section className="relative overflow-hidden min-h-[80vh] flex items-center">
+      <section className="flex-col relative overflow-hidden min-h-[80vh] flex justify-center items-center">
         {/* Background decorations */}
-        <div className="absolute inset-0 -z-10">
+        <div className="absolute inset-0 z-10">
           <div className="absolute top-20 left-[10%] w-72 h-72 rounded-full bg-[#FAFF00]/10 blur-3xl" />
           <div className="absolute bottom-20 right-[10%] w-96 h-96 rounded-full bg-[#FAFF00]/5 blur-3xl" />
           <motion.div
@@ -263,7 +270,7 @@ export default function AIPlaybook() {
           />
         </div>
 
-        <div className="container mx-auto px-4 py-20">
+        <div className="container mx-auto px-4 h-full z-10 py-20">
           <motion.div
             className="max-w-4xl mx-auto text-center"
             initial="hidden"
@@ -303,6 +310,10 @@ export default function AIPlaybook() {
               frontend development.
             </motion.p>
           </motion.div>
+        </div>
+
+        <div className="absolute top-0 left-0 w-full z-0 h-[120dvh]">
+          <iframe src="https://aura.promad.design/embed/abstract-dark-gradient-striking-black-gold-design?hideText=true" style={{width:"100%", height:"1000px",}} allowFullScreen></iframe>
         </div>
       </section>
 
@@ -395,7 +406,7 @@ export default function AIPlaybook() {
             href="https://www.figma.com/community/plugin/1574982950051298625/variant-selector"
           />
           <LinkCard
-            icon={TextAa}
+            iconSource="https://www.figma.com/community/resource/722beb9b-9897-4a15-90e5-31c76364d064/icon"
             title="Text Style Duplicator"
             description="Duplicate entire text style hierarchies with custom mapping. Preserves folder structure across collections."
             href="https://www.figma.com/community/plugin/1574985201888606536/text-style-duplicator"
@@ -404,19 +415,21 @@ export default function AIPlaybook() {
       </Section>
 
       {/* ── Visual Asset Generation ──────────────────────── */}
-      <Section id="visual-assets" className="bg-secondary/30">
-        <SectionHeading
-          icon={Gradient}
-          title="Visual Asset Generation"
-        />
-        <motion.div variants={fadeUp} className="max-w-2xl mx-auto">
+      <Section id="visual-assets" className="flex flex-col relative bg-secondary/30">
+        <div className="relative z-10">
+          <SectionHeading
+            icon={Gradient}
+            title="Visual Asset Generation"
+          />
+        </div>
+        <motion.div variants={fadeUp} className="max-w-2xl z-10 mx-auto">
           <a
             href="https://aura.promad.design"
             target="_blank"
             rel="noopener noreferrer"
             className="block"
           >
-            <Card className="group relative overflow-hidden hover:shadow-2xl transition-all duration-500 hover:-translate-y-1">
+            <Card className="z-10 group relative overflow-hidden hover:shadow-2xl transition-all duration-500 hover:-translate-y-1">
               {/* Animated gradient background */}
               <motion.div
                 className="absolute inset-0 opacity-30"
@@ -430,7 +443,12 @@ export default function AIPlaybook() {
               <div className="absolute inset-[1px] bg-card rounded-[inherit]" />
               <CardHeader className="relative text-center py-12">
                 <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-[#FAFF00] to-[#FF9500] text-black flex items-center justify-center mx-auto mb-4">
-                  <Gradient size={32} weight="duotone" />
+                  <Image
+                   src={"https://aura.promad.design/apple-touch-icon.png"}
+                   alt="Aura Logo"
+                   width={64}
+                   height={64}
+                  />
                 </div>
                 <CardTitle className="text-2xl flex items-center justify-center gap-2">
                   Aura Backgrounds
@@ -447,6 +465,9 @@ export default function AIPlaybook() {
             </Card>
           </a>
         </motion.div>
+        <div className="absolute inset-0 z-0 overflow-hidden">
+          <iframe src="https://aura.promad.design/embed/dark-abstract-header-luminous-green-flow-for-websites?hideText=" style={{width:"100%", height:"100%", border:"none"}} allowFullScreen></iframe>
+        </div>
       </Section>
 
       {/* ── Vibe-Coded Experiments ────────────────────────── */}
@@ -575,10 +596,17 @@ export default function AIPlaybook() {
                       <div className="w-6 h-6 rounded-full bg-[#FAFF00]/20 flex items-center justify-center flex-shrink-0">
                         <motion.div
                           className="w-2.5 h-2.5 rounded-full bg-[#FAFF00]"
-                          initial={{ scale: 0 }}
-                          whileInView={{ scale: 1 }}
-                          viewport={{ once: true }}
-                          transition={{ delay: i * 0.1 + 0.3 }}
+                          animate={{
+                            scale: [0, 1, 0.6, 1],
+                            opacity: [0, 1, 0.5, 1],
+                          }}
+                          transition={{
+                            delay: i * 0.15,
+                            duration: 2,
+                            repeat: Infinity,
+                            repeatDelay: 1,
+                            ease: "easeInOut",
+                          }}
                         />
                       </div>
                       <span className="text-sm">{item}</span>
