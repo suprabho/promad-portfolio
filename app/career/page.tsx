@@ -13,10 +13,17 @@ import { CareerFooter } from "./components/CareerFooter"
 
 export default function CareerPage() {
   return (
-    <div
-      className="min-h-screen overflow-x-hidden"
-      style={{ background: "#0a0a0c", color: "#f0ede6", fontFamily: "var(--font-manrope, sans-serif)" }}
-    >
+    <>
+      <iframe
+        src="https://aura.promad.design/embed/magenta-wavy-gradient-header-dynamic-website-design"
+        className="fixed inset-0 w-full h-full border-0 z-0 pointer-events-none"
+        style={{ borderRadius: 0 }}
+        allowFullScreen
+      />
+      <div
+        className="relative z-10 min-h-screen overflow-x-hidden"
+        style={{ color: "#f0ede6", fontFamily: "var(--font-manrope, sans-serif)" }}
+      >
       <style>{`
         @media (max-width: 768px) {
           .timeline-track { max-width: 100% !important; }
@@ -42,6 +49,10 @@ export default function CareerPage() {
       <Companies />
       <Stats />
       <CareerFooter />
+      <div>
+        
+      </div>
     </div>
+    </>
   )
 }
