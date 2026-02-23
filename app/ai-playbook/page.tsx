@@ -1,22 +1,14 @@
 "use client"
 
-import { useEffect, useRef, useState } from "react"
-import { motion, useInView, useMotionValue, useTransform, animate } from "framer-motion"
+import { motion } from "framer-motion"
 import Image from "next/image"
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
-import { Button } from "@/components/ui/button"
 import Header from "@/components/header"
 import { Footer } from "@/components/footer"
 import {
   Palette,
-  Swatches,
-  TextAa,
-  CursorClick,
   Gradient,
-  Globe,
-  CloudSun,
-  GameController,
   FilmSlate,
   FilmScript,
   GitBranch,
@@ -25,6 +17,26 @@ import {
   Cube,
   Robot,
 } from "@phosphor-icons/react"
+
+import { AnimatedCounter } from "./components/AnimatedCounter"
+import { Section } from "./components/Section"
+import { SectionHeading } from "./components/SectionHeading"
+import { LinkCard } from "./components/LinkCard"
+import { ProcessStep } from "./components/ProcessStep"
+import { StatBar } from "./components/StatBar"
+import {
+  COLOR_PALETTE,
+  FIGMA_PLUGINS,
+  EXPERIMENTS,
+  EQUATION_ITEMS,
+  PROCESS_STEPS,
+  VIDEO_BRIEF_ITEMS,
+  REPO_STATS,
+  MAX_COMMITS,
+  TOTAL_COMMITS,
+  TOTAL_LINES_ADDED,
+  TOTAL_LINES_REMOVED,
+} from "./content"
 
 // ─── Animation Variants ───────────────────────────────────────────
 
@@ -35,9 +47,7 @@ const fadeUp = {
 
 const staggerContainer = {
   hidden: {},
-  visible: {
-    transition: { staggerChildren: 0.12 },
-  },
+  visible: { transition: { staggerChildren: 0.12 } },
 }
 
 const scaleIn = {
@@ -45,202 +55,7 @@ const scaleIn = {
   visible: { opacity: 1, scale: 1 },
 }
 
-// ─── Animated Counter Component ───────────────────────────────────
-
-function AnimatedCounter({ target, duration = 2 }: { target: number; duration?: number }) {
-  const ref = useRef<HTMLSpanElement>(null)
-  const isInView = useInView(ref, { once: true, amount: 0.5 })
-  const motionValue = useMotionValue(0)
-  const rounded = useTransform(motionValue, (v) => Math.round(v).toLocaleString())
-
-  useEffect(() => {
-    if (isInView) {
-      animate(motionValue, target, { duration })
-    }
-  }, [isInView, motionValue, target, duration])
-
-  useEffect(() => {
-    const unsubscribe = rounded.on("change", (v) => {
-      if (ref.current) ref.current.textContent = v
-    })
-    return unsubscribe
-  }, [rounded])
-
-  return <span ref={ref}>0</span>
-}
-
-// ─── Section Wrapper ──────────────────────────────────────────────
-
-function Section({
-  children,
-  className = "",
-  id,
-}: {
-  children: React.ReactNode
-  className?: string
-  id?: string
-}) {
-  return (
-    <motion.section
-      id={id}
-      className={`py-20 md:py-28 ${className}`}
-      initial="hidden"
-      whileInView="visible"
-      viewport={{ once: true, amount: 0.15 }}
-      variants={staggerContainer}
-    >
-      <div className="container mx-auto px-4">{children}</div>
-    </motion.section>
-  )
-}
-
-// ─── Section Heading ──────────────────────────────────────────────
-
-function SectionHeading({
-  title,
-  subtitle,
-  icon: Icon,
-}: {
-  title: string
-  subtitle?: string
-  icon?: React.ElementType
-}) {
-  return (
-    <motion.div variants={fadeUp} className="mb-14 text-center">
-      {Icon && (
-        <div className="mx-auto mb-4 flex h-14 w-14 items-center justify-center rounded-2xl bg-[#FAFF00]/20">
-          <Icon size={28} weight="duotone" className="text-[#FAFF00] dark:text-[#FAFF00]" />
-        </div>
-      )}
-      <h2 className="font-serif italic font-extrabold text-3xl md:text-5xl mb-3">{title}</h2>
-      {subtitle && (
-        <p className="text-lg text-muted-foreground max-w-2xl mx-auto">{subtitle}</p>
-      )}
-    </motion.div>
-  )
-}
-
-// ─── Link Card ────────────────────────────────────────────────────
-
-function LinkCard({
-  title,
-  description,
-  href,
-  icon: Icon,
-  iconSource,
-  accent = false,
-}: {
-  title: string
-  description: string
-  href: string
-  icon?: React.ElementType
-  iconSource?: string
-  accent?: boolean
-}) {
-  return (
-    <motion.div variants={fadeUp}>
-      <a href={href} target="_blank" rel="noopener noreferrer" className="block h-full">
-        <Card
-          className={`group h-full hover:shadow-xl transition-all duration-300 hover:-translate-y-2 ${
-            accent ? "border-[#FAFF00]/40 bg-[#FAFF00]/5" : ""
-          }`}
-        >
-          <CardHeader>
-            {iconSource ? (
-              <Image src={iconSource} alt={title} width={48} height={48} className="w-12 h-12 rounded-xl mb-3 transition-transform group-hover:scale-110" />
-            ) : Icon ? (
-              <div
-                className={`w-12 h-12 rounded-xl flex items-center justify-center mb-3 transition-transform group-hover:scale-110 ${
-                  accent
-                    ? "bg-[#FAFF00] text-black"
-                    : "bg-secondary text-foreground"
-                }`}
-              >
-                <Icon size={24} weight="duotone" />
-              </div>
-            ) : null}
-            <CardTitle className="text-xl flex items-center gap-2">
-              {title}
-              <ArrowSquareOut
-                size={16}
-                className="opacity-0 group-hover:opacity-100 transition-opacity text-muted-foreground"
-              />
-            </CardTitle>
-            <CardDescription className="text-base">{description}</CardDescription>
-          </CardHeader>
-        </Card>
-      </a>
-    </motion.div>
-  )
-}
-
-// ─── Process Step ─────────────────────────────────────────────────
-
-function ProcessStep({
-  number,
-  title,
-  delay = 0,
-}: {
-  number: number
-  title: string
-  delay?: number
-}) {
-  return (
-    <motion.div
-      variants={fadeUp}
-      transition={{ delay }}
-      className="flex items-start gap-4"
-    >
-      <div className="flex-shrink-0 w-10 h-10 rounded-full bg-[#FAFF00] text-black font-bold flex items-center justify-center text-lg font-mono">
-        {number}
-      </div>
-      <p className="text-base md:text-lg pt-1.5">{title}</p>
-    </motion.div>
-  )
-}
-
-// ─── Stat Bar ─────────────────────────────────────────────────────
-
-function StatBar({
-  repo,
-  commits,
-  added,
-  removed,
-  maxCommits,
-}: {
-  repo: string
-  commits: number
-  added: string
-  removed: string
-  maxCommits: number
-}) {
-  const percentage = (commits / maxCommits) * 100
-  return (
-    <motion.div variants={fadeUp} className="space-y-2">
-      <div className="flex justify-between items-baseline">
-        <span className="font-mono text-sm font-semibold">{repo}</span>
-        <span className="text-sm text-muted-foreground font-mono">
-          {commits} commits
-        </span>
-      </div>
-      <div className="h-3 rounded-full bg-secondary overflow-hidden">
-        <motion.div
-          className="h-full rounded-full bg-gradient-to-r from-[#FAFF00] to-[#FAFF00]/60"
-          initial={{ width: 0 }}
-          whileInView={{ width: `${percentage}%` }}
-          viewport={{ once: true }}
-          transition={{ duration: 1, ease: "easeOut" }}
-        />
-      </div>
-      <div className="flex gap-4 text-xs text-muted-foreground font-mono">
-        <span className="text-green-500">+{added}</span>
-        <span className="text-red-400">-{removed}</span>
-      </div>
-    </motion.div>
-  )
-}
-
-// ─── Main Page ────────────────────────────────────────────────────
+// ─── Page Layout ──────────────────────────────────────────────────
 
 export default function AIPlaybook() {
   return (
@@ -249,7 +64,6 @@ export default function AIPlaybook() {
 
       {/* ── Hero ─────────────────────────────────────────── */}
       <section className="flex-col relative overflow-hidden min-h-[80vh] flex justify-center items-center">
-        {/* Background decorations */}
         <div className="absolute inset-0 z-10">
           <div className="absolute top-20 left-[10%] w-72 h-72 rounded-full bg-[#FAFF00]/10 blur-3xl" />
           <div className="absolute bottom-20 right-[10%] w-96 h-96 rounded-full bg-[#FAFF00]/5 blur-3xl" />
@@ -313,7 +127,11 @@ export default function AIPlaybook() {
         </div>
 
         <div className="absolute top-0 left-0 w-full z-0 h-[120dvh]">
-          <iframe src="https://aura.promad.design/embed/abstract-dark-gradient-striking-black-gold-design?hideText=true" style={{width:"100%", height:"1000px",}} allowFullScreen></iframe>
+          <iframe
+            src="https://aura.promad.design/embed/abstract-dark-gradient-striking-black-gold-design?hideText=true"
+            style={{ width: "100%", height: "1000px" }}
+            allowFullScreen
+          />
         </div>
       </section>
 
@@ -325,14 +143,8 @@ export default function AIPlaybook() {
           subtitle="A unified pipeline from color definition to production code."
         />
 
-        {/* Featured: colors.promad.design */}
         <motion.div variants={fadeUp} className="mb-10">
-          <a
-            href="https://colors.promad.design"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="block"
-          >
+          <a href="https://colors.promad.design" target="_blank" rel="noopener noreferrer" className="block">
             <Card className="group relative overflow-hidden border-[#FAFF00]/40 hover:shadow-2xl transition-all duration-500 hover:-translate-y-1">
               <div className="absolute inset-0 bg-gradient-to-br from-[#FAFF00]/10 via-transparent to-[#FAFF00]/5" />
               <CardHeader className="relative">
@@ -355,14 +167,9 @@ export default function AIPlaybook() {
                   </div>
                 </div>
               </CardHeader>
-              {/* Animated color strip */}
               <div className="px-6 pb-6">
                 <div className="flex gap-1.5 h-3 rounded-full overflow-hidden">
-                  {[
-                    "#FAFF00", "#FFD600", "#FF9500", "#FF3B30",
-                    "#AF52DE", "#5856D6", "#007AFF", "#34C759",
-                    "#00C7BE", "#FF6482",
-                  ].map((color, i) => (
+                  {COLOR_PALETTE.map((color, i) => (
                     <motion.div
                       key={color}
                       className="flex-1 rounded-full"
@@ -379,7 +186,6 @@ export default function AIPlaybook() {
           </a>
         </motion.div>
 
-        {/* Figma Plugins */}
         <motion.div variants={fadeUp} className="mb-6">
           <h3 className="text-xl font-semibold text-center mb-1">Figma Plugins</h3>
           <p className="text-sm text-muted-foreground text-center">
@@ -393,49 +199,24 @@ export default function AIPlaybook() {
           viewport={{ once: true, amount: 0.2 }}
           className="grid md:grid-cols-3 gap-6"
         >
-          <LinkCard
-            icon={Swatches}
-            title="Cross Collection Color Token Mapper"
-            description="Transform color groups into semantic tokens. Create new collections, duplicate with remapping, update values across libraries."
-            href="https://www.figma.com/community/plugin/1570424472381396729/cross-collection-color-token-mapper"
-          />
-          <LinkCard
-            icon={CursorClick}
-            title="Variant Selector"
-            description="Filter variants by properties and select in bulk. Handle complex component sets with hundreds of variants."
-            href="https://www.figma.com/community/plugin/1574982950051298625/variant-selector"
-          />
-          <LinkCard
-            iconSource="https://www.figma.com/community/resource/722beb9b-9897-4a15-90e5-31c76364d064/icon"
-            title="Text Style Duplicator"
-            description="Duplicate entire text style hierarchies with custom mapping. Preserves folder structure across collections."
-            href="https://www.figma.com/community/plugin/1574985201888606536/text-style-duplicator"
-          />
+          {FIGMA_PLUGINS.map((plugin) => (
+            <LinkCard key={plugin.title} {...plugin} />
+          ))}
         </motion.div>
       </Section>
 
       {/* ── Visual Asset Generation ──────────────────────── */}
       <Section id="visual-assets" className="flex flex-col relative bg-secondary/30">
         <div className="relative z-10">
-          <SectionHeading
-            icon={Gradient}
-            title="Visual Asset Generation"
-          />
+          <SectionHeading icon={Gradient} title="Visual Asset Generation" />
         </div>
         <motion.div variants={fadeUp} className="max-w-2xl z-10 mx-auto">
-          <a
-            href="https://aura.promad.design"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="block"
-          >
+          <a href="https://aura.promad.design" target="_blank" rel="noopener noreferrer" className="block">
             <Card className="z-10 group relative overflow-hidden hover:shadow-2xl transition-all duration-500 hover:-translate-y-1">
-              {/* Animated gradient background */}
               <motion.div
                 className="absolute inset-0 opacity-30"
                 style={{
-                  background:
-                    "conic-gradient(from 0deg, #FAFF00, #FF3B30, #AF52DE, #007AFF, #34C759, #FAFF00)",
+                  background: "conic-gradient(from 0deg, #FAFF00, #FF3B30, #AF52DE, #007AFF, #34C759, #FAFF00)",
                 }}
                 animate={{ rotate: 360 }}
                 transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
@@ -444,10 +225,10 @@ export default function AIPlaybook() {
               <CardHeader className="relative text-center py-12">
                 <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-[#FAFF00] to-[#FF9500] text-black flex items-center justify-center mx-auto mb-4">
                   <Image
-                   src={"https://aura.promad.design/apple-touch-icon.png"}
-                   alt="Aura Logo"
-                   width={64}
-                   height={64}
+                    src="https://aura.promad.design/apple-touch-icon.png"
+                    alt="Aura Logo"
+                    width={64}
+                    height={64}
                   />
                 </div>
                 <CardTitle className="text-2xl flex items-center justify-center gap-2">
@@ -466,7 +247,11 @@ export default function AIPlaybook() {
           </a>
         </motion.div>
         <div className="absolute inset-0 z-0 overflow-hidden">
-          <iframe src="https://aura.promad.design/embed/dark-abstract-header-luminous-green-flow-for-websites?hideText=" style={{width:"100%", height:"100%", border:"none"}} allowFullScreen></iframe>
+          <iframe
+            src="https://aura.promad.design/embed/dark-abstract-header-luminous-green-flow-for-websites?hideText="
+            style={{ width: "100%", height: "100%", border: "none" }}
+            allowFullScreen
+          />
         </div>
       </Section>
 
@@ -484,39 +269,17 @@ export default function AIPlaybook() {
           viewport={{ once: true, amount: 0.2 }}
           className="grid md:grid-cols-3 gap-6 max-w-4xl mx-auto"
         >
-          <LinkCard
-            icon={Globe}
-            title="OVO App"
-            description="Interactive app prototype built with AI-assisted rapid development."
-            href="https://ovo.app.promad.design"
-            accent
-          />
-          <LinkCard
-            icon={CloudSun}
-            title="Weather"
-            description="Beautiful weather visualization with dynamic, responsive data display."
-            href="https://weather.promad.design"
-            accent
-          />
-          <LinkCard
-            icon={GameController}
-            title="MOW App"
-            description="Playful app concept brought to life from idea to working code."
-            href="https://mow.app.promad.design"
-            accent
-          />
+          {EXPERIMENTS.map((exp) => (
+            <LinkCard key={exp.title} {...exp} />
+          ))}
         </motion.div>
       </Section>
 
       {/* ── Creative Production Pipeline ──────────────────── */}
       <Section id="production" className="bg-secondary/30">
-        <SectionHeading
-          icon={FilmSlate}
-          title="Creative Production Pipeline"
-        />
+        <SectionHeading icon={FilmSlate} title="Creative Production Pipeline" />
 
         <div className="grid lg:grid-cols-2 gap-12 max-w-6xl mx-auto">
-          {/* Modular Video Ad System */}
           <motion.div variants={fadeUp}>
             <Card className="h-full">
               <CardHeader>
@@ -526,14 +289,8 @@ export default function AIPlaybook() {
                 <CardTitle className="text-xl">Modular Video Ad System</CardTitle>
               </CardHeader>
               <CardContent className="space-y-6">
-                {/* Animated equation */}
                 <div className="flex flex-wrap items-center justify-center gap-2 text-center font-mono text-lg">
-                  {[
-                    { label: "hooks", n: 5 },
-                    { label: "content", n: 5 },
-                    { label: "CTAs", n: 5 },
-                    { label: "scripts", n: 5 },
-                  ].map((item, i) => (
+                  {EQUATION_ITEMS.map((item, i) => (
                     <motion.div key={item.label} variants={scaleIn} className="flex items-center gap-2">
                       {i > 0 && <span className="text-muted-foreground">×</span>}
                       <div className="bg-secondary rounded-lg px-3 py-2">
@@ -550,18 +307,15 @@ export default function AIPlaybook() {
                     </div>
                   </motion.div>
                 </div>
-
                 <div className="space-y-3 pt-2">
-                  <ProcessStep number={1} title="Creative brief input" />
-                  <ProcessStep number={2} title="AI generates modular script components" delay={0.1} />
-                  <ProcessStep number={3} title="Separate screenplay options for visuals" delay={0.2} />
-                  <ProcessStep number={4} title="Mix-and-match any combination" delay={0.3} />
+                  {PROCESS_STEPS.map((title, i) => (
+                    <ProcessStep key={i} number={i + 1} title={title} delay={i * 0.1} />
+                  ))}
                 </div>
               </CardContent>
             </Card>
           </motion.div>
 
-          {/* Video Brief Development */}
           <motion.div variants={fadeUp}>
             <Card className="h-full">
               <CardHeader>
@@ -569,9 +323,7 @@ export default function AIPlaybook() {
                   <FilmScript size={24} weight="duotone" />
                 </div>
                 <CardTitle className="text-xl">Video Brief Development</CardTitle>
-                <CardDescription>
-                  From concept to shoot-ready documentation
-                </CardDescription>
+                <CardDescription>From concept to shoot-ready documentation</CardDescription>
               </CardHeader>
               <CardContent>
                 <motion.div
@@ -581,13 +333,7 @@ export default function AIPlaybook() {
                   viewport={{ once: true }}
                   className="space-y-3"
                 >
-                  {[
-                    "Scene-by-scene breakdown with timing",
-                    "Complete visual asset lists per scene",
-                    "Narration scripting and direction",
-                    "Music and sound design mapped",
-                    "Shoot-ready documentation output",
-                  ].map((item, i) => (
+                  {VIDEO_BRIEF_ITEMS.map((item, i) => (
                     <motion.div
                       key={i}
                       variants={fadeUp}
@@ -596,10 +342,7 @@ export default function AIPlaybook() {
                       <div className="w-6 h-6 rounded-full bg-[#FAFF00]/20 flex items-center justify-center flex-shrink-0">
                         <motion.div
                           className="w-2.5 h-2.5 rounded-full bg-[#FAFF00]"
-                          animate={{
-                            scale: [0, 1, 0.6, 1],
-                            opacity: [0, 1, 0.5, 1],
-                          }}
+                          animate={{ scale: [0, 1, 0.6, 1], opacity: [0, 1, 0.5, 1] }}
                           transition={{
                             delay: i * 0.15,
                             duration: 2,
@@ -628,21 +371,16 @@ export default function AIPlaybook() {
         />
 
         <div className="max-w-4xl mx-auto">
-          {/* Big number */}
-          <motion.div
-            variants={fadeUp}
-            className="text-center mb-14"
-          >
+          <motion.div variants={fadeUp} className="text-center mb-14">
             <div className="inline-flex items-baseline gap-3">
               <span className="font-mono font-extrabold text-6xl md:text-8xl">
-                <AnimatedCounter target={1026} duration={2.5} />
+                <AnimatedCounter target={TOTAL_COMMITS} duration={2.5} />
               </span>
               <span className="text-xl md:text-2xl text-muted-foreground">commits</span>
             </div>
             <p className="text-muted-foreground mt-2">across 4 production codebases</p>
           </motion.div>
 
-          {/* Repo bars */}
           <motion.div
             variants={staggerContainer}
             initial="hidden"
@@ -650,35 +388,27 @@ export default function AIPlaybook() {
             viewport={{ once: true, amount: 0.3 }}
             className="space-y-6 mb-14"
           >
-            <StatBar repo="flp-web" commits={848} added="35,579" removed="15,460" maxCommits={848} />
-            <StatBar repo="kidzovo-website" commits={76} added="2,388" removed="547" maxCommits={848} />
-            <StatBar repo="kidzovo-flutter-ui" commits={71} added="880" removed="315" maxCommits={848} />
-            <StatBar repo="kidzovo-creator-studio" commits={31} added="1,267" removed="1,020" maxCommits={848} />
+            {REPO_STATS.map((stat) => (
+              <StatBar key={stat.repo} {...stat} maxCommits={MAX_COMMITS} />
+            ))}
           </motion.div>
 
-          {/* Totals */}
-          <motion.div
-            variants={fadeUp}
-            className="flex flex-wrap justify-center gap-8"
-          >
+          <motion.div variants={fadeUp} className="flex flex-wrap justify-center gap-8">
             <div className="text-center">
               <div className="font-mono text-3xl md:text-4xl font-bold text-green-500">
-                +<AnimatedCounter target={40114} duration={2} />
+                +<AnimatedCounter target={TOTAL_LINES_ADDED} duration={2} />
               </div>
               <p className="text-sm text-muted-foreground mt-1">lines added</p>
             </div>
             <div className="text-center">
               <div className="font-mono text-3xl md:text-4xl font-bold text-red-400">
-                -<AnimatedCounter target={17342} duration={2} />
+                -<AnimatedCounter target={TOTAL_LINES_REMOVED} duration={2} />
               </div>
               <p className="text-sm text-muted-foreground mt-1">lines removed</p>
             </div>
           </motion.div>
 
-          <motion.p
-            variants={fadeUp}
-            className="text-center text-muted-foreground mt-8 text-sm"
-          >
+          <motion.p variants={fadeUp} className="text-center text-muted-foreground mt-8 text-sm">
             Plus: AI-generated coloring sheets in Creator Studio for SEO landing pages.
           </motion.p>
         </div>

@@ -1,0 +1,1250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Suprabho Dhenki — Career Evolution & Vision</title>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300;1,9..40,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0a0a0c;
+    --surface: #111114;
+    --surface-2: #161619;
+    --border: #1e1e24;
+    --border-light: #2a2a32;
+    --text-primary: #f0ede6;
+    --text-secondary: #8a8690;
+    --text-muted: #5a5660;
+    --accent-ux: #4ECDC4;
+    --accent-motion: #FF6B6B;
+    --accent-product: #A78BFA;
+    --accent-pm: #F59E0B;
+    --accent-dev: #34D399;
+    --accent-founder: #F472B6;
+    --accent-problem: #EF4444;
+    --accent-solution: #4ECDC4;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--text-primary);
+    font-family: 'DM Sans', sans-serif;
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ========= HERO ========= */
+  .hero {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 2rem;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: -50%; left: -50%;
+    width: 200%; height: 200%;
+    background: radial-gradient(ellipse at 30% 50%, rgba(78,205,196,0.04) 0%, transparent 50%),
+                radial-gradient(ellipse at 70% 50%, rgba(167,139,250,0.04) 0%, transparent 50%);
+    animation: heroGlow 15s ease-in-out infinite alternate;
+  }
+
+  @keyframes heroGlow {
+    0% { transform: translate(0,0) rotate(0deg); }
+    100% { transform: translate(-2%,1%) rotate(2deg); }
+  }
+
+  .hero-label {
+    font-size: 0.7rem;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    margin-bottom: 2rem;
+    position: relative;
+    opacity: 0;
+    animation: fadeUp 1s ease 0.2s forwards;
+  }
+
+  .hero h1 {
+    font-family: 'Instrument Serif', serif;
+    font-size: clamp(2.8rem, 7vw, 6rem);
+    font-weight: 400;
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+    margin-bottom: 1.5rem;
+    position: relative;
+    opacity: 0;
+    animation: fadeUp 1s ease 0.4s forwards;
+  }
+
+  .hero h1 em { font-style: italic; color: var(--accent-ux); }
+
+  .hero-sub {
+    font-size: clamp(0.95rem, 1.5vw, 1.15rem);
+    color: var(--text-secondary);
+    max-width: 520px;
+    line-height: 1.7;
+    position: relative;
+    opacity: 0;
+    animation: fadeUp 1s ease 0.6s forwards;
+  }
+
+  .scroll-cue {
+    position: absolute;
+    bottom: 2.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--text-muted);
+    font-size: 0.65rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    opacity: 0;
+    animation: fadeUp 1s ease 1s forwards;
+  }
+
+  .scroll-cue .arrow {
+    width: 1px; height: 32px;
+    background: linear-gradient(to bottom, var(--text-muted), transparent);
+    animation: scrollPulse 2s ease-in-out infinite;
+  }
+
+  @keyframes scrollPulse {
+    0%,100% { opacity: 0.3; transform: scaleY(0.7); }
+    50% { opacity: 1; transform: scaleY(1); }
+  }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* ========= ELEVATOR PITCH ========= */
+  .pitch {
+    padding: 6rem 2rem 8rem;
+    max-width: 680px;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  .pitch-quote {
+    font-family: 'Instrument Serif', serif;
+    font-size: clamp(1.4rem, 3vw, 2rem);
+    font-style: italic;
+    line-height: 1.6;
+    color: var(--text-primary);
+    position: relative;
+    opacity: 0; transform: translateY(30px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+  }
+
+  .pitch-quote.visible { opacity: 1; transform: translateY(0); }
+
+  .pitch-quote::before {
+    content: '"';
+    position: absolute;
+    top: -2.5rem; left: 50%;
+    transform: translateX(-50%);
+    font-size: 4rem;
+    color: var(--accent-ux);
+    opacity: 0.3;
+    font-style: normal;
+  }
+
+  .pitch-source {
+    margin-top: 2rem;
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    opacity: 0; transform: translateY(20px);
+    transition: opacity 0.8s ease 0.3s, transform 0.8s ease 0.3s;
+  }
+
+  .pitch-source.visible { opacity: 1; transform: translateY(0); }
+
+  /* ========= EXPANDING FIELD TIMELINE ========= */
+  .timeline-section {
+    padding: 4rem 2rem 8rem;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  .section-header {
+    text-align: center;
+    margin-bottom: 5rem;
+  }
+
+  .section-header h2 {
+    font-family: 'Instrument Serif', serif;
+    font-size: clamp(1.6rem, 3.5vw, 2.4rem);
+    opacity: 0; transform: translateY(20px);
+    transition: all 0.8s ease;
+  }
+
+  .section-header h2.visible { opacity: 1; transform: translateY(0); }
+
+  .section-header p {
+    color: var(--text-muted);
+    font-size: 0.8rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    margin-top: 1rem;
+    opacity: 0; transform: translateY(20px);
+    transition: all 0.8s ease 0.2s;
+  }
+
+  .section-header p.visible { opacity: 1; transform: translateY(0); }
+
+  .field-container {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .field-row {
+    display: flex;
+    align-items: stretch;
+    position: relative;
+    opacity: 0; transform: translateX(-30px);
+    transition: all 0.7s cubic-bezier(0.22,1,0.36,1);
+  }
+
+  .field-row.visible { opacity: 1; transform: translateX(0); }
+
+  .field-year {
+    width: 80px;
+    flex-shrink: 0;
+    display: flex;
+    align-items: flex-start;
+    padding-top: 1.2rem;
+    font-size: 0.7rem;
+    letter-spacing: 0.1em;
+    color: var(--text-muted);
+    font-variant-numeric: tabular-nums;
+  }
+
+  .field-track {
+    flex: 1;
+    display: flex;
+    position: relative;
+    min-height: 72px;
+  }
+
+  .field-box {
+    position: relative;
+    border-radius: 6px;
+    padding: 1rem 1.2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    transition: all 0.4s ease;
+    cursor: default;
+    border: 1px solid transparent;
+  }
+
+  .field-box:hover { transform: translateY(-2px); z-index: 2; }
+  .field-box .role-label { font-size: 0.65rem; letter-spacing: 0.15em; text-transform: uppercase; opacity: 0.7; margin-bottom: 0.3rem; }
+  .field-box .role-title { font-family: 'Instrument Serif', serif; font-size: 1.1rem; line-height: 1.3; }
+  .field-box .role-companies { font-size: 0.75rem; color: var(--text-secondary); margin-top: 0.35rem; line-height: 1.5; }
+  .field-box .role-skills { display: flex; flex-wrap: wrap; gap: 0.35rem; margin-top: 0.5rem; }
+  .field-box .role-skills span { font-size: 0.6rem; padding: 0.15rem 0.5rem; border-radius: 100px; background: rgba(255,255,255,0.06); color: var(--text-secondary); letter-spacing: 0.03em; }
+
+  .phase-ux { background: rgba(78,205,196,0.06); border-color: rgba(78,205,196,0.15); }
+  .phase-ux .role-label { color: var(--accent-ux); }
+  .phase-ux:hover { background: rgba(78,205,196,0.1); border-color: rgba(78,205,196,0.3); }
+
+  .phase-motion { background: rgba(255,107,107,0.06); border-color: rgba(255,107,107,0.15); }
+  .phase-motion .role-label { color: var(--accent-motion); }
+  .phase-motion:hover { background: rgba(255,107,107,0.1); border-color: rgba(255,107,107,0.3); }
+
+  .phase-product { background: rgba(167,139,250,0.06); border-color: rgba(167,139,250,0.15); }
+  .phase-product .role-label { color: var(--accent-product); }
+  .phase-product:hover { background: rgba(167,139,250,0.1); border-color: rgba(167,139,250,0.3); }
+
+  .phase-pm { background: rgba(245,158,11,0.06); border-color: rgba(245,158,11,0.15); }
+  .phase-pm .role-label { color: var(--accent-pm); }
+  .phase-pm:hover { background: rgba(245,158,11,0.1); border-color: rgba(245,158,11,0.3); }
+
+  .phase-dev { background: rgba(52,211,153,0.06); border-color: rgba(52,211,153,0.15); }
+  .phase-dev .role-label { color: var(--accent-dev); }
+  .phase-dev:hover { background: rgba(52,211,153,0.1); border-color: rgba(52,211,153,0.3); }
+
+  .phase-founder { background: rgba(244,114,182,0.06); border-color: rgba(244,114,182,0.15); }
+  .phase-founder .role-label { color: var(--accent-founder); }
+  .phase-founder:hover { background: rgba(244,114,182,0.1); border-color: rgba(244,114,182,0.3); }
+
+  .field-row:nth-child(1) .field-track { max-width: 35%; }
+  .field-row:nth-child(2) .field-track { max-width: 45%; }
+  .field-row:nth-child(3) .field-track { max-width: 60%; }
+  .field-row:nth-child(4) .field-track { max-width: 75%; }
+  .field-row:nth-child(5) .field-track { max-width: 88%; }
+  .field-row:nth-child(6) .field-track { max-width: 100%; }
+
+  .connector-line {
+    position: absolute;
+    left: 80px;
+    top: 0; bottom: 0;
+    width: 1px;
+    background: linear-gradient(to bottom, var(--accent-ux) 0%, var(--accent-motion) 20%, var(--accent-product) 40%, var(--accent-pm) 60%, var(--accent-dev) 80%, var(--accent-founder) 100%);
+    opacity: 0.15;
+  }
+
+  /* ========= THE PITCH — PROBLEM & VISION ========= */
+  .pitch-section {
+    padding: 6rem 2rem 8rem;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .pitch-section::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 1px;
+    background: linear-gradient(to right, transparent, var(--border), transparent);
+  }
+
+  .pitch-inner {
+    max-width: 960px;
+    margin: 0 auto;
+  }
+
+  /* Problem Statement */
+  .problem-block {
+    margin-bottom: 6rem;
+  }
+
+  .problem-label {
+    font-size: 0.65rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--accent-problem);
+    opacity: 0.7;
+    margin-bottom: 1.5rem;
+    opacity: 0; transform: translateY(20px);
+    transition: all 0.8s ease;
+  }
+
+  .problem-label.visible { opacity: 0.7; transform: translateY(0); }
+
+  .problem-headline {
+    font-family: 'Instrument Serif', serif;
+    font-size: clamp(1.8rem, 4vw, 3rem);
+    line-height: 1.25;
+    margin-bottom: 2.5rem;
+    opacity: 0; transform: translateY(20px);
+    transition: all 0.8s ease 0.15s;
+  }
+
+  .problem-headline.visible { opacity: 1; transform: translateY(0); }
+
+  .problem-headline .highlight {
+    color: var(--accent-problem);
+    opacity: 0.85;
+  }
+
+  .problem-description {
+    font-size: 1.05rem;
+    line-height: 1.8;
+    color: var(--text-secondary);
+    max-width: 720px;
+    margin-bottom: 3rem;
+    opacity: 0; transform: translateY(20px);
+    transition: all 0.8s ease 0.3s;
+  }
+
+  .problem-description.visible { opacity: 1; transform: translateY(0); }
+
+  /* Fragmented Process Visualization */
+  .process-fragments {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+    gap: 3px;
+    margin-bottom: 1.5rem;
+    opacity: 0; transform: translateY(20px);
+    transition: all 0.8s ease 0.4s;
+  }
+
+  .process-fragments.visible { opacity: 1; transform: translateY(0); }
+
+  .fragment {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding: 0.8rem;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.4s ease;
+  }
+
+  .fragment::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 2px;
+    background: var(--accent-problem);
+    opacity: 0.3;
+  }
+
+  .fragment .frag-icon {
+    font-size: 1.2rem;
+    margin-bottom: 0.4rem;
+    opacity: 0.6;
+  }
+
+  .fragment .frag-label {
+    font-size: 0.6rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    line-height: 1.4;
+  }
+
+  .fragment .frag-tool {
+    font-size: 0.55rem;
+    color: var(--accent-problem);
+    opacity: 0.5;
+    margin-top: 0.3rem;
+  }
+
+  .fragment:hover {
+    border-color: rgba(239,68,68,0.3);
+    transform: translateY(-2px);
+  }
+
+  .fragments-caption {
+    font-size: 0.7rem;
+    color: var(--text-muted);
+    text-align: center;
+    font-style: italic;
+    opacity: 0; transform: translateY(10px);
+    transition: all 0.6s ease 0.6s;
+  }
+
+  .fragments-caption.visible { opacity: 1; transform: translateY(0); }
+
+  /* Broken Arrows between fragments */
+  .broken-line {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+    padding: 1rem 0;
+    opacity: 0;
+    transition: all 0.6s ease 0.5s;
+  }
+
+  .broken-line.visible { opacity: 1; }
+
+  .broken-line span {
+    display: block;
+    width: 16px;
+    height: 1px;
+    background: var(--accent-problem);
+    opacity: 0.25;
+  }
+
+  .broken-line span:nth-child(odd) { opacity: 0; }
+
+  /* The Epiphany — Code Comparison */
+  .epiphany-block {
+    margin-bottom: 5rem;
+    padding: 3rem 0;
+    position: relative;
+  }
+
+  .epiphany-block::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 1px;
+    background: linear-gradient(to right, transparent, var(--border), transparent);
+  }
+
+  .epiphany-label {
+    font-size: 0.65rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--accent-solution);
+    opacity: 0.7;
+    margin-bottom: 1.5rem;
+    opacity: 0; transform: translateY(20px);
+    transition: all 0.8s ease;
+  }
+
+  .epiphany-label.visible { opacity: 0.7; transform: translateY(0); }
+
+  .epiphany-headline {
+    font-family: 'Instrument Serif', serif;
+    font-size: clamp(1.5rem, 3vw, 2.2rem);
+    line-height: 1.35;
+    margin-bottom: 2rem;
+    opacity: 0; transform: translateY(20px);
+    transition: all 0.8s ease 0.15s;
+  }
+
+  .epiphany-headline.visible { opacity: 1; transform: translateY(0); }
+
+  .comparison-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+    opacity: 0; transform: translateY(20px);
+    transition: all 0.8s ease 0.3s;
+  }
+
+  .comparison-grid.visible { opacity: 1; transform: translateY(0); }
+
+  .compare-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 1.5rem;
+  }
+
+  .compare-card.code-side { border-color: rgba(52,211,153,0.2); }
+  .compare-card.design-side { border-color: rgba(239,68,68,0.15); }
+
+  .compare-card h4 {
+    font-size: 0.65rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    margin-bottom: 1rem;
+  }
+
+  .compare-card.code-side h4 { color: var(--accent-dev); }
+  .compare-card.design-side h4 { color: var(--accent-problem); opacity: 0.7; }
+
+  .compare-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.6rem;
+    margin-bottom: 0.8rem;
+    font-size: 0.85rem;
+    line-height: 1.5;
+    color: var(--text-secondary);
+  }
+
+  .compare-item .icon {
+    flex-shrink: 0;
+    font-size: 0.75rem;
+    margin-top: 0.2rem;
+  }
+
+  .compare-card.code-side .icon { color: var(--accent-dev); }
+  .compare-card.design-side .icon { color: var(--accent-problem); opacity: 0.5; }
+
+  /* Solution Journey */
+  .solution-block {
+    padding: 3rem 0;
+    position: relative;
+  }
+
+  .solution-block::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 1px;
+    background: linear-gradient(to right, transparent, var(--border), transparent);
+  }
+
+  .solution-label {
+    font-size: 0.65rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--accent-solution);
+    opacity: 0.7;
+    margin-bottom: 1.5rem;
+    opacity: 0; transform: translateY(20px);
+    transition: all 0.8s ease;
+  }
+
+  .solution-label.visible { opacity: 0.7; transform: translateY(0); }
+
+  .solution-headline {
+    font-family: 'Instrument Serif', serif;
+    font-size: clamp(1.5rem, 3vw, 2.2rem);
+    line-height: 1.35;
+    margin-bottom: 1rem;
+    opacity: 0; transform: translateY(20px);
+    transition: all 0.8s ease 0.15s;
+  }
+
+  .solution-headline.visible { opacity: 1; transform: translateY(0); }
+
+  .solution-sub {
+    font-size: 1rem;
+    color: var(--text-secondary);
+    line-height: 1.7;
+    margin-bottom: 3rem;
+    max-width: 680px;
+    opacity: 0; transform: translateY(20px);
+    transition: all 0.8s ease 0.25s;
+  }
+
+  .solution-sub.visible { opacity: 1; transform: translateY(0); }
+
+  /* Solution Units */
+  .solution-units {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  .unit-card {
+    display: grid;
+    grid-template-columns: 80px 1fr;
+    gap: 1.5rem;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 1.5rem;
+    position: relative;
+    overflow: hidden;
+    opacity: 0; transform: translateY(20px);
+    transition: all 0.7s ease;
+  }
+
+  .unit-card.visible { opacity: 1; transform: translateY(0); }
+
+  .unit-card:hover { border-color: var(--border-light); transform: translateY(-2px); }
+
+  .unit-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; bottom: 0;
+    width: 3px;
+    border-radius: 3px 0 0 3px;
+  }
+
+  .unit-card.unit-setup::before { background: var(--accent-ux); }
+  .unit-card.unit-visuals::before { background: var(--accent-motion); }
+  .unit-card.unit-workflow::before { background: var(--accent-product); }
+
+  .unit-number {
+    font-family: 'Instrument Serif', serif;
+    font-size: 2.5rem;
+    opacity: 0.15;
+    line-height: 1;
+  }
+
+  .unit-content h3 {
+    font-family: 'Instrument Serif', serif;
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .unit-content .unit-problem {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    margin-bottom: 0.6rem;
+    line-height: 1.5;
+  }
+
+  .unit-content .unit-solution {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    line-height: 1.6;
+    margin-bottom: 0.8rem;
+  }
+
+  .unit-content .unit-impact {
+    display: inline-block;
+    font-size: 0.7rem;
+    padding: 0.25rem 0.75rem;
+    border-radius: 100px;
+    font-weight: 500;
+    letter-spacing: 0.03em;
+  }
+
+  .unit-setup .unit-impact { background: rgba(78,205,196,0.1); color: var(--accent-ux); }
+  .unit-visuals .unit-impact { background: rgba(255,107,107,0.1); color: var(--accent-motion); }
+  .unit-workflow .unit-impact { background: rgba(167,139,250,0.1); color: var(--accent-product); }
+
+  .unit-tools {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+    margin-top: 0.6rem;
+  }
+
+  .unit-tools span {
+    font-size: 0.6rem;
+    padding: 0.15rem 0.5rem;
+    border-radius: 100px;
+    background: rgba(255,255,255,0.04);
+    color: var(--text-muted);
+  }
+
+  /* Vision statement */
+  .vision-block {
+    margin-top: 5rem;
+    padding: 3rem;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    opacity: 0; transform: translateY(30px);
+    transition: all 0.8s ease;
+  }
+
+  .vision-block.visible { opacity: 1; transform: translateY(0); }
+
+  .vision-block::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 2px;
+    background: linear-gradient(to right, var(--accent-ux), var(--accent-product), var(--accent-founder));
+  }
+
+  .vision-block .vision-label {
+    font-size: 0.6rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    margin-bottom: 1.5rem;
+  }
+
+  .vision-block .vision-text {
+    font-family: 'Instrument Serif', serif;
+    font-size: clamp(1.3rem, 2.5vw, 1.8rem);
+    font-style: italic;
+    line-height: 1.6;
+    max-width: 640px;
+    margin: 0 auto 1.5rem;
+    color: var(--text-primary);
+  }
+
+  .vision-block .vision-text .em-code { color: var(--accent-dev); }
+  .vision-block .vision-text .em-design { color: var(--accent-product); }
+
+  .vision-block .vision-cta {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    letter-spacing: 0.1em;
+  }
+
+  /* ========= COMPANIES ========= */
+  .companies-section {
+    padding: 4rem 2rem 6rem;
+    max-width: 900px;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  .companies-label {
+    font-size: 0.65rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    margin-bottom: 2rem;
+  }
+
+  .companies-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem 2rem;
+  }
+
+  .companies-list span {
+    font-family: 'Instrument Serif', serif;
+    font-size: 1.1rem;
+    color: var(--text-secondary);
+    opacity: 0; transform: translateY(10px);
+    transition: all 0.5s ease;
+  }
+
+  .companies-list span.visible { opacity: 1; transform: translateY(0); }
+
+  .companies-list span::after {
+    content: '·';
+    margin-left: 2rem;
+    color: var(--text-muted);
+    opacity: 0.3;
+  }
+
+  .companies-list span:last-child::after { display: none; }
+
+  /* ========= STATS ========= */
+  .stats-section {
+    padding: 4rem 2rem 6rem;
+    max-width: 900px;
+    margin: 0 auto;
+  }
+
+  .stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 1.5rem;
+  }
+
+  .stat-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 1.5rem;
+    text-align: center;
+    opacity: 0; transform: translateY(20px);
+    transition: all 0.6s ease;
+  }
+
+  .stat-card.visible { opacity: 1; transform: translateY(0); }
+
+  .stat-number {
+    font-family: 'Instrument Serif', serif;
+    font-size: 2.2rem;
+    color: var(--text-primary);
+    line-height: 1;
+    margin-bottom: 0.5rem;
+  }
+
+  .stat-label {
+    font-size: 0.7rem;
+    color: var(--text-muted);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    line-height: 1.5;
+  }
+
+  /* ========= FOOTER ========= */
+  .footer {
+    padding: 3rem 2rem;
+    text-align: center;
+    border-top: 1px solid var(--border);
+  }
+
+  .footer-links {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    flex-wrap: wrap;
+    margin-bottom: 1.5rem;
+  }
+
+  .footer-links a {
+    font-size: 0.75rem;
+    color: var(--text-secondary);
+    text-decoration: none;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    transition: color 0.3s ease;
+  }
+
+  .footer-links a:hover { color: var(--text-primary); }
+
+  .footer-copy {
+    font-size: 0.65rem;
+    color: var(--text-muted);
+  }
+
+  /* ========= RESPONSIVE ========= */
+  @media (max-width: 768px) {
+    .field-year { width: 50px; font-size: 0.6rem; }
+    .field-row:nth-child(1) .field-track,
+    .field-row:nth-child(2) .field-track,
+    .field-row:nth-child(3) .field-track,
+    .field-row:nth-child(4) .field-track,
+    .field-row:nth-child(5) .field-track,
+    .field-row:nth-child(6) .field-track { max-width: 100%; }
+    .field-box { padding: 0.8rem 1rem; }
+    .field-box .role-title { font-size: 0.95rem; }
+    .connector-line { left: 50px; }
+    .comparison-grid { grid-template-columns: 1fr; }
+    .unit-card { grid-template-columns: 1fr; gap: 0.5rem; }
+    .unit-number { font-size: 1.5rem; }
+    .process-fragments { grid-template-columns: repeat(auto-fill, minmax(100px, 1fr)); }
+  }
+</style>
+</head>
+<body>
+
+<!-- ======== HERO ======== -->
+<section class="hero">
+  <p class="hero-label">The Evolution of a Designer</p>
+  <h1>Suprabho Dhenki<br><em>An Ever-Expanding Field</em></h1>
+  <p class="hero-sub">From crafting user experiences to building products, managing programs, writing code, and founding a creative studio — a career that never stopped widening.</p>
+  <div class="scroll-cue">
+    <span>Scroll</span>
+    <div class="arrow"></div>
+  </div>
+</section>
+
+<!-- ======== ELEVATOR PITCH ======== -->
+<section class="pitch">
+  <p class="pitch-quote" data-animate>
+    I started by understanding people. Then I learned to move them — with motion, with products, with strategy. Every role I've taken didn't replace the last — it expanded the canvas. Today I design, manage, code, and build companies, because great products need someone who's been on every side of the table.
+  </p>
+  <p class="pitch-source" data-animate>— The elevator pitch</p>
+</section>
+
+<!-- ======== EXPANDING FIELD TIMELINE ======== -->
+<section class="timeline-section">
+  <div class="section-header">
+    <h2 data-animate>The Expanding Field</h2>
+    <p data-animate>Each phase didn't replace the last — it added a new dimension</p>
+  </div>
+
+  <div class="field-container">
+    <div class="connector-line"></div>
+
+    <div class="field-row" data-animate data-delay="0">
+      <div class="field-year">2016 –</div>
+      <div class="field-track">
+        <div class="field-box phase-ux" style="flex:1;">
+          <div class="role-label">Phase 01</div>
+          <div class="role-title">UX Designer</div>
+          <div class="role-companies">IIT Guwahati · CHI Publication · goStops · IoT Startups</div>
+          <div class="role-skills"><span>User Research</span><span>Information Architecture</span><span>Wireframing</span><span>Prototyping</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="field-row" data-animate data-delay="100">
+      <div class="field-year">2018 –</div>
+      <div class="field-track">
+        <div class="field-box phase-ux" style="flex:1;"><div class="role-title" style="font-size:0.85rem;opacity:0.5;">UX Design</div></div>
+        <div class="field-box phase-motion" style="flex:1.2;margin-left:2px;">
+          <div class="role-label">Phase 02</div>
+          <div class="role-title">Branding & Motion Designer</div>
+          <div class="role-companies">goStops · Brand Communications · Storytelling</div>
+          <div class="role-skills"><span>Motion Graphics</span><span>Brand Identity</span><span>After Effects</span><span>Storyboarding</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="field-row" data-animate data-delay="200">
+      <div class="field-year">2020 –</div>
+      <div class="field-track">
+        <div class="field-box phase-ux" style="flex:0.6;"><div class="role-title" style="font-size:0.8rem;opacity:0.4;">UX</div></div>
+        <div class="field-box phase-motion" style="flex:0.6;margin-left:2px;"><div class="role-title" style="font-size:0.8rem;opacity:0.4;">Motion</div></div>
+        <div class="field-box phase-product" style="flex:1.5;margin-left:2px;">
+          <div class="role-label">Phase 03</div>
+          <div class="role-title">Product Designer</div>
+          <div class="role-companies">1mg · ClearTax · Merkle Science · Turing</div>
+          <div class="role-skills"><span>Design Systems</span><span>Enterprise SaaS</span><span>Data Visualization</span><span>Complex Workflows</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="field-row" data-animate data-delay="300">
+      <div class="field-year">2022 –</div>
+      <div class="field-track">
+        <div class="field-box phase-ux" style="flex:0.4;"><div class="role-title" style="font-size:0.75rem;opacity:0.35;">UX</div></div>
+        <div class="field-box phase-motion" style="flex:0.4;margin-left:2px;"><div class="role-title" style="font-size:0.75rem;opacity:0.35;">Motion</div></div>
+        <div class="field-box phase-product" style="flex:0.8;margin-left:2px;"><div class="role-title" style="font-size:0.75rem;opacity:0.35;">Product Design</div></div>
+        <div class="field-box phase-pm" style="flex:1.5;margin-left:2px;">
+          <div class="role-label">Phase 04</div>
+          <div class="role-title">Product Designer + Product Manager</div>
+          <div class="role-companies">Program Ownership · Roadmapping · Strategy</div>
+          <div class="role-skills"><span>Product Strategy</span><span>Roadmap Planning</span><span>Stakeholder Mgmt</span><span>OKRs</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="field-row" data-animate data-delay="400">
+      <div class="field-year">2024 –</div>
+      <div class="field-track">
+        <div class="field-box phase-ux" style="flex:0.3;"><div class="role-title" style="font-size:0.7rem;opacity:0.3;">UX</div></div>
+        <div class="field-box phase-motion" style="flex:0.3;margin-left:2px;"><div class="role-title" style="font-size:0.7rem;opacity:0.3;">Motion</div></div>
+        <div class="field-box phase-product" style="flex:0.5;margin-left:2px;"><div class="role-title" style="font-size:0.7rem;opacity:0.3;">Product</div></div>
+        <div class="field-box phase-pm" style="flex:0.5;margin-left:2px;"><div class="role-title" style="font-size:0.7rem;opacity:0.3;">PM</div></div>
+        <div class="field-box phase-dev" style="flex:1.5;margin-left:2px;">
+          <div class="role-label">Phase 05</div>
+          <div class="role-title">Front-end Developer</div>
+          <div class="role-companies">Flutter · Next.js · React · HTML/CSS/JS</div>
+          <div class="role-skills"><span>Flutter UI</span><span>React/Next.js</span><span>1000+ Commits</span><span>40K+ Lines</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="field-row" data-animate data-delay="500">
+      <div class="field-year">Now</div>
+      <div class="field-track">
+        <div class="field-box phase-ux" style="flex:0.25;"><div class="role-title" style="font-size:0.65rem;opacity:0.25;">UX</div></div>
+        <div class="field-box phase-motion" style="flex:0.25;margin-left:2px;"><div class="role-title" style="font-size:0.65rem;opacity:0.25;">Motion</div></div>
+        <div class="field-box phase-product" style="flex:0.35;margin-left:2px;"><div class="role-title" style="font-size:0.65rem;opacity:0.25;">Product</div></div>
+        <div class="field-box phase-pm" style="flex:0.35;margin-left:2px;"><div class="role-title" style="font-size:0.65rem;opacity:0.25;">PM</div></div>
+        <div class="field-box phase-dev" style="flex:0.4;margin-left:2px;"><div class="role-title" style="font-size:0.65rem;opacity:0.25;">Dev</div></div>
+        <div class="field-box phase-founder" style="flex:1.8;margin-left:2px;">
+          <div class="role-label">Phase 06 — Today</div>
+          <div class="role-title">Founder & Creative Technologist</div>
+          <div class="role-companies">Promad Design Studio · Kidzovo · AI Tools · Figma Plugins · Open Source</div>
+          <div class="role-skills"><span>Studio Leadership</span><span>AI Workflows</span><span>Figma Plugins</span><span>Video Production</span><span>EdTech</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ======== THE PITCH — THE PROBLEM ======== -->
+<section class="pitch-section">
+  <div class="pitch-inner">
+
+    <!-- PROBLEM -->
+    <div class="problem-block">
+      <p class="problem-label" data-animate>The Problem</p>
+      <h2 class="problem-headline" data-animate>A designer's process is <span class="highlight">fragmented across 12+ tools</span> that don't talk to each other</h2>
+      <p class="problem-description" data-animate>
+        From requirement gathering and hypothesis validation, through secondary research and solution brainstorming, to information architecture, user flows, stakeholder alignment, developer handoff, QA, feature marketing, performance analytics, A/B testing, and app store optimization — every phase lives in a different tool, a different context, a different mental model. The work is continuous. The tools are not.
+      </p>
+
+      <div class="process-fragments" data-animate>
+        <div class="fragment">
+          <div class="frag-icon">📋</div>
+          <div class="frag-label">Requirements</div>
+          <div class="frag-tool">Notion / Jira</div>
+        </div>
+        <div class="fragment">
+          <div class="frag-icon">🔍</div>
+          <div class="frag-label">Research</div>
+          <div class="frag-tool">Dovetail / Sheets</div>
+        </div>
+        <div class="fragment">
+          <div class="frag-icon">💡</div>
+          <div class="frag-label">Ideation</div>
+          <div class="frag-tool">FigJam / Miro</div>
+        </div>
+        <div class="fragment">
+          <div class="frag-icon">🗂️</div>
+          <div class="frag-label">IA & Flows</div>
+          <div class="frag-tool">Figma / Overflow</div>
+        </div>
+        <div class="fragment">
+          <div class="frag-icon">🎨</div>
+          <div class="frag-label">UI Design</div>
+          <div class="frag-tool">Figma</div>
+        </div>
+        <div class="fragment">
+          <div class="frag-icon">📐</div>
+          <div class="frag-label">Design System</div>
+          <div class="frag-tool">Figma / Storybook</div>
+        </div>
+        <div class="fragment">
+          <div class="frag-icon">🤝</div>
+          <div class="frag-label">Alignment</div>
+          <div class="frag-tool">Slack / Loom</div>
+        </div>
+        <div class="fragment">
+          <div class="frag-icon">🔧</div>
+          <div class="frag-label">Dev Handoff</div>
+          <div class="frag-tool">Zeplin / Dev Mode</div>
+        </div>
+        <div class="fragment">
+          <div class="frag-icon">🧪</div>
+          <div class="frag-label">QA & Testing</div>
+          <div class="frag-tool">TestFlight / BrowserStack</div>
+        </div>
+        <div class="fragment">
+          <div class="frag-icon">📹</div>
+          <div class="frag-label">Feature Videos</div>
+          <div class="frag-tool">After Effects / Premiere</div>
+        </div>
+        <div class="fragment">
+          <div class="frag-icon">📊</div>
+          <div class="frag-label">Analytics</div>
+          <div class="frag-tool">Mixpanel / Amplitude</div>
+        </div>
+        <div class="fragment">
+          <div class="frag-icon">🧬</div>
+          <div class="frag-label">A/B Testing</div>
+          <div class="frag-tool">Optimizely / Firebase</div>
+        </div>
+      </div>
+
+      <p class="fragments-caption" data-animate>12 steps. 12+ tools. Zero continuity.</p>
+    </div>
+
+    <!-- THE EPIPHANY -->
+    <div class="epiphany-block">
+      <p class="epiphany-label" data-animate>The Epiphany</p>
+      <h2 class="epiphany-headline" data-animate>Since I started writing code, coming back to design tools feels <em>limited</em></h2>
+
+      <div class="comparison-grid" data-animate>
+        <div class="compare-card code-side">
+          <h4>How Code Works</h4>
+          <div class="compare-item"><span class="icon">✦</span> Reliable — it just works, every time</div>
+          <div class="compare-item"><span class="icon">✦</span> Translates clearly across stages</div>
+          <div class="compare-item"><span class="icon">✦</span> Every change is saved, versioned, documented</div>
+          <div class="compare-item"><span class="icon">✦</span> Every decision has a <em>why</em> attached</div>
+          <div class="compare-item"><span class="icon">✦</span> Works seamlessly across devices, platforms, IDEs</div>
+          <div class="compare-item"><span class="icon">✦</span> One source of truth, always</div>
+        </div>
+        <div class="compare-card design-side">
+          <h4>How Design Tools Work</h4>
+          <div class="compare-item"><span class="icon">✕</span> Figma canvas feels limited after code</div>
+          <div class="compare-item"><span class="icon">✕</span> Adobe suite has become clunky</div>
+          <div class="compare-item"><span class="icon">✕</span> Repetitive setup for every new client</div>
+          <div class="compare-item"><span class="icon">✕</span> No real version history with intent</div>
+          <div class="compare-item"><span class="icon">✕</span> Context scattered across apps</div>
+          <div class="compare-item"><span class="icon">✕</span> Even Figma's Dev Mode admits design → code gap</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- THE SOLUTION JOURNEY -->
+    <div class="solution-block">
+      <p class="solution-label" data-animate>What I'm Building</p>
+      <h2 class="solution-headline" data-animate>Units of design that compound across phases</h2>
+      <p class="solution-sub" data-animate>Instead of waiting for one tool to rule them all, I've been building small, sharp tools — each one closing a specific gap in my workflow. Each one a "unit" that makes the next phase faster.</p>
+
+      <div class="solution-units">
+
+        <!-- Unit 1: Brand System Setup -->
+        <div class="unit-card unit-setup" data-animate>
+          <div class="unit-number">01</div>
+          <div class="unit-content">
+            <h3>Brand System Setup — from 1 week to 4 hours</h3>
+            <p class="unit-problem">Every new client meant rebuilding the same foundations: color tokens, typography scales, spacing systems, design tokens — all manually, all fragile.</p>
+            <p class="unit-solution">Built 3 Figma plugins and a standalone color tool that generate Tailwind-compatible palettes, duplicate text styles across variants, and update nested tokens in bulk across component libraries. A personal design system that's fast, portable, and only needs to work for one person — but can be compared across projects to spot what's truly different.</p>
+            <span class="unit-impact">1 week → 4 hours</span>
+            <div class="unit-tools">
+              <span>colors.promad.design</span>
+              <span>Cross-Collection Color Token Mapper</span>
+              <span>Variant Selector</span>
+              <span>Text Style Duplicator</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Unit 2: Visual Generation -->
+        <div class="unit-card unit-visuals" data-animate>
+          <div class="unit-number">02</div>
+          <div class="unit-content">
+            <h3>Visual Generation — code as the creative medium</h3>
+            <p class="unit-problem">Photoshop felt clunky. After Effects felt like overkill for backgrounds. Canvas too basic. Meanwhile, Stripe and others were making stunning visuals — all in code.</p>
+            <p class="unit-solution">Started "Beautiful Headers" for website hero sections, which evolved into Aura — a tool that generates dynamic, variable backgrounds used in static assets, animated videos, website embeds, and slide decks. Not generative AI, but parametric design: controllable, reproducible, beautiful.</p>
+            <span class="unit-impact">From static to living visuals</span>
+            <div class="unit-tools">
+              <span>aura.promad.design</span>
+              <span>223+ Scene Catalogue</span>
+              <span>Video Export</span>
+              <span>Web Embeds</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Unit 3: Creative Production -->
+        <div class="unit-card unit-workflow" data-animate>
+          <div class="unit-number">03</div>
+          <div class="unit-content">
+            <h3>Creative Production — modular, not monolithic</h3>
+            <p class="unit-problem">Video ads, feature announcements, and marketing assets were one-shot efforts. Every brief started from zero. No reusable components.</p>
+            <p class="unit-solution">Developed a modular framework where creative briefs generate interchangeable hooks, content blocks, CTAs, and visual screenplays. Mix-and-match any combination to produce 100+ video variations from a single brief. Scene-by-scene breakdowns with timing, assets, narration, and sound design — shoot-ready documentation from AI-assisted workflows.</p>
+            <span class="unit-impact">1 brief → 100+ variations</span>
+            <div class="unit-tools">
+              <span>AI Brief → Screenplay Pipeline</span>
+              <span>Modular Hook/Content/CTA System</span>
+              <span>Scene-level Asset Mapping</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Vision -->
+      <div class="vision-block" data-animate>
+        <p class="vision-label">The Vision</p>
+        <p class="vision-text">
+          Design should work like <span class="em-code">code</span> — reliable, versioned, continuous. Each tool I build is a step toward a workflow where <span class="em-design">design decisions compound</span> instead of being scattered. Where the units of your work grow together, phase by phase, tool by tool.
+        </p>
+        <p class="vision-cta">This is where all my expanding fields converge.</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ======== COMPANIES ======== -->
+<section class="companies-section">
+  <p class="companies-label">Companies & Projects Along The Way</p>
+  <div class="companies-list">
+    <span data-animate>Microsoft</span>
+    <span data-animate>Merkle Science</span>
+    <span data-animate>ClearTax</span>
+    <span data-animate>1mg</span>
+    <span data-animate>Turing</span>
+    <span data-animate>HOMER</span>
+    <span data-animate>goStops</span>
+    <span data-animate>Kidzovo</span>
+    <span data-animate>Promad</span>
+  </div>
+</section>
+
+<!-- ======== STATS ======== -->
+<section class="stats-section">
+  <div class="stats-grid">
+    <div class="stat-card" data-animate>
+      <div class="stat-number">1000+</div>
+      <div class="stat-label">Code Commits</div>
+    </div>
+    <div class="stat-card" data-animate>
+      <div class="stat-number">40K+</div>
+      <div class="stat-label">Lines of Code</div>
+    </div>
+    <div class="stat-card" data-animate>
+      <div class="stat-number">3</div>
+      <div class="stat-label">Figma Plugins Built</div>
+    </div>
+    <div class="stat-card" data-animate>
+      <div class="stat-number">CHI '16</div>
+      <div class="stat-label">Published at ACM CHI</div>
+    </div>
+    <div class="stat-card" data-animate>
+      <div class="stat-number">IIT</div>
+      <div class="stat-label">Guwahati · Design</div>
+    </div>
+    <div class="stat-card" data-animate>
+      <div class="stat-number">∞</div>
+      <div class="stat-label">Still Expanding</div>
+    </div>
+  </div>
+</section>
+
+<!-- ======== FOOTER ======== -->
+<footer class="footer">
+  <div class="footer-links">
+    <a href="https://promad.design" target="_blank">promad.design</a>
+    <a href="https://linkedin.com/in/shuprobho" target="_blank">LinkedIn</a>
+    <a href="https://www.behance.net/Suprabho" target="_blank">Behance</a>
+    <a href="https://instagram.com/shu.pro.bho" target="_blank">Instagram</a>
+  </div>
+  <p class="footer-copy">© 2026 Suprabho Dhenki · Built with Promad</p>
+</footer>
+
+<script>
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      const delay = entry.target.dataset.delay || 0;
+      setTimeout(() => {
+        entry.target.classList.add('visible');
+      }, parseInt(delay));
+      observer.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+
+document.querySelectorAll('[data-animate]').forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>
