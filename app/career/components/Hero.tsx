@@ -21,7 +21,7 @@ export function Hero() {
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.2, duration: 0.8 }}
       >
-        The Evolution of a Designer
+        An Ever-Expanding Web Of Interest
       </motion.p>
 
       <motion.h1
@@ -33,7 +33,7 @@ export function Hero() {
       >
         Suprabho Dhenki
         <br />
-        <em style={{ color: "#4ECDC4" }}>An Ever-Expanding Field</em>
+        <em style={{ color: "#4ECDC4" }}>The Evolution of a Designer</em>
       </motion.h1>
 
       <motion.p

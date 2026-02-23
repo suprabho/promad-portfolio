@@ -1,7 +1,7 @@
 import { motion } from "framer-motion"
 import { Reveal } from "./Reveal"
 import { PhaseBox } from "./PhaseBox"
-import { TIMELINE } from "../content"
+import { TIMELINE, PHASE } from "../content"
 
 export function TimelineSection() {
   return (
@@ -25,40 +25,76 @@ export function TimelineSection() {
       <div className="relative flex flex-col gap-0">
         {/* Vertical connector */}
         <div
-          className="absolute top-0 bottom-0 w-px pointer-events-none"
+          className="absolute top-0 bottom-0 w-px pointer-events-none left-[120px] md:left-[240px]"
           style={{
-            left: "80px",
             background:
               "linear-gradient(to bottom, #4ECDC4, #FF6B6B 20%, #A78BFA 40%, #F59E0B 60%, #34D399 80%, #F472B6)",
             opacity: 0.15,
           }}
         />
 
-        {TIMELINE.map((row, rowIdx) => (
-          <motion.div
-            key={rowIdx}
-            className="flex items-stretch"
-            initial={{ opacity: 0, x: -30 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true, amount: 0.3 }}
-            transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1], delay: row.delay }}
-          >
-            <div
-              className="flex-shrink-0 flex items-start pt-5 text-[0.7rem] tracking-[0.1em] tabular-nums"
-              style={{ width: "80px", color: "#5a5660" }}
+        {TIMELINE.map((row, rowIdx) => {
+          const currentBox = row.boxes.find((b) => !!b.label)
+          const currentCfg = currentBox ? PHASE[currentBox.phase] : null
+
+          return (
+            <motion.div
+              key={rowIdx}
+              className="flex items-stretch"
+              initial={{ opacity: 0, x: -30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true, amount: 0.3 }}
+              transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1], delay: row.delay }}
             >
-              {row.year}
-            </div>
-            <div
-              className="timeline-track flex min-h-[72px]"
-              style={{ maxWidth: row.trackWidth, flex: 1 }}
-            >
-              {row.boxes.map((box, boxIdx) => (
-                <PhaseBox key={boxIdx} box={box} />
-              ))}
-            </div>
-          </motion.div>
-        ))}
+              {/* Year + current phase details */}
+              <div
+                className="flex-shrink-0 flex flex-col justify-center pt-5 w-[120px] md:w-[240px]"
+              >
+                <p className="text-[0.7rem] tracking-[0.1em] tabular-nums" style={{ color: "#5a5660" }}>
+                  {row.year}
+                </p>
+                {currentBox && currentCfg && (
+                  <div className="mt-2">
+                    <p className="text-[0.6rem] tracking-[0.15em] uppercase mb-1" style={{ color: currentCfg.color }}>
+                      {currentBox.label}
+                    </p>
+                    <p className="font-serif italic font-semibold text-lg leading-snug text-[#f0ede6]">
+                      {currentBox.title}
+                    </p>
+                    {currentBox.companies && (
+                      <p className="text-[0.72rem] mt-1 leading-relaxed" style={{ color: "#8a8690" }}>
+                        {currentBox.companies}
+                      </p>
+                    )}
+                    {currentBox.skills && (
+                      <div className="flex flex-wrap gap-1 mt-2">
+                        {currentBox.skills.map((s) => (
+                          <span
+                            key={s}
+                            className="text-[0.58rem] px-1.5 py-0.5 rounded-full"
+                            style={{ background: "rgba(255,255,255,0.06)", color: "#8a8690" }}
+                          >
+                            {s}
+                          </span>
+                        ))}
+                      </div>
+                    )}
+                  </div>
+                )}
+              </div>
+
+              {/* Phase track boxes */}
+              <div
+                className="timeline-track flex min-h-[72px]"
+                style={{ width: row.trackWidth }}
+              >
+                {row.boxes.map((box, boxIdx) => (
+                  <PhaseBox key={boxIdx} box={box} />
+                ))}
+              </div>
+            </motion.div>
+          )
+        })}
       </div>
     </section>
   )
