@@ -40,7 +40,7 @@ export const TIMELINE: TimelineRow[] = [
     year: "2016 –", trackWidth: "35%", delay: 0,
     boxes: [
       { phase: "ux", flex: 1, label: "Phase 01", title: "UX Designer",
-        companies: "IIT Guwahati · CHI Publication · goStops · IoT Startups",
+        companies: "IIT Guwahati · CHI Publication · Microsoft",
         skills: ["User Research", "Information Architecture", "Wireframing", "Prototyping"] },
     ],
   },
@@ -49,7 +49,7 @@ export const TIMELINE: TimelineRow[] = [
     boxes: [
       { phase: "ux", flex: 1, shortName: "UX Design", shortOpacity: 0.5, shortFontSize: "0.85rem" },
       { phase: "motion", flex: 1.2, label: "Phase 02", title: "Branding & Motion Designer",
-        companies: "goStops · Brand Communications · Storytelling",
+        companies: "1mg",
         skills: ["Motion Graphics", "Brand Identity", "After Effects", "Storyboarding"] },
     ],
   },
@@ -59,7 +59,7 @@ export const TIMELINE: TimelineRow[] = [
       { phase: "ux",     flex: 0.6, shortName: "UX",     shortOpacity: 0.4, shortFontSize: "0.8rem" },
       { phase: "motion", flex: 0.6, shortName: "Motion", shortOpacity: 0.4, shortFontSize: "0.8rem" },
       { phase: "product", flex: 1.5, label: "Phase 03", title: "Product Designer",
-        companies: "1mg · ClearTax · Merkle Science · Turing",
+        companies: "1mg · ClearTax · Merkle Science",
         skills: ["Design Systems", "Enterprise SaaS", "Data Visualization", "Complex Workflows"] },
     ],
   },
@@ -70,7 +70,7 @@ export const TIMELINE: TimelineRow[] = [
       { phase: "motion",  flex: 0.4, shortName: "Motion",        shortOpacity: 0.35, shortFontSize: "0.75rem" },
       { phase: "product", flex: 0.8, shortName: "Product Design", shortOpacity: 0.35, shortFontSize: "0.75rem" },
       { phase: "pm", flex: 1.5, label: "Phase 04", title: "Product Designer + Product Manager",
-        companies: "Program Ownership · Roadmapping · Strategy",
+        companies: "ClearTax · Merkle Science · Kidzovo ",
         skills: ["Product Strategy", "Roadmap Planning", "Stakeholder Mgmt", "OKRs"] },
     ],
   },
@@ -82,7 +82,7 @@ export const TIMELINE: TimelineRow[] = [
       { phase: "product", flex: 0.5, shortName: "Product", shortOpacity: 0.3, shortFontSize: "0.7rem" },
       { phase: "pm",      flex: 0.5, shortName: "PM",      shortOpacity: 0.3, shortFontSize: "0.7rem" },
       { phase: "dev", flex: 1.5, label: "Phase 05", title: "Front-end Developer",
-        companies: "Flutter · Next.js · React · HTML/CSS/JS",
+        companies: "Kidzovo  ·  Promad",
         skills: ["Flutter UI", "React/Next.js", "1000+ Commits", "40K+ Lines"] },
     ],
   },
@@ -95,7 +95,7 @@ export const TIMELINE: TimelineRow[] = [
       { phase: "pm",      flex: 0.35, shortName: "PM",      shortOpacity: 0.25, shortFontSize: "0.65rem" },
       { phase: "dev",     flex: 0.4,  shortName: "Dev",     shortOpacity: 0.25, shortFontSize: "0.65rem" },
       { phase: "founder", flex: 1.8, label: "Phase 06 — Today", title: "Founder & Creative Technologist",
-        companies: "Promad Design Studio · Kidzovo · AI Tools · Figma Plugins · Open Source",
+        companies: "Kidzovo  ·  Promad",
         skills: ["Studio Leadership", "AI Workflows", "Figma Plugins", "Video Production", "EdTech"] },
     ],
   },
@@ -105,17 +105,17 @@ export const TIMELINE: TimelineRow[] = [
 
 export const TOOL_FRAGMENTS = [
   { icon: "📋", label: "Requirements",   tool: "Notion / Jira" },
-  { icon: "🔍", label: "Research",       tool: "Dovetail / Sheets" },
+  { icon: "🔍", label: "Research",       tool: "Notion" },
   { icon: "💡", label: "Ideation",       tool: "FigJam / Miro" },
-  { icon: "🗂️", label: "IA & Flows",    tool: "Figma / Overflow" },
+  { icon: "🗂️", label: "IA & Flows",    tool: "FigJam" },
   { icon: "🎨", label: "UI Design",      tool: "Figma" },
-  { icon: "📐", label: "Design System",  tool: "Figma / Storybook" },
+  { icon: "📐", label: "Design System",  tool: "Figma" },
   { icon: "🤝", label: "Alignment",      tool: "Slack / Loom" },
-  { icon: "🔧", label: "Dev Handoff",    tool: "Zeplin / Dev Mode" },
+  { icon: "🔧", label: "Dev Handoff",    tool: "Figma Dev Mode" },
   { icon: "🧪", label: "QA & Testing",   tool: "TestFlight / BrowserStack" },
   { icon: "📹", label: "Feature Videos", tool: "After Effects / Premiere" },
   { icon: "📊", label: "Analytics",      tool: "Mixpanel / Amplitude" },
-  { icon: "🧬", label: "A/B Testing",    tool: "Optimizely / Firebase" },
+  { icon: "🧬", label: "A/B Testing",    tool: "Mixpanel / Firebase" },
 ]
 
 // ─── Epiphany Section ─────────────────────────────────────────────
@@ -183,7 +183,7 @@ export const SOLUTION_UNITS = [
 
 export const COMPANIES = [
   "Microsoft", "Merkle Science", "ClearTax", "1mg",
-  "Turing", "HOMER", "goStops", "Kidzovo", "Promad",
+  "Kidzovo", "Promad",
 ]
 
 // ─── Stats ────────────────────────────────────────────────────────
@@ -192,8 +192,6 @@ export const STATS = [
   { number: "1000+",   label: "Code Commits" },
   { number: "40K+",    label: "Lines of Code" },
   { number: "3",       label: "Figma Plugins Built" },
-  { number: "CHI '16", label: "Published at ACM CHI" },
-  { number: "IIT",     label: "Guwahati · Design" },
   { number: "∞",       label: "Still Expanding" },
 ]
 
@@ -202,6 +200,4 @@ export const STATS = [
 export const FOOTER_LINKS = [
   { label: "promad.design", href: "https://promad.design" },
   { label: "LinkedIn",      href: "https://linkedin.com/in/shuprobho" },
-  { label: "Behance",       href: "https://www.behance.net/Suprabho" },
-  { label: "Instagram",     href: "https://instagram.com/shu.pro.bho" },
 ]
