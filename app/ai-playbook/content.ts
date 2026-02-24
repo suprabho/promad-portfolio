@@ -1,4 +1,5 @@
 import { Swatches, CursorClick, Globe, CloudSun, GameController } from "@phosphor-icons/react"
+import { Play } from "@phosphor-icons/react/dist/ssr"
 import type { ElementType } from "react"
 
 // ─── Types ────────────────────────────────────────────────────────
@@ -17,6 +18,7 @@ export type RepoStat = {
   commits: number
   added: string
   removed: string
+  href: string
 }
 
 export type EquationItem = {
@@ -63,6 +65,20 @@ export const FIGMA_PLUGINS: LinkCardData[] = [
 export const EXPERIMENTS: LinkCardData[] = [
   {
     icon: Globe,
+    title: "SVG to 3D headers",
+    description: "Interactive app turn svg logos into web-friendly, embed-ready 3D animations ",
+    href: "https://animated-3d-headers.vercel.app/",
+    accent: true,
+  },
+  {
+    icon: Play,
+    title: "Solidworks -> Web based interactive animation",
+    description: "Interactive browser-based viewer for the gate assembly model, built from a .STEP file with no external viewer dependency.",
+    href: "opening-gates.vercel.app",
+    accent: true,
+  },
+  {
+    icon: Globe,
     title: "OVO App",
     description: "Interactive app prototype built with AI-assisted rapid development.",
     href: "https://ovo.app.promad.design",
@@ -94,27 +110,28 @@ export const EQUATION_ITEMS: EquationItem[] = [
 ]
 
 export const PROCESS_STEPS = [
-  "Creative brief input",
-  "AI generates modular script components",
-  "Separate screenplay options for visuals",
+  "Creative brief as input",
+  "Generate modular script components like hook and CTA",
+  "Generate screenplay options for each script component",
   "Mix-and-match any combination",
+  "Create final ouput compiling generated videos and audios",
 ]
 
 export const VIDEO_BRIEF_ITEMS = [
   "Scene-by-scene breakdown with timing",
   "Complete visual asset lists per scene",
   "Narration scripting and direction",
-  "Music and sound design mapped",
-  "Shoot-ready documentation output",
+  "Music and sound design mapped for generation",
+  "Generation-ready image and video prompt direction",
 ]
 
 // ─── Repo Stats ───────────────────────────────────────────────────
 
 export const REPO_STATS: RepoStat[] = [
-  { repo: "flp-web",               commits: 848, added: "35,579", removed: "15,460" },
-  { repo: "kidzovo-website",        commits: 76,  added: "2,388",  removed: "547"    },
-  { repo: "kidzovo-flutter-ui",     commits: 71,  added: "880",    removed: "315"    },
-  { repo: "kidzovo-creator-studio", commits: 31,  added: "1,267",  removed: "1,020"  },
+  { repo: "flp-web",               commits: 848, added: "35,579", removed: "15,460", href: "https://beta.beginlearning.com" },
+  { repo: "kidzovo-website",        commits: 76,  added: "2,388",  removed: "547",   href: "https://kidzovo.vercel.app" },
+  { repo: "kidzovo-flutter-ui",     commits: 71,  added: "880",    removed: "315",   href: "https://app.kidzovo.com" },
+  { repo: "kidzovo-creator-studio", commits: 31,  added: "1,267",  removed: "1,020", href: "https://studio.kidovo.com/" },
 ]
 
 export const MAX_COMMITS = 848
