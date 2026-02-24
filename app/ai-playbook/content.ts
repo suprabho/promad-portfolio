@@ -74,7 +74,7 @@ export const EXPERIMENTS: LinkCardData[] = [
     icon: Play,
     title: "Solidworks -> Web based interactive animation",
     description: "Interactive browser-based viewer for the gate assembly model, built from a .STEP file with no external viewer dependency.",
-    href: "opening-gates.vercel.app",
+    href: "https://opening-gates.vercel.app",
     accent: true,
   },
   {
