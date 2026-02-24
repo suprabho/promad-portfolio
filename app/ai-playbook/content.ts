@@ -1,4 +1,4 @@
-import { Swatches, CursorClick, Globe, CloudSun, GameController } from "@phosphor-icons/react"
+import { Swatches, CursorClick, Globe, CloudSun, GameController, Cube } from "@phosphor-icons/react"
 import { Play } from "@phosphor-icons/react/dist/ssr"
 import type { ElementType } from "react"
 
@@ -64,7 +64,7 @@ export const FIGMA_PLUGINS: LinkCardData[] = [
 
 export const EXPERIMENTS: LinkCardData[] = [
   {
-    icon: Globe,
+    icon: Cube,
     title: "SVG to 3D headers",
     description: "Interactive app turn svg logos into web-friendly, embed-ready 3D animations ",
     href: "https://animated-3d-headers.vercel.app/",
