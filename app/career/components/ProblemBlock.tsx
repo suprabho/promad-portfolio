@@ -44,15 +44,15 @@ export function ProblemBlock() {
           {TOOL_FRAGMENTS.map((f, i) => (
             <motion.div
               key={i}
-              className="relative rounded overflow-hidden text-center"
-              style={{ background: "#111114", border: "1px solid #1e1e24", padding: "0.8rem" }}
+              className="relative rounded overflow-hidden text-center backdrop-blur-xl bg-[#111114]/40"
+              style={{border: "1px solid #1e1e24", padding: "0.8rem" }}
               whileHover={{ y: -2, borderColor: "rgba(239,68,68,0.3)" }}
               transition={{ duration: 0.3 }}
               initial={{ opacity: 0, y: 10 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
             >
-              <div className="absolute top-0 left-0 right-0 h-0.5" style={{ background: "#EF4444", opacity: 0.3 }} />
+              <div className="absolute top-0 left-0 right-0 h-0.5 bg-[#EF4444] opacity-[0.3]" />
               <div className="text-xl mb-1 opacity-60">{f.icon}</div>
               <div
                 className="text-[0.6rem] tracking-[0.08em] uppercase leading-snug"
@@ -60,7 +60,7 @@ export function ProblemBlock() {
               >
                 {f.label}
               </div>
-              <div className="text-[0.55rem] mt-1" style={{ color: "#EF4444", opacity: 0.5 }}>
+              <div className="text-[0.8rem] mt-1 text-[#EF4444]">
                 {f.tool}
               </div>
             </motion.div>

@@ -24,8 +24,8 @@ export function EpiphanyBlock() {
       <Reveal delay={0.3}>
         <div className="grid md:grid-cols-2 gap-6 mb-6">
           <div
-            className="rounded-lg p-6"
-            style={{ background: "#111114", border: "1px solid rgba(52,211,153,0.2)" }}
+            className="rounded-lg p-6 bg-[#111114]/40"
+            style={{ border: "1px solid rgba(52,211,153,0.2)" }}
           >
             <h4
               className="text-[0.65rem] tracking-[0.2em] uppercase mb-4"
@@ -46,8 +46,8 @@ export function EpiphanyBlock() {
           </div>
 
           <div
-            className="rounded-lg p-6"
-            style={{ background: "#111114", border: "1px solid rgba(239,68,68,0.15)" }}
+            className="rounded-lg p-6 bg-[#111114]/40"
+            style={{ border: "1px solid rgba(239,68,68,0.15)" }}
           >
             <h4
               className="text-[0.65rem] tracking-[0.2em] uppercase mb-4"

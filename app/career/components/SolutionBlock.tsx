@@ -36,8 +36,8 @@ export function SolutionBlock() {
         {SOLUTION_UNITS.map((unit, i) => (
           <Reveal key={i} delay={i * 0.1}>
             <motion.div
-              className="relative rounded-xl overflow-hidden"
-              style={{ background: "#111114", border: "1px solid #1e1e24" }}
+              className="relative rounded-xl overflow-hidden backdrop-blur-3xl bg-[#111114]/60"
+              style={{ border: "1px solid #1e1e24" }}
               whileHover={{ y: -2, borderColor: "#2a2a32" }}
               transition={{ duration: 0.3 }}
             >

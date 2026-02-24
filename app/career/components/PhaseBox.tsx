@@ -7,7 +7,7 @@ export function PhaseBox({ box }: { box: TimelineBox }) {
 
   return (
     <motion.div
-      className="relative rounded-md flex flex-col justify-center transition-transform duration-300 hover:-translate-y-0.5"
+      className="relative rounded-md flex flex-col backdrop-blur-xl justify-center transition-transform duration-300 hover:-translate-y-0.5"
       style={{
         flex: box.flex,
         padding: "1rem 0.75rem",

@@ -19,7 +19,7 @@ export function CareerFooter() {
           </a>
         ))}
       </div>
-      <p className="text-[0.65rem]" style={{ color: "#5a5660" }}>
+      <p className="text-[0.65rem]" style={{ color: "#4ECDC4" }}>
         © 2026 Suprabho Dhenki · Built with Promad
       </p>
     </footer>
