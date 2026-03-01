@@ -114,7 +114,7 @@ export function CompaniesGrid({ companies }: CompaniesGridProps) {
                             src={company.thumbnail}
                             alt={`${company.name} thumbnail`}
                             fill
-                            className="object-cover transition-transform duration-300 group-hover:scale-110"
+                            className="object-cover object-right-top transition-transform duration-300 group-hover:scale-110"
                           />
                         )}
                         <div className="absolute inset-0 bg-gradient-to-b from-black/0 via-black/20 to-black/80" />
