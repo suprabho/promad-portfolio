@@ -23,6 +23,8 @@ export function ProjectCard({ project, isReversed = false }: ProjectCardProps) {
       <ProjectActions
         url={project.url}
         urlName={project.urlName}
+        details={project.details}
+        thumbnail={project.thumbnail}
       />
     </div>
   )
