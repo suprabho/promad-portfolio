@@ -13,9 +13,68 @@ import {
   SheetTrigger,
 } from "@/components/ui/sheet"
 import { ProjectDisplay } from "@/components/project-display"
-import { XIcon } from "@phosphor-icons/react/dist/ssr"  
+import { XIcon } from "@phosphor-icons/react/dist/ssr"
 import { sendAnalyticsEvent } from "@/lib/analytics"
 import type { CompanyWithProjects } from "@/lib/payload"
+import type { CaseStudyDetails, SimpleDetails } from "@/types/project"
+
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+function transformDetails(details: any[] | null): string | CaseStudyDetails | SimpleDetails | undefined {
+  if (!details || details.length === 0) return undefined
+
+  const block = details[0]
+
+  if (block.blockType === 'textDetails') {
+    return block.content || undefined
+  }
+
+  if (block.blockType === 'caseStudy') {
+    return {
+      title: block.title,
+      projectOverview: block.projectOverview,
+      theChallenge: {
+        heading: block.theChallenge?.heading,
+        description: block.theChallenge?.description,
+        interfaceQualities: block.theChallenge?.interfaceQualities?.map((q: { item: string }) => q.item).filter(Boolean),
+        animationGoals: block.theChallenge?.animationGoals?.map((g: { item: string }) => g.item).filter(Boolean),
+      },
+      ourApproach: {
+        heading: block.ourApproach?.heading,
+        description: block.ourApproach?.description,
+        phases: block.ourApproach?.phases?.map((p: { name: string; points: { point: string }[] }) => ({
+          name: p.name,
+          points: p.points?.map(pt => pt.point).filter(Boolean) || [],
+        })) || [],
+      },
+      keyOutcomes: {
+        heading: block.keyOutcomes?.heading,
+        points: block.keyOutcomes?.points?.map((p: { point: string }) => p.point).filter(Boolean) || [],
+      },
+      lessonsLearned: {
+        heading: block.lessonsLearned?.heading,
+        points: block.lessonsLearned?.points?.map((p: { point: string }) => p.point).filter(Boolean) || [],
+      },
+      conclusion: block.conclusion,
+    } as CaseStudyDetails
+  }
+
+  if (block.blockType === 'simpleDetails') {
+    return {
+      heading: block.heading,
+      description: block.description,
+      phases: block.phases?.map((p: { name: string; points: { point: string }[] }) => ({
+        name: p.name,
+        points: p.points?.map(pt => pt.point).filter(Boolean) || [],
+      })),
+      keyOutcomes: block.keyOutcomes ? {
+        heading: block.keyOutcomes.heading,
+        points: block.keyOutcomes.points?.map((p: { point: string }) => p.point).filter(Boolean) || [],
+      } : undefined,
+    } as SimpleDetails
+  }
+
+  return undefined
+}
 
 interface CompaniesGridProps {
   companies: CompanyWithProjects[]
@@ -97,7 +156,7 @@ export function CompaniesGrid({ companies }: CompaniesGridProps) {
                   description: project.description || '',
                   thumbnail: project.thumbnail || '',
                   tags: project.tags?.map(t => t.tag || '').filter(Boolean) || [],
-                  details: project.details,
+                  details: transformDetails(project.details),
                   url: project.url || '',
                   urlName: project.urlName || '',
                 }))
