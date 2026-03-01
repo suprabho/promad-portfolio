@@ -101,6 +101,9 @@ export function CompaniesGrid({ companies }: CompaniesGridProps) {
                 urlName: project.urlName || '',
               }))
 
+              const objectTopRightIndices = new Set([0, 1, 2, 3, 6, 7])
+              const imagePositionClass = objectTopRightIndices.has(index) ? 'object-cover object-right-top' : 'object-cover'
+
               return (
                 <Sheet key={company.id}>
                   <SheetTrigger asChild onClick={() => {
@@ -117,7 +120,7 @@ export function CompaniesGrid({ companies }: CompaniesGridProps) {
                             src={company.thumbnail}
                             alt={`${company.name} thumbnail`}
                             fill
-                            className="object-cover transition-transform duration-300 group-hover:scale-110"
+                            className={`${imagePositionClass} transition-transform duration-300 group-hover:scale-110`}
                           />
                         )}
                         <div className="absolute inset-0 bg-gradient-to-b from-black/0 via-black/20 to-black/80" />
