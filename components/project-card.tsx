@@ -30,7 +30,7 @@ export function ProjectCard({ project, isReversed = false }: ProjectCardProps) {
   )
 
   const ImageSection = () => (
-    <div className="relative h-80 w-full bg-muted rounded-lg overflow-hidden">
+    <div className="relative aspect-[4/3] w-full bg-muted rounded-lg overflow-hidden">
       <Image
         src={project.thumbnail}
         alt={`${project.name} thumbnail`}

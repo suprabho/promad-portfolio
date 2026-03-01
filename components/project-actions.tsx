@@ -15,7 +15,7 @@ export function ProjectActions({ url, urlName, details, thumbnail }: ProjectActi
   const hasCaseStudy = details && typeof details === 'object'
 
   return (
-    <div className="flex flex-row gap-2">
+    <div className="flex flex-wrap gap-2">
       {url && (
         <Button
           variant="outline"

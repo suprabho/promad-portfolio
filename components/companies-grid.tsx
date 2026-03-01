@@ -132,7 +132,7 @@ export function CompaniesGrid({ companies }: CompaniesGridProps) {
                       </div>
                     </Card>
                   </SheetTrigger>
-                  <SheetContent className="overflow-y-auto w-[90vw] max-w-[1200px] sm:max-w-[1200px] p-0">
+                  <SheetContent className="overflow-y-auto w-[95vw] sm:w-[90vw] max-w-[1200px] sm:max-w-[1200px] p-0">
                     <div className="sticky top-0 z-10 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 border-b">
                       <SheetHeader className="p-6 flex items-center gap-2">
                         {(company.logo?.dark || company.logo?.light) && (
