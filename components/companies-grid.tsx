@@ -91,15 +91,17 @@ export function CompaniesGrid({ companies }: CompaniesGridProps) {
               const isTargetCompany = targetCompanies.has(company.name)
 
               // Transform project data for ProjectDisplay component
-              const transformedProjects = company.projects.map(project => ({
-                name: project.name,
-                description: project.description || '',
-                thumbnail: project.thumbnail || '',
-                tags: project.tags?.map(t => t.tag || '').filter(Boolean) || [],
-                details: project.details,
-                url: project.url || '',
-                urlName: project.urlName || '',
-              }))
+              const transformedProjects = company.projects
+                .filter(project => project.url || (project.details && typeof project.details === 'object'))
+                .map(project => ({
+                  name: project.name,
+                  description: project.description || '',
+                  thumbnail: project.thumbnail || '',
+                  tags: project.tags?.map(t => t.tag || '').filter(Boolean) || [],
+                  details: project.details,
+                  url: project.url || '',
+                  urlName: project.urlName || '',
+                }))
 
               const objectTopRightIndices = new Set([1, 2, 3, 4, 7, 8])
               const imagePositionClass = objectTopRightIndices.has(index) ? 'object-cover object-right-top' : 'object-cover'
