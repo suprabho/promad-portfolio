@@ -101,7 +101,7 @@ export function CompaniesGrid({ companies }: CompaniesGridProps) {
                 urlName: project.urlName || '',
               }))
 
-              const objectTopRightIndices = new Set([0, 1, 2, 3, 6, 7])
+              const objectTopRightIndices = new Set([1, 2, 3, 4, 7, 8])
               const imagePositionClass = objectTopRightIndices.has(index) ? 'object-cover object-right-top' : 'object-cover'
 
               return (
