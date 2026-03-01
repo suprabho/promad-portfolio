@@ -1,6 +1,5 @@
 "use client"
 
-import { ThemeToggle } from "./theme-toggle"
 import { LogoRive } from "./logo-rive"
 
 export default function Header() {
@@ -9,10 +8,6 @@ export default function Header() {
       <div className="container flex h-20 max-w-screen-2xl justify-between items-center mx-auto">
         <div className="mx-auto md:ml-4 h-full w-40 RiveContainer">
           <LogoRive />
-        </div>
-        <div className="flex items-center gap-4">
-          {/* Desktop Navigation */}
-        <ThemeToggle />
         </div>
       </div>
     </header>
