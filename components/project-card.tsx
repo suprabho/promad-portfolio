@@ -20,11 +20,9 @@ export function ProjectCard({ project, isReversed = false }: ProjectCardProps) {
           </Badge>
         ))}
       </div>
-      <ProjectActions 
+      <ProjectActions
         url={project.url}
         urlName={project.urlName}
-        details={project.details}
-        thumbnail={project.thumbnail}
       />
     </div>
   )
