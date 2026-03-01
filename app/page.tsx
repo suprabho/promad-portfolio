@@ -17,8 +17,8 @@ export default async function Portfolio() {
     <PortfolioClient>
       <div className="min-h-screen bg-background">
         <Header />
-        <HighlightBanner />
         <HeroSection />
+        <HighlightBanner />
         <CompaniesGrid companies={companies} />
         <PeopleSection />
         <SkillsGrid />
