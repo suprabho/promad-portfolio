@@ -14,7 +14,7 @@ interface ProjectActionsProps {
 export function ProjectActions({ url, urlName, details, thumbnail }: ProjectActionsProps) {
   const hasCaseStudy = details && typeof details === 'object'
 
-  if (!url && !hasCaseStudy) return null
+  if (!url && !details) return null
 
   return (
     <div className="flex flex-wrap gap-2">
