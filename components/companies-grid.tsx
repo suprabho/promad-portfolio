@@ -108,7 +108,7 @@ export function CompaniesGrid({ companies }: CompaniesGridProps) {
                     setSelectedCompany(company)
                   }}>
                     <Card className={cardStyles}>
-                      <div className="relative w-full h-full bg-muted overflow-hidden">
+                      <div className="absolute inset-0 bg-muted overflow-hidden">
                         {company.thumbnail && (
                           <Image
                             src={company.thumbnail}
