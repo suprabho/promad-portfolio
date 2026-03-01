@@ -151,10 +151,11 @@ export function HighlightBanner() {
               href="/ai-playbook"
               className="container mx-auto flex items-center justify-center gap-3 py-2.5 px-4 text-sm font-medium text-black hover:opacity-80 transition-opacity"
             >
-              <Robot size={14} weight="duotone" />
+              <span className="bg-black text-[#FAFF00] text-[10px] font-bold uppercase tracking-wider px-1.5 py-0.5 rounded">
+                New
+              </span>
               <span>
-                AI Playbook — 1,026 commits, 3 Figma plugins, 100+ video
-                variations
+                AI Playbook — AI across design, dev &amp; creative production
               </span>
               <ArrowRight className="w-4 h-4 shrink-0" weight="bold" />
             </Link>
