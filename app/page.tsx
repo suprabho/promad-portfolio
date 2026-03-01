@@ -6,6 +6,7 @@ import { PeopleSection } from "@/components/people-section"
 import { Footer } from "@/components/footer"
 import { ActionSection } from "@/components/action-section"
 import { PortfolioClient } from "@/components/portfolio-client"
+import { HighlightBanner } from "@/components/highlight-banner"
 import { getCompaniesWithProjects } from "@/lib/payload"
 
 export default async function Portfolio() {
@@ -16,6 +17,7 @@ export default async function Portfolio() {
     <PortfolioClient>
       <div className="min-h-screen bg-background">
         <Header />
+        <HighlightBanner />
         <HeroSection />
         <CompaniesGrid companies={companies} />
         <PeopleSection />
