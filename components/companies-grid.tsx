@@ -92,7 +92,6 @@ export function CompaniesGrid({ companies }: CompaniesGridProps) {
 
               // Transform project data for ProjectDisplay component
               const transformedProjects = company.projects
-                .filter(project => project.url || (project.details && typeof project.details === 'object'))
                 .map(project => ({
                   name: project.name,
                   description: project.description || '',
