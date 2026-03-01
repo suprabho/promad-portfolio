@@ -14,8 +14,10 @@ interface ProjectActionsProps {
 export function ProjectActions({ url, urlName, details, thumbnail }: ProjectActionsProps) {
   const hasCaseStudy = details && typeof details === 'object'
 
+  if (!url && !hasCaseStudy) return null
+
   return (
-    <div className="flex flex-row gap-2">
+    <div className="flex flex-wrap gap-2">
       {url && (
         <Button
           variant="outline"
@@ -23,11 +25,10 @@ export function ProjectActions({ url, urlName, details, thumbnail }: ProjectActi
           className="font-mono hover:bg-[#FAFF00] hover:text-black"
           asChild
         >
-          <a 
+          <a
             href={url}
             target="_blank"
-            rel="noopener noreferrer" 
-            
+            rel="noopener noreferrer"
             onClick={() => {
               sendAnalyticsEvent('project_link_click', {
                 project_url: url,
@@ -40,10 +41,10 @@ export function ProjectActions({ url, urlName, details, thumbnail }: ProjectActi
           </a>
         </Button>
       )}
-      {hasCaseStudy && typeof details === 'object' && (
-        <CaseStudy 
-          details={details} 
-          thumbnail={thumbnail} 
+      {hasCaseStudy && (
+        <CaseStudy
+          details={details as CaseStudyDetails | SimpleDetails}
+          thumbnail={thumbnail}
           onClick={() => {
             sendAnalyticsEvent('case_study_click', {
               project_name: (details as CaseStudyDetails).title || 'Untitled Project'
@@ -53,4 +54,4 @@ export function ProjectActions({ url, urlName, details, thumbnail }: ProjectActi
       )}
     </div>
   )
-} 
+}
