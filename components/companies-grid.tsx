@@ -120,15 +120,10 @@ export function CompaniesGrid({ companies }: CompaniesGridProps) {
                             className="object-cover transition-transform duration-300 group-hover:scale-110"
                           />
                         )}
-                        <div className="absolute inset-0 bg-gradient-to-b from-black/0 via-black/20 to-black/80 hidden md:block" />
-                        <div className={`absolute inset-0 ${isTargetCompany ? 'p-3 md:p-6' : 'p-6'} hidden md:flex flex-col justify-end`}>
+                        <div className="absolute inset-0 bg-gradient-to-b from-black/0 via-black/20 to-black/80" />
+                        <div className={`absolute inset-0 ${isTargetCompany ? 'p-3 md:p-6' : 'p-6'} flex flex-col justify-end`}>
                           <div>
-                            <h3 className={`font-serif italic ${isTargetCompany ? 'text-lg md:text-2xl' : 'text-2xl'} font-semibold ${isTargetCompany ? '' : 'mb-2'} text-white`}>{company.name}</h3>
-                            {!isTargetCompany && (
-                              <div className="font-mono text-sm text-white/70 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                                Click to view details
-                              </div>
-                            )}
+                            <h3 className={`font-serif italic ${isTargetCompany ? 'text-lg md:text-2xl' : 'text-2xl'} font-semibold text-white`}>{company.name}</h3>
                           </div>
                         </div>
                       </div>
