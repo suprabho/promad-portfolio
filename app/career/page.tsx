@@ -1,6 +1,6 @@
 "use client"
 
-import { CareerNav } from "./components/CareerNav"
+import Header from "@/components/header"
 import { Hero } from "./components/Hero"
 import { ElevatorPitch } from "./components/ElevatorPitch"
 import { TimelineSection } from "./components/TimelineSection"
@@ -20,6 +20,9 @@ export default function CareerPage() {
         style={{ borderRadius: 0 }}
         allowFullScreen
       />
+      <div className="relative z-50">
+        <Header />
+      </div>
       <div
         className="relative z-10 min-h-screen overflow-x-hidden"
         style={{ color: "#f0ede6", fontFamily: "var(--font-manrope, sans-serif)" }}
@@ -30,7 +33,6 @@ export default function CareerPage() {
         }
       `}</style>
 
-      <CareerNav />
       <Hero />
       <ElevatorPitch />
       <TimelineSection />
