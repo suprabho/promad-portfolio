@@ -15,16 +15,16 @@ importers:
         specifier: ^3.9.1
         version: 3.10.0(react-hook-form@7.70.0(react@19.2.3))
       '@payloadcms/db-mongodb':
-        specifier: ^3.70.0
+        specifier: 3.70.0
         version: 3.70.0(payload@3.70.0(graphql@16.12.0)(typescript@5.9.3))
       '@payloadcms/db-sqlite':
-        specifier: ^3.70.0
+        specifier: 3.70.0
         version: 3.70.0(payload@3.70.0(graphql@16.12.0)(typescript@5.9.3))
       '@payloadcms/next':
-        specifier: ^3.70.0
+        specifier: 3.70.0
         version: 3.70.0(@types/react@19.2.7)(graphql@16.12.0)(monaco-editor@0.55.1)(next@15.5.9(react-dom@19.2.3(react@19.2.3))(react@19.2.3)(sass@1.77.4))(payload@3.70.0(graphql@16.12.0)(typescript@5.9.3))(react-dom@19.2.3(react@19.2.3))(react@19.2.3)(typescript@5.9.3)
       '@payloadcms/richtext-lexical':
-        specifier: ^3.70.0
+        specifier: 3.70.0
         version: 3.70.0(@faceless-ui/modal@3.0.0(react-dom@19.2.3(react@19.2.3))(react@19.2.3))(@faceless-ui/scroll-info@2.0.0(react-dom@19.2.3(react@19.2.3))(react@19.2.3))(@payloadcms/next@3.70.0(@types/react@19.2.7)(graphql@16.12.0)(monaco-editor@0.55.1)(next@15.5.9(react-dom@19.2.3(react@19.2.3))(react@19.2.3)(sass@1.77.4))(payload@3.70.0(graphql@16.12.0)(typescript@5.9.3))(react-dom@19.2.3(react@19.2.3))(react@19.2.3)(typescript@5.9.3))(@types/react@19.2.7)(monaco-editor@0.55.1)(next@15.5.9(react-dom@19.2.3(react@19.2.3))(react@19.2.3)(sass@1.77.4))(payload@3.70.0(graphql@16.12.0)(typescript@5.9.3))(react-dom@19.2.3(react@19.2.3))(react@19.2.3)(typescript@5.9.3)(yjs@13.6.29)
       '@phosphor-icons/react':
         specifier: ^2.1.10
@@ -156,7 +156,7 @@ importers:
         specifier: ^4.28.0
         version: 4.104.0(ws@8.19.0)(zod@3.25.76)
       payload:
-        specifier: ^3.70.0
+        specifier: 3.70.0
         version: 3.70.0(graphql@16.12.0)(typescript@5.9.3)
       react:
         specifier: ^19.0.0
@@ -9214,7 +9214,7 @@ snapshots:
   tsx@4.20.3:
     dependencies:
       esbuild: 0.25.12
-      get-tsconfig: 4.8.1
+      get-tsconfig: 4.13.0
     optionalDependencies:
       fsevents: 2.3.3
 
