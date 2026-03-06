@@ -33,7 +33,7 @@ export function Hero() {
       >
         Suprabho Dhenki
         <br />
-        <em style={{ color: "#4ECDC4" }}>The Evolution of a Designer</em>
+        <em className="text-[#007a71] dark:text-[#4ECDC4]">The Evolution of a Designer</em>
       </motion.h1>
 
       <motion.p
