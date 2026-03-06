@@ -1,4 +1,4 @@
-import { Swatches, CursorClick, Globe, CloudSun, GameController, Cube } from "@phosphor-icons/react"
+import { Swatches, CursorClick, Globe, CloudSun, GameController, Cube, AirplaneTilt } from "@phosphor-icons/react"
 import { Play } from "@phosphor-icons/react/dist/ssr"
 import type { ElementType } from "react"
 
@@ -96,6 +96,13 @@ export const EXPERIMENTS: LinkCardData[] = [
     title: "MOW App",
     description: "Playful app concept brought to life from idea to working code.",
     href: "https://mow.app.promad.design",
+    accent: true,
+  },
+  {
+    icon: AirplaneTilt,
+    title: "Trip Planner",
+    description: "AI-powered trip planning tool for organizing and visualizing travel itineraries.",
+    href: "https://trip.promad.design",
     accent: true,
   },
 ]
