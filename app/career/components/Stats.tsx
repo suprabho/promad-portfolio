@@ -26,20 +26,20 @@ export function Stats() {
           <motion.div
             key={i}
             className="rounded-lg text-center"
-            style={{ background: "#111114", border: "1px solid #1e1e24", padding: "1.5rem" }}
+            style={{ background: "var(--career-card-bg)", border: "1px solid var(--career-card-border)", padding: "1.5rem" }}
             variants={fadeUp}
-            whileHover={{ y: -2, borderColor: "#2a2a32" }}
+            whileHover={{ y: -2, borderColor: "var(--career-hover-border)" }}
             transition={{ duration: 0.3 }}
           >
             <div
               className="font-serif leading-none mb-2"
-              style={{ fontSize: "2.2rem", color: "#f0ede6" }}
+              style={{ fontSize: "2.2rem", color: "var(--career-text)" }}
             >
               {stat.number}
             </div>
             <div
               className="text-[0.7rem] tracking-[0.1em] uppercase leading-snug"
-              style={{ color: "#5a5660" }}
+              style={{ color: "var(--career-text-muted)" }}
             >
               {stat.label}
             </div>

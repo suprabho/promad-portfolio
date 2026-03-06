@@ -22,7 +22,7 @@ export function PhaseBox({ box }: { box: TimelineBox }) {
     >
       <p
         className="font-serif italic text-center text-[0.65rem] sm:text-sm break-words"
-        style={{ color: "#f0ede6", opacity: 0.6 }}
+        style={{ color: "var(--career-text)", opacity: 0.6 }}
       >
         {box.shortName}
       </p>

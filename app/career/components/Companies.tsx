@@ -14,7 +14,7 @@ const stagger = {
 export function Companies() {
   return (
     <section className="py-16 px-6 max-w-[900px] mx-auto text-center">
-      <p className="text-[0.65rem] tracking-[0.3em] uppercase mb-8" style={{ color: "#5a5660" }}>
+      <p className="text-[0.65rem] tracking-[0.3em] uppercase mb-8" style={{ color: "var(--career-text-muted)" }}>
         Companies & Projects Along The Way
       </p>
       <motion.div
@@ -28,13 +28,13 @@ export function Companies() {
           <motion.span
             key={name}
             className="font-serif italic text-lg"
-            style={{ color: "#8a8690" }}
+            style={{ color: "var(--career-text-secondary)" }}
             variants={fadeUp}
             custom={i}
           >
             {name}
             {i < COMPANIES.length - 1 && (
-              <span className="ml-8 not-italic" style={{ color: "#5a5660", opacity: 0.3 }}>·</span>
+              <span className="ml-8 not-italic" style={{ color: "var(--career-text-muted)", opacity: 0.3 }}>·</span>
             )}
           </motion.span>
         ))}

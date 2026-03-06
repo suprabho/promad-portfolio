@@ -3,7 +3,7 @@ import { CODE_WORKS, DESIGN_TOOLS } from "../content"
 
 export function EpiphanyBlock() {
   return (
-    <div className="py-12 mb-16 relative" style={{ borderTop: "1px solid rgba(255,255,255,0.04)" }}>
+    <div className="py-12 mb-16 relative" style={{ borderTop: "1px solid var(--career-subtle-border)" }}>
       <Reveal>
         <p
           className="text-[0.65rem] tracking-[0.3em] uppercase mb-6"
@@ -24,8 +24,8 @@ export function EpiphanyBlock() {
       <Reveal delay={0.3}>
         <div className="grid md:grid-cols-2 gap-6 mb-6">
           <div
-            className="rounded-lg p-6 bg-[#111114]/40"
-            style={{ border: "1px solid rgba(52,211,153,0.2)" }}
+            className="rounded-lg p-6"
+            style={{ background: "var(--career-backdrop-bg)", border: "1px solid rgba(52,211,153,0.2)" }}
           >
             <h4
               className="text-[0.65rem] tracking-[0.2em] uppercase mb-4"
@@ -37,7 +37,7 @@ export function EpiphanyBlock() {
               <div
                 key={i}
                 className="flex items-start gap-3 mb-3 text-[0.85rem] leading-relaxed"
-                style={{ color: "#8a8690" }}
+                style={{ color: "var(--career-text-secondary)" }}
               >
                 <span className="text-[0.75rem] mt-0.5" style={{ color: "#34D399" }}>✦</span>
                 {item}
@@ -46,8 +46,8 @@ export function EpiphanyBlock() {
           </div>
 
           <div
-            className="rounded-lg p-6 bg-[#111114]/40"
-            style={{ border: "1px solid rgba(239,68,68,0.15)" }}
+            className="rounded-lg p-6"
+            style={{ background: "var(--career-backdrop-bg)", border: "1px solid rgba(239,68,68,0.15)" }}
           >
             <h4
               className="text-[0.65rem] tracking-[0.2em] uppercase mb-4"
@@ -59,7 +59,7 @@ export function EpiphanyBlock() {
               <div
                 key={i}
                 className="flex items-start gap-3 mb-3 text-[0.85rem] leading-relaxed"
-                style={{ color: "#8a8690" }}
+                style={{ color: "var(--career-text-secondary)" }}
               >
                 <span className="text-[0.75rem] mt-0.5" style={{ color: "#EF4444", opacity: 0.5 }}>✕</span>
                 {item}

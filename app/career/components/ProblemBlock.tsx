@@ -26,7 +26,7 @@ export function ProblemBlock() {
       <Reveal delay={0.3}>
         <p
           className="leading-relaxed mb-12 max-w-[720px]"
-          style={{ fontSize: "1.05rem", color: "#8a8690" }}
+          style={{ fontSize: "1.05rem", color: "var(--career-text-secondary)" }}
         >
           From requirement gathering and hypothesis validation, through secondary research and
           solution brainstorming, to information architecture, user flows, stakeholder alignment,
@@ -44,8 +44,8 @@ export function ProblemBlock() {
           {TOOL_FRAGMENTS.map((f, i) => (
             <motion.div
               key={i}
-              className="relative rounded overflow-hidden text-center backdrop-blur-xl bg-[#111114]/40"
-              style={{border: "1px solid #1e1e24", padding: "0.8rem" }}
+              className="relative rounded overflow-hidden text-center backdrop-blur-xl"
+              style={{ background: "var(--career-backdrop-bg)", border: "1px solid var(--career-card-border)", padding: "0.8rem" }}
               whileHover={{ y: -2, borderColor: "rgba(239,68,68,0.3)" }}
               transition={{ duration: 0.3 }}
               initial={{ opacity: 0, y: 10 }}
@@ -56,7 +56,7 @@ export function ProblemBlock() {
               <div className="text-xl mb-1 opacity-60">{f.icon}</div>
               <div
                 className="text-[0.6rem] tracking-[0.08em] uppercase leading-snug"
-                style={{ color: "#5a5660" }}
+                style={{ color: "var(--career-text-muted)" }}
               >
                 {f.label}
               </div>
@@ -69,7 +69,7 @@ export function ProblemBlock() {
       </Reveal>
 
       <Reveal delay={0.6}>
-        <p className="text-[0.7rem] text-center italic" style={{ color: "#5a5660" }}>
+        <p className="text-[0.7rem] text-center italic" style={{ color: "var(--career-text-muted)" }}>
           12 steps. 12+ tools. Zero continuity.
         </p>
       </Reveal>

@@ -9,7 +9,9 @@ export default function Header() {
     <header className="sticky top-0 z-50 w-full border-b border-border/40 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
       <div className="container flex h-20 max-w-screen-2xl justify-between items-center mx-auto">
         <Link href="/" className="mx-auto md:ml-4 h-full w-40 RiveContainer">
-          <LogoRive />
+          <div className="pointer-events-none h-full w-full">
+            <LogoRive />
+          </div>
         </Link>
         <ThemeToggle />
       </div>

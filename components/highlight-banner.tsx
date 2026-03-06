@@ -10,6 +10,7 @@ import {
   FilmSlate,
   Palette,
   Lightning,
+  Sparkle,
 } from "@phosphor-icons/react"
 import { motion, AnimatePresence } from "framer-motion"
 
@@ -21,20 +22,20 @@ const stats = [
 
 const pillars = [
   {
+    icon: Sparkle,
+    title: "AI-Assisted Design Creation",
+    desc: "Intelligent tools that generate visual systems, interactive backgrouds, and animated 3D objects aligned with design intent",
+  },
+  {
     icon: Palette,
-    title: "Design Systems",
-    desc: "AI-powered color tools & Figma plugins for scalable design infrastructure",
+    title: "Accelerated Design System Setup",
+    desc: "AI-powered color tools & Figma plugins setting-up modern and scalable design infrastructure compatible with Figma, NextJS and Flutter",
   },
   {
     icon: Lightning,
     title: "Vibe-Coded Experiments",
-    desc: "Concept to working code in hours — 3D headers, apps, and interactive prototypes",
-  },
-  {
-    icon: FilmSlate,
-    title: "Creative Production",
-    desc: "Modular video system generating 100+ ad variations from reusable components",
-  },
+    desc: "Concept to working code in hours, building fun apps, games and tools",
+  }
 ]
 
 export function HighlightBanner() {
@@ -83,28 +84,6 @@ export function HighlightBanner() {
                   <span>Explore the playbook</span>
                   <ArrowRight className="w-5 h-5" weight="bold" />
                 </div>
-              </div>
-
-              {/* Stats row */}
-              <div className="grid grid-cols-3 gap-4 mb-10">
-                {stats.map((stat) => (
-                  <div
-                    key={stat.label}
-                    className="bg-black/5 rounded-2xl p-4 md:p-5"
-                  >
-                    <stat.icon
-                      size={20}
-                      weight="bold"
-                      className="text-black/40 mb-2"
-                    />
-                    <div className="text-2xl md:text-3xl font-bold text-black">
-                      {stat.value}
-                    </div>
-                    <div className="text-xs md:text-sm text-black/50 mt-0.5">
-                      {stat.label}
-                    </div>
-                  </div>
-                ))}
               </div>
 
               {/* Pillars */}

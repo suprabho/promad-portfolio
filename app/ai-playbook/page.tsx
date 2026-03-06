@@ -115,7 +115,7 @@ function SectionHeading({
     <motion.div variants={fadeUp} className="mb-14 text-center">
       {Icon && (
         <div className="mx-auto mb-4 flex h-14 w-14 items-center justify-center rounded-2xl bg-[#FAFF00]/20">
-          <Icon size={28} weight="duotone" className="text-[#FAFF00] dark:text-[#FAFF00]" />
+          <Icon size={28} weight="duotone" className="text-black dark:text-[#FAFF00]" />
         </div>
       )}
       <h2 className="font-serif italic font-extrabold text-3xl md:text-5xl mb-3">{title}</h2>
@@ -463,7 +463,7 @@ export default function AIPlaybook() {
           </a>
         </motion.div>
         <div className="absolute inset-0 z-0 overflow-hidden">
-          <iframe src="https://aura.promad.design/embed/magenta-wavy-gradient-header-dynamic-website-design" style={{width:"100%", height:"100%", border:"none"}} allowFullScreen></iframe>
+          <iframe title="Dark Abstract Header – Luminous Green Flow for Websites" src="https://aura.promad.design/embed/dark-abstract-header-luminous-green-flow-for-websites" style={{width:"100%", height:"800px"}} allowFullScreen></iframe>
         </div>
       </Section>
 
@@ -485,105 +485,6 @@ export default function AIPlaybook() {
             <LinkCard key={experiment.title} {...experiment} />
           ))}
         </motion.div>
-      </Section>
-
-      {/* ── Creative Production Pipeline ──────────────────── */}
-      <Section id="production" className="bg-secondary/30">
-        <SectionHeading
-          icon={FilmSlate}
-          title="Creative Production Pipeline"
-        />
-
-        <div className="grid lg:grid-cols-2 gap-12 max-w-6xl mx-auto">
-          {/* Modular Video Ad System */}
-          <motion.div variants={fadeUp}>
-            <Card className="h-full">
-              <CardHeader>
-                <div className="w-12 h-12 rounded-xl bg-[#FAFF00] text-black flex items-center justify-center mb-3">
-                  <FilmSlate size={24} weight="duotone" />
-                </div>
-                <CardTitle className="text-xl">Modular Video Ad System</CardTitle>
-              </CardHeader>
-              <CardContent className="space-y-6">
-                {/* Animated equation */}
-                <div className="flex flex-wrap items-center justify-center gap-2 text-center font-mono text-lg">
-                  {EQUATION_ITEMS.map((item, i) => (
-                    <motion.div key={item.label} variants={scaleIn} className="flex items-center gap-2">
-                      {i > 0 && <span className="text-muted-foreground">×</span>}
-                      <div className="bg-secondary rounded-lg px-3 py-2">
-                        <div className="text-2xl font-bold">{item.n}</div>
-                        <div className="text-xs text-muted-foreground">{item.label}</div>
-                      </div>
-                    </motion.div>
-                  ))}
-                  <motion.div variants={scaleIn} className="flex items-center gap-2">
-                    <span className="text-muted-foreground">=</span>
-                    <div className="bg-[#FAFF00] text-black rounded-lg px-3 py-2">
-                      <div className="text-2xl font-bold">100+</div>
-                      <div className="text-xs">variations</div>
-                    </div>
-                  </motion.div>
-                </div>
-
-                <div className="space-y-3 pt-2">
-                  {PROCESS_STEPS.map((step, i) => (
-                    <ProcessStep key={i} number={i + 1} title={step} delay={i * 0.1} />
-                  ))}
-                </div>
-              </CardContent>
-            </Card>
-          </motion.div>
-
-          {/* Video Brief Development */}
-          <motion.div variants={fadeUp}>
-            <Card className="h-full">
-              <CardHeader>
-                <div className="w-12 h-12 rounded-xl bg-secondary text-foreground flex items-center justify-center mb-3">
-                  <FilmScript size={24} weight="duotone" />
-                </div>
-                <CardTitle className="text-xl">Video Brief Development</CardTitle>
-                <CardDescription>
-                  From concept to generation-ready documentation
-                </CardDescription>
-              </CardHeader>
-              <CardContent>
-                <motion.div
-                  variants={staggerContainer}
-                  initial="hidden"
-                  whileInView="visible"
-                  viewport={{ once: true }}
-                  className="space-y-3"
-                >
-                  {VIDEO_BRIEF_ITEMS.map((item, i) => (
-                    <motion.div
-                      key={i}
-                      variants={fadeUp}
-                      className="flex items-center gap-3 p-3 rounded-lg bg-secondary/50"
-                    >
-                      <div className="w-6 h-6 rounded-full bg-[#FAFF00]/20 flex items-center justify-center flex-shrink-0">
-                        <motion.div
-                          className="w-2.5 h-2.5 rounded-full bg-[#FAFF00]"
-                          animate={{
-                            scale: [0, 1, 0.6, 1],
-                            opacity: [0, 1, 0.5, 1],
-                          }}
-                          transition={{
-                            delay: i * 0.15,
-                            duration: 2,
-                            repeat: Infinity,
-                            repeatDelay: 1,
-                            ease: "easeInOut",
-                          }}
-                        />
-                      </div>
-                      <span className="text-sm">{item}</span>
-                    </motion.div>
-                  ))}
-                </motion.div>
-              </CardContent>
-            </Card>
-          </motion.div>
-        </div>
       </Section>
 
       {/* ── Shipping Product ──────────────────────────────── */}

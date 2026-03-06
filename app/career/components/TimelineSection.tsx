@@ -16,7 +16,7 @@ export function TimelineSection() {
           </h2>
         </Reveal>
         <Reveal delay={0.2}>
-          <p className="text-[0.8rem] tracking-[0.15em] uppercase mt-3" style={{ color: "#5a5660" }}>
+          <p className="text-[0.8rem] tracking-[0.15em] uppercase mt-3" style={{ color: "var(--career-text-muted)" }}>
             Each phase didn't replace the last — it added a new dimension
           </p>
         </Reveal>
@@ -50,7 +50,7 @@ export function TimelineSection() {
               <div
                 className="flex-shrink-0 flex flex-col justify-center pt-5 w-[120px] md:w-[240px]"
               >
-                <p className="text-[0.7rem] tracking-[0.1em] tabular-nums" style={{ color: "#5a5660" }}>
+                <p className="text-[0.7rem] tracking-[0.1em] tabular-nums" style={{ color: "var(--career-text-muted)" }}>
                   {row.year}
                 </p>
                 {currentBox && currentCfg && (
@@ -58,11 +58,11 @@ export function TimelineSection() {
                     <p className="text-[0.6rem] tracking-[0.15em] uppercase mb-1" style={{ color: currentCfg.color }}>
                       {currentBox.label}
                     </p>
-                    <p className="font-serif italic font-semibold text-lg leading-snug text-[#f0ede6]">
+                    <p className="font-serif italic font-semibold text-lg leading-snug" style={{ color: "var(--career-text)" }}>
                       {currentBox.title}
                     </p>
                     {currentBox.companies && (
-                      <p className="text-[0.72rem] mt-1 leading-relaxed" style={{ color: "#8a8690" }}>
+                      <p className="text-[0.72rem] mt-1 leading-relaxed" style={{ color: "var(--career-text-secondary)" }}>
                         {currentBox.companies}
                       </p>
                     )}
@@ -72,7 +72,7 @@ export function TimelineSection() {
                           <span
                             key={s}
                             className="text-[0.58rem] px-1.5 py-0.5 rounded-full"
-                            style={{ background: "rgba(255,255,255,0.06)", color: "#8a8690" }}
+                            style={{ background: "var(--career-subtle-bg)", color: "var(--career-text-secondary)" }}
                           >
                             {s}
                           </span>

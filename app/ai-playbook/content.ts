@@ -64,6 +64,13 @@ export const FIGMA_PLUGINS: LinkCardData[] = [
 
 export const EXPERIMENTS: LinkCardData[] = [
   {
+    icon: AirplaneTilt,
+    title: "Trip Planner",
+    description: "AI-powered trip planning tool for organizing and visualizing travel itineraries.",
+    href: "https://trip.promad.design",
+    accent: true,
+  },
+  {
     icon: Cube,
     title: "SVG to 3D headers",
     description: "Interactive app turn svg logos into web-friendly, embed-ready 3D animations ",
@@ -98,13 +105,7 @@ export const EXPERIMENTS: LinkCardData[] = [
     href: "https://mow.app.promad.design",
     accent: true,
   },
-  {
-    icon: AirplaneTilt,
-    title: "Trip Planner",
-    description: "AI-powered trip planning tool for organizing and visualizing travel itineraries.",
-    href: "https://trip.promad.design",
-    accent: true,
-  },
+  
 ]
 
 // ─── Modular Video Ad System ──────────────────────────────────────

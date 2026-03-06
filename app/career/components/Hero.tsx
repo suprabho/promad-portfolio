@@ -16,7 +16,7 @@ export function Hero() {
 
       <motion.p
         className="text-[0.7rem] tracking-[0.35em] uppercase mb-8"
-        style={{ color: "#5a5660" }}
+        style={{ color: "var(--career-text-muted)" }}
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.2, duration: 0.8 }}
@@ -38,7 +38,7 @@ export function Hero() {
 
       <motion.p
         className="max-w-lg leading-relaxed"
-        style={{ fontSize: "clamp(0.95rem, 1.5vw, 1.15rem)", color: "#8a8690" }}
+        style={{ fontSize: "clamp(0.95rem, 1.5vw, 1.15rem)", color: "var(--career-text-secondary)" }}
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.6, duration: 0.8 }}
@@ -50,7 +50,7 @@ export function Hero() {
       {/* Scroll cue */}
       <motion.div
         className="absolute bottom-10 flex flex-col items-center gap-2"
-        style={{ color: "#5a5660" }}
+        style={{ color: "var(--career-text-muted)" }}
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 1, duration: 0.8 }}
@@ -58,7 +58,7 @@ export function Hero() {
         <span className="text-[0.65rem] tracking-[0.2em] uppercase">Scroll</span>
         <motion.div
           className="w-px h-8"
-          style={{ background: "linear-gradient(to bottom, #5a5660, transparent)" }}
+          style={{ background: "linear-gradient(to bottom, var(--career-text-muted), transparent)" }}
           animate={{ scaleY: [0.7, 1, 0.7], opacity: [0.3, 1, 0.3] }}
           transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
         />
