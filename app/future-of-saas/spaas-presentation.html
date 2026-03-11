@@ -1,0 +1,1884 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Future of Work — Autonomous Work Layer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --bg: #070b14;
+    --surface: #0d1524;
+    --border: rgba(255,255,255,0.07);
+    --cyan: #00e5ff;
+    --cyan-dim: rgba(0,229,255,0.15);
+    --cyan-glow: rgba(0,229,255,0.4);
+    --amber: #ffb300;
+    --amber-dim: rgba(255,179,0,0.12);
+    --text: #e8edf5;
+    --muted: #5a6a82;
+    --subtle: #9aaec2;
+    --white: #ffffff;
+    --red-dim: rgba(255,60,60,0.12);
+    --red: #ff3c3c;
+    --green: #00ff88;
+    --green-dim: rgba(0,255,136,0.1);
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 16px;
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 18px 48px;
+    background: rgba(7,11,20,0.85);
+    backdrop-filter: blur(20px);
+    border-bottom: 1px solid var(--border);
+  }
+  .nav-logo {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.15em;
+    color: var(--cyan);
+    text-transform: uppercase;
+  }
+  .nav-pills {
+    display: flex;
+    gap: 6px;
+  }
+  .nav-pill {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    color: var(--muted);
+    padding: 5px 12px;
+    border: 1px solid transparent;
+    border-radius: 2px;
+    cursor: pointer;
+    transition: all 0.2s;
+    text-decoration: none;
+    text-transform: uppercase;
+  }
+  .nav-pill:hover { color: var(--cyan); border-color: var(--border); }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 120px 48px 80px;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero-grid-bg {
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(0,229,255,0.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(0,229,255,0.03) 1px, transparent 1px);
+    background-size: 60px 60px;
+    mask-image: radial-gradient(ellipse 80% 60% at 50% 50%, black, transparent);
+  }
+  .hero-glow {
+    position: absolute;
+    width: 900px; height: 500px;
+    background: radial-gradient(ellipse, rgba(0,229,255,0.06) 0%, transparent 70%);
+    top: 10%; left: -10%;
+    pointer-events: none;
+  }
+  .hero-glow-2 {
+    position: absolute;
+    width: 600px; height: 400px;
+    background: radial-gradient(ellipse, rgba(255,179,0,0.04) 0%, transparent 70%);
+    bottom: 10%; right: 0;
+    pointer-events: none;
+  }
+  .hero-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    color: var(--cyan);
+    text-transform: uppercase;
+    margin-bottom: 32px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    animation: fadeUp 0.8s ease both;
+  }
+  .hero-label::before {
+    content: '';
+    width: 32px;
+    height: 1px;
+    background: var(--cyan);
+  }
+  .hero-title {
+    font-family: 'Syne', sans-serif;
+    font-size: clamp(52px, 7vw, 100px);
+    font-weight: 800;
+    line-height: 0.95;
+    letter-spacing: -0.03em;
+    color: var(--white);
+    max-width: 900px;
+    animation: fadeUp 0.8s 0.1s ease both;
+  }
+  .hero-title .accent { color: var(--cyan); }
+  .hero-title .line2 { display: block; color: var(--subtle); font-weight: 400; font-size: 0.7em; margin-top: 8px; }
+  .hero-sub {
+    margin-top: 40px;
+    max-width: 560px;
+    color: var(--subtle);
+    font-size: 18px;
+    line-height: 1.7;
+    animation: fadeUp 0.8s 0.2s ease both;
+  }
+  .hero-cta {
+    margin-top: 56px;
+    display: flex;
+    gap: 16px;
+    align-items: center;
+    animation: fadeUp 0.8s 0.3s ease both;
+  }
+  .btn-primary {
+    background: var(--cyan);
+    color: var(--bg);
+    font-family: 'DM Mono', monospace;
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 14px 28px;
+    border: none;
+    border-radius: 2px;
+    cursor: pointer;
+    text-decoration: none;
+    transition: all 0.2s;
+  }
+  .btn-primary:hover { background: #33ecff; transform: translateY(-1px); }
+  .btn-ghost {
+    color: var(--muted);
+    font-family: 'DM Mono', monospace;
+    font-size: 12px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    text-decoration: none;
+    padding: 14px 4px;
+    border-bottom: 1px solid var(--muted);
+    transition: all 0.2s;
+  }
+  .btn-ghost:hover { color: var(--text); border-color: var(--text); }
+
+  .hero-scroll-hint {
+    position: absolute;
+    bottom: 40px;
+    left: 48px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: var(--muted);
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    animation: fadeUp 1s 0.6s ease both;
+  }
+  .scroll-line {
+    width: 40px; height: 1px;
+    background: linear-gradient(90deg, transparent, var(--muted));
+    animation: scrollPulse 2s ease-in-out infinite;
+  }
+
+  /* TODAY → TOMORROW DIAGNOSIS */
+  .diagnosis {
+    padding: 120px 48px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2px;
+    max-width: 1400px;
+    margin: 0 auto;
+  }
+  .diag-panel {
+    padding: 64px 56px;
+    position: relative;
+  }
+  .diag-today {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-right: none;
+  }
+  .diag-tomorrow {
+    background: linear-gradient(135deg, rgba(0,229,255,0.04), rgba(0,229,255,0.01));
+    border: 1px solid rgba(0,229,255,0.2);
+  }
+  .diag-tag {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    margin-bottom: 40px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .diag-tag.today-tag { color: var(--red); }
+  .diag-tag.tomorrow-tag { color: var(--cyan); }
+  .diag-tag::before {
+    content: '';
+    width: 6px; height: 6px;
+    border-radius: 50%;
+  }
+  .today-tag::before { background: var(--red); box-shadow: 0 0 8px var(--red); }
+  .tomorrow-tag::before { background: var(--cyan); box-shadow: 0 0 8px var(--cyan); animation: blink 2s ease-in-out infinite; }
+  .diag-heading {
+    font-family: 'Syne', sans-serif;
+    font-size: 28px;
+    font-weight: 700;
+    line-height: 1.2;
+    margin-bottom: 24px;
+    color: var(--text);
+  }
+  .diag-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+  .diag-list li {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    color: var(--subtle);
+    font-size: 15px;
+    line-height: 1.5;
+  }
+  .diag-list li .icon {
+    width: 18px;
+    min-width: 18px;
+    height: 18px;
+    margin-top: 2px;
+    border-radius: 2px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 10px;
+  }
+  .today-icon { background: var(--red-dim); color: var(--red); }
+  .tomorrow-icon { background: var(--cyan-dim); color: var(--cyan); }
+
+  /* SECTION TEMPLATE */
+  .section {
+    padding: 120px 48px;
+    max-width: 1400px;
+    margin: 0 auto;
+  }
+  .section-number {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.25em;
+    color: var(--muted);
+    text-transform: uppercase;
+    margin-bottom: 16px;
+  }
+  .section-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    color: var(--cyan);
+    text-transform: uppercase;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .section-label::before { content: ''; width: 24px; height: 1px; background: var(--cyan); }
+  .section-title {
+    font-family: 'Syne', sans-serif;
+    font-size: clamp(36px, 4vw, 64px);
+    font-weight: 800;
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+    margin-bottom: 20px;
+    color: var(--white);
+  }
+  .section-title .dim { color: var(--muted); font-weight: 400; }
+  .section-desc {
+    font-size: 18px;
+    color: var(--subtle);
+    max-width: 600px;
+    line-height: 1.7;
+    margin-bottom: 64px;
+  }
+
+  /* PILLAR 1: AGENTIC BROWSER */
+  .browser-mockup {
+    border: 1px solid rgba(0,229,255,0.2);
+    border-radius: 8px;
+    overflow: hidden;
+    background: #080f1e;
+    box-shadow: 0 0 80px rgba(0,229,255,0.06), 0 40px 80px rgba(0,0,0,0.5);
+  }
+  .browser-bar {
+    background: #0d1829;
+    border-bottom: 1px solid rgba(0,229,255,0.1);
+    padding: 12px 20px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .browser-dots { display: flex; gap: 6px; }
+  .browser-dot {
+    width: 10px; height: 10px;
+    border-radius: 50%;
+  }
+  .browser-url {
+    flex: 1;
+    background: rgba(0,229,255,0.05);
+    border: 1px solid rgba(0,229,255,0.12);
+    border-radius: 4px;
+    padding: 6px 14px;
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    color: var(--cyan);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .browser-url .lock { color: var(--green); font-size: 9px; }
+  .browser-tabs {
+    display: flex;
+    gap: 2px;
+    padding: 0 20px;
+    background: #0a1220;
+    border-bottom: 1px solid var(--border);
+    overflow-x: auto;
+  }
+  .browser-tab {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.05em;
+    padding: 10px 16px;
+    color: var(--muted);
+    border-bottom: 2px solid transparent;
+    white-space: nowrap;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+  .browser-tab.active { color: var(--cyan); border-bottom-color: var(--cyan); background: rgba(0,229,255,0.04); }
+  .browser-content {
+    display: grid;
+    grid-template-columns: 240px 1fr 280px;
+    height: 420px;
+  }
+  .browser-sidebar {
+    border-right: 1px solid var(--border);
+    padding: 20px 0;
+    overflow-y: auto;
+  }
+  .sidebar-section-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 0.15em;
+    color: var(--muted);
+    text-transform: uppercase;
+    padding: 0 16px 8px;
+    margin-top: 8px;
+  }
+  .sidebar-item {
+    padding: 8px 16px;
+    font-size: 12px;
+    color: var(--subtle);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: all 0.15s;
+  }
+  .sidebar-item:hover, .sidebar-item.active {
+    background: rgba(0,229,255,0.06);
+    color: var(--text);
+  }
+  .sidebar-item .dot {
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: var(--muted);
+    flex-shrink: 0;
+  }
+  .sidebar-item.active .dot { background: var(--cyan); box-shadow: 0 0 6px var(--cyan); }
+  .browser-main {
+    padding: 24px;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+  .agent-prompt-bar {
+    background: rgba(0,229,255,0.04);
+    border: 1px solid rgba(0,229,255,0.15);
+    border-radius: 6px;
+    padding: 12px 16px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .agent-prompt-icon {
+    width: 28px; height: 28px;
+    border-radius: 4px;
+    background: var(--cyan-dim);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--cyan);
+    font-size: 12px;
+    flex-shrink: 0;
+  }
+  .agent-prompt-text {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    color: var(--subtle);
+    flex: 1;
+  }
+  .agent-prompt-text .cursor {
+    display: inline-block;
+    width: 7px; height: 13px;
+    background: var(--cyan);
+    margin-left: 2px;
+    vertical-align: middle;
+    animation: blink 1s step-end infinite;
+  }
+  .result-card {
+    background: rgba(255,255,255,0.02);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 16px;
+  }
+  .result-card-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 12px;
+  }
+  .result-card-title {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    color: var(--cyan);
+    text-transform: uppercase;
+  }
+  .result-badge {
+    font-family: 'DM Mono', monospace;
+    font-size: 9px;
+    padding: 2px 8px;
+    border-radius: 2px;
+    letter-spacing: 0.1em;
+  }
+  .badge-risk { background: var(--red-dim); color: var(--red); }
+  .badge-clear { background: var(--green-dim); color: var(--green); }
+  .badge-amber { background: var(--amber-dim); color: var(--amber); }
+  .mini-graph {
+    height: 80px;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .graph-node {
+    position: absolute;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'DM Mono', monospace;
+    font-size: 8px;
+    color: var(--bg);
+    font-weight: 600;
+  }
+  .graph-edge {
+    position: absolute;
+    height: 1px;
+    transform-origin: left center;
+    opacity: 0.5;
+  }
+  .browser-right-panel {
+    border-left: 1px solid var(--border);
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    overflow-y: auto;
+  }
+  .right-panel-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 0.15em;
+    color: var(--muted);
+    text-transform: uppercase;
+    margin-bottom: 4px;
+  }
+  .agent-status-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 10px;
+    border-radius: 4px;
+    background: rgba(255,255,255,0.02);
+    border: 1px solid var(--border);
+  }
+  .status-dot {
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+  .status-active { background: var(--green); box-shadow: 0 0 6px var(--green); animation: blink 1.5s ease-in-out infinite; }
+  .status-idle { background: var(--muted); }
+  .status-running { background: var(--amber); box-shadow: 0 0 6px var(--amber); animation: blink 0.8s ease-in-out infinite; }
+  .agent-status-text { font-size: 11px; color: var(--subtle); line-height: 1.3; }
+  .agent-status-name { color: var(--text); font-size: 11px; font-weight: 500; }
+
+  /* DEVICE STRIP */
+  .device-strip {
+    margin-top: 48px;
+    display: flex;
+    gap: 12px;
+    align-items: center;
+  }
+  .device-chip {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    color: var(--muted);
+    border: 1px solid var(--border);
+    padding: 6px 14px;
+    border-radius: 2px;
+    text-transform: uppercase;
+    transition: all 0.2s;
+  }
+  .device-chip:hover { border-color: var(--cyan); color: var(--cyan); }
+  .device-chip.active { border-color: var(--cyan); color: var(--cyan); background: var(--cyan-dim); }
+  .device-arrow { color: var(--muted); font-size: 12px; }
+
+  /* PILLAR 2: GENERATIVE UI */
+  .gen-ui-demo {
+    background: #080f1e;
+    border: 1px solid rgba(0,229,255,0.15);
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 40px 80px rgba(0,0,0,0.5);
+  }
+  .gen-ui-top {
+    padding: 16px 24px;
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    background: rgba(0,229,255,0.03);
+  }
+  .gen-ui-avatar {
+    width: 28px; height: 28px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--cyan), #0088ff);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 12px; font-weight: 700; color: var(--bg);
+    font-family: 'Syne', sans-serif;
+    flex-shrink: 0;
+  }
+  .gen-ui-query {
+    font-family: 'DM Mono', monospace;
+    font-size: 12px;
+    color: var(--subtle);
+  }
+  .gen-ui-query strong { color: var(--text); }
+  .gen-ui-body {
+    padding: 24px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+  }
+  .gen-card {
+    background: rgba(255,255,255,0.02);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 18px;
+    transition: border-color 0.3s;
+  }
+  .gen-card:hover { border-color: rgba(0,229,255,0.2); }
+  .gen-card-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 0.15em;
+    color: var(--muted);
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+  .gen-card-value {
+    font-family: 'Syne', sans-serif;
+    font-size: 28px;
+    font-weight: 700;
+    margin-bottom: 4px;
+  }
+  .gen-card-sub { font-size: 12px; color: var(--muted); }
+  .gen-card-sparkline {
+    margin-top: 12px;
+    height: 40px;
+    display: flex;
+    align-items: flex-end;
+    gap: 3px;
+  }
+  .spark-bar {
+    flex: 1;
+    border-radius: 2px 2px 0 0;
+    transition: height 0.5s ease;
+  }
+  .gen-card-wide {
+    grid-column: span 2;
+  }
+  .flow-viz {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: wrap;
+    padding: 12px 0;
+  }
+  .flow-node {
+    padding: 6px 12px;
+    border-radius: 4px;
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.05em;
+    white-space: nowrap;
+  }
+  .flow-arrow {
+    color: var(--muted);
+    font-size: 12px;
+    flex-shrink: 0;
+  }
+  .flow-amount {
+    font-size: 9px;
+    color: var(--muted);
+    font-family: 'DM Mono', monospace;
+    white-space: nowrap;
+  }
+  .gen-insight {
+    grid-column: span 2;
+    background: rgba(0,229,255,0.04);
+    border: 1px solid rgba(0,229,255,0.15);
+    border-radius: 6px;
+    padding: 16px;
+    display: flex;
+    gap: 12px;
+    align-items: flex-start;
+  }
+  .insight-icon {
+    width: 28px; height: 28px;
+    background: var(--cyan-dim);
+    border-radius: 4px;
+    display: flex; align-items: center; justify-content: center;
+    color: var(--cyan);
+    font-size: 13px;
+    flex-shrink: 0;
+  }
+  .insight-text { font-size: 13px; color: var(--subtle); line-height: 1.6; }
+  .insight-text strong { color: var(--text); }
+
+  /* PILLAR 3: WORKFLOW */
+  .workflow-canvas {
+    background: #070c18;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 40px;
+    position: relative;
+    min-height: 320px;
+    overflow: hidden;
+  }
+  .wf-grid {
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(255,255,255,0.015) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,0.015) 1px, transparent 1px);
+    background-size: 32px 32px;
+  }
+  .wf-row {
+    display: flex;
+    align-items: center;
+    gap: 0;
+    position: relative;
+    z-index: 1;
+    margin-bottom: 24px;
+  }
+  .wf-node {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 12px 16px;
+    min-width: 160px;
+    position: relative;
+    transition: all 0.2s;
+  }
+  .wf-node:hover { border-color: var(--cyan); }
+  .wf-node-trigger {
+    border-color: rgba(0,229,255,0.3);
+    background: rgba(0,229,255,0.04);
+  }
+  .wf-node-action {
+    border-color: rgba(255,179,0,0.2);
+    background: rgba(255,179,0,0.03);
+  }
+  .wf-node-output {
+    border-color: rgba(0,255,136,0.2);
+    background: rgba(0,255,136,0.03);
+  }
+  .wf-node-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    margin-bottom: 4px;
+  }
+  .wf-node-title { font-size: 12px; font-weight: 500; color: var(--text); }
+  .wf-node-sub { font-size: 10px; color: var(--muted); margin-top: 2px; font-family: 'DM Mono', monospace; }
+  .wf-connector {
+    height: 1px;
+    width: 40px;
+    background: linear-gradient(90deg, var(--border), rgba(255,255,255,0.04));
+    flex-shrink: 0;
+    position: relative;
+  }
+  .wf-connector::after {
+    content: '›';
+    position: absolute;
+    right: 0;
+    top: -8px;
+    color: var(--muted);
+    font-size: 14px;
+  }
+  .wf-connector.active-flow {
+    background: linear-gradient(90deg, var(--cyan), rgba(0,229,255,0.1));
+    animation: flowPulse 2s ease-in-out infinite;
+  }
+  .wf-badge {
+    position: absolute;
+    top: -8px; right: -8px;
+    width: 16px; height: 16px;
+    border-radius: 50%;
+    font-family: 'DM Mono', monospace;
+    font-size: 8px;
+    display: flex; align-items: center; justify-content: center;
+    font-weight: 700;
+    color: var(--bg);
+  }
+  .wf-trigger-badge { background: var(--cyan); box-shadow: 0 0 10px var(--cyan-glow); }
+  .wf-running-badge { background: var(--amber); box-shadow: 0 0 10px rgba(255,179,0,0.5); animation: blink 0.8s ease-in-out infinite; }
+  .wf-done-badge { background: var(--green); }
+  .wf-stats {
+    display: flex;
+    gap: 16px;
+    margin-top: 24px;
+    position: relative;
+    z-index: 1;
+  }
+  .wf-stat {
+    background: rgba(255,255,255,0.02);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding: 12px 16px;
+    flex: 1;
+  }
+  .wf-stat-val {
+    font-family: 'Syne', sans-serif;
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--text);
+  }
+  .wf-stat-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 0.1em;
+    color: var(--muted);
+    text-transform: uppercase;
+    margin-top: 4px;
+  }
+
+  /* PILLAR 4: OUTPUT */
+  .output-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 16px;
+  }
+  .output-card {
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    overflow: hidden;
+    transition: all 0.3s;
+    cursor: pointer;
+  }
+  .output-card:hover { border-color: rgba(0,229,255,0.3); transform: translateY(-2px); }
+  .output-card-header {
+    padding: 20px;
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 12px;
+  }
+  .output-icon {
+    width: 36px; height: 36px;
+    border-radius: 6px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 16px;
+    flex-shrink: 0;
+  }
+  .output-card-title {
+    font-family: 'Syne', sans-serif;
+    font-weight: 600;
+    font-size: 15px;
+    color: var(--text);
+    line-height: 1.3;
+  }
+  .output-card-body {
+    padding: 16px 20px;
+    font-size: 13px;
+    color: var(--muted);
+    line-height: 1.6;
+  }
+  .output-card-footer {
+    padding: 12px 20px;
+    border-top: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .output-card-tag {
+    font-family: 'DM Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 3px 8px;
+    border-radius: 2px;
+  }
+  .output-time {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    color: var(--muted);
+  }
+
+  /* CONVICTION CLOSE */
+  .conviction {
+    padding: 160px 48px;
+    max-width: 1000px;
+    margin: 0 auto;
+    text-align: center;
+  }
+  .conviction-eyebrow {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    color: var(--cyan);
+    text-transform: uppercase;
+    margin-bottom: 32px;
+  }
+  .conviction-title {
+    font-family: 'Syne', sans-serif;
+    font-size: clamp(40px, 5vw, 72px);
+    font-weight: 800;
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+    margin-bottom: 32px;
+    color: var(--white);
+  }
+  .conviction-title em {
+    font-style: normal;
+    color: var(--cyan);
+  }
+  .conviction-body {
+    font-size: 18px;
+    color: var(--subtle);
+    line-height: 1.8;
+    max-width: 680px;
+    margin: 0 auto 56px;
+  }
+  .conviction-principles {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 2px;
+    margin: 64px 0;
+    text-align: left;
+  }
+  .principle-card {
+    padding: 32px 24px;
+    border: 1px solid var(--border);
+    position: relative;
+    overflow: hidden;
+  }
+  .principle-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 2px;
+  }
+  .p1::before { background: var(--cyan); }
+  .p2::before { background: var(--amber); }
+  .p3::before { background: #a78bfa; }
+  .p4::before { background: var(--green); }
+  .p5::before { background: #f472b6; }
+  .principle-num {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    color: var(--muted);
+    margin-bottom: 16px;
+  }
+  .principle-text {
+    font-family: 'Syne', sans-serif;
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--text);
+    line-height: 1.4;
+  }
+
+  /* FOOTER */
+  footer {
+    border-top: 1px solid var(--border);
+    padding: 40px 48px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .footer-logo {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.15em;
+    color: var(--muted);
+    text-transform: uppercase;
+  }
+  .footer-tagline {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    color: var(--muted);
+    letter-spacing: 0.1em;
+  }
+
+  /* SECTION DIVIDER */
+  .section-divider {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 48px;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--border), transparent);
+  }
+
+  /* FULL-BLEED QUOTE BREAK */
+  .quote-break {
+    padding: 100px 48px;
+    background: linear-gradient(135deg, rgba(0,229,255,0.03), rgba(0,229,255,0.01) 50%, rgba(255,179,0,0.02));
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    text-align: center;
+  }
+  .quote-text {
+    font-family: 'Syne', sans-serif;
+    font-size: clamp(24px, 3.5vw, 48px);
+    font-weight: 700;
+    color: var(--white);
+    max-width: 900px;
+    margin: 0 auto 16px;
+    line-height: 1.2;
+    letter-spacing: -0.02em;
+  }
+  .quote-attr {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    color: var(--muted);
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+  }
+
+  /* LAYOUT HELPERS */
+  .two-col {
+    display: grid;
+    grid-template-columns: 1fr 1.3fr;
+    gap: 80px;
+    align-items: start;
+  }
+  .two-col.reverse { grid-template-columns: 1.3fr 1fr; }
+  .col-text { padding-top: 8px; }
+  .tag-stack {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 32px;
+  }
+  .tag {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 6px 12px;
+    border: 1px solid var(--border);
+    border-radius: 2px;
+    color: var(--muted);
+    transition: all 0.2s;
+  }
+  .tag:hover { border-color: var(--cyan); color: var(--cyan); }
+  .tag.highlight { border-color: rgba(0,229,255,0.3); color: var(--cyan); background: var(--cyan-dim); }
+
+  /* ANIMATIONS */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.2; }
+  }
+  @keyframes scrollPulse {
+    0%, 100% { transform: scaleX(1); opacity: 0.5; }
+    50% { transform: scaleX(1.3); opacity: 1; }
+  }
+  @keyframes flowPulse {
+    0%, 100% { opacity: 0.4; }
+    50% { opacity: 1; }
+  }
+  @keyframes nodeAppear {
+    from { opacity: 0; transform: scale(0.5); }
+    to { opacity: 1; transform: scale(1); }
+  }
+
+  .fade-in {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+  .fade-in.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* TYPE ANIMATION */
+  .typewriter {
+    overflow: hidden;
+    white-space: nowrap;
+    border-right: 2px solid var(--cyan);
+    animation: typing 3s steps(40, end), blink-caret 0.75s step-end infinite;
+    max-width: fit-content;
+  }
+  @keyframes typing {
+    from { width: 0; }
+    to { width: 100%; }
+  }
+  @keyframes blink-caret {
+    from, to { border-color: transparent; }
+    50% { border-color: var(--cyan); }
+  }
+
+  /* RESPONSIVE */
+  @media (max-width: 900px) {
+    nav { padding: 14px 24px; }
+    .nav-pills { display: none; }
+    .hero { padding: 100px 24px 60px; }
+    .diagnosis, .section { padding: 80px 24px; }
+    .diagnosis { grid-template-columns: 1fr; }
+    .diag-today { border-right: 1px solid var(--border); }
+    .two-col, .two-col.reverse { grid-template-columns: 1fr; gap: 40px; }
+    .browser-content { grid-template-columns: 1fr; }
+    .browser-sidebar, .browser-right-panel { display: none; }
+    .output-grid { grid-template-columns: 1fr; }
+    .conviction-principles { grid-template-columns: 1fr 1fr; }    footer { flex-direction: column; gap: 12px; text-align: center; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">Autonomous Work Layer — Future of Work</div>
+  <div class="nav-pills">
+    <a class="nav-pill" href="#pillar-1">Agentic Browser</a>
+    <a class="nav-pill" href="#pillar-2">Generative UI</a>
+    <a class="nav-pill" href="#pillar-3">Workflows</a>
+    <a class="nav-pill" href="#pillar-4">Output</a>
+    <a class="nav-pill" href="#pillar-5">Natural Language</a>
+    <a class="nav-pill" href="#conviction">Conviction</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-grid-bg"></div>
+  <div class="hero-glow"></div>
+  <div class="hero-glow-2"></div>
+
+  <div class="hero-label">A Thesis on the Future of Work</div>
+  <h1 class="hero-title">
+    Beyond<br><span class="accent">SaaS.</span>
+    <span class="line2">The age of Autonomous Work Layer</span>
+  </h1>
+  <p class="hero-sub">
+    Software gave us access. AI gives us intelligence. The next shift isn't another dashboard — it's an agentic layer that makes the investigator's judgment the only bottleneck that matters.
+  </p>
+  <div class="hero-cta">
+    <a href="#pillar-1" class="btn-primary">Explore the thesis</a>
+    <a href="#conviction" class="btn-ghost">Jump to conviction →</a>
+  </div>
+
+  <div class="hero-scroll-hint">
+    <div class="scroll-line"></div>
+    Scroll to explore
+  </div>
+</section>
+
+<!-- DIAGNOSIS SECTION -->
+<section style="padding: 0 0 0 0; background: var(--surface); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);">
+  <div style="max-width: 1400px; margin: 0 auto; padding: 0 48px;">
+    <div style="padding: 64px 0 20px; text-align: center;">
+      <div class="section-label" style="justify-content: center; margin-bottom: 12px;">The Diagnosis</div>
+      <h2 style="font-family: 'Syne', sans-serif; font-size: clamp(28px,3vw,42px); font-weight: 700; color: var(--white); letter-spacing: -0.02em;">You have all the tools. They just don't talk to each other.</h2>
+    </div>
+  </div>
+  <div class="diagnosis">
+    <div class="diag-panel diag-today">
+      <div class="diag-tag today-tag">Today — SaaS Reality</div>
+      <h3 class="diag-heading">The analyst is the middleware</h3>
+      <ul class="diag-list">
+        <li>
+          <span class="icon today-icon">✕</span>
+          14+ browser tabs open for a single investigation — Tracker, chain explorers, OFAC lists, case management, reporting tools
+        </li>
+        <li>
+          <span class="icon today-icon">✕</span>
+          Context lives in the analyst's head, not the system. Lost on handoff, lost on leave
+        </li>
+        <li>
+          <span class="icon today-icon">✕</span>
+          Static dashboards designed for the average query, not the forensic edge case
+        </li>
+        <li>
+          <span class="icon today-icon">✕</span>
+          Manual stitching: copy wallet address → paste in explorer → check sanctions list → write report. The human is the glue
+        </li>
+        <li>
+          <span class="icon today-icon">✕</span>
+          You are judged on output quality. You spend 70% of time on process
+        </li>
+      </ul>
+    </div>
+    <div class="diag-panel diag-tomorrow">
+      <div class="diag-tag tomorrow-tag">Tomorrow — Autonomous Work Layer Vision</div>
+      <h3 class="diag-heading">The agent is the middleware</h3>
+      <ul class="diag-list">
+        <li>
+          <span class="icon tomorrow-icon">✓</span>
+          One work-specific agentic browser that understands your case, your role, your data access — across all your devices
+        </li>
+        <li>
+          <span class="icon tomorrow-icon">✓</span>
+          Context graph persists across sessions. The system knows what you investigated last Tuesday
+        </li>
+        <li>
+          <span class="icon tomorrow-icon">✓</span>
+          Interfaces that render themselves for the question you asked, not a pre-built screen you navigate to
+        </li>
+        <li>
+          <span class="icon tomorrow-icon">✓</span>
+          Autonomous workflows handle the data stitching. You review conclusions, not data pipelines
+        </li>
+        <li>
+          <span class="icon tomorrow-icon">✓</span>
+          You spend 70% of time on judgment, strategy, and escalation. Output is everything
+        </li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- QUOTE BREAK 1 -->
+<div class="quote-break">
+  <p class="quote-text">"The future of blockchain forensics isn't faster software. It's software that disappears into intelligence."</p>
+  <div class="quote-attr">— Premise / Autonomous Work Layer Thesis</div>
+</div>
+
+<!-- PILLAR 1: AGENTIC BROWSER -->
+<section class="section" id="pillar-1">
+  <div class="two-col">
+    <div class="col-text fade-in">
+      <div class="section-number">01 / 04</div>
+      <div class="section-label">Agentic Browser</div>
+      <h2 class="section-title">One window.<br><span class="dim">All intelligence.</span></h2>
+      <p class="section-desc">
+        Not a SaaS app. Not a browser. A purpose-built workspace that understands who you are, what case you're working, and what tools you're authorized to use — across every device you own.
+      </p>
+      <div class="tag-stack">
+        <span class="tag highlight">Context-aware</span>
+        <span class="tag highlight">Cross-device</span>
+        <span class="tag">Desktop</span>
+        <span class="tag">Tablet</span>
+        <span class="tag">AR Glasses</span>
+        <span class="tag">Session persistence</span>
+      </div>
+      <div class="device-strip" style="margin-top: 32px;">
+        <span class="device-chip active">Desktop</span>
+        <span class="device-arrow">→</span>
+        <span class="device-chip">Laptop</span>
+        <span class="device-arrow">→</span>
+        <span class="device-chip">Tablet</span>
+        <span class="device-arrow">→</span>
+        <span class="device-chip">Meta Glasses</span>
+      </div>
+    </div>
+
+    <div class="fade-in">
+      <!-- BROWSER MOCKUP -->
+      <div class="browser-mockup">
+        <div class="browser-bar">
+          <div class="browser-dots">
+            <div class="browser-dot" style="background:#ff5f57"></div>
+            <div class="browser-dot" style="background:#febc2e"></div>
+            <div class="browser-dot" style="background:#28c840"></div>
+          </div>
+          <div class="browser-url">
+            <span class="lock">🔒</span>
+            <span>forensics.workspace / case-4421 / active</span>
+          </div>
+        </div>
+        <div class="browser-tabs">
+          <div class="browser-tab active">⬡ Case #4421 — DeFi Exploit</div>
+          <div class="browser-tab">📊 Wallet Cluster A</div>
+          <div class="browser-tab">🔗 Chain Hops</div>
+          <div class="browser-tab">📋 Draft Report</div>
+          <div class="browser-tab" style="color: var(--cyan); opacity: 0.5">+ New Investigation</div>
+        </div>
+        <div class="browser-content">
+          <div class="browser-sidebar">
+            <div class="sidebar-section-label">Active Case</div>
+            <div class="sidebar-item active"><div class="dot"></div>Overview</div>
+            <div class="sidebar-item"><div class="dot"></div>Wallet Graph</div>
+            <div class="sidebar-item"><div class="dot"></div>Fund Trace</div>
+            <div class="sidebar-item"><div class="dot"></div>Entity Map</div>
+            <div class="sidebar-section-label">Agent Actions</div>
+            <div class="sidebar-item"><div class="dot" style="background:var(--amber)"></div>Sanctions Check</div>
+            <div class="sidebar-item"><div class="dot" style="background:var(--amber)"></div>VASP Lookup</div>
+            <div class="sidebar-item"><div class="dot"></div>Risk Scoring</div>
+            <div class="sidebar-section-label">My Cases</div>
+            <div class="sidebar-item"><div class="dot"></div>Case #4408</div>
+            <div class="sidebar-item"><div class="dot"></div>Case #4391</div>
+            <div class="sidebar-item"><div class="dot"></div>Case #4377</div>
+          </div>
+          <div class="browser-main">
+            <div class="agent-prompt-bar">
+              <div class="agent-prompt-icon">⚡</div>
+              <div class="agent-prompt-text">
+                Trace fund flow from 0x3a4f... to known exchange hot wallets across chains<span class="cursor"></span>
+              </div>
+            </div>
+            <div class="result-card">
+              <div class="result-card-header">
+                <div class="result-card-title">Fund Flow — Cross-chain trace</div>
+                <span class="result-badge badge-risk">HIGH RISK</span>
+              </div>
+              <div class="mini-graph" style="position:relative; height: 90px;">
+                <svg width="100%" height="100%" viewBox="0 0 380 90" style="position:absolute; inset:0;">
+                  <defs>
+                    <marker id="arrow" markerWidth="6" markerHeight="6" refX="3" refY="3" orient="auto">
+                      <path d="M0,0 L6,3 L0,6 Z" fill="rgba(0,229,255,0.5)"/>
+                    </marker>
+                    <marker id="arrow-red" markerWidth="6" markerHeight="6" refX="3" refY="3" orient="auto">
+                      <path d="M0,0 L6,3 L0,6 Z" fill="rgba(255,60,60,0.7)"/>
+                    </marker>
+                  </defs>
+                  <!-- Edges -->
+                  <line x1="46" y1="45" x2="114" y2="45" stroke="rgba(0,229,255,0.4)" stroke-width="1.5" stroke-dasharray="4,2" marker-end="url(#arrow)"/>
+                  <line x1="146" y1="45" x2="204" y2="28" stroke="rgba(255,179,0,0.4)" stroke-width="1.5" stroke-dasharray="4,2" marker-end="url(#arrow)"/>
+                  <line x1="146" y1="45" x2="204" y2="62" stroke="rgba(255,179,0,0.4)" stroke-width="1.5" stroke-dasharray="4,2" marker-end="url(#arrow)"/>
+                  <line x1="236" y1="28" x2="304" y2="45" stroke="rgba(255,60,60,0.5)" stroke-width="1.5" stroke-dasharray="4,2" marker-end="url(#arrow-red)"/>
+                  <line x1="236" y1="62" x2="304" y2="45" stroke="rgba(255,60,60,0.5)" stroke-width="1.5" stroke-dasharray="4,2" marker-end="url(#arrow-red)"/>
+                  <!-- Nodes -->
+                  <circle cx="46" cy="45" r="18" fill="#0d1829" stroke="rgba(0,229,255,0.6)" stroke-width="1.5"/>
+                  <text x="46" y="43" text-anchor="middle" fill="#00e5ff" font-size="7" font-family="DM Mono">0x3a4f</text>
+                  <text x="46" y="53" text-anchor="middle" fill="rgba(0,229,255,0.5)" font-size="6" font-family="DM Mono">ETH</text>
+
+                  <circle cx="130" cy="45" r="18" fill="#0d1829" stroke="rgba(255,179,0,0.5)" stroke-width="1.5"/>
+                  <text x="130" y="43" text-anchor="middle" fill="#ffb300" font-size="7" font-family="DM Mono">Bridge</text>
+                  <text x="130" y="53" text-anchor="middle" fill="rgba(255,179,0,0.5)" font-size="6" font-family="DM Mono">Polygon</text>
+
+                  <circle cx="220" cy="28" r="14" fill="#0d1829" stroke="rgba(255,179,0,0.4)" stroke-width="1"/>
+                  <text x="220" y="26" text-anchor="middle" fill="#ffb300" font-size="6.5" font-family="DM Mono">0xbb21</text>
+                  <text x="220" y="36" text-anchor="middle" fill="rgba(255,179,0,0.5)" font-size="5.5" font-family="DM Mono">Mixer</text>
+
+                  <circle cx="220" cy="62" r="14" fill="#0d1829" stroke="rgba(255,179,0,0.4)" stroke-width="1"/>
+                  <text x="220" y="60" text-anchor="middle" fill="#ffb300" font-size="6.5" font-family="DM Mono">0xcc93</text>
+                  <text x="220" y="70" text-anchor="middle" fill="rgba(255,179,0,0.5)" font-size="5.5" font-family="DM Mono">Wallet</text>
+
+                  <circle cx="320" cy="45" r="18" fill="#0d1829" stroke="rgba(255,60,60,0.7)" stroke-width="1.5"/>
+                  <text x="320" y="43" text-anchor="middle" fill="#ff3c3c" font-size="7" font-family="DM Mono">CEX</text>
+                  <text x="320" y="53" text-anchor="middle" fill="rgba(255,60,60,0.5)" font-size="6" font-family="DM Mono">FLAGGED</text>
+                </svg>
+              </div>
+            </div>
+            <div class="result-card" style="padding: 12px 16px;">
+              <div style="display: flex; align-items: center; justify-content: space-between;">
+                <div style="font-family: 'DM Mono', monospace; font-size: 10px; color: var(--muted); letter-spacing: 0.1em; text-transform: uppercase;">Risk Summary</div>
+                <span class="result-badge badge-risk">Action Required</span>
+              </div>
+              <div style="margin-top: 10px; font-size: 12px; color: var(--subtle); line-height: 1.6;">
+                Funds moved via Polygon bridge → 2 mixer hops → flagged exchange deposit. Total: <strong style="color: var(--text)">$2.4M</strong> across <strong style="color: var(--text)">4 chains</strong>. Pattern matches <span style="color: var(--amber)">Lazarus Group</span> typology.
+              </div>
+            </div>
+          </div>
+          <div class="browser-right-panel">
+            <div class="right-panel-label">Active Agents</div>
+            <div class="agent-status-item">
+              <div class="status-dot status-running"></div>
+              <div>
+                <div class="agent-status-name">Trace Agent</div>
+                <div class="agent-status-text">Cross-chain hop analysis running...</div>
+              </div>
+            </div>
+            <div class="agent-status-item">
+              <div class="status-dot status-active"></div>
+              <div>
+                <div class="agent-status-name">Sanctions Agent</div>
+                <div class="agent-status-text">OFAC match confirmed — 0xflag</div>
+              </div>
+            </div>
+            <div class="agent-status-item">
+              <div class="status-dot status-idle"></div>
+              <div>
+                <div class="agent-status-name">Report Agent</div>
+                <div class="agent-status-text">Awaiting trace completion</div>
+              </div>
+            </div>
+            <div style="margin-top: 8px;">
+              <div class="right-panel-label">Case Context</div>
+              <div style="font-size: 11px; color: var(--muted); line-height: 1.8; font-family: 'DM Mono', monospace; margin-top: 8px;">
+                <div>Case: #4421</div>
+                <div>Type: DeFi Exploit</div>
+                <div>Started: 2h ago</div>
+                <div>Analyst: You</div>
+                <div style="color: var(--amber)">Chains: ETH, MATIC, BNB</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- PILLAR 2: GENERATIVE UI -->
+<section class="section" id="pillar-2">
+  <div class="two-col reverse">
+    <div class="fade-in">
+      <!-- GENERATIVE UI DEMO -->
+      <div class="gen-ui-demo">
+        <div class="gen-ui-top">
+          <div class="gen-ui-avatar">A</div>
+          <div class="gen-ui-query">
+            <strong>"Show me risk profile and fund flow for wallet cluster 0x3a4f across the last 90 days"</strong>
+          </div>
+        </div>
+        <div class="gen-ui-body">
+          <div class="gen-card">
+            <div class="gen-card-label">Total Exposure</div>
+            <div class="gen-card-value" style="color: var(--red)">$14.2M</div>
+            <div class="gen-card-sub">↑ 340% vs prior 90d</div>
+            <div class="gen-card-sparkline">
+              <div class="spark-bar" style="height:20%; background: rgba(255,60,60,0.3)"></div>
+              <div class="spark-bar" style="height:30%; background: rgba(255,60,60,0.3)"></div>
+              <div class="spark-bar" style="height:25%; background: rgba(255,60,60,0.3)"></div>
+              <div class="spark-bar" style="height:45%; background: rgba(255,60,60,0.4)"></div>
+              <div class="spark-bar" style="height:35%; background: rgba(255,60,60,0.4)"></div>
+              <div class="spark-bar" style="height:60%; background: rgba(255,60,60,0.5)"></div>
+              <div class="spark-bar" style="height:55%; background: rgba(255,60,60,0.5)"></div>
+              <div class="spark-bar" style="height:80%; background: rgba(255,60,60,0.6)"></div>
+              <div class="spark-bar" style="height:100%; background: var(--red)"></div>
+            </div>
+          </div>
+          <div class="gen-card">
+            <div class="gen-card-label">Risk Score</div>
+            <div class="gen-card-value" style="color: var(--amber)">87 / 100</div>
+            <div class="gen-card-sub">Darknet + Mixer exposure</div>
+            <div style="margin-top: 12px; display: flex; gap: 6px; flex-wrap: wrap;">
+              <span style="font-family:'DM Mono',monospace; font-size:9px; padding: 3px 8px; background: var(--red-dim); color: var(--red); border-radius: 2px; letter-spacing:0.08em;">SANCTIONS</span>
+              <span style="font-family:'DM Mono',monospace; font-size:9px; padding: 3px 8px; background: var(--amber-dim); color: var(--amber); border-radius: 2px; letter-spacing:0.08em;">MIXER</span>
+              <span style="font-family:'DM Mono',monospace; font-size:9px; padding: 3px 8px; background: var(--red-dim); color: var(--red); border-radius: 2px; letter-spacing:0.08em;">DARKNET</span>
+            </div>
+          </div>
+          <div class="gen-card gen-card-wide">
+            <div class="gen-card-label">Fund Flow — Last 90 Days</div>
+            <div class="flow-viz">
+              <div class="flow-node" style="background: rgba(0,229,255,0.08); border: 1px solid rgba(0,229,255,0.2); color: var(--cyan); font-family:'DM Mono',monospace; font-size:10px;">0x3a4f (Origin)</div>
+              <span class="flow-arrow">→</span>
+              <span class="flow-amount">$8.1M</span>
+              <span class="flow-arrow">→</span>
+              <div class="flow-node" style="background: var(--amber-dim); border: 1px solid rgba(255,179,0,0.2); color: var(--amber); font-family:'DM Mono',monospace; font-size:10px;">Tornado Fork</div>
+              <span class="flow-arrow">→</span>
+              <span class="flow-amount">split</span>
+              <span class="flow-arrow">→</span>
+              <div class="flow-node" style="background: var(--red-dim); border: 1px solid rgba(255,60,60,0.2); color: var(--red); font-family:'DM Mono',monospace; font-size:10px;">OFAC-listed CEX</div>
+            </div>
+            <div class="flow-viz" style="padding-top: 0;">
+              <div style="width: 120px"></div>
+              <span style="color:transparent; font-size:12px;">→</span>
+              <span class="flow-amount" style="opacity:0">split</span>
+              <span class="flow-arrow">→</span>
+              <span class="flow-amount">$6.1M</span>
+              <span class="flow-arrow">→</span>
+              <div class="flow-node" style="background: rgba(167,139,250,0.08); border: 1px solid rgba(167,139,250,0.2); color: #a78bfa; font-family:'DM Mono',monospace; font-size:10px;">Cross-chain bridge</div>
+              <span class="flow-arrow">→</span>
+              <div class="flow-node" style="background: var(--red-dim); border: 1px solid rgba(255,60,60,0.2); color: var(--red); font-family:'DM Mono',monospace; font-size:10px;">Unattributed</div>
+            </div>
+          </div>
+          <div class="gen-insight">
+            <div class="insight-icon">⚠</div>
+            <div class="insight-text">
+              <strong>Agent insight:</strong> The pattern of mixer → bridge → unattributed wallet matches a <strong>high-confidence Lazarus Group typology</strong> from 3 prior cases. Recommended action: freeze attribution, escalate to FIU, cross-reference Case #4391.
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-text fade-in">
+      <div class="section-number">02 / 04</div>
+      <div class="section-label">Generative UI</div>
+      <h2 class="section-title">The interface renders <span class="dim">itself.</span></h2>
+      <p class="section-desc">
+        Static dashboards are designed for the average query. Forensic work is never average. The interface should emerge from what you ask — not force you to navigate to what it pre-assumed you'd need.
+      </p>
+      <div class="tag-stack">
+        <span class="tag highlight">Prompt-driven layout</span>
+        <span class="tag highlight">Context-aware rendering</span>
+        <span class="tag">No navigation tax</span>
+        <span class="tag">Output as interface</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- PILLAR 3: AUTONOMOUS WORKFLOWS -->
+<section class="section" id="pillar-3">
+  <div class="two-col">
+    <div class="col-text fade-in">
+      <div class="section-number">03 / 04</div>
+      <div class="section-label">Autonomous Workflows</div>
+      <h2 class="section-title">Set once.<br><span class="dim">Runs forever.</span></h2>
+      <p class="section-desc">
+        Workflows today live in the analyst's head. Tomorrow they live in the system — configured once, updated as threats evolve, and executed automatically while you focus on decisions.
+      </p>
+      <div class="tag-stack">
+        <span class="tag highlight">Trigger-driven</span>
+        <span class="tag highlight">Multi-tool orchestration</span>
+        <span class="tag">Versioned workflows</span>
+        <span class="tag">Human-in-the-loop</span>
+        <span class="tag">Audit trail</span>
+      </div>
+    </div>
+
+    <div class="fade-in">
+      <div class="workflow-canvas">
+        <div class="wf-grid"></div>
+
+        <!-- Row 1: Trigger -->
+        <div class="wf-row">
+          <div class="wf-node wf-node-trigger">
+            <div class="wf-badge wf-trigger-badge">T</div>
+            <div class="wf-node-label" style="color: var(--cyan)">Trigger</div>
+            <div class="wf-node-title">Flagged Wallet Alert</div>
+            <div class="wf-node-sub">tx value > $50k</div>
+          </div>
+          <div class="wf-connector active-flow"></div>
+          <div class="wf-node wf-node-action">
+            <div class="wf-badge wf-running-badge">↻</div>
+            <div class="wf-node-label" style="color: var(--amber)">Agent</div>
+            <div class="wf-node-title">Trace Fund Flow</div>
+            <div class="wf-node-sub">cross-chain, 30d window</div>
+          </div>
+          <div class="wf-connector active-flow"></div>
+          <div class="wf-node wf-node-action">
+            <div class="wf-node-label" style="color: var(--amber)">Agent</div>
+            <div class="wf-node-title">Sanctions Check</div>
+            <div class="wf-node-sub">OFAC + UN + EU</div>
+          </div>
+        </div>
+
+        <!-- Row 2 -->
+        <div class="wf-row" style="padding-left: 200px;">
+          <div class="wf-node wf-node-action">
+            <div class="wf-node-label" style="color: var(--amber)">Agent</div>
+            <div class="wf-node-title">VASP Risk Profile</div>
+            <div class="wf-node-sub">entity enrichment</div>
+          </div>
+          <div class="wf-connector"></div>
+          <div class="wf-node wf-node-action">
+            <div class="wf-node-label" style="color: var(--amber)">Agent</div>
+            <div class="wf-node-title">Pattern Match</div>
+            <div class="wf-node-sub">typology library v4.2</div>
+          </div>
+          <div class="wf-connector active-flow"></div>
+          <div class="wf-node wf-node-output">
+            <div class="wf-badge wf-done-badge">✓</div>
+            <div class="wf-node-label" style="color: var(--green)">Output</div>
+            <div class="wf-node-title">Brief + Case Update</div>
+            <div class="wf-node-sub">3-line summary → analyst</div>
+          </div>
+        </div>
+
+        <div class="wf-stats">
+          <div class="wf-stat">
+            <div class="wf-stat-val">4.2s</div>
+            <div class="wf-stat-label">Avg run time</div>
+          </div>
+          <div class="wf-stat">
+            <div class="wf-stat-val">127</div>
+            <div class="wf-stat-label">Runs this week</div>
+          </div>
+          <div class="wf-stat">
+            <div class="wf-stat-val">0</div>
+            <div class="wf-stat-label">Analyst hours spent</div>
+          </div>
+          <div class="wf-stat">
+            <div class="wf-stat-val" style="color: var(--green)">98%</div>
+            <div class="wf-stat-label">Accuracy rate</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- PILLAR 4: OUTPUT IS KING -->
+<section class="section" id="pillar-4">
+  <div class="fade-in" style="text-align: center; max-width: 700px; margin: 0 auto 64px;">
+    <div class="section-number" style="text-align: center; margin-bottom: 16px;">04 / 04</div>
+    <div class="section-label" style="justify-content: center; margin-bottom: 20px;">Output is King</div>
+    <h2 class="section-title">Nobody hired you to click buttons.<br><span class="dim">They hired you to find truth.</span></h2>
+    <p class="section-desc" style="margin: 0 auto; text-align: center;">
+      The company's context graph — entities, relationships, case histories, risk taxonomies — becomes the operating layer. Agents interface with it directly so investigators can focus on judgment, not data wrangling.
+    </p>
+  </div>
+
+  <div class="output-grid fade-in">
+    <div class="output-card">
+      <div class="output-card-header">
+        <div class="output-icon" style="background: var(--cyan-dim); color: var(--cyan);">🔍</div>
+        <div class="output-card-title">Sanctions Match Agent</div>
+      </div>
+      <div class="output-card-body">
+        Continuously monitors active case wallets against OFAC, UN, EU lists. Alerts with confidence score and evidence chain. No manual lookups.
+      </div>
+      <div class="output-card-footer">
+        <span class="output-card-tag" style="background: var(--cyan-dim); color: var(--cyan);">Compliance</span>
+        <span class="output-time">Always on</span>
+      </div>
+    </div>
+
+    <div class="output-card">
+      <div class="output-card-header">
+        <div class="output-icon" style="background: var(--amber-dim); color: var(--amber);">⛓</div>
+        <div class="output-card-title">DeFi Exploit Trace Agent</div>
+      </div>
+      <div class="output-card-body">
+        Decodes smart contract logs, maps fund movements across bridges, identifies exploit patterns against known typologies — in under 10 seconds.
+      </div>
+      <div class="output-card-footer">
+        <span class="output-card-tag" style="background: var(--amber-dim); color: var(--amber);">Forensics</span>
+        <span class="output-time">On-demand</span>
+      </div>
+    </div>
+
+    <div class="output-card">
+      <div class="output-card-header">
+        <div class="output-icon" style="background: rgba(167,139,250,0.1); color: #a78bfa;">🏛</div>
+        <div class="output-card-title">VASP Risk Profile Agent</div>
+      </div>
+      <div class="output-card-body">
+        Aggregates on-chain behavior, regulatory history, geo-location signals, and peer network analysis into a single actionable risk score.
+      </div>
+      <div class="output-card-footer">
+        <span class="output-card-tag" style="background: rgba(167,139,250,0.1); color: #a78bfa;">Intelligence</span>
+        <span class="output-time">Scheduled + On-demand</span>
+      </div>
+    </div>
+
+    <div class="output-card">
+      <div class="output-card-header">
+        <div class="output-icon" style="background: var(--green-dim); color: var(--green);">📋</div>
+        <div class="output-card-title">Investigation Brief Agent</div>
+      </div>
+      <div class="output-card-body">
+        Synthesizes case findings into court-ready briefs. Cites chain of evidence. Formats for FIU submission standards automatically.
+      </div>
+      <div class="output-card-footer">
+        <span class="output-card-tag" style="background: var(--green-dim); color: var(--green);">Reporting</span>
+        <span class="output-time">Auto-generated</span>
+      </div>
+    </div>
+
+    <div class="output-card">
+      <div class="output-card-header">
+        <div class="output-icon" style="background: var(--red-dim); color: var(--red);">⚡</div>
+        <div class="output-card-title">Cross-case Pattern Agent</div>
+      </div>
+      <div class="output-card-body">
+        Surfaces connections between active cases based on shared wallets, entity overlaps, or behavioral fingerprints. Finds links analysts miss.
+      </div>
+      <div class="output-card-footer">
+        <span class="output-card-tag" style="background: var(--red-dim); color: var(--red);">Discovery</span>
+        <span class="output-time">Continuous</span>
+      </div>
+    </div>
+
+    <div class="output-card" style="border-color: rgba(0,229,255,0.15); background: rgba(0,229,255,0.02);">
+      <div class="output-card-header">
+        <div class="output-icon" style="background: var(--cyan-dim); color: var(--cyan);">+</div>
+        <div class="output-card-title" style="color: var(--cyan);">Build your own agent</div>
+      </div>
+      <div class="output-card-body" style="color: var(--muted);">
+        The context graph is the foundation. Any investigative workflow can be encoded as an agent — callable in natural language, auditable, versioned like code.
+      </div>
+      <div class="output-card-footer">
+        <span class="output-card-tag" style="background: var(--cyan-dim); color: var(--cyan);">Extensible</span>
+        <span class="output-time">No-code to API</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- QUOTE BREAK 2 -->
+<div class="quote-break" style="background: linear-gradient(135deg, rgba(255,179,0,0.02), transparent 50%, rgba(0,229,255,0.03));">
+  <p class="quote-text">"The bottleneck should always be human judgment — never data retrieval."</p>
+  <div class="quote-attr">— On the Autonomous Work Layer principle of Output Supremacy</div>
+</div>
+
+<!-- QUOTE BREAK 2 -->
+<div class="quote-break" style="background: linear-gradient(135deg, rgba(255,179,0,0.02), transparent 50%, rgba(0,229,255,0.03));">
+  <p class="quote-text">"The bottleneck should always be human judgment — never data retrieval."</p>
+  <div class="quote-attr">— On the Autonomous Work Layer principle of Output Supremacy</div>
+</div>
+
+<div class="section-divider"></div>
+
+<!-- PILLAR 5: NATURAL LANGUAGE -->
+<section class="section" id="pillar-5">
+  <div class="two-col">
+    <div class="col-text fade-in">
+      <div class="section-number">05 / 05</div>
+      <div class="section-label">Natural Language UI</div>
+      <h2 class="section-title">The interface you already<br><span class="dim">know how to use.</span></h2>
+      <p class="section-desc">
+        Every pillar — the agentic browser, generative UI, autonomous workflows, output-first agents — collapses into one interaction primitive. You talk to it. It works. No onboarding. No button layouts to memorize. No UI fluency tax.
+      </p>
+      <div style="margin-bottom: 32px;">
+        <div style="background: var(--surface); border: 1px solid var(--border); border-radius: 6px 6px 0 0; padding: 20px 24px;">
+          <div style="font-family: 'DM Mono', monospace; font-size: 9px; letter-spacing: 0.15em; color: var(--red); text-transform: uppercase; margin-bottom: 10px; display: flex; align-items: center; gap: 8px;"><span style="width:6px;height:6px;border-radius:50%;background:var(--red);display:inline-block;"></span>Today</div>
+          <div style="font-size: 13px; color: var(--muted); line-height: 1.6; font-style: italic;">"I need to learn how the forensics tool visualizes cross-chain hops before I can run this investigation."</div>
+        </div>
+        <div style="background: rgba(0,229,255,0.03); border: 1px solid rgba(0,229,255,0.18); border-top: none; border-radius: 0 0 6px 6px; padding: 20px 24px;">
+          <div style="font-family: 'DM Mono', monospace; font-size: 9px; letter-spacing: 0.15em; color: var(--cyan); text-transform: uppercase; margin-bottom: 10px; display: flex; align-items: center; gap: 8px;"><span style="width:6px;height:6px;border-radius:50%;background:var(--cyan);box-shadow:0 0 6px var(--cyan);display:inline-block;animation: blink 2s ease-in-out infinite;"></span>Tomorrow</div>
+          <div style="font-size: 13px; color: var(--text); line-height: 1.6; font-style: italic;">"Find all cross-chain hops from this wallet cluster in the last 30 days and flag anything matching Lazarus typology."</div>
+        </div>
+      </div>
+      <div class="tag-stack">
+        <span class="tag highlight">Zero onboarding</span>
+        <span class="tag highlight">Domain expertise &gt; tool expertise</span>
+        <span class="tag">NL workflow config</span>
+        <span class="tag">Context-aware queries</span>
+        <span class="tag">Output layer, not input layer</span>
+      </div>
+    </div>
+
+    <div class="fade-in">
+      <div style="background: #070c18; border: 1px solid rgba(244,114,182,0.18); border-radius: 8px; overflow: hidden; box-shadow: 0 40px 80px rgba(0,0,0,0.5);">
+        <div style="background: #0d1829; border-bottom: 1px solid var(--border); padding: 12px 20px; display: flex; align-items: center; gap: 12px;">
+          <div class="browser-dots">
+            <div class="browser-dot" style="background:#ff5f57"></div>
+            <div class="browser-dot" style="background:#febc2e"></div>
+            <div class="browser-dot" style="background:#28c840"></div>
+          </div>
+          <div style="font-family:'DM Mono',monospace; font-size: 11px; color: #f472b6; letter-spacing: 0.1em;">forensics.workspace — natural language</div>
+        </div>
+
+        <div style="padding: 28px; display: flex; flex-direction: column; gap: 20px; min-height: 500px;">
+
+          <!-- user msg 1 -->
+          <div style="display: flex; gap: 12px; justify-content: flex-end;">
+            <div style="background: rgba(244,114,182,0.08); border: 1px solid rgba(244,114,182,0.18); border-radius: 6px 6px 2px 6px; padding: 12px 16px; max-width: 80%;">
+              <div style="font-size: 13px; color: var(--text); line-height: 1.6;">Set up a workflow — alert me whenever any wallet in Case #4421 moves more than $50k, auto-trace it, and brief me in 3 lines.</div>
+            </div>
+            <div style="width: 28px; height: 28px; border-radius: 50%; background: linear-gradient(135deg, #f472b6, #a78bfa); display:flex; align-items:center; justify-content:center; font-family:'Syne',sans-serif; font-size:11px; font-weight:700; color: white; flex-shrink:0;">A</div>
+          </div>
+
+          <!-- agent response 1 -->
+          <div style="display: flex; gap: 12px;">
+            <div style="width: 28px; height: 28px; border-radius: 6px; background: var(--cyan-dim); border: 1px solid rgba(0,229,255,0.2); display:flex; align-items:center; justify-content:center; color: var(--cyan); font-size: 13px; flex-shrink:0;">⚡</div>
+            <div style="flex: 1;">
+              <div style="font-family:'DM Mono',monospace; font-size: 10px; color: var(--cyan); letter-spacing:0.1em; margin-bottom: 8px; text-transform:uppercase;">Workflow created — active now</div>
+              <div style="background: rgba(0,229,255,0.04); border: 1px solid rgba(0,229,255,0.12); border-radius: 6px; padding: 14px 16px; margin-bottom: 10px;">
+                <div style="display: flex; flex-direction: column; gap: 7px;">
+                  <div style="display:flex; align-items:center; gap: 8px; font-size:11px; color: var(--subtle);"><span style="font-family:'DM Mono',monospace; color: var(--cyan); font-size:9px; background:var(--cyan-dim); padding: 2px 6px; border-radius:2px; white-space:nowrap;">TRIGGER</span> Wallet tx in cluster &gt; $50,000</div>
+                  <div style="display:flex; align-items:center; gap: 8px; font-size:11px; color: var(--subtle);"><span style="font-family:'DM Mono',monospace; color: var(--amber); font-size:9px; background:var(--amber-dim); padding: 2px 6px; border-radius:2px; white-space:nowrap;">AGENT</span> Cross-chain fund trace (30d)</div>
+                  <div style="display:flex; align-items:center; gap: 8px; font-size:11px; color: var(--subtle);"><span style="font-family:'DM Mono',monospace; color: var(--amber); font-size:9px; background:var(--amber-dim); padding: 2px 6px; border-radius:2px; white-space:nowrap;">AGENT</span> Sanctions + typology match</div>
+                  <div style="display:flex; align-items:center; gap: 8px; font-size:11px; color: var(--subtle);"><span style="font-family:'DM Mono',monospace; color: var(--green); font-size:9px; background:var(--green-dim); padding: 2px 6px; border-radius:2px; white-space:nowrap;">OUTPUT</span> 3-line brief → you</div>
+                </div>
+              </div>
+              <div style="font-size: 12px; color: var(--muted); line-height: 1.6;">Say <span style="color: var(--subtle); font-style:italic;">"pause the workflow"</span> or <span style="color: var(--subtle); font-style:italic;">"change the threshold to $100k"</span> at any time.</div>
+            </div>
+          </div>
+
+          <!-- user msg 2 -->
+          <div style="display: flex; gap: 12px; justify-content: flex-end;">
+            <div style="background: rgba(244,114,182,0.08); border: 1px solid rgba(244,114,182,0.18); border-radius: 6px 6px 2px 6px; padding: 12px 16px; max-width: 80%;">
+              <div style="font-size: 13px; color: var(--text); line-height: 1.6;">What's the riskiest wallet we've seen this week across all open cases?</div>
+            </div>
+            <div style="width: 28px; height: 28px; border-radius: 50%; background: linear-gradient(135deg, #f472b6, #a78bfa); display:flex; align-items:center; justify-content:center; font-family:'Syne',sans-serif; font-size:11px; font-weight:700; color: white; flex-shrink:0;">A</div>
+          </div>
+
+          <!-- agent response 2 -->
+          <div style="display: flex; gap: 12px;">
+            <div style="width: 28px; height: 28px; border-radius: 6px; background: var(--cyan-dim); border: 1px solid rgba(0,229,255,0.2); display:flex; align-items:center; justify-content:center; color: var(--cyan); font-size: 13px; flex-shrink:0;">⚡</div>
+            <div style="flex: 1;">
+              <div style="font-family:'DM Mono',monospace; font-size: 10px; color: var(--cyan); letter-spacing:0.1em; margin-bottom: 8px; text-transform:uppercase;">Cross-case scan — 6 cases, 2,847 wallets</div>
+              <div style="background: var(--red-dim); border: 1px solid rgba(255,60,60,0.2); border-radius: 6px; padding: 14px 16px;">
+                <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 8px;">
+                  <div style="font-family:'DM Mono',monospace; font-size:11px; color: var(--text);">0x7f3a...d921</div>
+                  <span style="font-family:'DM Mono',monospace; font-size:9px; padding: 2px 8px; background: var(--red-dim); color: var(--red); border-radius:2px;">SCORE 96</span>
+                </div>
+                <div style="font-size: 12px; color: var(--muted); line-height: 1.6;">OFAC match confirmed. $8.1M via Tornado fork → Polygon bridge → unattributed cluster. Lazarus Group typology, 94% confidence. Active in Case #4421 and #4408 — possible link.</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- input -->
+          <div style="margin-top: auto; background: rgba(244,114,182,0.04); border: 1px solid rgba(244,114,182,0.15); border-radius: 6px; padding: 12px 16px; display: flex; align-items: center; gap: 10px;">
+            <div style="flex:1; font-family:'DM Mono',monospace; font-size:12px; color: var(--muted);">Ask anything about your cases...<span style="display:inline-block; width:7px; height:13px; background:#f472b6; margin-left:2px; vertical-align:middle; animation: blink 1s step-end infinite;"></span></div>
+            <div style="font-family:'DM Mono',monospace; font-size:9px; color: var(--muted); border: 1px solid var(--border); padding: 4px 8px; border-radius: 2px; letter-spacing:0.08em;">↵ ENTER</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONVICTION CLOSE -->
+<section class="conviction" id="conviction">
+  <div class="conviction-eyebrow fade-in">The Conviction</div>
+  <h2 class="conviction-title fade-in">The primitives exist.<br><em>The integration is the work.</em></h2>
+  <p class="conviction-body fade-in">
+    The future of blockchain intelligence work isn't another dashboard. It's an agentic layer that understands your domain, your cases, and your standards — and makes the gap between a question and a court-ready answer a matter of seconds, not days.
+    <br><br>
+    This isn't speculation. Every component described here is buildable today. The question is who assembles them with the right ontology, the right domain knowledge, and the conviction to rebuild the workflow from first principles.
+  </p>
+
+  <div class="conviction-principles fade-in">
+    <div class="principle-card p1">
+      <div class="principle-num">01</div>
+      <div class="principle-text">Agentic Browser over Web Apps</div>
+    </div>
+    <div class="principle-card p2">
+      <div class="principle-num">02</div>
+      <div class="principle-text">Generative UI over Static Dashboards</div>
+    </div>
+    <div class="principle-card p3">
+      <div class="principle-num">03</div>
+      <div class="principle-text">Workflows United by AI, Not Humans</div>
+    </div>
+    <div class="principle-card p4">
+      <div class="principle-num">04</div>
+      <div class="principle-text">Output is King. Process is Infrastructure.</div>
+    </div>
+    <div class="principle-card p5">
+      <div class="principle-num">05</div>
+      <div class="principle-text">Natural Language is the Only Interface That Matters.</div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">Autonomous Work Layer — A Thesis on the Future of Work</div>
+  <div class="footer-tagline">Autonomous Work Layer / 2025</div>
+</footer>
+
+<script>
+  // Scroll-triggered fade in
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry, i) => {
+      if (entry.isIntersecting) {
+        setTimeout(() => {
+          entry.target.classList.add('visible');
+        }, entry.target.dataset.delay || 0);
+      }
+    });
+  }, { threshold: 0.1, rootMargin: '0px 0px -60px 0px' });
+
+  document.querySelectorAll('.fade-in').forEach((el, i) => {
+    el.dataset.delay = (i % 3) * 120;
+    observer.observe(el);
+  });
+
+  // Smooth active nav pill on scroll
+  const sections = document.querySelectorAll('section[id]');
+  const pills = document.querySelectorAll('.nav-pill');
+
+  window.addEventListener('scroll', () => {
+    let current = '';
+    sections.forEach(s => {
+      if (window.scrollY >= s.offsetTop - 200) current = s.id;
+    });
+    pills.forEach(p => {
+      p.style.color = p.getAttribute('href') === '#' + current ? 'var(--cyan)' : '';
+      p.style.borderColor = p.getAttribute('href') === '#' + current ? 'var(--border)' : 'transparent';
+    });
+  });
+
+  // Animated counter for workflow stats
+  function animateCount(el, target, suffix = '') {
+    let start = 0;
+    const duration = 1200;
+    const step = (timestamp) => {
+      if (!start) start = timestamp;
+      const progress = Math.min((timestamp - start) / duration, 1);
+      const eased = 1 - Math.pow(1 - progress, 3);
+      const val = typeof target === 'string' ? target : Math.round(eased * target);
+      el.textContent = val + suffix;
+      if (progress < 1) requestAnimationFrame(step);
+    };
+    requestAnimationFrame(step);
+  }
+
+  // Trigger counter when workflow section is visible
+  const wfSection = document.getElementById('pillar-3');
+  let counted = false;
+  new IntersectionObserver(([entry]) => {
+    if (entry.isIntersecting && !counted) {
+      counted = true;
+      const stats = document.querySelectorAll('.wf-stat-val');
+      if (stats[1]) animateCount(stats[1], 127);
+    }
+  }, { threshold: 0.5 }).observe(wfSection);
+</script>
+</body>
+</html>

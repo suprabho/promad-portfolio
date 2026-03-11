@@ -75,13 +75,14 @@ export default function FutureOfSaas() {
     <div className="spaas-page font-sans">
       {/* NAV */}
       <nav className="spaas-nav font-mono">
-        <div className="spaas-nav-logo">SPaaS — Future of Work</div>
+        <div className="spaas-nav-logo">Autonomous Work Layer — Future of Work</div>
         <div className="spaas-nav-pills">
           {[
             { href: '#pillar-1', label: 'Agentic Browser' },
             { href: '#pillar-2', label: 'Generative UI' },
             { href: '#pillar-3', label: 'Workflows' },
             { href: '#pillar-4', label: 'Output' },
+            { href: '#pillar-5', label: 'Natural Language' },
             { href: '#conviction', label: 'Conviction' },
           ].map((pill) => (
             <a
@@ -117,7 +118,7 @@ export default function FutureOfSaas() {
           transition={{ duration: 0.8, delay: 0.1 }}
         >
           Beyond<br /><span className="accent">SaaS.</span>
-          <span className="line2">The age of Specialized Purpose-as-a-Service</span>
+          <span className="line2">The age of Autonomous Work Layer</span>
         </motion.h1>
 
         <motion.p
@@ -174,7 +175,7 @@ export default function FutureOfSaas() {
             <h3 className="spaas-diag-heading font-serif">The analyst is the middleware</h3>
             <ul className="spaas-diag-list">
               {[
-                '14+ browser tabs open for a single investigation — Tracker, chain explorers, OFAC lists, case management, reporting tools',
+                '14+ browser tabs open for a single investigation — Tracker, blockchain explorers, OFAC lists, case management, reporting tools',
                 "Context lives in the analyst's head, not the system. Lost on handoff, lost on leave",
                 'Static dashboards designed for the average query, not the forensic edge case',
                 'Manual stitching: copy wallet address → paste in explorer → check sanctions list → write report. The human is the glue',
@@ -189,7 +190,7 @@ export default function FutureOfSaas() {
           </FadeIn>
 
           <FadeIn className="spaas-diag-panel spaas-diag-tomorrow" delay={0.15}>
-            <div className="spaas-diag-tag tomorrow font-mono">Tomorrow — SPaaS Vision</div>
+            <div className="spaas-diag-tag tomorrow font-mono">Tomorrow — Autonomous Work Layer Vision</div>
             <h3 className="spaas-diag-heading font-serif">The agent is the middleware</h3>
             <ul className="spaas-diag-list">
               {[
@@ -216,7 +217,7 @@ export default function FutureOfSaas() {
             &ldquo;The future of blockchain forensics isn&apos;t faster software. It&apos;s software
             that disappears into intelligence.&rdquo;
           </p>
-          <div className="spaas-quote-attr font-mono">— Premise / SPaaS Thesis</div>
+          <div className="spaas-quote-attr font-mono">— Premise / Autonomous Work Layer Thesis</div>
         </FadeIn>
       </div>
 
@@ -224,7 +225,7 @@ export default function FutureOfSaas() {
       <section className="spaas-section" id="pillar-1">
         <div className="spaas-two-col">
           <FadeIn className="pt-2">
-            <div className="spaas-section-number font-mono">01 / 04</div>
+            <div className="spaas-section-number font-mono">01 / 05</div>
             <div className="spaas-section-label font-mono">Agentic Browser</div>
             <h2 className="spaas-section-title font-serif">
               One window.<br /><span className="dim">All intelligence.</span>
@@ -469,7 +470,7 @@ export default function FutureOfSaas() {
           </FadeIn>
 
           <FadeIn className="pt-2" delay={0.15}>
-            <div className="spaas-section-number font-mono">02 / 04</div>
+            <div className="spaas-section-number font-mono">02 / 05</div>
             <div className="spaas-section-label font-mono">Generative UI</div>
             <h2 className="spaas-section-title font-serif">
               The interface renders <span className="dim">itself.</span>
@@ -495,7 +496,7 @@ export default function FutureOfSaas() {
       <section className="spaas-section" id="pillar-3">
         <div className="spaas-two-col">
           <FadeIn className="pt-2">
-            <div className="spaas-section-number font-mono">03 / 04</div>
+            <div className="spaas-section-number font-mono">03 / 05</div>
             <div className="spaas-section-label font-mono">Autonomous Workflows</div>
             <h2 className="spaas-section-title font-serif">
               Set once.<br /><span className="dim">Runs forever.</span>
@@ -594,8 +595,8 @@ export default function FutureOfSaas() {
 
       {/* PILLAR 4: OUTPUT IS KING */}
       <section className="spaas-section" id="pillar-4">
-        <FadeIn className="text-center" style={{ maxWidth: 700, margin: '0 auto 64px' }}>
-          <div className="spaas-section-number font-mono" style={{ textAlign: 'center', marginBottom: 16 }}>04 / 04</div>
+        <FadeIn className="text-center max-w-[700px] mx-auto mb-16">
+          <div className="spaas-section-number font-mono" style={{ textAlign: 'center', marginBottom: 16 }}>04 / 05</div>
           <div className="spaas-section-label font-mono" style={{ justifyContent: 'center', marginBottom: 20 }}>Output is King</div>
           <h2 className="spaas-section-title font-serif">
             Nobody hired you to click buttons.<br /><span className="dim">They hired you to find truth.</span>
@@ -704,9 +705,125 @@ export default function FutureOfSaas() {
           <p className="spaas-quote-text font-serif">
             &ldquo;The bottleneck should always be human judgment — never data retrieval.&rdquo;
           </p>
-          <div className="spaas-quote-attr font-mono">— On the SPaaS principle of Output Supremacy</div>
+          <div className="spaas-quote-attr font-mono">— On the Autonomous Work Layer principle of Output Supremacy</div>
         </FadeIn>
       </div>
+
+      <div className="spaas-divider" />
+
+      {/* PILLAR 5: NATURAL LANGUAGE UI */}
+      <section className="spaas-section" id="pillar-5">
+        <div className="spaas-two-col">
+          <FadeIn className="pt-2">
+            <div className="spaas-section-number font-mono">05 / 05</div>
+            <div className="spaas-section-label font-mono">Natural Language UI</div>
+            <h2 className="spaas-section-title font-serif">
+              The interface you already<br /><span className="dim">know how to use.</span>
+            </h2>
+            <p className="spaas-section-desc">
+              Every pillar — the agentic browser, generative UI, autonomous workflows, output-first agents —
+              collapses into one interaction primitive. You talk to it. It works. No onboarding. No button
+              layouts to memorize. No UI fluency tax.
+            </p>
+            <div style={{ marginBottom: 32 }}>
+              <div style={{ background: 'var(--spaas-surface)', border: '1px solid var(--spaas-border)', borderRadius: '6px 6px 0 0', padding: '20px 24px' }}>
+                <div className="font-mono" style={{ fontSize: 9, letterSpacing: '0.15em', color: 'var(--spaas-red)', textTransform: 'uppercase' as const, marginBottom: 10, display: 'flex', alignItems: 'center', gap: 8 }}>
+                  <span style={{ width: 6, height: 6, borderRadius: '50%', background: 'var(--spaas-red)', display: 'inline-block' }} />
+                  Today
+                </div>
+                <div style={{ fontSize: 13, color: 'var(--spaas-muted)', lineHeight: 1.6, fontStyle: 'italic' }}>
+                  &ldquo;I need to learn how the forensics tool visualizes cross-chain hops before I can run this investigation.&rdquo;
+                </div>
+              </div>
+              <div style={{ background: 'rgba(0,229,255,0.03)', border: '1px solid rgba(0,229,255,0.18)', borderTop: 'none', borderRadius: '0 0 6px 6px', padding: '20px 24px' }}>
+                <div className="font-mono" style={{ fontSize: 9, letterSpacing: '0.15em', color: 'var(--spaas-cyan)', textTransform: 'uppercase' as const, marginBottom: 10, display: 'flex', alignItems: 'center', gap: 8 }}>
+                  <span style={{ width: 6, height: 6, borderRadius: '50%', background: 'var(--spaas-cyan)', boxShadow: '0 0 6px var(--spaas-cyan)', display: 'inline-block' }} />
+                  Tomorrow
+                </div>
+                <div style={{ fontSize: 13, color: 'var(--spaas-text)', lineHeight: 1.6, fontStyle: 'italic' }}>
+                  &ldquo;Find all cross-chain hops from this wallet cluster in the last 30 days and flag anything matching Lazarus typology.&rdquo;
+                </div>
+              </div>
+            </div>
+            <div className="spaas-tag-stack font-mono">
+              <span className="spaas-tag highlight">Zero onboarding</span>
+              <span className="spaas-tag highlight">Domain expertise &gt; tool expertise</span>
+              <span className="spaas-tag">NL workflow config</span>
+              <span className="spaas-tag">Context-aware queries</span>
+              <span className="spaas-tag">Output layer, not input layer</span>
+            </div>
+          </FadeIn>
+
+          <FadeIn delay={0.15}>
+            <div style={{ background: '#070c18', border: '1px solid rgba(244,114,182,0.18)', borderRadius: 8, overflow: 'hidden', boxShadow: '0 40px 80px rgba(0,0,0,0.5)' }}>
+              <div style={{ background: '#0d1829', borderBottom: '1px solid var(--spaas-border)', padding: '12px 20px', display: 'flex', alignItems: 'center', gap: 12 }}>
+                <div className="spaas-browser-dots">
+                  <div className="spaas-browser-dot" style={{ background: '#ff5f57' }} />
+                  <div className="spaas-browser-dot" style={{ background: '#febc2e' }} />
+                  <div className="spaas-browser-dot" style={{ background: '#28c840' }} />
+                </div>
+                <div className="font-mono" style={{ fontSize: 11, color: '#f472b6', letterSpacing: '0.1em' }}>forensics.workspace — natural language</div>
+              </div>
+
+              <div style={{ padding: 28, display: 'flex', flexDirection: 'column' as const, gap: 20, minHeight: 500 }}>
+                {/* User message 1 */}
+                <div style={{ display: 'flex', gap: 12, justifyContent: 'flex-end' }}>
+                  <div style={{ background: 'rgba(244,114,182,0.08)', border: '1px solid rgba(244,114,182,0.18)', borderRadius: '6px 6px 2px 6px', padding: '12px 16px', maxWidth: '80%' }}>
+                    <div style={{ fontSize: 13, color: 'var(--spaas-text)', lineHeight: 1.6 }}>Set up a workflow — alert me whenever any wallet in Case #4421 moves more than $50k, auto-trace it, and brief me in 3 lines.</div>
+                  </div>
+                  <div style={{ width: 28, height: 28, borderRadius: '50%', background: 'linear-gradient(135deg, #f472b6, #a78bfa)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontFamily: 'var(--font-syne)', fontSize: 11, fontWeight: 700, color: 'white', flexShrink: 0 }}>A</div>
+                </div>
+
+                {/* Agent response 1 */}
+                <div style={{ display: 'flex', gap: 12 }}>
+                  <div style={{ width: 28, height: 28, borderRadius: 6, background: 'var(--spaas-cyan-dim)', border: '1px solid rgba(0,229,255,0.2)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'var(--spaas-cyan)', fontSize: 13, flexShrink: 0 }}>⚡</div>
+                  <div style={{ flex: 1 }}>
+                    <div className="font-mono" style={{ fontSize: 10, color: 'var(--spaas-cyan)', letterSpacing: '0.1em', marginBottom: 8, textTransform: 'uppercase' as const }}>Workflow created — active now</div>
+                    <div style={{ background: 'rgba(0,229,255,0.04)', border: '1px solid rgba(0,229,255,0.12)', borderRadius: 6, padding: '14px 16px', marginBottom: 10 }}>
+                      <div style={{ display: 'flex', flexDirection: 'column' as const, gap: 7 }}>
+                        <div style={{ display: 'flex', alignItems: 'center', gap: 8, fontSize: 11, color: 'var(--spaas-subtle)' }}><span className="font-mono" style={{ color: 'var(--spaas-cyan)', fontSize: 9, background: 'var(--spaas-cyan-dim)', padding: '2px 6px', borderRadius: 2, whiteSpace: 'nowrap' as const }}>TRIGGER</span> Wallet tx in cluster &gt; $50,000</div>
+                        <div style={{ display: 'flex', alignItems: 'center', gap: 8, fontSize: 11, color: 'var(--spaas-subtle)' }}><span className="font-mono" style={{ color: 'var(--spaas-amber)', fontSize: 9, background: 'var(--spaas-amber-dim)', padding: '2px 6px', borderRadius: 2, whiteSpace: 'nowrap' as const }}>AGENT</span> Cross-chain fund trace (30d)</div>
+                        <div style={{ display: 'flex', alignItems: 'center', gap: 8, fontSize: 11, color: 'var(--spaas-subtle)' }}><span className="font-mono" style={{ color: 'var(--spaas-amber)', fontSize: 9, background: 'var(--spaas-amber-dim)', padding: '2px 6px', borderRadius: 2, whiteSpace: 'nowrap' as const }}>AGENT</span> Sanctions + typology match</div>
+                        <div style={{ display: 'flex', alignItems: 'center', gap: 8, fontSize: 11, color: 'var(--spaas-subtle)' }}><span className="font-mono" style={{ color: 'var(--spaas-green)', fontSize: 9, background: 'var(--spaas-green-dim)', padding: '2px 6px', borderRadius: 2, whiteSpace: 'nowrap' as const }}>OUTPUT</span> 3-line brief → you</div>
+                      </div>
+                    </div>
+                    <div style={{ fontSize: 12, color: 'var(--spaas-muted)', lineHeight: 1.6 }}>Say <span style={{ color: 'var(--spaas-subtle)', fontStyle: 'italic' }}>&ldquo;pause the workflow&rdquo;</span> or <span style={{ color: 'var(--spaas-subtle)', fontStyle: 'italic' }}>&ldquo;change the threshold to $100k&rdquo;</span> at any time.</div>
+                  </div>
+                </div>
+
+                {/* User message 2 */}
+                <div style={{ display: 'flex', gap: 12, justifyContent: 'flex-end' }}>
+                  <div style={{ background: 'rgba(244,114,182,0.08)', border: '1px solid rgba(244,114,182,0.18)', borderRadius: '6px 6px 2px 6px', padding: '12px 16px', maxWidth: '80%' }}>
+                    <div style={{ fontSize: 13, color: 'var(--spaas-text)', lineHeight: 1.6 }}>What&apos;s the riskiest wallet we&apos;ve seen this week across all open cases?</div>
+                  </div>
+                  <div style={{ width: 28, height: 28, borderRadius: '50%', background: 'linear-gradient(135deg, #f472b6, #a78bfa)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontFamily: 'var(--font-syne)', fontSize: 11, fontWeight: 700, color: 'white', flexShrink: 0 }}>A</div>
+                </div>
+
+                {/* Agent response 2 */}
+                <div style={{ display: 'flex', gap: 12 }}>
+                  <div style={{ width: 28, height: 28, borderRadius: 6, background: 'var(--spaas-cyan-dim)', border: '1px solid rgba(0,229,255,0.2)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'var(--spaas-cyan)', fontSize: 13, flexShrink: 0 }}>⚡</div>
+                  <div style={{ flex: 1 }}>
+                    <div className="font-mono" style={{ fontSize: 10, color: 'var(--spaas-cyan)', letterSpacing: '0.1em', marginBottom: 8, textTransform: 'uppercase' as const }}>Cross-case scan — 6 cases, 2,847 wallets</div>
+                    <div style={{ background: 'var(--spaas-red-dim)', border: '1px solid rgba(255,60,60,0.2)', borderRadius: 6, padding: '14px 16px' }}>
+                      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 8 }}>
+                        <div className="font-mono" style={{ fontSize: 11, color: 'var(--spaas-text)' }}>0x7f3a...d921</div>
+                        <span className="font-mono" style={{ fontSize: 9, padding: '2px 8px', background: 'var(--spaas-red-dim)', color: 'var(--spaas-red)', borderRadius: 2 }}>SCORE 96</span>
+                      </div>
+                      <div style={{ fontSize: 12, color: 'var(--spaas-muted)', lineHeight: 1.6 }}>OFAC match confirmed. $8.1M via Tornado fork → Polygon bridge → unattributed cluster. Lazarus Group typology, 94% confidence. Active in Case #4421 and #4408 — possible link.</div>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Input bar */}
+                <div style={{ marginTop: 'auto', background: 'rgba(244,114,182,0.04)', border: '1px solid rgba(244,114,182,0.15)', borderRadius: 6, padding: '12px 16px', display: 'flex', alignItems: 'center', gap: 10 }}>
+                  <div className="font-mono" style={{ flex: 1, fontSize: 12, color: 'var(--spaas-muted)' }}>Ask anything about your cases...<span className="spaas-cursor" style={{ background: '#f472b6' }} /></div>
+                  <div className="font-mono" style={{ fontSize: 9, color: 'var(--spaas-muted)', border: '1px solid var(--spaas-border)', padding: '4px 8px', borderRadius: 2, letterSpacing: '0.08em' }}>↵ ENTER</div>
+                </div>
+              </div>
+            </div>
+          </FadeIn>
+        </div>
+      </section>
 
       {/* CONVICTION CLOSE */}
       <section className="spaas-conviction" id="conviction">
@@ -737,6 +854,7 @@ export default function FutureOfSaas() {
               { num: '02', text: 'Generative UI over Static Dashboards', cls: 'p2' },
               { num: '03', text: 'Workflows United by AI, Not Humans', cls: 'p3' },
               { num: '04', text: 'Output is King. Process is Infrastructure.', cls: 'p4' },
+              { num: '05', text: 'Natural Language is the Only Interface That Matters.', cls: 'p5' },
             ].map((p) => (
               <div key={p.num} className={`spaas-principle-card ${p.cls}`}>
                 <div className="spaas-principle-num font-mono">{p.num}</div>
@@ -749,8 +867,8 @@ export default function FutureOfSaas() {
 
       {/* FOOTER */}
       <footer className="spaas-footer">
-        <div className="spaas-footer-logo font-mono">SPaaS — A Thesis on the Future of Work</div>
-        <div className="spaas-footer-tagline font-mono">Specialized Purpose-as-a-Service / 2025</div>
+        <div className="spaas-footer-logo font-mono">Autonomous Work Layer — A Thesis on the Future of Work</div>
+        <div className="spaas-footer-tagline font-mono">Autonomous Work Layer / 2025</div>
       </footer>
     </div>
   )

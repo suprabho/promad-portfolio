@@ -867,6 +867,7 @@
 .spaas-principle-card.p2::before { background: var(--spaas-amber); }
 .spaas-principle-card.p3::before { background: var(--spaas-purple); }
 .spaas-principle-card.p4::before { background: var(--spaas-green); }
+.spaas-principle-card.p5::before { background: #f472b6; }
 .spaas-principle-num {
   font-size: 10px;
   letter-spacing: 0.1em;
