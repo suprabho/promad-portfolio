@@ -465,7 +465,6 @@ export default function AIPlaybook() {
         <div className="absolute inset-0 z-0 overflow-hidden">
         <iframe title="Abstract Dark Gradient – Striking Black & Gold Design" src="https://aura.promad.design/embed/abstract-dark-gradient-striking-black-gold-design?hideText=true&hideIcons=true" style={{width:"100%", height:"800px"}} allowFullScreen></iframe>
         </div>
-        
       </Section>
 
       {/* ── Vibe-Coded Experiments ────────────────────────── */}
