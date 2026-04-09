@@ -45,8 +45,28 @@
         --sidebar-accent-foreground: 240 5.9% 10%;
         --sidebar-border: 220 13% 91%;
         --sidebar-ring: 217.2 91.2% 59.8%;
+        /* Career page tokens – light mode */
+        --career-text: #1a1a2e;
+        --career-text-secondary: #4a4a5a;
+        --career-text-muted: #7a7a8a;
+        --career-card-bg: #f5f5f7;
+        --career-card-border: #e0e0e5;
+        --career-subtle-bg: rgba(0,0,0,0.04);
+        --career-subtle-border: rgba(0,0,0,0.06);
+        --career-backdrop-bg: rgba(245,245,247,0.7);
+        --career-hover-border: rgba(0,0,0,0.12);
     }
     .dark {
+        /* Career page tokens – dark mode */
+        --career-text: #f0ede6;
+        --career-text-secondary: #8a8690;
+        --career-text-muted: #5a5660;
+        --career-card-bg: #111114;
+        --career-card-border: #1e1e24;
+        --career-subtle-bg: rgba(255,255,255,0.06);
+        --career-subtle-border: rgba(255,255,255,0.03);
+        --career-backdrop-bg: rgba(17,17,20,0.4);
+        --career-hover-border: #2a2a32;
         --background: 222.2 84% 4.9%;
         --foreground: 210 40% 98%;
         --card: 222.2 84% 4.9%;

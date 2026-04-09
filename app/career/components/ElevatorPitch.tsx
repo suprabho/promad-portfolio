@@ -6,7 +6,7 @@ export function ElevatorPitch() {
       <Reveal>
         <blockquote
           className="font-serif italic leading-relaxed relative"
-          style={{ fontSize: "clamp(1.3rem, 3vw, 1.9rem)", color: "#f0ede6" }}
+          style={{ fontSize: "clamp(1.3rem, 3vw, 1.9rem)", color: "var(--career-text)" }}
         >
           <span
             className="absolute -top-10 left-1/2 -translate-x-1/2 text-6xl not-italic"
@@ -21,7 +21,7 @@ export function ElevatorPitch() {
         </blockquote>
       </Reveal>
       <Reveal delay={0.3}>
-        <p className="mt-8 text-[0.75rem] tracking-[0.15em] uppercase" style={{ color: "#5a5660" }}>
+        <p className="mt-8 text-[0.75rem] tracking-[0.15em] uppercase" style={{ color: "var(--career-text-muted)" }}>
           — The elevator pitch
         </p>
       </Reveal>

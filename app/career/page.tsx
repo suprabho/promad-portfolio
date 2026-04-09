@@ -1,6 +1,6 @@
 "use client"
 
-import { CareerNav } from "./components/CareerNav"
+import Header from "@/components/header"
 import { Hero } from "./components/Hero"
 import { ElevatorPitch } from "./components/ElevatorPitch"
 import { TimelineSection } from "./components/TimelineSection"
@@ -16,13 +16,16 @@ export default function CareerPage() {
     <>
       <iframe
         src="https://aura.promad.design/embed/magenta-wavy-gradient-header-dynamic-website-design"
-        className="fixed inset-0 w-full h-full border-0 z-0 pointer-events-none"
+        className="fixed inset-0 w-full h-full border-0 z-0 pointer-events-none block"
         style={{ borderRadius: 0 }}
         allowFullScreen
       />
+      <div className="relative z-50">
+        <Header />
+      </div>
       <div
         className="relative z-10 min-h-screen overflow-x-hidden"
-        style={{ color: "#f0ede6", fontFamily: "var(--font-manrope, sans-serif)" }}
+        style={{ color: "var(--career-text)", fontFamily: "var(--font-manrope, sans-serif)" }}
       >
       <style>{`
         @media (max-width: 768px) {
@@ -30,14 +33,13 @@ export default function CareerPage() {
         }
       `}</style>
 
-      <CareerNav />
       <Hero />
       <ElevatorPitch />
       <TimelineSection />
 
       <section
         className="py-24 px-6 relative overflow-hidden"
-        style={{ borderTop: "1px solid rgba(255,255,255,0.03)" }}
+        style={{ borderTop: "1px solid var(--career-subtle-border)" }}
       >
         <div className="max-w-[960px] mx-auto">
           <ProblemBlock />

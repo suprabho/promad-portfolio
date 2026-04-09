@@ -329,7 +329,7 @@ export default function AIPlaybook() {
         </div>
 
         <div className="absolute top-0 left-0 w-full z-0 h-[120dvh]">
-          <iframe src="https://aura.promad.design/embed/abstract-dark-gradient-striking-black-gold-design?hideText=true" style={{width:"100%", height:"1000px",}} allowFullScreen></iframe>
+        <iframe title="Abstract Dark Gradient – Striking Black & Gold Design" src="https://aura.promad.design/embed/abstract-dark-gradient-striking-black-gold-design?hideText=true&hideIcons=true" style={{width:"100%", height:"800px"}} allowFullScreen></iframe>
         </div>
       </section>
 
@@ -463,7 +463,7 @@ export default function AIPlaybook() {
           </a>
         </motion.div>
         <div className="absolute inset-0 z-0 overflow-hidden">
-          <iframe src="https://aura.promad.design/embed/magenta-wavy-gradient-header-dynamic-website-design" style={{width:"100%", height:"100%", border:"none"}} allowFullScreen></iframe>
+        <iframe title="Abstract Dark Gradient – Striking Black & Gold Design" src="https://aura.promad.design/embed/abstract-dark-gradient-striking-black-gold-design?hideText=true&hideIcons=true" style={{width:"100%", height:"800px"}} allowFullScreen></iframe>
         </div>
       </Section>
 

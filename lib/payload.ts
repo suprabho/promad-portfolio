@@ -56,13 +56,13 @@ export async function getCompaniesWithProjects(): Promise<CompanyWithProjects[]>
     const companyProjects = projects.docs.filter((project) => {
       const projectCompany = project.company
       if (typeof projectCompany === 'object' && projectCompany !== null) {
-        return (projectCompany as CompanyFromCMS).id === company.id
+        return (projectCompany as CompanyFromCMS).id === String(company.id)
       }
-      return projectCompany === company.id
+      return projectCompany === String(company.id)
     })
 
     return {
-      id: company.id,
+      id: String(company.id),
       name: company.name,
       slug: company.slug ?? null,
       period: company.period ?? null,
@@ -70,7 +70,7 @@ export async function getCompaniesWithProjects(): Promise<CompanyWithProjects[]>
       thumbnail: company.thumbnail ?? null,
       logo: company.logo ?? null,
       projects: companyProjects.map((project) => ({
-        id: project.id,
+        id: String(project.id),
         name: project.name,
         slug: project.slug ?? null,
         company: project.company,
@@ -96,7 +96,7 @@ export async function getCompanies(): Promise<CompanyFromCMS[]> {
   })
 
   return companies.docs.map((company) => ({
-    id: company.id,
+    id: String(company.id),
     name: company.name,
     slug: company.slug ?? null,
     period: company.period ?? null,
@@ -116,7 +116,7 @@ export async function getProjects(): Promise<ProjectFromCMS[]> {
   })
 
   return projects.docs.map((project) => ({
-    id: project.id,
+    id: String(project.id),
     name: project.name,
     slug: project.slug ?? null,
     company: project.company,
@@ -156,7 +156,7 @@ export async function getCompanyBySlug(slug: string): Promise<CompanyWithProject
   })
 
   return {
-    id: company.id,
+    id: String(company.id),
     name: company.name,
     slug: company.slug ?? null,
     period: company.period ?? null,
@@ -164,7 +164,7 @@ export async function getCompanyBySlug(slug: string): Promise<CompanyWithProject
     thumbnail: company.thumbnail ?? null,
     logo: company.logo ?? null,
     projects: projects.docs.map((project) => ({
-      id: project.id,
+      id: String(project.id),
       name: project.name,
       slug: project.slug ?? null,
       company: project.company,
@@ -195,7 +195,7 @@ export async function getProjectBySlug(slug: string): Promise<ProjectFromCMS | n
 
   const project = projects.docs[0]
   return {
-    id: project.id,
+    id: String(project.id),
     name: project.name,
     slug: project.slug ?? null,
     company: project.company,

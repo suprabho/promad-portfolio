@@ -1,4 +1,4 @@
-import { Swatches, CursorClick, Globe, CloudSun, GameController, Cube } from "@phosphor-icons/react"
+import { Swatches, CursorClick, Globe, CloudSun, GameController, Cube, AirplaneTilt } from "@phosphor-icons/react"
 import { Play } from "@phosphor-icons/react/dist/ssr"
 import type { ElementType } from "react"
 
@@ -38,14 +38,14 @@ export const COLOR_PALETTE = [
 
 export const FIGMA_PLUGINS: LinkCardData[] = [
   {
-    icon: Swatches,
+    iconSource: "https://www.figma.com/community/resource/ae9863ef-b283-4dba-bd61-e23e4be81c08/icon",
     title: "Cross Collection Color Token Mapper",
     description:
       "Transform color groups into semantic tokens. Create new collections, duplicate with remapping, update values across libraries.",
     href: "https://www.figma.com/community/plugin/1570424472381396729/cross-collection-color-token-mapper",
   },
   {
-    icon: CursorClick,
+    iconSource: "https://www.figma.com/community/resource/cf6e1e18-4d82-4ccd-8fee-91783079204a/icon",
     title: "Variant Selector",
     description:
       "Filter variants by properties and select in bulk. Handle complex component sets with hundreds of variants.",
@@ -63,6 +63,13 @@ export const FIGMA_PLUGINS: LinkCardData[] = [
 // ─── Vibe-Coded Experiments ───────────────────────────────────────
 
 export const EXPERIMENTS: LinkCardData[] = [
+  {
+    icon: AirplaneTilt,
+    title: "Trip Planner",
+    description: "AI-powered trip planning tool for organizing and visualizing travel itineraries.",
+    href: "https://trip.promad.design",
+    accent: true,
+  },
   {
     icon: Cube,
     title: "SVG to 3D headers",
@@ -98,6 +105,7 @@ export const EXPERIMENTS: LinkCardData[] = [
     href: "https://mow.app.promad.design",
     accent: true,
   },
+  
 ]
 
 // ─── Modular Video Ad System ──────────────────────────────────────

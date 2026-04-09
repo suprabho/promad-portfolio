@@ -1,10 +1,10 @@
 "use client"
 
-import Image from 'next/image'
 import Link from 'next/link'
+import Image from 'next/image'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
-import { LinkedinLogoIcon } from "@phosphor-icons/react/dist/ssr"
+import { LinkedinLogoIcon, ArrowRightIcon } from "@phosphor-icons/react/dist/ssr"
 import teamData from "@/data/team.json"
 import { sendAnalyticsEvent } from "@/lib/analytics"
 
@@ -13,6 +13,7 @@ interface PersonCard {
   role: string
   image: string
   linkedin?: string
+  profilePage?: string
   skills?: string[]
 }
 
@@ -31,10 +32,10 @@ export function PeopleSection() {
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-6 sm:gap-8 max-w-7xl mx-auto">
           {people.map((person, index) => (
-            person.name === "Suprabho Dhenki" ? (
+            person.profilePage ? (
               <Link
                 key={index}
-                href="/career"
+                href={person.profilePage}
                 onClick={() => {
                   sendAnalyticsEvent('team_member_click', {
                     member_name: person.name,
@@ -71,7 +72,8 @@ export function PeopleSection() {
                       </div>
                     )}
                     <div className="flex items-center justify-center gap-1.5 sm:gap-2 text-primary hover:text-primary/80 transition-colors text-sm sm:text-base">
-                      <span className="font-mono">View Career</span>
+                      <ArrowRightIcon weight="bold" className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
+                      <span className="font-mono">View Profile</span>
                     </div>
                   </CardContent>
                 </Card>

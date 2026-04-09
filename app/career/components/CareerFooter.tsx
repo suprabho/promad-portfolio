@@ -2,7 +2,7 @@ import { FOOTER_LINKS } from "../content"
 
 export function CareerFooter() {
   return (
-    <footer className="py-12 px-6 text-center" style={{ borderTop: "1px solid #1e1e24" }}>
+    <footer className="py-12 px-6 text-center" style={{ borderTop: "1px solid var(--career-card-border)" }}>
       <div className="flex justify-center flex-wrap gap-8 mb-6">
         {FOOTER_LINKS.map(({ label, href }) => (
           <a
@@ -11,9 +11,9 @@ export function CareerFooter() {
             target="_blank"
             rel="noopener noreferrer"
             className="text-[0.75rem] tracking-[0.1em] uppercase transition-colors"
-            style={{ color: "#8a8690" }}
-            onMouseEnter={(e) => (e.currentTarget.style.color = "#f0ede6")}
-            onMouseLeave={(e) => (e.currentTarget.style.color = "#8a8690")}
+            style={{ color: "var(--career-text-secondary)" }}
+            onMouseEnter={(e) => (e.currentTarget.style.color = "var(--career-text)")}
+            onMouseLeave={(e) => (e.currentTarget.style.color = "var(--career-text-secondary)")}
           >
             {label}
           </a>

@@ -13,9 +13,68 @@ import {
   SheetTrigger,
 } from "@/components/ui/sheet"
 import { ProjectDisplay } from "@/components/project-display"
-import { XIcon } from "@phosphor-icons/react/dist/ssr"  
+import { XIcon } from "@phosphor-icons/react/dist/ssr"
 import { sendAnalyticsEvent } from "@/lib/analytics"
 import type { CompanyWithProjects } from "@/lib/payload"
+import type { CaseStudyDetails, SimpleDetails } from "@/types/project"
+
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+function transformDetails(details: any[] | null): string | CaseStudyDetails | SimpleDetails | undefined {
+  if (!details || details.length === 0) return undefined
+
+  const block = details[0]
+
+  if (block.blockType === 'textDetails') {
+    return block.content || undefined
+  }
+
+  if (block.blockType === 'caseStudy') {
+    return {
+      title: block.title,
+      projectOverview: block.projectOverview,
+      theChallenge: {
+        heading: block.theChallenge?.heading,
+        description: block.theChallenge?.description,
+        interfaceQualities: block.theChallenge?.interfaceQualities?.map((q: { item: string }) => q.item).filter(Boolean),
+        animationGoals: block.theChallenge?.animationGoals?.map((g: { item: string }) => g.item).filter(Boolean),
+      },
+      ourApproach: {
+        heading: block.ourApproach?.heading,
+        description: block.ourApproach?.description,
+        phases: block.ourApproach?.phases?.map((p: { name: string; points: { point: string }[] }) => ({
+          name: p.name,
+          points: p.points?.map(pt => pt.point).filter(Boolean) || [],
+        })) || [],
+      },
+      keyOutcomes: {
+        heading: block.keyOutcomes?.heading,
+        points: block.keyOutcomes?.points?.map((p: { point: string }) => p.point).filter(Boolean) || [],
+      },
+      lessonsLearned: {
+        heading: block.lessonsLearned?.heading,
+        points: block.lessonsLearned?.points?.map((p: { point: string }) => p.point).filter(Boolean) || [],
+      },
+      conclusion: block.conclusion,
+    } as CaseStudyDetails
+  }
+
+  if (block.blockType === 'simpleDetails') {
+    return {
+      heading: block.heading,
+      description: block.description,
+      phases: block.phases?.map((p: { name: string; points: { point: string }[] }) => ({
+        name: p.name,
+        points: p.points?.map(pt => pt.point).filter(Boolean) || [],
+      })),
+      keyOutcomes: block.keyOutcomes ? {
+        heading: block.keyOutcomes.heading,
+        points: block.keyOutcomes.points?.map((p: { point: string }) => p.point).filter(Boolean) || [],
+      } : undefined,
+    } as SimpleDetails
+  }
+
+  return undefined
+}
 
 interface CompaniesGridProps {
   companies: CompanyWithProjects[]
@@ -35,67 +94,75 @@ export function CompaniesGrid({ companies }: CompaniesGridProps) {
         </div>
         
         <div className="mt-10 sm:mt-16">
-          <div className="grid grid-cols-2 md:grid-cols-12 gap-4 auto-rows-[100px]">
+          <div className="grid grid-cols-2 md:grid-cols-12 gap-3 md:gap-4 md:auto-rows-[100px]">
             {companies.map((company, index) => {
               let gridClass = '';
               
               switch(index) {
                 // Column 1
                 case 0:
-                  gridClass = 'lg:col-span-4 lg:row-span-6 lg:col-start-1 lg:row-start-1 md:col-span-6 md:row-span-6 md:col-start-1 md:row-start-1 col-span-2 row-span-4'; // Large card
+                  gridClass = 'lg:col-span-4 lg:row-span-6 lg:col-start-1 lg:row-start-1 md:col-span-6 md:row-span-6 md:col-start-1 md:row-start-1 col-span-2 aspect-[3/2]'; // Large card
                   break;
                 case 1:
-                  gridClass = 'lg:col-span-2 lg:row-span-2 lg:col-start-1 lg:row-start-7 md:col-span-3 md:row-span-3 md:col-start-1 md:row-start-7 col-span-1 row-span-3'; // Small card
+                  gridClass = 'lg:col-span-2 lg:row-span-2 lg:col-start-1 lg:row-start-7 md:col-span-3 md:row-span-3 md:col-start-1 md:row-start-7 col-span-1 aspect-[2/3]'; // Small card
                   break;
                 case 2:
-                  gridClass = 'lg:col-span-2 lg:row-span-2 lg:col-start-3 lg:row-start-7 md:col-span-3 md:row-span-3 md:col-start-4 md:row-start-7 col-span-1 row-span-3'; // Small card
+                  gridClass = 'lg:col-span-2 lg:row-span-2 lg:col-start-3 lg:row-start-7 md:col-span-3 md:row-span-3 md:col-start-4 md:row-start-7 col-span-1 aspect-[2/3]'; // Small card
                   break;
 
                 // Column 2
                 case 3:
-                  gridClass = 'lg:col-span-4 lg:row-span-3 lg:col-start-5 lg:row-start-1 md:col-span-6 md:row-span-3 md:col-start-7 md:row-start-1 col-span-1 row-span-4'; // Wide card top
+                  gridClass = 'lg:col-span-4 lg:row-span-3 lg:col-start-5 lg:row-start-1 md:col-span-6 md:row-span-3 md:col-start-7 md:row-start-1 col-span-1 aspect-[2/3]'; // Wide card top
                   break;
                 case 4:
-                  gridClass = 'lg:col-span-4 lg:row-span-3 lg:col-start-5 lg:row-start-4 md:col-span-6 md:row-span-3 md:col-start-7 md:row-start-4 col-span-1 row-span-4'; // Wide card middle
+                  gridClass = 'lg:col-span-4 lg:row-span-3 lg:col-start-5 lg:row-start-4 md:col-span-6 md:row-span-3 md:col-start-7 md:row-start-4 col-span-1 aspect-[2/3]'; // Wide card middle
                   break;
                 case 5:
-                  gridClass = 'lg:col-span-2 lg:row-span-2 lg:col-start-5 lg:row-start-7 md:col-span-3 md:row-span-3 md:col-start-7 md:row-start-7 col-span-1 row-span-3'; // Small card bottom left
+                  gridClass = 'lg:col-span-2 lg:row-span-2 lg:col-start-5 lg:row-start-7 md:col-span-3 md:row-span-3 md:col-start-7 md:row-start-7 col-span-1 aspect-[2/3]'; // Small card bottom left
                   break;
                 case 6:
-                  gridClass = 'lg:col-span-2 lg:row-span-2 lg:col-start-7 lg:row-start-7 md:col-span-3 md:row-span-3 md:col-start-10 md:row-start-7 col-span-1 row-span-3'; // Small card top left
+                  gridClass = 'lg:col-span-2 lg:row-span-2 lg:col-start-7 lg:row-start-7 md:col-span-3 md:row-span-3 md:col-start-10 md:row-start-7 col-span-1 aspect-[2/3]'; // Small card top left
                   break;
                 // Column 3
                 case 7:
-                  gridClass = 'lg:col-span-2 lg:row-span-2 lg:col-start-9 lg:row-start-1 md:col-span-6 md:row-span-3 md:col-start-1 md:row-start-10 col-span-1 row-span-3'; // Small card top left
+                  gridClass = 'lg:col-span-2 lg:row-span-2 lg:col-start-9 lg:row-start-1 md:col-span-6 md:row-span-3 md:col-start-1 md:row-start-10 col-span-1 aspect-[2/3]'; // Small card top left
                   break;
                 case 8:
-                  gridClass = 'lg:col-span-2 lg:row-span-2 lg:col-start-11 lg:row-start-1 md:col-span-6 md:row-span-3 md:col-start-1 md:row-start-14 col-span-1 row-span-3'; // Small card top right
+                  gridClass = 'lg:col-span-2 lg:row-span-2 lg:col-start-11 lg:row-start-1 md:col-span-6 md:row-span-3 md:col-start-1 md:row-start-14 col-span-1 aspect-[2/3]'; // Small card top right
                   break;
                 case 9:
-                  gridClass = 'lg:col-span-4 lg:row-span-6 lg:col-start-9 lg:row-start-3 md:col-span-6 md:row-span-6 md:col-start-7 md:row-start-10 col-span-2 row-span-4'; // Large card bottom
-                  break;  
+                  gridClass = 'lg:col-span-4 lg:row-span-6 lg:col-start-9 lg:row-start-3 md:col-span-6 md:row-span-6 md:col-start-7 md:row-start-10 col-span-2 aspect-[3/2]'; // Large card bottom
+                  break;
 
                 default:
-                  gridClass = 'lg:col-span-2 lg:row-span-2 md:col-span-6 md:row-span-4 col-span-1 row-span-4'; // Default small
+                  gridClass = 'lg:col-span-2 lg:row-span-2 md:col-span-6 md:row-span-4 col-span-1 aspect-[2/3]'; // Default small
               }
 
               const cardStyles = `
-                group cursor-pointer transform transition-all duration-300 
-                hover:scale-[1.02] hover:shadow-xl active:scale-[0.98] 
+                group cursor-pointer transform transition-all duration-300
+                hover:scale-[1.02] hover:shadow-xl active:scale-[0.98]
                 relative overflow-hidden bg-card rounded-tr-0 rounded-br-3xl rounded-tl-3xl rounded-tl-0
+                md:aspect-auto
                 ${gridClass}
               `;
 
+              const targetCompanies = new Set(['Microsoft', '1mg', 'goStops', 'The Manufacturing Project', 'myAIcademy', 'Proffy'])
+              const isTargetCompany = targetCompanies.has(company.name)
+
               // Transform project data for ProjectDisplay component
-              const transformedProjects = company.projects.map(project => ({
-                name: project.name,
-                description: project.description || '',
-                thumbnail: project.thumbnail || '',
-                tags: project.tags?.map(t => t.tag || '').filter(Boolean) || [],
-                details: project.details,
-                url: project.url || '',
-                urlName: project.urlName || '',
-              }))
+              const transformedProjects = company.projects
+                .map(project => ({
+                  name: project.name,
+                  description: project.description || '',
+                  thumbnail: project.thumbnail || '',
+                  tags: project.tags?.map(t => t.tag || '').filter(Boolean) || [],
+                  details: transformDetails(project.details),
+                  url: project.url || '',
+                  urlName: project.urlName || '',
+                }))
+
+              const objectTopRightIndices = new Set([1, 2, 3, 4, 7, 8])
+              const imagePositionClass = objectTopRightIndices.has(index) ? 'object-cover object-right-top' : 'object-cover'
 
               return (
                 <Sheet key={company.id}>
@@ -107,28 +174,25 @@ export function CompaniesGrid({ companies }: CompaniesGridProps) {
                     setSelectedCompany(company)
                   }}>
                     <Card className={cardStyles}>
-                      <div className="relative w-full h-full bg-muted overflow-hidden">
+                      <div className={isTargetCompany ? "absolute inset-0 bg-muted overflow-hidden" : "relative w-full h-full bg-muted overflow-hidden"}>
                         {company.thumbnail && (
                           <Image
                             src={company.thumbnail}
                             alt={`${company.name} thumbnail`}
                             fill
-                            className="object-cover transition-transform duration-300 group-hover:scale-110"
+                            className={`${imagePositionClass} transition-transform duration-300 group-hover:scale-110`}
                           />
                         )}
                         <div className="absolute inset-0 bg-gradient-to-b from-black/0 via-black/20 to-black/80" />
-                        <div className="absolute inset-0 p-6 flex flex-col justify-end">
+                        <div className={`absolute inset-0 ${isTargetCompany ? 'p-3 md:p-6' : 'p-6'} flex flex-col justify-end`}>
                           <div>
-                            <h3 className="font-serif italic text-2xl font-semibold mb-2 text-white">{company.name}</h3>
-                            <div className="font-mono text-sm text-white/70 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                              Click to view details
-                            </div>
+                            <h3 className={`font-serif italic ${isTargetCompany ? 'text-lg md:text-2xl' : 'text-2xl'} font-semibold text-white`}>{company.name}</h3>
                           </div>
                         </div>
                       </div>
                     </Card>
                   </SheetTrigger>
-                  <SheetContent className="overflow-y-auto w-[90vw] max-w-[1200px] sm:max-w-[1200px] p-0">
+                  <SheetContent className="overflow-y-auto w-[95vw] sm:w-[90vw] max-w-[1200px] sm:max-w-[1200px] p-0">
                     <div className="sticky top-0 z-10 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 border-b">
                       <SheetHeader className="p-6 flex items-center gap-2">
                         {(company.logo?.dark || company.logo?.light) && (
