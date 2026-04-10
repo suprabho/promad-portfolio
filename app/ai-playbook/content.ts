@@ -11,6 +11,7 @@ export type LinkCardData = {
   icon?: ElementType
   iconSource?: string
   accent?: boolean
+  users?: number
 }
 
 export type RepoStat = {
@@ -43,6 +44,7 @@ export const FIGMA_PLUGINS: LinkCardData[] = [
     description:
       "Transform color groups into semantic tokens. Create new collections, duplicate with remapping, update values across libraries.",
     href: "https://www.figma.com/community/plugin/1570424472381396729/cross-collection-color-token-mapper",
+    users: 29,
   },
   {
     iconSource: "https://www.figma.com/community/resource/cf6e1e18-4d82-4ccd-8fee-91783079204a/icon",
@@ -50,6 +52,7 @@ export const FIGMA_PLUGINS: LinkCardData[] = [
     description:
       "Filter variants by properties and select in bulk. Handle complex component sets with hundreds of variants.",
     href: "https://www.figma.com/community/plugin/1574982950051298625/variant-selector",
+    users: 69,
   },
   {
     iconSource: "https://www.figma.com/community/resource/722beb9b-9897-4a15-90e5-31c76364d064/icon",
@@ -57,6 +60,7 @@ export const FIGMA_PLUGINS: LinkCardData[] = [
     description:
       "Duplicate entire text style hierarchies with custom mapping. Preserves folder structure across collections.",
     href: "https://www.figma.com/community/plugin/1574985201888606536/text-style-duplicator",
+    users: 49,
   },
 ]
 
