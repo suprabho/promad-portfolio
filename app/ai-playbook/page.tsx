@@ -625,7 +625,9 @@ export default function AIPlaybook() {
             className="space-y-6 mb-14"
           >
             {REPO_STATS.map((stat) => (
-              <StatBar key={stat.repo} {...stat} maxCommits={MAX_COMMITS} />
+              <div className="p-2 backdrop-blur-lg bg-white/20 border-border rounded-lg">
+                <StatBar key={stat.repo} {...stat} maxCommits={MAX_COMMITS} />
+              </div>
             ))}
           </motion.div>
 
@@ -656,7 +658,7 @@ export default function AIPlaybook() {
           </motion.p>
         </div>
         <div className="absolute inset-0 z-0 overflow-hidden">
-          <iframe title="Glowing Yellow Gradient – Energize Your Web Header" src="https://aura.promad.design/embed/glowing-yellow-gradient-energize-your-web-header?hideText=true" style={{width:"100%", height:"1200px"}} allowFullScreen></iframe>
+          <iframe title="Glowing Yellow Gradient – Energize Your Web Header" src="https://aura.promad.design/embed/glowing-yellow-gradient-energize-your-web-header?hideText=true" style={{width:"100%", height:"1600px"}} allowFullScreen></iframe>
         </div>
       </Section>
       <Footer />
