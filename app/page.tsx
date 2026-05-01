@@ -7,6 +7,7 @@ import { Footer } from "@/components/footer"
 import { ActionSection } from "@/components/action-section"
 import { PortfolioClient } from "@/components/portfolio-client"
 import { HighlightBanner } from "@/components/highlight-banner"
+import { VizmayaBanner } from "@/components/vizmaya-banner"
 import { getCompaniesWithProjects } from "@/lib/payload"
 
 export default async function Portfolio() {
@@ -19,6 +20,7 @@ export default async function Portfolio() {
         <Header />
         <HeroSection />
         <HighlightBanner />
+        <VizmayaBanner />
         <CompaniesGrid companies={companies} />
         <PeopleSection />
         <SkillsGrid />

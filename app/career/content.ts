@@ -88,8 +88,8 @@ export const TIMELINE: TimelineRow[] = [
       { phase: "pm",      flex: 1, shortName: "PM + Growth",      shortOpacity: 0.25, shortFontSize: "0.65rem" },
       { phase: "builder", flex: 1, shortName: "Builder & Creative Technologist", shortOpacity: 0.6, shortFontSize: "0.85rem",
         label: "Phase 06 — Today", title: "Builder & Creative Technologist",
-        companies: "Kidzovo  ·  Promad",
-        skills: ["AI Workflows", "Figma Plugins", "Video Production", "Vibe Building"] },
+        companies: "Kidzovo  ·  Promad  ·  vizmaya.fyi",
+        skills: ["AI Workflows", "Figma Plugins", "Video Production", "Vibe Building", "Data Storytelling"] },
     ],
   },
 ]
@@ -169,6 +169,18 @@ export const SOLUTION_UNITS = [
       "Developed a modular framework where creative briefs generate interchangeable hooks, content blocks, CTAs, and visual screenplays. Mix-and-match any combination to produce 100+ video variations from a single brief. Scene-by-scene breakdowns with timing, assets, narration, and sound design — shoot-ready documentation from AI-assisted workflows.",
     impact: "1 brief → 100+ variations",
     tools: ["AI Brief → Screenplay Pipeline", "Modular Hook/Content/CTA System", "Scene-level Asset Mapping"],
+  },
+  {
+    num: "04",
+    accent: "#d9a84a",
+    accentBg: "rgba(217,168,74,0.12)",
+    title: "Data Storytelling — narrative as the interface",
+    problem:
+      "Dashboards show numbers but bury the story. Static articles can't fly between coordinates or step through chart states. The narrative and the data live in different tools, and readers have to assemble the meaning themselves.",
+    solution:
+      "Built vizmaya.fyi — a scroll-synced storytelling platform where Mapbox maps, ECharts visualizations, and prose are driven by a single scroll position. Stories are authored in Markdown + YAML, statically generated, and themed per-story via CSS variables. Maps fly, charts step, and text snap-locks as the reader scrolls.",
+    impact: "Dashboards → narratives",
+    tools: ["vizmaya.fyi", "Next.js 16", "Mapbox GL", "Apache ECharts", "Supabase"],
   },
 ]
 

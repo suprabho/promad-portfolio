@@ -18,6 +18,9 @@ import {
   Cube,
   Robot,
   Users,
+  Compass,
+  MapTrifold,
+  ChartLineUp,
 } from "@phosphor-icons/react"
 import {
   COLOR_PALETTE,
@@ -474,6 +477,98 @@ export default function AIPlaybook() {
         <div className="absolute inset-0 z-0 overflow-hidden">
           <iframe title="Dark Abstract Header – Luminous Green Flow for Websites" src="https://aura.promad.design/embed/dark-abstract-header-luminous-green-flow-for-websites?hideText=true" style={{width:"100%", height:"800px"}} allowFullScreen></iframe>
         </div>
+      </Section>
+
+      {/* ── Launched Products ─────────────────────────────── */}
+      <Section id="launched-products">
+        <SectionHeading
+          icon={Compass}
+          title="Launched Products"
+          subtitle="AI-assisted from concept to production — public platforms shipped end-to-end."
+        />
+        <motion.div variants={fadeUp} className="max-w-3xl mx-auto">
+          <a
+            href="https://vizmaya.fyi"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="block"
+          >
+            <Card
+              className="group relative overflow-hidden hover:shadow-2xl transition-all duration-500 hover:-translate-y-1"
+              style={{
+                backgroundColor: "#0d1220",
+                borderColor: "rgba(217,168,74,0.4)",
+              }}
+            >
+              {/* Subtle radial glow */}
+              <div
+                className="absolute inset-0 opacity-40 pointer-events-none"
+                style={{
+                  background:
+                    "radial-gradient(circle at 80% 20%, rgba(217,168,74,0.18) 0%, transparent 55%), radial-gradient(circle at 10% 90%, rgba(79,138,168,0.12) 0%, transparent 50%)",
+                }}
+              />
+              <CardHeader className="relative">
+                <div className="flex items-center gap-4 mb-2">
+                  <div
+                    className="w-14 h-14 rounded-2xl flex items-center justify-center shrink-0"
+                    style={{ backgroundColor: "rgba(217,168,74,0.15)" }}
+                  >
+                    <Compass
+                      size={28}
+                      weight="duotone"
+                      style={{ color: "#d9a84a" }}
+                    />
+                  </div>
+                  <div className="flex-1">
+                    <CardTitle
+                      className="text-2xl flex items-center gap-2"
+                      style={{ color: "#e4e8f0" }}
+                    >
+                      vizmaya.fyi
+                      <ArrowSquareOut
+                        size={18}
+                        className="opacity-0 group-hover:opacity-100 transition-opacity"
+                        style={{ color: "#d9a84a" }}
+                      />
+                    </CardTitle>
+                    <CardDescription
+                      className="text-base mt-1"
+                      style={{ color: "rgba(228,232,240,0.7)" }}
+                    >
+                      Scroll-synced data narratives — Mapbox maps, ECharts
+                      visualizations, and prose unified by a single scroll position.
+                      13+ published stories on geopolitics, economics, and
+                      technology.
+                    </CardDescription>
+                  </div>
+                </div>
+
+                {/* Stat chips */}
+                <div className="flex flex-wrap gap-2 mt-4">
+                  {[
+                    { icon: ChartLineUp, label: "13+ stories" },
+                    { icon: MapTrifold, label: "Mapbox GL" },
+                    { icon: Cube, label: "Next.js 16" },
+                  ].map(({ icon: Icon, label }) => (
+                    <span
+                      key={label}
+                      className="inline-flex items-center gap-1.5 text-xs px-3 py-1.5 rounded-full font-medium"
+                      style={{
+                        backgroundColor: "rgba(255,255,255,0.06)",
+                        color: "rgba(228,232,240,0.85)",
+                        border: "1px solid rgba(255,255,255,0.08)",
+                      }}
+                    >
+                      <Icon size={14} weight="duotone" style={{ color: "#d9a84a" }} />
+                      {label}
+                    </span>
+                  ))}
+                </div>
+              </CardHeader>
+            </Card>
+          </a>
+        </motion.div>
       </Section>
 
       {/* ── Vibe-Coded Experiments ────────────────────────── */}
