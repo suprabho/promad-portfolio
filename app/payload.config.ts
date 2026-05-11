@@ -3,6 +3,17 @@ import { lexicalEditor } from '@payloadcms/richtext-lexical'
 import { postgresAdapter } from '@payloadcms/db-postgres'
 import { buildConfig } from 'payload'
 
+const revalidateSite = async () => {
+  // Dynamic import so `next/cache` is only loaded inside the Next.js runtime,
+  // not during standalone Payload CLI usage (migrations, seeding).
+  try {
+    const { revalidatePath } = await import('next/cache')
+    revalidatePath('/', 'layout')
+  } catch {
+    // Outside a Next.js request context (e.g. CLI) — nothing to revalidate.
+  }
+}
+
 export default buildConfig({
   // If you'd like to use Rich Text, pass your editor here
   editor: lexicalEditor(),
@@ -23,6 +34,10 @@ export default buildConfig({
       slug: 'companies',
       admin: {
         useAsTitle: 'name',
+      },
+      hooks: {
+        afterChange: [async () => { await revalidateSite() }],
+        afterDelete: [async () => { await revalidateSite() }],
       },
       fields: [
         { name: 'name', type: 'text', required: true },
@@ -52,6 +67,10 @@ export default buildConfig({
       slug: 'projects',
       admin: {
         useAsTitle: 'name',
+      },
+      hooks: {
+        afterChange: [async () => { await revalidateSite() }],
+        afterDelete: [async () => { await revalidateSite() }],
       },
       fields: [
         { name: 'name', type: 'text', required: true },
