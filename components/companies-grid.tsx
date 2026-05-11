@@ -2,6 +2,7 @@
 
 import { useState } from "react"
 import Image from "next/image"
+import { useTheme } from "next-themes"
 import { Card} from "@/components/ui/card"
 import {
   Sheet,
@@ -82,6 +83,12 @@ interface CompaniesGridProps {
 
 export function CompaniesGrid({ companies }: CompaniesGridProps) {
   const [selectedCompany, setSelectedCompany] = useState<CompanyWithProjects | null>(null)
+  const { resolvedTheme } = useTheme()
+  const logoFor = (logo: CompanyWithProjects['logo']) => {
+    if (!logo) return null
+    const preferred = resolvedTheme === 'dark' ? logo.dark : logo.light
+    return preferred || logo.dark || logo.light || null
+  }
 
   return (
     <section className="py-24 bg-muted/30">
@@ -195,12 +202,12 @@ export function CompaniesGrid({ companies }: CompaniesGridProps) {
                   <SheetContent className="overflow-y-auto w-[95vw] sm:w-[90vw] max-w-[1200px] sm:max-w-[1200px] p-0">
                     <div className="sticky top-0 z-10 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 border-b">
                       <SheetHeader className="p-6 flex items-center gap-2">
-                        {(company.logo?.dark || company.logo?.light) && (
+                        {logoFor(company.logo) && (
                           <Image
-                            src={company.logo?.dark || company.logo?.light || ""}
+                            src={logoFor(company.logo) || ""}
                             alt={`${company.name} logo`}
                             width={60}
-                            height={60}  
+                            height={60}
                             className="object-contain"
                           />
                         )}

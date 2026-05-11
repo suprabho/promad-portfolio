@@ -56,9 +56,9 @@ export async function getCompaniesWithProjects(): Promise<CompanyWithProjects[]>
     const companyProjects = projects.docs.filter((project) => {
       const projectCompany = project.company
       if (typeof projectCompany === 'object' && projectCompany !== null) {
-        return (projectCompany as CompanyFromCMS).id === String(company.id)
+        return String((projectCompany as CompanyFromCMS).id) === String(company.id)
       }
-      return projectCompany === String(company.id)
+      return String(projectCompany) === String(company.id)
     })
 
     return {
