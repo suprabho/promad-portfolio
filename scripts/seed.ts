@@ -2,6 +2,14 @@ import { getPayload } from 'payload'
 import config from '../app/payload.config'
 import companiesData from '../data/companies.json'
 
+function slugify(value: string): string {
+  return value
+    .toLowerCase()
+    .trim()
+    .replace(/[^a-z0-9]+/g, '-')
+    .replace(/^-+|-+$/g, '')
+}
+
 interface ProjectDetails {
   title?: string
   projectOverview?: string
@@ -82,6 +90,7 @@ async function seed() {
       collection: 'companies',
       data: {
         name: company.name,
+        slug: slugify(company.name),
         period: company.period,
         description: company.description,
         thumbnail: company.thumbnail,
@@ -175,6 +184,7 @@ async function seed() {
         collection: 'projects',
         data: {
           name: project.name,
+          slug: slugify(`${company.name}-${project.name}`),
           company: createdCompany.id,
           description: project.description,
           thumbnail: project.thumbnail,

@@ -19,6 +19,9 @@ yarn-error.log*
 # env files
 .env*
 
+# payload local sqlite (legacy; we use Postgres in prod)
+payload-db.sqlite
+
 # vercel
 .vercel
 

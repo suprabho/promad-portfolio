@@ -13,6 +13,7 @@
         "@crayonai/react-ui": "^0.8.4",
         "@hookform/resolvers": "^3.9.1",
         "@payloadcms/db-mongodb": "3.70.0",
+        "@payloadcms/db-postgres": "3.70.0",
         "@payloadcms/db-sqlite": "3.70.0",
         "@payloadcms/next": "3.70.0",
         "@payloadcms/richtext-lexical": "3.70.0",
