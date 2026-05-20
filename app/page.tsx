@@ -10,6 +10,8 @@ import { HighlightBanner } from "@/components/highlight-banner"
 import { VizmayaBanner } from "@/components/vizmaya-banner"
 import { getCompaniesWithProjects } from "@/lib/payload"
 
+export const dynamic = 'force-dynamic'
+
 export default async function Portfolio() {
   // Fetch data from Payload CMS
   const companies = await getCompaniesWithProjects()
