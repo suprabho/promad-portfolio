@@ -1,4 +1,4 @@
-import { getProjectBySlug, getProjects, type CompanyFromCMS } from '@/lib/payload'
+import { getProjectBySlug, type CompanyFromCMS } from '@/lib/payload'
 import { notFound } from 'next/navigation'
 import Image from 'next/image'
 import Link from 'next/link'
@@ -10,15 +10,7 @@ import { Card, CardContent } from '@/components/ui/card'
 import { ArrowLeft, ArrowSquareOut } from '@phosphor-icons/react/dist/ssr'
 import type { Metadata } from 'next'
 
-// Generate static params for all projects at build time
-export async function generateStaticParams() {
-  const projects = await getProjects()
-  return projects
-    .filter((project) => project.slug)
-    .map((project) => ({
-      slug: project.slug!,
-    }))
-}
+export const dynamic = 'force-dynamic'
 
 // Generate metadata for each project page
 export async function generateMetadata({

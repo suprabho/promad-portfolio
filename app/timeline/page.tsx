@@ -1,6 +1,8 @@
 import { CompaniesTimeline } from "@/components/companies-timeline"
 import { getCompaniesWithProjects } from "@/lib/payload"
 
+export const dynamic = 'force-dynamic'
+
 export default async function TimelinePage() {
   // Fetch data from Payload CMS
   const companies = await getCompaniesWithProjects()

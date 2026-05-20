@@ -6,6 +6,8 @@ import { Footer } from '@/components/footer'
 import { Card } from '@/components/ui/card'
 import type { Metadata } from 'next'
 
+export const dynamic = 'force-dynamic'
+
 export const metadata: Metadata = {
   title: 'Companies | Promad Design',
   description: 'Explore all the companies we have worked with and our contributions to their success.',

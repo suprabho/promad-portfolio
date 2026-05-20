@@ -1,4 +1,4 @@
-import { getCompanyBySlug, getCompanies } from '@/lib/payload'
+import { getCompanyBySlug } from '@/lib/payload'
 import { notFound } from 'next/navigation'
 import Image from 'next/image'
 import Link from 'next/link'
@@ -10,15 +10,7 @@ import { Button } from '@/components/ui/button'
 import { ArrowLeft } from '@phosphor-icons/react/dist/ssr'
 import type { Metadata } from 'next'
 
-// Generate static params for all companies at build time
-export async function generateStaticParams() {
-  const companies = await getCompanies()
-  return companies
-    .filter((company) => company.slug)
-    .map((company) => ({
-      slug: company.slug!,
-    }))
-}
+export const dynamic = 'force-dynamic'
 
 // Generate metadata for each company page
 export async function generateMetadata({
