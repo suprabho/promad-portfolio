@@ -1,4 +1,17 @@
-import { Swatches, CursorClick, Globe, CloudSun, GameController, Cube, AirplaneTilt } from "@phosphor-icons/react"
+import {
+  Swatches,
+  CursorClick,
+  Globe,
+  CloudSun,
+  GameController,
+  Cube,
+  AirplaneTilt,
+  Compass,
+  SoccerBall,
+  FlagCheckered,
+  Lightning,
+  Robot,
+} from "@phosphor-icons/react"
 import { Play } from "@phosphor-icons/react/dist/ssr"
 import type { ElementType } from "react"
 
@@ -12,6 +25,25 @@ export type LinkCardData = {
   iconSource?: string
   accent?: boolean
   users?: number
+}
+
+export type LaunchedProduct = {
+  title: string
+  href: string
+  description: string
+  icon: ElementType
+  accent: string
+  accentSoft: string
+  accentText: string
+  surface: string
+  border: string
+  tags: string[]
+}
+
+export type EngineCapability = {
+  icon: ElementType
+  label: string
+  detail: string
 }
 
 export type RepoStat = {
@@ -135,6 +167,79 @@ export const VIDEO_BRIEF_ITEMS = [
   "Narration scripting and direction",
   "Music and sound design mapped for generation",
   "Generation-ready image and video prompt direction",
+]
+
+// ─── Vismay Engine ────────────────────────────────────────────────
+
+export const VISMAY_CAPABILITIES: EngineCapability[] = [
+  {
+    icon: Cube,
+    label: "Composable viz registry",
+    detail:
+      "Maps, charts, and prose slots dispatched from a single registry — reusable across verticals.",
+  },
+  {
+    icon: Globe,
+    label: "Scroll-driven storytelling",
+    detail:
+      "One scroll position drives Mapbox flights, ECharts step states, and text snap-locks together.",
+  },
+  {
+    icon: Lightning,
+    label: "Markdown + YAML authoring",
+    detail:
+      "Stories authored as MD + YAML, statically generated, themed per-story via CSS variables.",
+  },
+  {
+    icon: Robot,
+    label: "Asset + capture pipeline",
+    detail:
+      "Admin uploader, Compose panel, and capture pipeline shared by every Vismay vertical.",
+  },
+]
+
+// ─── Launched Products ────────────────────────────────────────────
+
+export const LAUNCHED_PRODUCTS: LaunchedProduct[] = [
+  {
+    title: "vizmaya.fyi",
+    href: "https://vizmaya.fyi",
+    description:
+      "Scroll-synced data narratives — Mapbox maps, ECharts visualizations, and prose unified by a single scroll position. 13+ published stories on geopolitics, economics, and technology.",
+    icon: Compass,
+    accent: "#d9a84a",
+    accentSoft: "rgba(217,168,74,0.15)",
+    accentText: "#e4e8f0",
+    surface: "#0d1220",
+    border: "rgba(217,168,74,0.4)",
+    tags: ["13+ stories", "Mapbox GL", "Apache ECharts"],
+  },
+  {
+    title: "footshorts.com",
+    href: "https://footshorts.com",
+    description:
+      "InShorts-style football news — swipeable 60-word AI-summarized cards, follow leagues, teams, and players, with live match context inline. Powered by the same Vismay viz engine.",
+    icon: SoccerBall,
+    accent: "#22c55e",
+    accentSoft: "rgba(34,197,94,0.15)",
+    accentText: "#ecfdf5",
+    surface: "#08120b",
+    border: "rgba(34,197,94,0.4)",
+    tags: ["RN + Next.js", "Gemini summaries", "Hourly ingest"],
+  },
+  {
+    title: "vizf1.com",
+    href: "https://vizf1.com",
+    description:
+      "F1 race storytelling — driver, team, and race discovery pages with editorial stories backed by live timing data. Built on Vismay for charts, maps, and scroll-driven race recaps.",
+    icon: FlagCheckered,
+    accent: "#ef4444",
+    accentSoft: "rgba(239,68,68,0.15)",
+    accentText: "#fef2f2",
+    surface: "#160708",
+    border: "rgba(239,68,68,0.4)",
+    tags: ["Race recaps", "Live timing", "Editorial CMS"],
+  },
 ]
 
 // ─── Repo Stats ───────────────────────────────────────────────────

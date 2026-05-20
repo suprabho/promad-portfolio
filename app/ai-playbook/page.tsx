@@ -21,6 +21,7 @@ import {
   Compass,
   MapTrifold,
   ChartLineUp,
+  Stack,
 } from "@phosphor-icons/react"
 import {
   COLOR_PALETTE,
@@ -34,6 +35,8 @@ import {
   TOTAL_COMMITS,
   TOTAL_LINES_ADDED,
   TOTAL_LINES_REMOVED,
+  VISMAY_CAPABILITIES,
+  LAUNCHED_PRODUCTS,
 } from "./content"
 
 // ─── Animation Variants ───────────────────────────────────────────
@@ -479,95 +482,142 @@ export default function AIPlaybook() {
         </div>
       </Section>
 
+      {/* ── Vismay Engine ─────────────────────────────────── */}
+      <Section id="vismay">
+        <SectionHeading
+          icon={Stack}
+          title="Vismay — The Viz Engine"
+          subtitle="A reusable visualization and storytelling engine. One registry, one scroll model, one asset pipeline — powering three verticals so far."
+        />
+
+        <motion.div variants={fadeUp} className="max-w-4xl mx-auto mb-10">
+          <Card className="group relative overflow-hidden border-[#FAFF00]/40 hover:shadow-2xl transition-all duration-500 hover:-translate-y-1">
+            <div className="absolute inset-0 bg-gradient-to-br from-[#FAFF00]/10 via-transparent to-[#FAFF00]/5" />
+            <CardHeader className="relative">
+              <div className="flex items-center gap-4 mb-2">
+                <div className="w-14 h-14 rounded-2xl bg-[#FAFF00] text-black flex items-center justify-center shrink-0">
+                  <Stack size={28} weight="duotone" />
+                </div>
+                <div className="flex-1">
+                  <CardTitle className="text-2xl">Vismay</CardTitle>
+                  <CardDescription className="text-base">
+                    A monorepo viz engine — registry, slot dispatchers, asset
+                    pipeline, capture pipeline — composed once and reused across
+                    vizmaya.fyi, footshorts.com, and vizf1.com.
+                  </CardDescription>
+                </div>
+              </div>
+
+              <div className="grid sm:grid-cols-2 gap-3 mt-6">
+                {VISMAY_CAPABILITIES.map(({ icon: Icon, label, detail }) => (
+                  <div
+                    key={label}
+                    className="flex items-start gap-3 p-3 rounded-xl bg-secondary/50 border border-border/50"
+                  >
+                    <div className="w-9 h-9 rounded-lg bg-[#FAFF00]/20 text-[#1A1A1A] dark:text-[#FAFF00] flex items-center justify-center shrink-0">
+                      <Icon size={18} weight="duotone" />
+                    </div>
+                    <div>
+                      <div className="font-semibold text-sm">{label}</div>
+                      <div className="text-xs text-muted-foreground mt-0.5">
+                        {detail}
+                      </div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </CardHeader>
+          </Card>
+        </motion.div>
+      </Section>
+
       {/* ── Launched Products ─────────────────────────────── */}
       <Section id="launched-products">
         <SectionHeading
           icon={Compass}
           title="Launched Products"
-          subtitle="AI-assisted from concept to production — public platforms shipped end-to-end."
+          subtitle="AI-assisted from concept to production — public platforms shipped end-to-end on the Vismay engine."
         />
-        <motion.div variants={fadeUp} className="max-w-3xl mx-auto">
-          <a
-            href="https://vizmaya.fyi"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="block"
-          >
-            <Card
-              className="group relative overflow-hidden hover:shadow-2xl transition-all duration-500 hover:-translate-y-1"
-              style={{
-                backgroundColor: "#0d1220",
-                borderColor: "rgba(217,168,74,0.4)",
-              }}
-            >
-              {/* Subtle radial glow */}
-              <div
-                className="absolute inset-0 opacity-40 pointer-events-none"
-                style={{
-                  background:
-                    "radial-gradient(circle at 80% 20%, rgba(217,168,74,0.18) 0%, transparent 55%), radial-gradient(circle at 10% 90%, rgba(79,138,168,0.12) 0%, transparent 50%)",
-                }}
-              />
-              <CardHeader className="relative">
-                <div className="flex items-center gap-4 mb-2">
-                  <div
-                    className="w-14 h-14 rounded-2xl flex items-center justify-center shrink-0"
-                    style={{ backgroundColor: "rgba(217,168,74,0.15)" }}
+        <motion.div
+          variants={staggerContainer}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.2 }}
+          className="grid md:grid-cols-3 gap-6 max-w-6xl mx-auto"
+        >
+          {LAUNCHED_PRODUCTS.map((product) => {
+            const Icon = product.icon
+            return (
+              <motion.div key={product.title} variants={fadeUp}>
+                <a
+                  href={product.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="block h-full"
+                >
+                  <Card
+                    className="group h-full relative overflow-hidden hover:shadow-2xl transition-all duration-500 hover:-translate-y-1"
+                    style={{
+                      backgroundColor: product.surface,
+                      borderColor: product.border,
+                    }}
                   >
-                    <Compass
-                      size={28}
-                      weight="duotone"
-                      style={{ color: "#d9a84a" }}
-                    />
-                  </div>
-                  <div className="flex-1">
-                    <CardTitle
-                      className="text-2xl flex items-center gap-2"
-                      style={{ color: "#e4e8f0" }}
-                    >
-                      vizmaya.fyi
-                      <ArrowSquareOut
-                        size={18}
-                        className="opacity-0 group-hover:opacity-100 transition-opacity"
-                        style={{ color: "#d9a84a" }}
-                      />
-                    </CardTitle>
-                    <CardDescription
-                      className="text-base mt-1"
-                      style={{ color: "rgba(228,232,240,0.7)" }}
-                    >
-                      Scroll-synced data narratives — Mapbox maps, ECharts
-                      visualizations, and prose unified by a single scroll position.
-                      13+ published stories on geopolitics, economics, and
-                      technology.
-                    </CardDescription>
-                  </div>
-                </div>
-
-                {/* Stat chips */}
-                <div className="flex flex-wrap gap-2 mt-4">
-                  {[
-                    { icon: ChartLineUp, label: "13+ stories" },
-                    { icon: MapTrifold, label: "Mapbox GL" },
-                    { icon: Cube, label: "Next.js 16" },
-                  ].map(({ icon: Icon, label }) => (
-                    <span
-                      key={label}
-                      className="inline-flex items-center gap-1.5 text-xs px-3 py-1.5 rounded-full font-medium"
+                    <div
+                      className="absolute inset-0 opacity-40 pointer-events-none"
                       style={{
-                        backgroundColor: "rgba(255,255,255,0.06)",
-                        color: "rgba(228,232,240,0.85)",
-                        border: "1px solid rgba(255,255,255,0.08)",
+                        background: `radial-gradient(circle at 80% 20%, ${product.accentSoft} 0%, transparent 55%), radial-gradient(circle at 10% 90%, rgba(255,255,255,0.05) 0%, transparent 50%)`,
                       }}
-                    >
-                      <Icon size={14} weight="duotone" style={{ color: "#d9a84a" }} />
-                      {label}
-                    </span>
-                  ))}
-                </div>
-              </CardHeader>
-            </Card>
-          </a>
+                    />
+                    <CardHeader className="relative">
+                      <div
+                        className="w-14 h-14 rounded-2xl flex items-center justify-center shrink-0 mb-3"
+                        style={{ backgroundColor: product.accentSoft }}
+                      >
+                        <Icon
+                          size={28}
+                          weight="duotone"
+                          style={{ color: product.accent }}
+                        />
+                      </div>
+                      <CardTitle
+                        className="text-2xl flex items-center gap-2"
+                        style={{ color: product.accentText }}
+                      >
+                        {product.title}
+                        <ArrowSquareOut
+                          size={18}
+                          className="opacity-0 group-hover:opacity-100 transition-opacity"
+                          style={{ color: product.accent }}
+                        />
+                      </CardTitle>
+                      <CardDescription
+                        className="text-base mt-1"
+                        style={{ color: `${product.accentText}b3` }}
+                      >
+                        {product.description}
+                      </CardDescription>
+
+                      <div className="flex flex-wrap gap-2 mt-4">
+                        {product.tags.map((label) => (
+                          <span
+                            key={label}
+                            className="inline-flex items-center gap-1.5 text-xs px-3 py-1.5 rounded-full font-medium"
+                            style={{
+                              backgroundColor: "rgba(255,255,255,0.06)",
+                              color: `${product.accentText}d9`,
+                              border: "1px solid rgba(255,255,255,0.08)",
+                            }}
+                          >
+                            {label}
+                          </span>
+                        ))}
+                      </div>
+                    </CardHeader>
+                  </Card>
+                </a>
+              </motion.div>
+            )
+          })}
         </motion.div>
       </Section>
 
