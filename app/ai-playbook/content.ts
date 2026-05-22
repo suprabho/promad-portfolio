@@ -76,7 +76,7 @@ export const FIGMA_PLUGINS: LinkCardData[] = [
     description:
       "Transform color groups into semantic tokens. Create new collections, duplicate with remapping, update values across libraries.",
     href: "https://www.figma.com/community/plugin/1570424472381396729/cross-collection-color-token-mapper",
-    users: 33,
+    users: 38,
   },
   {
     iconSource: "https://www.figma.com/community/resource/cf6e1e18-4d82-4ccd-8fee-91783079204a/icon",
@@ -84,7 +84,7 @@ export const FIGMA_PLUGINS: LinkCardData[] = [
     description:
       "Filter variants by properties and select in bulk. Handle complex component sets with hundreds of variants.",
     href: "https://www.figma.com/community/plugin/1574982950051298625/variant-selector",
-    users: 75,
+    users: 86,
   },
   {
     iconSource: "https://www.figma.com/community/resource/722beb9b-9897-4a15-90e5-31c76364d064/icon",
@@ -92,7 +92,15 @@ export const FIGMA_PLUGINS: LinkCardData[] = [
     description:
       "Duplicate entire text style hierarchies with custom mapping. Preserves folder structure across collections.",
     href: "https://www.figma.com/community/plugin/1574985201888606536/text-style-duplicator",
-    users: 57,
+    users: 67,
+  },
+  {
+    iconSource: "https://s3-alpha-sig.figma.com/plugins/1638873804562766019/223208/c799880d-ab48-4ab6-9c89-275b720ce0d8-icon?Expires=1780272000&Key-Pair-Id=APKAQ4GOSFWCW27IBOMQ&Signature=KPfc1i~2~STy1duY8armSjHP8CQiS0I02ZFVqnMSEqTt7kAqxX-~f9B5m7M9K6X4lnZGMyviYpy5LFjnByf~6DBmKM9PmEJCAO7IfZCn288OilVlRANK9GYFp8OuTFhgRLDkOkxwYtptXJrcVZLTO1Q1Vs8t3eLaloFDIT6Z28MpZfgMlt0Dn8YmRz~7IWaqabGLpEjDp6VTdY8uIDwZ7nb8rbfBIuwvmL7vj9SiWmC10w510soxvvCZwk4TxzoOeBv7Sd2jlMgi8rSLu1U~d7Yg6FchnnhbUGOkO9~9w1K93LUG3kW3GNY6eaJMehmgQvy1Igb~W47-7q3jdnO8Og__",
+    title: "Custom Mapabox Maps",
+    description:
+      "Desgin and drop renders of Mapbox maps straight into Figma.",
+    href: "https://www.figma.com/community/plugin/1638873804562766019/custom-mapbox-maps-by-promad",
+    users: 2,
   },
 ]
 
