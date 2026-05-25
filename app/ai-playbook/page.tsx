@@ -220,57 +220,6 @@ function ProcessStep({
   )
 }
 
-// ─── Stat Bar ─────────────────────────────────────────────────────
-
-function StatBar({
-  repo,
-  commits,
-  added,
-  removed,
-  href,
-  maxCommits,
-}: {
-  repo: string
-  commits: number
-  added: string
-  removed: string
-  href: string
-  maxCommits: number
-}) {
-  const percentage = (commits / maxCommits) * 100
-  return (
-    <motion.div variants={fadeUp}>
-      <a href={href} target="_blank" rel="noopener noreferrer" className="block group space-y-2">
-        <div className="flex justify-between items-baseline">
-          <span className="font-mono text-sm font-semibold group-hover:text-[#FAFF00] transition-colors flex items-center gap-1.5">
-            {repo}
-            <ArrowSquareOut
-              size={12}
-              className="opacity-0 group-hover:opacity-100 transition-opacity text-muted-foreground"
-            />
-          </span>
-          <span className="text-sm text-muted-foreground font-mono">
-            {commits} commits
-          </span>
-        </div>
-        <div className="h-3 rounded-full bg-secondary overflow-hidden">
-          <motion.div
-            className="h-full rounded-full bg-gradient-to-r from-[#FAFF00] to-[#FAFF00]/60"
-            initial={{ width: 0 }}
-            whileInView={{ width: `${percentage}%` }}
-            viewport={{ once: true }}
-            transition={{ duration: 1, ease: "easeOut" }}
-          />
-        </div>
-        <div className="flex gap-4 text-xs text-muted-foreground font-mono">
-          <span className="text-green-500">+{added}</span>
-          <span className="text-red-400">-{removed}</span>
-        </div>
-      </a>
-    </motion.div>
-  )
-}
-
 // ─── Main Page ────────────────────────────────────────────────────
 
 export default function AIPlaybook() {
@@ -334,7 +283,7 @@ export default function AIPlaybook() {
 
             <motion.p
               variants={fadeUp}
-              className="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed"
+              className="text-lg md:text-xl text-[#fff]/80 max-w-3xl mx-auto leading-relaxed"
             >
               AI as creative infrastructure — not just using tools, but building AI-powered
               tools that multiply output across design systems, video production, and
@@ -641,76 +590,6 @@ export default function AIPlaybook() {
         </motion.div>
       </Section>
 
-      {/* ── Shipping Product ──────────────────────────────── */}
-      <Section id="shipping" className="flex flex-col relative">
-        <div className="relative z-10">
-          <SectionHeading
-            icon={GitBranch}
-            title="Shipping Product"
-            subtitle="Regular frontend contributions while building all of the above."
-          />
-        </div>
-
-        <div className="max-w-4xl mx-auto relative z-10">
-          {/* Big number */}
-          <motion.div
-            variants={fadeUp}
-            className="text-center mb-14"
-          >
-            <div className="inline-flex items-baseline gap-3">
-              <span className="font-mono font-extrabold text-6xl md:text-8xl">
-                <AnimatedCounter target={TOTAL_COMMITS} duration={2.5} />
-              </span>
-              <span className="text-xl md:text-2xl text-muted-foreground">commits</span>
-            </div>
-            <p className="text-muted-foreground mt-2">across 4 production codebases</p>
-          </motion.div>
-
-          {/* Repo bars */}
-          <motion.div
-            variants={staggerContainer}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, amount: 0.3 }}
-            className="space-y-6 mb-14"
-          >
-            {REPO_STATS.map((stat) => (
-              <div className="p-2 backdrop-blur-lg bg-white/20 border-border rounded-lg">
-                <StatBar key={stat.repo} {...stat} maxCommits={MAX_COMMITS} />
-              </div>
-            ))}
-          </motion.div>
-
-          {/* Totals */}
-          <motion.div
-            variants={fadeUp}
-            className="flex flex-wrap justify-center gap-8"
-          >
-            <div className="text-center">
-              <div className="font-mono text-3xl md:text-4xl font-bold text-green-500">
-                +<AnimatedCounter target={TOTAL_LINES_ADDED} duration={2} />
-              </div>
-              <p className="text-sm text-muted-foreground mt-1">lines added</p>
-            </div>
-            <div className="text-center">
-              <div className="font-mono text-3xl md:text-4xl font-bold text-red-400">
-                -<AnimatedCounter target={TOTAL_LINES_REMOVED} duration={2} />
-              </div>
-              <p className="text-sm text-muted-foreground mt-1">lines removed</p>
-            </div>
-          </motion.div>
-
-          <motion.p
-            variants={fadeUp}
-            className="text-center text-muted-foreground mt-8 text-sm"
-          >
-            Plus: AI-generated coloring sheets in Creator Studio for SEO landing pages.
-          </motion.p>
-        </div>
-        <div className="absolute inset-0 z-0 overflow-hidden">
-          <iframe title="Glowing Yellow Gradient – Energize Your Web Header" src="https://aura.promad.design/embed/glowing-yellow-gradient-energize-your-web-header?hideText=true" style={{width:"100%", height:"1600px"}} allowFullScreen></iframe>
-        </div>
-      </Section>
       <Footer />
     </div>
   )
