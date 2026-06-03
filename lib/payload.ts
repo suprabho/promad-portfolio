@@ -36,20 +36,30 @@ export interface CompanyWithProjects extends CompanyFromCMS {
 }
 
 export async function getCompaniesWithProjects(): Promise<CompanyWithProjects[]> {
-  const payload = await getPayloadClient()
+  let payload
+  let companies
+  let projects
+  try {
+    payload = await getPayloadClient()
 
-  // Fetch all companies
-  const companies = await payload.find({
-    collection: 'companies',
-    limit: 100,
-  })
+    // Fetch all companies
+    companies = await payload.find({
+      collection: 'companies',
+      limit: 100,
+    })
 
-  // Fetch all projects with company relationship
-  const projects = await payload.find({
-    collection: 'projects',
-    limit: 100,
-    depth: 1, // Populates the company relationship
-  })
+    // Fetch all projects with company relationship
+    projects = await payload.find({
+      collection: 'projects',
+      limit: 100,
+      depth: 1, // Populates the company relationship
+    })
+  } catch (err) {
+    // Never let a CMS/DB failure take down the homepage with a 500.
+    // Log the real error (visible in Vercel function logs) and render an empty grid.
+    console.error('[getCompaniesWithProjects] Payload/DB query failed:', err)
+    return []
+  }
 
   // Group projects by company
   const companiesWithProjects: CompanyWithProjects[] = companies.docs.map((company) => {
@@ -88,12 +98,17 @@ export async function getCompaniesWithProjects(): Promise<CompanyWithProjects[]>
 }
 
 export async function getCompanies(): Promise<CompanyFromCMS[]> {
-  const payload = await getPayloadClient()
-
-  const companies = await payload.find({
-    collection: 'companies',
-    limit: 100,
-  })
+  let companies
+  try {
+    const payload = await getPayloadClient()
+    companies = await payload.find({
+      collection: 'companies',
+      limit: 100,
+    })
+  } catch (err) {
+    console.error('[getCompanies] Payload/DB query failed:', err)
+    return []
+  }
 
   return companies.docs.map((company) => ({
     id: String(company.id),
@@ -107,13 +122,18 @@ export async function getCompanies(): Promise<CompanyFromCMS[]> {
 }
 
 export async function getProjects(): Promise<ProjectFromCMS[]> {
-  const payload = await getPayloadClient()
-
-  const projects = await payload.find({
-    collection: 'projects',
-    limit: 100,
-    depth: 1,
-  })
+  let projects
+  try {
+    const payload = await getPayloadClient()
+    projects = await payload.find({
+      collection: 'projects',
+      limit: 100,
+      depth: 1,
+    })
+  } catch (err) {
+    console.error('[getProjects] Payload/DB query failed:', err)
+    return []
+  }
 
   return projects.docs.map((project) => ({
     id: String(project.id),
@@ -131,29 +151,36 @@ export async function getProjects(): Promise<ProjectFromCMS[]> {
 
 // Get a single company by slug
 export async function getCompanyBySlug(slug: string): Promise<CompanyWithProjects | null> {
-  const payload = await getPayloadClient()
+  let company
+  let projects
+  try {
+    const payload = await getPayloadClient()
 
-  const companies = await payload.find({
-    collection: 'companies',
-    where: {
-      slug: { equals: slug },
-    },
-    limit: 1,
-  })
+    const companies = await payload.find({
+      collection: 'companies',
+      where: {
+        slug: { equals: slug },
+      },
+      limit: 1,
+    })
 
-  if (companies.docs.length === 0) return null
+    if (companies.docs.length === 0) return null
 
-  const company = companies.docs[0]
+    company = companies.docs[0]
 
-  // Fetch projects for this company
-  const projects = await payload.find({
-    collection: 'projects',
-    where: {
-      company: { equals: company.id },
-    },
-    limit: 100,
-    depth: 1,
-  })
+    // Fetch projects for this company
+    projects = await payload.find({
+      collection: 'projects',
+      where: {
+        company: { equals: company.id },
+      },
+      limit: 100,
+      depth: 1,
+    })
+  } catch (err) {
+    console.error('[getCompanyBySlug] Payload/DB query failed:', err)
+    return null
+  }
 
   return {
     id: String(company.id),
@@ -180,16 +207,22 @@ export async function getCompanyBySlug(slug: string): Promise<CompanyWithProject
 
 // Get a single project by slug
 export async function getProjectBySlug(slug: string): Promise<ProjectFromCMS | null> {
-  const payload = await getPayloadClient()
+  let projects
+  try {
+    const payload = await getPayloadClient()
 
-  const projects = await payload.find({
-    collection: 'projects',
-    where: {
-      slug: { equals: slug },
-    },
-    limit: 1,
-    depth: 1,
-  })
+    projects = await payload.find({
+      collection: 'projects',
+      where: {
+        slug: { equals: slug },
+      },
+      limit: 1,
+      depth: 1,
+    })
+  } catch (err) {
+    console.error('[getProjectBySlug] Payload/DB query failed:', err)
+    return null
+  }
 
   if (projects.docs.length === 0) return null
 

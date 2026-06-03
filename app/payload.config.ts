@@ -242,6 +242,10 @@ export default buildConfig({
     ? postgresAdapter({
         pool: {
           connectionString: process.env.DATABASE_URI,
+          // Supabase's pooler presents a self-signed cert in the chain and
+          // identifies the tenant via SNI, so SSL must be ON but unverified.
+          // Without this, the pooler mis-auths as bare "postgres" and fails.
+          ssl: { rejectUnauthorized: false },
         },
         schemaName: 'payload',
       })
