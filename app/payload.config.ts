@@ -1,8 +1,30 @@
 import sharp from 'sharp'
 import { lexicalEditor } from '@payloadcms/richtext-lexical'
 import { postgresAdapter } from '@payloadcms/db-postgres'
-import { sqliteAdapter } from '@payloadcms/db-sqlite'
 import { buildConfig } from 'payload'
+
+// Choose the database adapter at runtime.
+// Production (Vercel) sets DATABASE_URI and uses Postgres. The SQLite adapter
+// is imported *lazily* and only in development, because it depends on the
+// native `libsql` module which is NOT bundled into the Vercel serverless
+// function — a static import there crashes module load with
+// "Cannot find module 'libsql'" on every request.
+const createDatabaseAdapter = async () => {
+  if (process.env.DATABASE_URI) {
+    return postgresAdapter({
+      pool: {
+        connectionString: process.env.DATABASE_URI,
+        // Supabase's pooler presents a self-signed cert in the chain and
+        // identifies the tenant via SNI, so SSL must be ON but unverified.
+        // Without this, the pooler mis-auths as bare "postgres" and fails.
+        ssl: { rejectUnauthorized: false },
+      },
+      schemaName: 'payload',
+    })
+  }
+  const { sqliteAdapter } = await import('@payloadcms/db-sqlite')
+  return sqliteAdapter({ client: { url: 'file:./payload-db.sqlite' } })
+}
 
 const revalidateSite = async () => {
   // Dynamic import so `next/cache` is only loaded inside the Next.js runtime,
@@ -15,7 +37,7 @@ const revalidateSite = async () => {
   }
 }
 
-export default buildConfig({
+const buildAppConfig = async () => buildConfig({
   // If you'd like to use Rich Text, pass your editor here
   editor: lexicalEditor(),
 
@@ -234,29 +256,15 @@ export default buildConfig({
 
   // Your Payload secret - should be a complex and secure string, unguessable
   secret: process.env.PAYLOAD_SECRET || '',
-  // Whichever Database Adapter you're using should go here
-  // Mongoose is shown as an example, but you can also use Postgres
-  // Use hosted Postgres when DATABASE_URI is set (production / Vercel),
-  // otherwise fall back to a local SQLite file for development.
-  db: process.env.DATABASE_URI
-    ? postgresAdapter({
-        pool: {
-          connectionString: process.env.DATABASE_URI,
-          // Supabase's pooler presents a self-signed cert in the chain and
-          // identifies the tenant via SNI, so SSL must be ON but unverified.
-          // Without this, the pooler mis-auths as bare "postgres" and fails.
-          ssl: { rejectUnauthorized: false },
-        },
-        schemaName: 'payload',
-      })
-    : sqliteAdapter({
-        client: {
-          url: 'file:./payload-db.sqlite',
-        },
-      }),
+  // Database adapter resolved at runtime (Postgres in prod, lazy SQLite in dev).
+  db: await createDatabaseAdapter(),
   // If you want to resize images, crop, set focal point, etc.
   // make sure to install it and pass it to the config.
   // This is optional - if you don't need to do these things,
   // you don't need it!
   sharp,
 })
+
+// Payload (getPayload, the CLI, and withPayload) accepts a Promise<Config>,
+// so exporting the resolved async config is supported.
+export default buildAppConfig()
