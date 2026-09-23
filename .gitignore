@@ -33,3 +33,5 @@ package-lock.json
 yarn.lock
 
 .claude/worktrees
+# supabase cli link state
+/supabase/.temp

@@ -5,7 +5,7 @@ import Image from "next/image"
 import { Alignment, Fit, Layout, useRive, useStateMachineInput } from "@rive-app/react-canvas"
 import { ArrowUpRightIcon } from "@phosphor-icons/react"
 import { cn } from "@/lib/utils"
-import { OVO_COSTUME_LAYERS, OVO_STATES } from "../content"
+import { OVO_COSTUME_LAYERS, OVO_STATES, asset } from "../content"
 
 const STATE_MACHINE = "State Machine Main"
 
@@ -45,7 +45,7 @@ export function OvoMascot() {
       >
         {nearViewport && <OvoRig state={state} costumeShuffles={costumeShuffles} onReady={handleRigReady} />}
         {!rigReady && (
-          <Image src="/motion/ovo.jpg" alt="Ovo the owl mascot" fill sizes="(max-width: 760px) 320px, 420px" className="object-cover" />
+          <Image src={asset("ovo.jpg")} alt="Ovo the owl mascot" fill sizes="(max-width: 760px) 320px, 420px" className="object-cover" />
         )}
       </div>
 

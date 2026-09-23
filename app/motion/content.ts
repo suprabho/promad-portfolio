@@ -1,3 +1,19 @@
+// ─── Assets ───────────────────────────────────────────────────────
+
+/**
+ * Public Supabase Storage bucket that hosts every poster, loop and film on
+ * this page, so visitors' video traffic is served from Supabase egress
+ * instead of Vercel bandwidth. The bucket mirrors public/motion; to add or
+ * replace a file, upload it by name (a recursive cp nests into a "motion/"
+ * prefix, so copy files one at a time):
+ *   supabase storage cp public/motion/<file> ss:///motion/<file> --experimental
+ */
+export const MOTION_ASSET_BASE_URL =
+  "https://grbrfpaznehikakupavx.supabase.co/storage/v1/object/public/motion"
+
+/** Absolute URL of a file in the motion bucket, e.g. asset("banner.mp4") */
+export const asset = (file: string) => `${MOTION_ASSET_BASE_URL}/${file}`
+
 // ─── Types ────────────────────────────────────────────────────────
 
 export type Service = {
@@ -12,7 +28,7 @@ export type WorkCardSize = "wide" | "tall" | "square" | "full"
 type WorkCardBase = {
   title: string
   caption: string
-  /** Poster frame, served from /public/motion */
+  /** Poster frame, an asset() URL */
   poster: string
   size: WorkCardSize
   /** Overrides the default aspect ratio for the card's size, e.g. "4 / 5" */
@@ -88,7 +104,7 @@ export const WORK_GROUPS: WorkGroupData[] = [
         size: "wide",
         title: "Merkle Science — Compass",
         caption: "Product film for a blockchain risk & compliance platform",
-        poster: "/motion/yt_compass.jpg",
+        poster: asset("yt_compass.jpg"),
         href: "https://www.youtube.com/watch?v=kCY5BrvUCcY",
         meta: "YouTube",
       },
@@ -97,7 +113,7 @@ export const WORK_GROUPS: WorkGroupData[] = [
         size: "wide",
         title: "Merkle Science — Profile",
         caption: "Company profile video",
-        poster: "/motion/yt_profile.jpg",
+        poster: asset("yt_profile.jpg"),
         href: "https://www.youtube.com/watch?v=Ba8dLgy1TcM",
         meta: "YouTube",
       },
@@ -106,7 +122,7 @@ export const WORK_GROUPS: WorkGroupData[] = [
         size: "wide",
         title: "Brelo — product explainer",
         caption: "Unified customer view and churn-detection CRM",
-        poster: "/motion/yt_brelo.jpg",
+        poster: asset("yt_brelo.jpg"),
         href: "https://www.youtube.com/watch?v=qLE76y4SaKY",
         meta: "YouTube",
       },
@@ -115,7 +131,7 @@ export const WORK_GROUPS: WorkGroupData[] = [
         size: "wide",
         title: "TapTalent — product explainer",
         caption: "Hiring platform walkthrough",
-        poster: "/motion/yt_taptalent.jpg",
+        poster: asset("yt_taptalent.jpg"),
         href: "https://www.youtube.com/watch?v=9TuneozzXrc",
         meta: "YouTube",
       },
@@ -124,7 +140,7 @@ export const WORK_GROUPS: WorkGroupData[] = [
         size: "wide",
         title: "Microsoft — SMS Organizer",
         caption: "Product video for a Microsoft Garage app on Google Play",
-        poster: "/motion/yt_smsorg.jpg",
+        poster: asset("yt_smsorg.jpg"),
         href: "https://www.youtube.com/watch?v=EuxA3ajJ5Sg",
         meta: "YouTube",
       },
@@ -133,7 +149,7 @@ export const WORK_GROUPS: WorkGroupData[] = [
         size: "wide",
         title: "Cubical — explainer 1",
         caption: "Startup product explainer",
-        poster: "/motion/yt_cubical1.jpg",
+        poster: asset("yt_cubical1.jpg"),
         href: "https://www.youtube.com/watch?v=_67HiGqXaAM",
         meta: "YouTube",
       },
@@ -142,7 +158,7 @@ export const WORK_GROUPS: WorkGroupData[] = [
         size: "wide",
         title: "Cubical — explainer 2",
         caption: "Startup product explainer",
-        poster: "/motion/yt_cubical2.jpg",
+        poster: asset("yt_cubical2.jpg"),
         href: "https://www.youtube.com/watch?v=DMRWIZrbWRI",
         meta: "YouTube",
       },
@@ -151,8 +167,8 @@ export const WORK_GROUPS: WorkGroupData[] = [
         size: "tall",
         title: "Dhyana — 21-minute session",
         caption: "In-app narrative walkthrough for a meditation app",
-        poster: "/motion/dhyana_tease1.jpg",
-        src: "/motion/dhyana_tease1.mp4",
+        poster: asset("dhyana_tease1.jpg"),
+        src: asset("dhyana_tease1.mp4"),
         meta: "1:00",
       },
       {
@@ -160,8 +176,8 @@ export const WORK_GROUPS: WorkGroupData[] = [
         size: "tall",
         title: "Dhyana — onboarding video",
         caption: "First-run walkthrough explaining the app",
-        poster: "/motion/dhyana_tease2.jpg",
-        src: "/motion/dhyana_tease2.mp4",
+        poster: asset("dhyana_tease2.jpg"),
+        src: asset("dhyana_tease2.mp4"),
         meta: "1:15",
       },
     ],
@@ -175,8 +191,8 @@ export const WORK_GROUPS: WorkGroupData[] = [
         size: "wide",
         title: "Course explainer — whiteboard approach",
         caption: "Hand-drawn style, fastest turnaround per slide",
-        poster: "/motion/approach1.jpg",
-        src: "/motion/approach1.mp4",
+        poster: asset("approach1.jpg"),
+        src: asset("approach1.mp4"),
         meta: "1:25",
       },
       {
@@ -184,8 +200,8 @@ export const WORK_GROUPS: WorkGroupData[] = [
         size: "wide",
         title: "Course explainer — illustrated approach",
         caption: "Icon and illustration driven, animated in After Effects",
-        poster: "/motion/approach3.jpg",
-        src: "/motion/approach3.mp4",
+        poster: asset("approach3.jpg"),
+        src: asset("approach3.mp4"),
         meta: "0:47",
       },
       {
@@ -193,8 +209,8 @@ export const WORK_GROUPS: WorkGroupData[] = [
         size: "wide",
         title: "1mg — Ask a Doctor product walkthrough",
         caption: "Feature explainer for an in-app consultation flow",
-        poster: "/motion/askdr.jpg",
-        src: "/motion/askdr.mp4",
+        poster: asset("askdr.jpg"),
+        src: asset("askdr.mp4"),
         meta: "0:38",
       },
     ],
@@ -208,8 +224,8 @@ export const WORK_GROUPS: WorkGroupData[] = [
         size: "tall",
         title: "1mg — add to cart",
         caption: "Quantity sheet and cart feedback",
-        poster: "/motion/addtocart.jpg",
-        src: "/motion/addtocart.mp4",
+        poster: asset("addtocart.jpg"),
+        src: asset("addtocart.mp4"),
         meta: "loop",
       },
       {
@@ -217,8 +233,8 @@ export const WORK_GROUPS: WorkGroupData[] = [
         size: "tall",
         title: "1mg — Care Plan upsell",
         caption: "Inline promotion on product page",
-        poster: "/motion/joindcp.jpg",
-        src: "/motion/joindcp.mp4",
+        poster: asset("joindcp.jpg"),
+        src: asset("joindcp.mp4"),
         meta: "loop",
       },
       {
@@ -226,8 +242,8 @@ export const WORK_GROUPS: WorkGroupData[] = [
         size: "square",
         title: "1mg — 404 illustration",
         caption: "Error state character",
-        poster: "/motion/404.jpg",
-        src: "/motion/404.mp4",
+        poster: asset("404.jpg"),
+        src: asset("404.mp4"),
         meta: "loop",
       },
       {
@@ -235,8 +251,8 @@ export const WORK_GROUPS: WorkGroupData[] = [
         size: "square",
         title: "Microsoft SharePoint — splash",
         caption: "App launch animation",
-        poster: "/motion/splash.jpg",
-        src: "/motion/splash.mp4",
+        poster: asset("splash.jpg"),
+        src: asset("splash.mp4"),
         meta: "loop",
       },
       {
@@ -244,8 +260,8 @@ export const WORK_GROUPS: WorkGroupData[] = [
         size: "square",
         title: "ClearTax — mascot state",
         caption: "Character reacting to a filing action",
-        poster: "/motion/cleartax.jpg",
-        src: "/motion/cleartax.mp4",
+        poster: asset("cleartax.jpg"),
+        src: asset("cleartax.mp4"),
         meta: "loop",
       },
       {
@@ -253,8 +269,8 @@ export const WORK_GROUPS: WorkGroupData[] = [
         size: "square",
         title: "ClearTax — GSTN success",
         caption: "Success confirmation with confetti",
-        poster: "/motion/gstn.jpg",
-        src: "/motion/gstn.mp4",
+        poster: asset("gstn.jpg"),
+        src: asset("gstn.mp4"),
         meta: "loop",
       },
       {
@@ -262,8 +278,8 @@ export const WORK_GROUPS: WorkGroupData[] = [
         size: "square",
         title: "ClearTax — invite sent",
         caption: "Team invitation confirmation",
-        poster: "/motion/invite.jpg",
-        src: "/motion/invite.mp4",
+        poster: asset("invite.jpg"),
+        src: asset("invite.mp4"),
         meta: "loop",
       },
       {
@@ -271,8 +287,8 @@ export const WORK_GROUPS: WorkGroupData[] = [
         size: "square",
         title: "Dhyana — device pairing, step 1",
         caption: "Bluetooth pairing state animation",
-        poster: "/motion/dhyana_pair1.jpg",
-        src: "/motion/dhyana_pair1.mp4",
+        poster: asset("dhyana_pair1.jpg"),
+        src: asset("dhyana_pair1.mp4"),
         meta: "loop",
       },
       {
@@ -280,8 +296,8 @@ export const WORK_GROUPS: WorkGroupData[] = [
         size: "square",
         title: "Dhyana — device pairing, step 2",
         caption: "Bluetooth pairing state animation",
-        poster: "/motion/dhyana_pair2.jpg",
-        src: "/motion/dhyana_pair2.mp4",
+        poster: asset("dhyana_pair2.jpg"),
+        src: asset("dhyana_pair2.mp4"),
         meta: "loop",
       },
       {
@@ -289,8 +305,8 @@ export const WORK_GROUPS: WorkGroupData[] = [
         size: "square",
         title: "Dhyana — device pairing, step 2a",
         caption: "Bluetooth pairing state animation",
-        poster: "/motion/dhyana_pair2a.jpg",
-        src: "/motion/dhyana_pair2a.mp4",
+        poster: asset("dhyana_pair2a.jpg"),
+        src: asset("dhyana_pair2a.mp4"),
         meta: "loop",
       },
       {
@@ -298,8 +314,8 @@ export const WORK_GROUPS: WorkGroupData[] = [
         size: "square",
         title: "Dhyana — device pairing, step 2b",
         caption: "Bluetooth pairing state animation",
-        poster: "/motion/dhyana_pair2b.jpg",
-        src: "/motion/dhyana_pair2b.mp4",
+        poster: asset("dhyana_pair2b.jpg"),
+        src: asset("dhyana_pair2b.mp4"),
         meta: "loop",
       },
       {
@@ -307,8 +323,8 @@ export const WORK_GROUPS: WorkGroupData[] = [
         size: "square",
         title: "Dhyana — device pairing, complete",
         caption: "Bluetooth pairing state animation",
-        poster: "/motion/dhyana_pair3.jpg",
-        src: "/motion/dhyana_pair3.mp4",
+        poster: asset("dhyana_pair3.jpg"),
+        src: asset("dhyana_pair3.mp4"),
         meta: "loop",
       },
     ],
@@ -322,8 +338,8 @@ export const WORK_GROUPS: WorkGroupData[] = [
         size: "square",
         title: "Movember — “Pentagons”",
         caption: "Social series, piece 1 of 30",
-        poster: "/motion/pentagons.jpg",
-        src: "/motion/pentagons.mp4",
+        poster: asset("pentagons.jpg"),
+        src: asset("pentagons.mp4"),
         meta: "loop",
       },
       {
@@ -331,8 +347,8 @@ export const WORK_GROUPS: WorkGroupData[] = [
         size: "square",
         title: "Movember — “Robotics”",
         caption: "Social series, piece 28 of 30",
-        poster: "/motion/robotics.jpg",
-        src: "/motion/robotics.mp4",
+        poster: asset("robotics.jpg"),
+        src: asset("robotics.mp4"),
         meta: "loop",
       },
       {
@@ -340,8 +356,8 @@ export const WORK_GROUPS: WorkGroupData[] = [
         size: "square",
         title: "Movember — “Explorations”",
         caption: "Social series, piece 23 of 30",
-        poster: "/motion/explorations.jpg",
-        src: "/motion/explorations.mp4",
+        poster: asset("explorations.jpg"),
+        src: asset("explorations.mp4"),
         meta: "loop",
       },
       {
@@ -349,8 +365,8 @@ export const WORK_GROUPS: WorkGroupData[] = [
         size: "square",
         title: "Movember — “Ignition”",
         caption: "Social series, piece 9 of 30",
-        poster: "/motion/ignition.jpg",
-        src: "/motion/ignition.mp4",
+        poster: asset("ignition.jpg"),
+        src: asset("ignition.mp4"),
         meta: "loop",
       },
       {
@@ -358,8 +374,8 @@ export const WORK_GROUPS: WorkGroupData[] = [
         size: "square",
         title: "Movember — “Buds”",
         caption: "Social series, piece 2 of 30",
-        poster: "/motion/buds.jpg",
-        src: "/motion/buds.mp4",
+        poster: asset("buds.jpg"),
+        src: asset("buds.mp4"),
         meta: "loop",
       },
       {
@@ -367,8 +383,8 @@ export const WORK_GROUPS: WorkGroupData[] = [
         size: "square",
         title: "Movember — “Alarm”",
         caption: "Social series, piece 21 of 30",
-        poster: "/motion/alarm.jpg",
-        src: "/motion/alarm.mp4",
+        poster: asset("alarm.jpg"),
+        src: asset("alarm.mp4"),
         meta: "loop",
       },
       {
@@ -376,8 +392,8 @@ export const WORK_GROUPS: WorkGroupData[] = [
         size: "square",
         title: "Movember — “Rock”",
         caption: "Social series, piece 24 of 30",
-        poster: "/motion/rock.jpg",
-        src: "/motion/rock.mp4",
+        poster: asset("rock.jpg"),
+        src: asset("rock.mp4"),
         meta: "loop",
       },
       {
@@ -385,8 +401,8 @@ export const WORK_GROUPS: WorkGroupData[] = [
         size: "square",
         title: "Movember — “Plots”",
         caption: "Social series, piece 17 of 30",
-        poster: "/motion/plots.jpg",
-        src: "/motion/plots.mp4",
+        poster: asset("plots.jpg"),
+        src: asset("plots.mp4"),
         meta: "loop",
       },
       {
@@ -394,8 +410,8 @@ export const WORK_GROUPS: WorkGroupData[] = [
         size: "square",
         title: "Movember — “Team”",
         caption: "Social series, piece 22 of 30",
-        poster: "/motion/team.jpg",
-        src: "/motion/team.mp4",
+        poster: asset("team.jpg"),
+        src: asset("team.mp4"),
         meta: "loop",
       },
       {
@@ -404,8 +420,8 @@ export const WORK_GROUPS: WorkGroupData[] = [
         aspect: "4 / 5",
         title: "TMPal — social piece 1",
         caption: "Vertical brand-awareness video, Instagram/Reels cut",
-        poster: "/motion/tmpal1.jpg",
-        src: "/motion/tmpal1.mp4",
+        poster: asset("tmpal1.jpg"),
+        src: asset("tmpal1.mp4"),
         meta: "0:21",
       },
       {
@@ -414,8 +430,8 @@ export const WORK_GROUPS: WorkGroupData[] = [
         aspect: "4 / 5",
         title: "TMPal — social piece 2",
         caption: "Vertical brand-awareness video, Instagram/Reels cut",
-        poster: "/motion/tmpal4.jpg",
-        src: "/motion/tmpal4.mp4",
+        poster: asset("tmpal4.jpg"),
+        src: asset("tmpal4.mp4"),
         meta: "0:17",
       },
       {
@@ -424,8 +440,8 @@ export const WORK_GROUPS: WorkGroupData[] = [
         aspect: "4 / 5",
         title: "TMPal — social piece 3",
         caption: "Vertical brand-awareness video, Instagram/Reels cut",
-        poster: "/motion/tmpal6.jpg",
-        src: "/motion/tmpal6.mp4",
+        poster: asset("tmpal6.jpg"),
+        src: asset("tmpal6.mp4"),
         meta: "0:28",
       },
       {
@@ -434,8 +450,8 @@ export const WORK_GROUPS: WorkGroupData[] = [
         aspect: "4 / 5",
         title: "TMPal — social piece 4",
         caption: "Vertical brand-awareness video, Instagram/Reels cut",
-        poster: "/motion/tmpal8.jpg",
-        src: "/motion/tmpal8.mp4",
+        poster: asset("tmpal8.jpg"),
+        src: asset("tmpal8.mp4"),
         meta: "0:27",
       },
       {
@@ -444,8 +460,8 @@ export const WORK_GROUPS: WorkGroupData[] = [
         aspect: "4 / 5",
         title: "TMPal — social piece 5",
         caption: "Vertical brand-awareness video, Instagram/Reels cut",
-        poster: "/motion/tmpal9.jpg",
-        src: "/motion/tmpal9.mp4",
+        poster: asset("tmpal9.jpg"),
+        src: asset("tmpal9.mp4"),
         meta: "0:21",
       },
       {
@@ -454,8 +470,8 @@ export const WORK_GROUPS: WorkGroupData[] = [
         aspect: "16 / 5",
         title: "Crypto — animated web banner",
         caption: "Hero banner, 1920×600",
-        poster: "/motion/banner.jpg",
-        src: "/motion/banner.mp4",
+        poster: asset("banner.jpg"),
+        src: asset("banner.mp4"),
         meta: "0:20",
       },
     ],
@@ -503,7 +519,7 @@ export const WEATHER_WITH_OVO: WorkCardData = {
   title: "Weather with Ovo",
   caption:
     "Same mascot reused in a different product surface — two layered Rive files (background scene + Ovo and weather props) driven by live city data",
-  poster: "/motion/weather.jpg",
+  poster: asset("weather.jpg"),
   href: "https://weather.promad.design",
   meta: "Live demo",
 }

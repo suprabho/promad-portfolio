@@ -3,6 +3,7 @@ import Link from "next/link"
 import { ArrowLeftIcon } from "@phosphor-icons/react/dist/ssr"
 import { SerifAccent } from "./SerifAccent"
 import { Wrap } from "./Wrap"
+import { asset } from "../content"
 
 export function Hero() {
   return (
@@ -19,7 +20,7 @@ export function Hero() {
         <div className="mb-[clamp(40px,8vw,110px)] mt-[clamp(20px,4.5vw,56px)] flex items-center justify-between gap-6">
           <Link href="/" aria-label="Promad home" className="shrink-0">
             <Image
-              src="/motion/logo.png"
+              src={asset("logo.png")}
               alt="Promad"
               width={800}
               height={382}
