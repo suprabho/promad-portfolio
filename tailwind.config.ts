@@ -14,6 +14,10 @@ const config: Config = {
   			sans: ['var(--font-manrope)'],
   			serif: ['var(--font-playfair)'],
 			mono: ['var(--font-space-mono)'],
+			// Video & Motion page (/motion) – loaded in app/motion/page.tsx
+			'motion-display': ['var(--font-jakarta)', 'ui-sans-serif', 'system-ui', 'sans-serif'],
+			'motion-serif': ['var(--font-fraunces)', 'Georgia', 'serif'],
+			'motion-mono': ['var(--font-jetbrains-mono)', 'ui-monospace', 'monospace'],
   		},
   		colors: {
   			background: 'hsl(var(--background))',
@@ -55,6 +59,19 @@ const config: Config = {
   				'3': 'hsl(var(--chart-3))',
   				'4': 'hsl(var(--chart-4))',
   				'5': 'hsl(var(--chart-5))'
+  			},
+  			motion: {
+  				yellow: {
+  					DEFAULT: '#F6FF00',
+  					foreground: '#141412'
+  				},
+  				ink: 'var(--motion-ink)',
+  				paper: 'var(--motion-paper)',
+  				ground: 'var(--motion-ground)',
+  				foreground: 'var(--motion-foreground)',
+  				muted: 'var(--motion-muted)',
+  				line: 'var(--motion-line)',
+  				surface: 'var(--motion-surface)'
   			},
   			sidebar: {
   				DEFAULT: 'hsl(var(--sidebar-background))',

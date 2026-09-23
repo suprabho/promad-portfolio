@@ -55,6 +55,14 @@
         --career-subtle-border: rgba(0,0,0,0.06);
         --career-backdrop-bg: rgba(245,245,247,0.7);
         --career-hover-border: rgba(0,0,0,0.12);
+        /* Motion page tokens – light mode */
+        --motion-ink: #141412;
+        --motion-paper: #ffffff;
+        --motion-ground: #fbfbf4;
+        --motion-foreground: #141412;
+        --motion-muted: #6b6b5c;
+        --motion-line: #e4e4d6;
+        --motion-surface: #ffffff;
     }
     .dark {
         /* Career page tokens – dark mode */
@@ -67,6 +75,14 @@
         --career-subtle-border: rgba(255,255,255,0.03);
         --career-backdrop-bg: rgba(17,17,20,0.4);
         --career-hover-border: #2a2a32;
+        /* Motion page tokens – dark mode */
+        --motion-ink: #f3f3e9;
+        --motion-paper: #141412;
+        --motion-ground: #0f0f0d;
+        --motion-foreground: #f3f3e9;
+        --motion-muted: #a3a392;
+        --motion-line: #2a2a24;
+        --motion-surface: #191917;
         --background: 222.2 84% 4.9%;
         --foreground: 210 40% 98%;
         --card: 222.2 84% 4.9%;

@@ -1,5 +1,6 @@
 "use client"
 
+import Link from "next/link"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import {
@@ -54,9 +55,19 @@ const skillColorKeys = {
   "Pitchdecks and Courses": "pitchdecks"
 }
 
+const viewAllButtonClass =
+  "font-mono w-full group/btn opacity-0 group-hover:opacity-100 focus-visible:opacity-100 transition-opacity"
+
+const viewAllButtonContent = (
+  <>
+    <ArrowsOutIcon className=" w-4 h-4 mr-2 transition-transform group-hover/btn:scale-110" />
+    View All
+  </>
+)
+
 export function SkillsGrid() {
   return (
-    <section className="py-24 bg-background">
+    <section id="skills" className="py-24 bg-background scroll-mt-20">
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
           <h2 className="text-3xl md:text-4xl font-bold mb-4">Skills & Expertise</h2>
@@ -94,39 +105,44 @@ export function SkillsGrid() {
                     {skill.skills.length > 4 && <Badge variant="secondary">+{skill.skills.length - 4} more</Badge>}
                   </div>
 
-                  <Dialog>
-                    <DialogTrigger asChild>
-                      <Button variant="outline" className="font-mono w-full group/btn opacity-0 group-hover:opacity-100 transition-opacity">
-                        <ArrowsOutIcon className=" w-4 h-4 mr-2 transition-transform group-hover/btn:scale-110" />
-                        View All
-                      </Button>
-                    </DialogTrigger>
-                    <DialogContent className="max-w-2xl">
-                      <DialogHeader>
-                        <DialogTitle className="flex items-center gap-3">
-                          <div className={`w-12 h-12 ${colorMap[colorKey as keyof typeof colorMap]} rounded-full flex items-center justify-center`}>
-                            <IconComponent
-                              size={24}
-                              weight={(skill.iconWeight || "bold") as IconWeight}
-                              className="w-6 h-6 text-white"
-                            />
+                  {skill.href ? (
+                    <Button asChild variant="outline" className={viewAllButtonClass}>
+                      <Link href={skill.href}>{viewAllButtonContent}</Link>
+                    </Button>
+                  ) : (
+                    <Dialog>
+                      <DialogTrigger asChild>
+                        <Button variant="outline" className={viewAllButtonClass}>
+                          {viewAllButtonContent}
+                        </Button>
+                      </DialogTrigger>
+                      <DialogContent className="max-w-2xl">
+                        <DialogHeader>
+                          <DialogTitle className="flex items-center gap-3">
+                            <div className={`w-12 h-12 ${colorMap[colorKey as keyof typeof colorMap]} rounded-full flex items-center justify-center`}>
+                              <IconComponent
+                                size={24}
+                                weight={(skill.iconWeight || "bold") as IconWeight}
+                                className="w-6 h-6 text-white"
+                              />
+                            </div>
+                            {skill.name}
+                          </DialogTitle>
+                          <DialogDescription className="text-lg">{skill.description}</DialogDescription>
+                        </DialogHeader>
+                        <div className="mt-6">
+                          <h4 className="text-lg font-semibold mb-4">All Skills</h4>
+                          <div className="grid grid-cols-2 gap-3">
+                            {skill.skills.map((skillItem) => (
+                              <Card key={skillItem} className="p-4 hover:bg-muted/50 transition-colors">
+                                <div className="font-medium">{skillItem}</div>
+                              </Card>
+                            ))}
                           </div>
-                          {skill.name}
-                        </DialogTitle>
-                        <DialogDescription className="text-lg">{skill.description}</DialogDescription>
-                      </DialogHeader>
-                      <div className="mt-6">
-                        <h4 className="text-lg font-semibold mb-4">All Skills</h4>
-                        <div className="grid grid-cols-2 gap-3">
-                          {skill.skills.map((skillItem) => (
-                            <Card key={skillItem} className="p-4 hover:bg-muted/50 transition-colors">
-                              <div className="font-medium">{skillItem}</div>
-                            </Card>
-                          ))}
                         </div>
-                      </div>
-                    </DialogContent>
-                  </Dialog>
+                      </DialogContent>
+                    </Dialog>
+                  )}
                 </CardContent>
               </Card>
             )
