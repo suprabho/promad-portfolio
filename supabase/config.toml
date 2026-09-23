@@ -1,0 +1,10 @@
+project_id = "grbrfpaznehikakupavx"
+
+# Public bucket that serves the Video & Motion page assets (app/motion).
+# The bucket mirrors public/motion. Upload a file by name (recursive cp nests
+# into a "motion/" prefix, and parallel CLI runs trip the DB auth circuit breaker):
+#   supabase storage cp public/motion/<file> ss:///motion/<file> --experimental
+[storage.buckets.motion]
+public = true
+file_size_limit = "20MiB"
+allowed_mime_types = ["video/mp4", "image/jpeg", "image/png"]
