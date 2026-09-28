@@ -32,13 +32,13 @@ export default async function Portfolio() {
       <div className="min-h-screen bg-background">
         <Header />
         <HeroSection />
+        <CompaniesGrid companies={companies} />
         <HighlightBanner />
+        <PeopleSection />
+        <SkillsGrid />
         <VizmayaBanner storyCount={storyCount} />
         <AiDailySection editions={dailyEditions} />
         <VismayProducts footshortsData={footshortsData} vizf1Data={vizf1Data} />
-        <CompaniesGrid companies={companies} />
-        <PeopleSection />
-        <SkillsGrid />
         <ActionSection />
         <Footer />
       </div>
