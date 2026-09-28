@@ -14,6 +14,7 @@ import {
 } from "@phosphor-icons/react"
 import { Play } from "@phosphor-icons/react/dist/ssr"
 import type { ElementType } from "react"
+import figmaStats from "@/data/figma-plugin-stats.json"
 
 // ─── Types ────────────────────────────────────────────────────────
 
@@ -32,6 +33,10 @@ export type LaunchedProduct = {
   href: string
   description: string
   icon: ElementType
+  /** App icon shown in place of `icon`, from /public. */
+  logo?: string
+  /** Homepage screenshot (16:10), from /public. Hidden when not set. */
+  screenshot?: string
   accent: string
   accentSoft: string
   accentText: string
@@ -69,14 +74,14 @@ export const COLOR_PALETTE = [
 
 // ─── Figma Plugins ────────────────────────────────────────────────
 
-export const FIGMA_PLUGINS: LinkCardData[] = [
+const FIGMA_PLUGIN_LIST: LinkCardData[] = [
   {
     iconSource: "https://www.figma.com/community/resource/ae9863ef-b283-4dba-bd61-e23e4be81c08/icon",
     title: "Cross Collection Color Token Mapper",
     description:
       "Transform color groups into semantic tokens. Create new collections, duplicate with remapping, update values across libraries.",
     href: "https://www.figma.com/community/plugin/1570424472381396729/cross-collection-color-token-mapper",
-    users: 38,
+    users: 51,
   },
   {
     iconSource: "https://www.figma.com/community/resource/cf6e1e18-4d82-4ccd-8fee-91783079204a/icon",
@@ -84,7 +89,7 @@ export const FIGMA_PLUGINS: LinkCardData[] = [
     description:
       "Filter variants by properties and select in bulk. Handle complex component sets with hundreds of variants.",
     href: "https://www.figma.com/community/plugin/1574982950051298625/variant-selector",
-    users: 86,
+    users: 151,
   },
   {
     iconSource: "https://www.figma.com/community/resource/722beb9b-9897-4a15-90e5-31c76364d064/icon",
@@ -92,17 +97,26 @@ export const FIGMA_PLUGINS: LinkCardData[] = [
     description:
       "Duplicate entire text style hierarchies with custom mapping. Preserves folder structure across collections.",
     href: "https://www.figma.com/community/plugin/1574985201888606536/text-style-duplicator",
-    users: 67,
+    users: 105,
   },
   {
-    iconSource: "https://s3-alpha-sig.figma.com/plugins/1638873804562766019/223208/c799880d-ab48-4ab6-9c89-275b720ce0d8-icon?Expires=1780272000&Key-Pair-Id=APKAQ4GOSFWCW27IBOMQ&Signature=KPfc1i~2~STy1duY8armSjHP8CQiS0I02ZFVqnMSEqTt7kAqxX-~f9B5m7M9K6X4lnZGMyviYpy5LFjnByf~6DBmKM9PmEJCAO7IfZCn288OilVlRANK9GYFp8OuTFhgRLDkOkxwYtptXJrcVZLTO1Q1Vs8t3eLaloFDIT6Z28MpZfgMlt0Dn8YmRz~7IWaqabGLpEjDp6VTdY8uIDwZ7nb8rbfBIuwvmL7vj9SiWmC10w510soxvvCZwk4TxzoOeBv7Sd2jlMgi8rSLu1U~d7Yg6FchnnhbUGOkO9~9w1K93LUG3kW3GNY6eaJMehmgQvy1Igb~W47-7q3jdnO8Og__",
+    iconSource: "https://s3-alpha-sig.figma.com/plugins/1638873804562766019/223208/c799880d-ab48-4ab6-9c89-275b720ce0d8-icon?Expires=1791763200&Key-Pair-Id=APKAQ4GOSFWCW27IBOMQ&Signature=eitbl1SMtV-Wqzfx9wUvud-41zhalCeL7cDxN~8f8bFVOONkqAFy-7Ouow4zN9QxS18MHhPysvHwTm2PWOZcVN3SB4itLCRwF0eT4Vwr9B5QsoGBhNftleT771PPXmhjOCm2sw1eigRrLBHG0e9VN~vLKMnrdjudH~-0Njy4StT~1lLO8nYKQ~ZWk6104ZwUR1lBLe6rSYvUUPQPjXuRdUNm4VK54jlJiPcMeMJci~h0MAQ8Fcmwjy8LASWF9EsnuxiJH68oPTlnFi9SgPFVNBhli2pwE6IzK0rvyZcBg8QkY-0swbQwRCsXLxMnzShb2arrVYfLk~XgEoH4U0YQMQ__",
     title: "Custom Mapabox Maps",
     description:
       "Desgin and drop renders of Mapbox maps straight into Figma.",
     href: "https://www.figma.com/community/plugin/1638873804562766019/custom-mapbox-maps-by-promad",
-    users: 2,
+    users: 364,
   },
 ]
+
+// User counts come from data/figma-plugin-stats.json, refreshed daily by
+// .github/workflows/figma-stats.yml; the numbers above are fallbacks.
+const pluginStats: Record<string, { users: number }> = figmaStats.plugins
+
+export const FIGMA_PLUGINS: LinkCardData[] = FIGMA_PLUGIN_LIST.map((plugin) => {
+  const id = plugin.href.match(/\/plugin\/(\d+)/)?.[1]
+  return { ...plugin, users: (id && pluginStats[id]?.users) || plugin.users }
+})
 
 // ─── Vibe-Coded Experiments ───────────────────────────────────────
 
@@ -211,19 +225,21 @@ export const VISMAY_CAPABILITIES: EngineCapability[] = [
 export const LAUNCHED_PRODUCTS: LaunchedProduct[] = [
   {
     title: "vizmaya.fyi",
+    logo: "/images/products/vizmaya-icon.png",
     href: "https://vizmaya.fyi",
     description:
-      "Scroll-synced data narratives — Mapbox maps, ECharts visualizations, and prose unified by a single scroll position. 13+ published stories on geopolitics, economics, and technology.",
+      "Scroll-synced data narratives — Mapbox maps, ECharts visualizations, and prose unified by a single scroll position. {stories} published stories on geopolitics, economics, and technology.",
     icon: Compass,
     accent: "#d9a84a",
     accentSoft: "rgba(217,168,74,0.15)",
     accentText: "#e4e8f0",
     surface: "#0d1220",
     border: "rgba(217,168,74,0.4)",
-    tags: ["13+ stories", "Mapbox GL", "Apache ECharts"],
+    tags: ["{stories} stories", "Mapbox GL", "Apache ECharts"],
   },
   {
     title: "footshorts.com",
+    logo: "/images/products/footshorts-icon.svg",
     href: "https://footshorts.com",
     description:
       "InShorts-style football news — swipeable 60-word AI-summarized cards, follow leagues, teams, and players, with live match context inline. Powered by the same Vismay viz engine.",
@@ -237,6 +253,7 @@ export const LAUNCHED_PRODUCTS: LaunchedProduct[] = [
   },
   {
     title: "vizf1.com",
+    logo: "/images/products/vizf1-icon.svg",
     href: "https://vizf1.com",
     description:
       "F1 race storytelling — driver, team, and race discovery pages with editorial stories backed by live timing data. Built on Vismay for charts, maps, and scroll-driven race recaps.",

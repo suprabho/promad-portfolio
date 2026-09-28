@@ -1,0 +1,49 @@
+name: Update Figma plugin stats
+
+on:
+  schedule:
+    - cron: "17 6 * * *" # daily, 06:17 UTC
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: figma-stats
+  cancel-in-progress: false
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      # Installed outside the project so the site's dependencies stay untouched.
+      - name: Install Playwright
+        run: |
+          npm install --prefix "$RUNNER_TEMP/pw" playwright@1.56.1
+          "$RUNNER_TEMP/pw/node_modules/.bin/playwright" install --with-deps chromium
+          sudo apt-get install -y xvfb
+
+      # Figma blocks headless browsers, so run headed on a virtual display.
+      - name: Read plugin stats
+        env:
+          PLAYWRIGHT_MODULE: ${{ runner.temp }}/pw/node_modules/playwright/index.mjs
+        run: xvfb-run -a node scripts/update-figma-stats.mjs
+
+      - name: Commit changes
+        run: |
+          if git diff --quiet -- data/figma-plugin-stats.json; then
+            echo "No changes."
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/figma-plugin-stats.json
+          git commit -m "Update Figma plugin stats"
+          git push

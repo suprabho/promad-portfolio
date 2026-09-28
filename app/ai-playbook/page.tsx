@@ -3,6 +3,8 @@
 import { useEffect, useRef } from "react"
 import { motion, useInView, useMotionValue, useTransform, animate } from "framer-motion"
 import Image from "next/image"
+import { useVizmayaStoryCount } from "@/hooks/use-vizmaya-story-count"
+import { withStoryCount } from "@/lib/vizmaya"
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import Header from "@/components/header"
@@ -223,6 +225,7 @@ function ProcessStep({
 // ─── Main Page ────────────────────────────────────────────────────
 
 export default function AIPlaybook() {
+  const storyCount = useVizmayaStoryCount()
   return (
     <div className="min-h-screen bg-background">
       <Header />
@@ -517,17 +520,43 @@ export default function AIPlaybook() {
                         background: `radial-gradient(circle at 80% 20%, ${product.accentSoft} 0%, transparent 55%), radial-gradient(circle at 10% 90%, rgba(255,255,255,0.05) 0%, transparent 50%)`,
                       }}
                     />
-                    <CardHeader className="relative">
-                      <div
-                        className="w-14 h-14 rounded-2xl flex items-center justify-center shrink-0 mb-3"
-                        style={{ backgroundColor: product.accentSoft }}
-                      >
-                        <Icon
-                          size={28}
-                          weight="duotone"
-                          style={{ color: product.accent }}
-                        />
+                    {product.screenshot && (
+                      <div className="relative px-6 pt-6">
+                        <div
+                          className="overflow-hidden rounded-xl border shadow-lg transition-transform duration-500 group-hover:scale-[1.02]"
+                          style={{ borderColor: product.border }}
+                        >
+                          <Image
+                            src={product.screenshot}
+                            alt={`${product.title} homepage`}
+                            width={1280}
+                            height={800}
+                            className="block aspect-[16/10] w-full object-cover object-top"
+                          />
+                        </div>
                       </div>
+                    )}
+                    <CardHeader className="relative">
+                      {product.logo ? (
+                        <Image
+                          src={product.logo}
+                          alt={`${product.title} logo`}
+                          width={56}
+                          height={56}
+                          className="w-14 h-14 rounded-2xl shrink-0 mb-3 object-cover shadow-md"
+                        />
+                      ) : (
+                        <div
+                          className="w-14 h-14 rounded-2xl flex items-center justify-center shrink-0 mb-3"
+                          style={{ backgroundColor: product.accentSoft }}
+                        >
+                          <Icon
+                            size={28}
+                            weight="duotone"
+                            style={{ color: product.accent }}
+                          />
+                        </div>
+                      )}
                       <CardTitle
                         className="text-2xl flex items-center gap-2"
                         style={{ color: product.accentText }}
@@ -543,11 +572,11 @@ export default function AIPlaybook() {
                         className="text-base mt-1"
                         style={{ color: `${product.accentText}b3` }}
                       >
-                        {product.description}
+                        {withStoryCount(product.description, storyCount)}
                       </CardDescription>
 
                       <div className="flex flex-wrap gap-2 mt-4">
-                        {product.tags.map((label) => (
+                        {product.tags.map((tag) => withStoryCount(tag, storyCount)).map((label) => (
                           <span
                             key={label}
                             className="inline-flex items-center gap-1.5 text-xs px-3 py-1.5 rounded-full font-medium"
