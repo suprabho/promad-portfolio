@@ -46,7 +46,7 @@ export function VismayProducts() {
             muted="text-[#f5f5f5]/55"
             tagClass="border-white/10 bg-white/[0.04] text-[#f5f5f5]/75"
             ctaClass="bg-[#ff4346] text-[#0b0d12]"
-            visual={<RaceReplay />}
+            visual={<SeasonModules />}
           />
         </div>
       </div>
@@ -125,22 +125,30 @@ function useLiveVisual() {
   return { ref, live: inView && !reduce }
 }
 
-// ─── footshorts: native editorial story on a phone ────────────────
+// ─── footshorts: the about-us page on a phone ─────────────────────
 
 const FOOTSHORTS_SHOTS = [
   {
-    src: `${SHOTS}/footshorts-story.webp`,
-    alt: "A footshorts editorial story, “Carrick restores the balance”, on mobile",
+    src: `${SHOTS}/footshorts-about-hero.webp`,
+    alt: "footshorts.com/about-us: “Football, but only the good bits.”",
+    fit: "object-cover object-top",
   },
   {
-    src: `${SHOTS}/footshorts-pitch.webp`,
-    alt: "An animated 4-2-3-1 pitch diagram inside the same footshorts story",
+    src: `${SHOTS}/footshorts-about-themes.webp`,
+    alt: "The three footshorts themes: Classic, Pitch and Terrace",
+    fit: "object-cover object-top",
+  },
+  {
+    src: `${SHOTS}/footshorts-about-cta.webp`,
+    alt: "The footshorts sign-up card: “Get the good bits.”",
+    fit: "object-contain object-center",
   },
 ]
 
 function FootshortsPhone() {
   const { ref, live } = useLiveVisual()
   const index = useTicker(FOOTSHORTS_SHOTS.length, 3200, live)
+  const shot = FOOTSHORTS_SHOTS[index]
 
   return (
     <div
@@ -171,32 +179,86 @@ function FootshortsPhone() {
             exit={{ opacity: 0 }}
             transition={{ duration: 0.6 }}
           >
-            <Image
-              src={FOOTSHORTS_SHOTS[index].src}
-              alt={FOOTSHORTS_SHOTS[index].alt}
-              fill
-              sizes="220px"
-              className="object-cover object-top"
-            />
+            <Image src={shot.src} alt={shot.alt} fill sizes="220px" className={shot.fit} />
           </motion.div>
         </AnimatePresence>
       </div>
+      <CarouselDots count={FOOTSHORTS_SHOTS.length} index={index} className="bg-white" position="top-3" />
     </div>
   )
 }
 
-// ─── vizf1: race replay ───────────────────────────────────────────
+// ─── vizf1: season modules ────────────────────────────────────────
 
-function RaceReplay() {
+const VIZF1_SHOTS = [
+  {
+    src: `${SHOTS}/vizf1-drivers.webp`,
+    alt: "vizf1 drivers' championship podium: Antonelli, Russell and Hamilton",
+  },
+  {
+    src: `${SHOTS}/vizf1-constructors.webp`,
+    alt: "vizf1 constructors' championship podium: Mercedes, Ferrari and McLaren",
+  },
+  {
+    src: `${SHOTS}/vizf1-standings.webp`,
+    alt: "vizf1 driver position over time: championship standings through round 19",
+  },
+]
+
+function SeasonModules() {
+  const { ref, live } = useLiveVisual()
+  const index = useTicker(VIZF1_SHOTS.length, 3200, live)
+  const shot = VIZF1_SHOTS[index]
+
   return (
-    <div className="absolute inset-0 border-t border-[#1f2330] bg-[#0b0d12] sm:border-l sm:border-t-0">
-      <Image
-        src={`${SHOTS}/vizf1-replay-crop.webp`}
-        alt="The vizf1 race replay: a 2D circuit map with cars on track beside the live timing tower"
-        fill
-        sizes="(min-width: 1024px) 25vw, (min-width: 640px) 50vw, 100vw"
-        className="object-cover object-[35%_top] transition-transform duration-700 group-hover/card:scale-[1.03]"
-      />
+    <div
+      ref={ref}
+      className="absolute inset-0 border-t border-[#1f2330] bg-[#0b0d12] sm:border-l sm:border-t-0"
+    >
+      <AnimatePresence initial={false}>
+        <motion.div
+          key={index}
+          className="absolute inset-3 bottom-9"
+          initial={{ opacity: 0, y: 8 }}
+          animate={{ opacity: 1, y: 0 }}
+          exit={{ opacity: 0, y: -8 }}
+          transition={{ duration: 0.5 }}
+        >
+          <Image
+            src={shot.src}
+            alt={shot.alt}
+            fill
+            sizes="(min-width: 1024px) 25vw, (min-width: 640px) 50vw, 100vw"
+            className="object-contain"
+          />
+        </motion.div>
+      </AnimatePresence>
+      <CarouselDots count={VIZF1_SHOTS.length} index={index} className="bg-[#ff4346]" position="bottom-3" />
+    </div>
+  )
+}
+
+function CarouselDots({
+  count,
+  index,
+  className,
+  position,
+}: {
+  count: number
+  index: number
+  className: string
+  position: "top-3" | "bottom-3"
+}) {
+  return (
+    <div className={`absolute ${position} left-1/2 z-10 flex -translate-x-1/2 gap-1.5 rounded-full bg-black/30 px-2 py-1.5 backdrop-blur`}>
+      {Array.from({ length: count }, (_, i) => (
+        <span
+          key={i}
+          className={`h-1.5 rounded-full transition-all duration-300 ${
+            i === index ? `w-4 ${className}` : "w-1.5 bg-white/40"
+          }`}
+        />
+      ))}
     </div>
   )
 }
