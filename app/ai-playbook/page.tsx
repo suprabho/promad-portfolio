@@ -3,6 +3,8 @@
 import { useEffect, useRef } from "react"
 import { motion, useInView, useMotionValue, useTransform, animate } from "framer-motion"
 import Image from "next/image"
+import { useVizmayaStoryCount } from "@/hooks/use-vizmaya-story-count"
+import { withStoryCount } from "@/lib/vizmaya"
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import Header from "@/components/header"
@@ -223,6 +225,7 @@ function ProcessStep({
 // ─── Main Page ────────────────────────────────────────────────────
 
 export default function AIPlaybook() {
+  const storyCount = useVizmayaStoryCount()
   return (
     <div className="min-h-screen bg-background">
       <Header />
@@ -569,11 +572,11 @@ export default function AIPlaybook() {
                         className="text-base mt-1"
                         style={{ color: `${product.accentText}b3` }}
                       >
-                        {product.description}
+                        {withStoryCount(product.description, storyCount)}
                       </CardDescription>
 
                       <div className="flex flex-wrap gap-2 mt-4">
-                        {product.tags.map((label) => (
+                        {product.tags.map((tag) => withStoryCount(tag, storyCount)).map((label) => (
                           <span
                             key={label}
                             className="inline-flex items-center gap-1.5 text-xs px-3 py-1.5 rounded-full font-medium"

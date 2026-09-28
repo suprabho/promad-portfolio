@@ -1,12 +1,13 @@
 "use client"
 
-import { useEffect, useRef, useState } from "react"
+import { useEffect, useRef, useState, type ComponentType } from "react"
 import {
   ArrowRight,
   Compass,
   MapTrifold,
   ChartLineUp,
   Stack,
+  type Icon,
 } from "@phosphor-icons/react"
 import {
   motion,
@@ -15,10 +16,16 @@ import {
   useReducedMotion,
 } from "framer-motion"
 import { useTicker } from "@/hooks/use-ticker"
+import { FALLBACK_STORY_COUNT, withStoryCount } from "@/lib/vizmaya"
 
 const GOLD = "#d9a84a"
 
-const pillars = [
+const pillars: {
+  icon: Icon
+  title: string
+  desc: string
+  Visual: ComponentType<{ storyCount: number }>
+}[] = [
   {
     icon: MapTrifold,
     title: "Scroll-synced storytelling",
@@ -27,7 +34,7 @@ const pillars = [
   },
   {
     icon: ChartLineUp,
-    title: "13+ published narratives",
+    title: "{stories} published narratives",
     desc: "Geopolitical, economic, and technology stories with map and data layers — from press freedom to the rise of GPU economies.",
     Visual: StoryStack,
   },
@@ -39,7 +46,11 @@ const pillars = [
   },
 ]
 
-export function VizmayaBanner() {
+export function VizmayaBanner({
+  storyCount = FALLBACK_STORY_COUNT,
+}: {
+  storyCount?: number
+}) {
   const sectionRef = useRef<HTMLElement>(null)
   const [showBanner, setShowBanner] = useState(false)
 
@@ -139,7 +150,7 @@ export function VizmayaBanner() {
                     className="overflow-hidden rounded-2xl border border-white/[0.07] bg-white/[0.03] transition-colors group-hover:border-[#d9a84a]/25"
                   >
                     <div className="relative h-28 border-b border-white/[0.06] bg-black/20">
-                      <pillar.Visual />
+                      <pillar.Visual storyCount={storyCount} />
                     </div>
                     <div className="flex items-start gap-3 p-4 md:p-5">
                       <pillar.icon
@@ -149,7 +160,7 @@ export function VizmayaBanner() {
                       />
                       <div>
                         <div className="text-sm font-semibold md:text-base">
-                          {pillar.title}
+                          {withStoryCount(pillar.title, storyCount)}
                         </div>
                         <div className="mt-1 text-xs leading-relaxed text-[#e4e8f0]/55 md:text-sm">
                           {pillar.desc}
@@ -409,7 +420,7 @@ function SyncRail() {
 
 const STORY_LINE = "M0,70 C30,66 50,60 80,52 S130,40 160,30 S210,14 240,8"
 
-function StoryStack() {
+function StoryStack({ storyCount }: { storyCount: number }) {
   return (
     <div className="absolute inset-0 flex items-center justify-center">
       {[-8, 0, 8].map((rot, i) => (
@@ -440,7 +451,7 @@ function StoryStack() {
         </div>
       ))}
       <span className="absolute right-4 top-3 z-10 font-mono text-2xl font-bold text-[#d9a84a]">
-        13+
+        {storyCount}+
       </span>
     </div>
   )

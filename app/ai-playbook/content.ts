@@ -218,14 +218,14 @@ export const LAUNCHED_PRODUCTS: LaunchedProduct[] = [
     logo: "/images/products/vizmaya-icon.png",
     href: "https://vizmaya.fyi",
     description:
-      "Scroll-synced data narratives — Mapbox maps, ECharts visualizations, and prose unified by a single scroll position. 13+ published stories on geopolitics, economics, and technology.",
+      "Scroll-synced data narratives — Mapbox maps, ECharts visualizations, and prose unified by a single scroll position. {stories} published stories on geopolitics, economics, and technology.",
     icon: Compass,
     accent: "#d9a84a",
     accentSoft: "rgba(217,168,74,0.15)",
     accentText: "#e4e8f0",
     surface: "#0d1220",
     border: "rgba(217,168,74,0.4)",
-    tags: ["13+ stories", "Mapbox GL", "Apache ECharts"],
+    tags: ["{stories} stories", "Mapbox GL", "Apache ECharts"],
   },
   {
     title: "footshorts.com",
