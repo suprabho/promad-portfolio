@@ -1,6 +1,6 @@
 "use client"
 
-import { useRef, type ReactNode } from "react"
+import { useLayoutEffect, useRef, useState, type ReactNode } from "react"
 import Image from "next/image"
 import { ArrowUpRight } from "@phosphor-icons/react"
 import {
@@ -11,18 +11,51 @@ import {
 } from "framer-motion"
 import { useTicker } from "@/hooks/use-ticker"
 import { LAUNCHED_PRODUCTS, type LaunchedProduct } from "@/app/ai-playbook/content"
-
-const SHOTS = "/images/products/vismay"
+import type { FootshortsData } from "@/lib/footshorts"
+import type { Vizf1Data } from "@/lib/vizf1"
+import { productFontVars } from "@/lib/vismay-product-fonts"
+import { LeagueGrid, MatchStrip, Schedule, Watchlist } from "@/components/footshorts-live"
+import { ConstructorPodium, DriverPodium, StandingsChart } from "@/components/vizf1-live"
 
 const byTitle = (title: string) =>
   LAUNCHED_PRODUCTS.find((p) => p.title === title) as LaunchedProduct
 
-export function VismayProducts() {
+export function VismayProducts({
+  footshortsData,
+  vizf1Data,
+}: {
+  footshortsData: FootshortsData
+  vizf1Data: Vizf1Data | null
+}) {
   const footshorts = byTitle("footshorts.com")
   const vizf1 = byTitle("vizf1.com")
 
+  // Live modules from each product's own data; a slide drops out when its data is missing.
+  const footshortsSlides = [
+    footshortsData.snapshot.length > 0 && (
+      <MatchStrip key="matches" fixtures={footshortsData.snapshot} crests={footshortsData.leagueCrests} />
+    ),
+    footshortsData.teams.length > 0 && <Watchlist key="watchlist" teams={footshortsData.teams} />,
+    footshortsData.schedule.length > 0 && <Schedule key="schedule" fixtures={footshortsData.schedule} />,
+    footshortsData.leagues.length > 0 && <LeagueGrid key="leagues" leagues={footshortsData.leagues} />,
+  ].filter(Boolean) as ReactNode[]
+
+  const vizf1Slides = vizf1Data
+    ? ([
+        vizf1Data.drivers.length > 0 && <DriverPodium key="drivers" drivers={vizf1Data.drivers} />,
+        vizf1Data.constructors.length > 0 && (
+          <ConstructorPodium key="constructors" constructors={vizf1Data.constructors} />
+        ),
+        vizf1Data.lanes.length > 0 && (
+          <StandingsChart key="standings" lanes={vizf1Data.lanes} season={vizf1Data.season} />
+        ),
+      ].filter(Boolean) as ReactNode[])
+    : []
+
   return (
-    <section className="relative z-10 bg-[#F4F1EC] pb-16 pt-10 text-[#0C0C10] md:pb-24 md:pt-14">
+    <section
+      className={`relative z-10 bg-[#F4F1EC] pb-16 pt-10 text-[#0C0C10] md:pb-24 md:pt-14 ${productFontVars}`}
+    >
       <div className="container mx-auto px-4">
         <div className="mb-8 flex items-center gap-4">
           <span className="text-[10px] uppercase tracking-[0.2em] text-[#0C0C10]/50">
@@ -38,7 +71,15 @@ export function VismayProducts() {
             muted="text-[#8E8E99]"
             tagClass="border-[#F26A3C]/30 bg-[#F26A3C]/10 text-[#F26A3C]"
             ctaClass="bg-[#F26A3C] text-white"
-            visual={<FootshortsCards />}
+            visual={
+              <LiveCarousel
+                slides={footshortsSlides}
+                logo={footshorts.logo}
+                className="bg-gradient-to-br from-[#F26A3C] to-[#C2410C] font-[family-name:var(--font-fs-sans)]"
+                dotClass="bg-white"
+                pitch
+              />
+            }
           />
           <ProductCard
             product={vizf1}
@@ -46,7 +87,14 @@ export function VismayProducts() {
             muted="text-[#f5f5f5]/55"
             tagClass="border-white/10 bg-white/[0.04] text-[#f5f5f5]/75"
             ctaClass="bg-[#ff4346] text-[#0b0d12]"
-            visual={<SeasonModules />}
+            visual={
+              <LiveCarousel
+                slides={vizf1Slides}
+                logo={vizf1.logo}
+                className="border-t border-[#1f2330] bg-[#0b0d12] sm:border-l sm:border-t-0"
+                dotClass="bg-[#ff4346]"
+              />
+            }
           />
         </div>
       </div>
@@ -125,133 +173,93 @@ function useLiveVisual() {
   return { ref, live: inView && !reduce }
 }
 
-// ─── footshorts: product cards from footshorts.com/about-us ───────
+// ─── Live module carousel ─────────────────────────────────────────
 
-const FOOTSHORTS_SHOTS = [
-  {
-    src: `${SHOTS}/footshorts-matches.webp`,
-    alt: "footshorts match cards: results and upcoming fixtures from the Primeira Liga and Brasileirão",
-    width: 239,
-    height: 548,
-    // Already cut out card by card, so it keeps its own corners.
-    frame: "",
-  },
-  {
-    src: `${SHOTS}/footshorts-watchlist.webp`,
-    alt: "The footshorts watchlist: follow clubs like Arsenal, Chelsea and Liverpool",
-    width: 662,
-    height: 475,
-    frame: "rounded-2xl",
-  },
-  {
-    src: `${SHOTS}/footshorts-schedule.webp`,
-    alt: "The footshorts schedule: upcoming kick-off times for followed clubs",
-    width: 607,
-    height: 308,
-    frame: "rounded-2xl",
-  },
-  {
-    src: `${SHOTS}/footshorts-leagues.webp`,
-    alt: "Leagues footshorts covers, from the Premier League to the FIFA World Cup",
-    width: 868,
-    height: 493,
-    frame: "rounded-2xl",
-  },
-]
-
-function FootshortsCards() {
+function LiveCarousel({
+  slides,
+  logo,
+  className,
+  dotClass,
+  pitch = false,
+}: {
+  slides: ReactNode[]
+  logo?: string
+  className: string
+  dotClass: string
+  pitch?: boolean
+}) {
   const { ref, live } = useLiveVisual()
-  const index = useTicker(FOOTSHORTS_SHOTS.length, 3200, live)
-  const shot = FOOTSHORTS_SHOTS[index]
+  const index = useTicker(slides.length, 3600, live)
 
   return (
-    <div
-      ref={ref}
-      className="absolute inset-0 overflow-hidden bg-gradient-to-br from-[#F26A3C] to-[#C2410C]"
-    >
-      {/* Pitch lines */}
-      <svg
-        aria-hidden
-        viewBox="0 0 200 200"
-        className="absolute inset-0 h-full w-full opacity-15"
-        preserveAspectRatio="xMidYMid slice"
-      >
-        <circle cx="100" cy="100" r="36" fill="none" stroke="white" strokeWidth="1.5" />
-        <line x1="0" y1="100" x2="200" y2="100" stroke="white" strokeWidth="1.5" />
-        <rect x="55" y="-1" width="90" height="34" fill="none" stroke="white" strokeWidth="1.5" />
-        <rect x="55" y="167" width="90" height="34" fill="none" stroke="white" strokeWidth="1.5" />
-      </svg>
-
-      <AnimatePresence initial={false}>
-        <motion.div
-          key={index}
-          className="absolute inset-5 bottom-11 flex items-center justify-center"
-          initial={{ opacity: 0, y: 12, scale: 0.97 }}
-          animate={{ opacity: 1, y: 0, scale: 1 }}
-          exit={{ opacity: 0, y: -12, scale: 0.97 }}
-          transition={{ duration: 0.5 }}
+    <div ref={ref} className={`absolute inset-0 overflow-hidden ${className}`}>
+      {pitch && (
+        <svg
+          aria-hidden
+          viewBox="0 0 200 200"
+          className="absolute inset-0 h-full w-full opacity-15"
+          preserveAspectRatio="xMidYMid slice"
         >
-          <Image
-            src={shot.src}
-            alt={shot.alt}
-            width={shot.width}
-            height={shot.height}
-            sizes="(min-width: 1024px) 25vw, (min-width: 640px) 50vw, 100vw"
-            className={`max-h-full w-auto max-w-full object-contain drop-shadow-[0_12px_18px_rgba(0,0,0,0.3)] transition-transform duration-500 group-hover/card:-translate-y-1 ${shot.frame}`}
-          />
-        </motion.div>
-      </AnimatePresence>
-      <CarouselDots count={FOOTSHORTS_SHOTS.length} index={index} className="bg-white" />
+          <circle cx="100" cy="100" r="36" fill="none" stroke="white" strokeWidth="1.5" />
+          <line x1="0" y1="100" x2="200" y2="100" stroke="white" strokeWidth="1.5" />
+          <rect x="55" y="-1" width="90" height="34" fill="none" stroke="white" strokeWidth="1.5" />
+          <rect x="55" y="167" width="90" height="34" fill="none" stroke="white" strokeWidth="1.5" />
+        </svg>
+      )}
+
+      {slides.length === 0 ? (
+        // No live data (e.g. the product's API is unreachable): just the mark.
+        logo && (
+          <div className="absolute inset-0 flex items-center justify-center">
+            <Image src={logo} alt="" width={96} height={96} className="h-24 w-24 rounded-3xl opacity-90 shadow-2xl" />
+          </div>
+        )
+      ) : (
+        <>
+          <AnimatePresence initial={false}>
+            <motion.div
+              key={index}
+              className="absolute inset-4 bottom-10 flex items-center justify-center"
+              initial={{ opacity: 0, y: 12, scale: 0.97 }}
+              animate={{ opacity: 1, y: 0, scale: 1 }}
+              exit={{ opacity: 0, y: -12, scale: 0.97 }}
+              transition={{ duration: 0.5 }}
+            >
+              {/* Modules are laid out at their native width and scaled to fit the panel. */}
+              <FitScale>{slides[index]}</FitScale>
+            </motion.div>
+          </AnimatePresence>
+          {slides.length > 1 && <CarouselDots count={slides.length} index={index} className={dotClass} />}
+        </>
+      )}
     </div>
   )
 }
 
-// ─── vizf1: season modules ────────────────────────────────────────
+/** Scales its child down (never up) so it fits the parent box. */
+function FitScale({ children }: { children: ReactNode }) {
+  const outer = useRef<HTMLDivElement>(null)
+  const inner = useRef<HTMLDivElement>(null)
+  const [scale, setScale] = useState(1)
 
-const VIZF1_SHOTS = [
-  {
-    src: `${SHOTS}/vizf1-drivers.webp`,
-    alt: "vizf1 drivers' championship podium: Antonelli, Russell and Hamilton",
-  },
-  {
-    src: `${SHOTS}/vizf1-constructors.webp`,
-    alt: "vizf1 constructors' championship podium: Mercedes, Ferrari and McLaren",
-  },
-  {
-    src: `${SHOTS}/vizf1-standings.webp`,
-    alt: "vizf1 driver position over time: championship standings through round 19",
-  },
-]
-
-function SeasonModules() {
-  const { ref, live } = useLiveVisual()
-  const index = useTicker(VIZF1_SHOTS.length, 3200, live)
-  const shot = VIZF1_SHOTS[index]
+  useLayoutEffect(() => {
+    const o = outer.current
+    const i = inner.current
+    if (!o || !i) return
+    const fit = () =>
+      setScale(Math.min(1, o.clientWidth / i.offsetWidth, o.clientHeight / i.offsetHeight))
+    fit()
+    const ro = new ResizeObserver(fit)
+    ro.observe(o)
+    ro.observe(i)
+    return () => ro.disconnect()
+  }, [])
 
   return (
-    <div
-      ref={ref}
-      className="absolute inset-0 border-t border-[#1f2330] bg-[#0b0d12] sm:border-l sm:border-t-0"
-    >
-      <AnimatePresence initial={false}>
-        <motion.div
-          key={index}
-          className="absolute inset-3 bottom-9"
-          initial={{ opacity: 0, y: 8 }}
-          animate={{ opacity: 1, y: 0 }}
-          exit={{ opacity: 0, y: -8 }}
-          transition={{ duration: 0.5 }}
-        >
-          <Image
-            src={shot.src}
-            alt={shot.alt}
-            fill
-            sizes="(min-width: 1024px) 25vw, (min-width: 640px) 50vw, 100vw"
-            className="object-contain"
-          />
-        </motion.div>
-      </AnimatePresence>
-      <CarouselDots count={VIZF1_SHOTS.length} index={index} className="bg-[#ff4346]" />
+    <div ref={outer} className="flex h-full w-full items-center justify-center">
+      <div ref={inner} className="shrink-0" style={{ transform: `scale(${scale})` }}>
+        {children}
+      </div>
     </div>
   )
 }
