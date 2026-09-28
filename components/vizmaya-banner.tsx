@@ -69,19 +69,19 @@ export function VizmayaBanner({
       {/* Full section */}
       <section ref={sectionRef} className={`relative z-10 ${vizmayaFontVars}`}>
         <div>
-          <div className="relative overflow-hidden bg-[#F4F1EC] py-16 text-[#0C0C10] md:py-24">
+          <div className="relative overflow-hidden bg-[#0C0C10] py-16 text-[#F4F1EC] md:py-24">
             {/* Brand glows: the three circles of the vizmaya mark */}
             <div
               aria-hidden
-              className="pointer-events-none absolute -right-32 -top-24 h-[480px] w-[480px] rounded-full bg-[#0BBFAB]/15 blur-3xl"
+              className="pointer-events-none absolute -right-32 -top-24 h-[480px] w-[480px] rounded-full bg-[#0BBFAB]/20 blur-3xl"
             />
             <div
               aria-hidden
-              className="pointer-events-none absolute right-1/3 top-1/2 h-[320px] w-[320px] rounded-full bg-[#E84D7A]/10 blur-3xl"
+              className="pointer-events-none absolute right-1/3 top-1/2 h-[320px] w-[320px] rounded-full bg-[#E84D7A]/15 blur-3xl"
             />
             <div
               aria-hidden
-              className="pointer-events-none absolute -left-40 bottom-0 h-[400px] w-[400px] rounded-full bg-[#2B4ACF]/10 blur-3xl"
+              className="pointer-events-none absolute -left-40 bottom-0 h-[400px] w-[400px] rounded-full bg-[#2B4ACF]/20 blur-3xl"
             />
 
             <div className="container relative mx-auto px-4">
@@ -89,7 +89,7 @@ export function VizmayaBanner({
               <div className="mb-12">
                 {/* One live story */}
                 <div>
-                  <div className="overflow-hidden rounded-xl border border-black/10 bg-white shadow-[0_40px_80px_-30px_rgba(12,12,16,0.45)]">
+                  <div className="overflow-hidden rounded-xl border border-white/10 bg-white shadow-[0_40px_80px_-30px_rgba(0,0,0,0.8)]">
                     <div className="flex items-center gap-3 border-b border-black/[0.07] bg-[#2A2824]/[0.04] px-3.5 py-2">
                       <div className="flex gap-1.5">
                         <span className="h-2 w-2 rounded-full bg-[#ff5f57]" />
@@ -124,7 +124,7 @@ export function VizmayaBanner({
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true, margin: "-80px" }}
                     transition={{ duration: 0.5, delay: i * 0.1, ease: "easeOut" }}
-                    className="overflow-hidden rounded-2xl border border-[#0C0C10]/[0.08] bg-white/60"
+                    className="overflow-hidden rounded-2xl border border-white/10 bg-white/[0.04]"
                   >
                     <div className="flex items-start gap-3 p-4 md:p-5">
                       <pillar.icon
@@ -136,7 +136,7 @@ export function VizmayaBanner({
                         <div className="font-[family-name:var(--font-vz-serif)] text-base font-semibold md:text-lg">
                           {withStoryCount(pillar.title, storyCount)}
                         </div>
-                        <div className="mt-1 text-xs leading-relaxed text-[#4A4742] md:text-sm">
+                        <div className="mt-1 text-xs leading-relaxed text-[#F4F1EC]/60 md:text-sm">
                           {pillar.desc}
                         </div>
                       </div>
