@@ -11,15 +11,16 @@ import { VizmayaBanner } from "@/components/vizmaya-banner"
 import { VismayProducts } from "@/components/vismay-products"
 import { AiDailySection } from "@/components/ai-daily-section"
 import { getCompaniesWithProjects } from "@/lib/payload"
-import { getVizmayaStoryCount } from "@/lib/vizmaya"
+import { getLatestDailyEditions, getVizmayaStoryCount } from "@/lib/vizmaya"
 
 export const dynamic = 'force-dynamic'
 
 export default async function Portfolio() {
   // Fetch data from Payload CMS
-  const [companies, storyCount] = await Promise.all([
+  const [companies, storyCount, dailyEditions] = await Promise.all([
     getCompaniesWithProjects(),
     getVizmayaStoryCount(),
+    getLatestDailyEditions(),
   ])
 
   return (
@@ -29,7 +30,7 @@ export default async function Portfolio() {
         <HeroSection />
         <HighlightBanner />
         <VizmayaBanner storyCount={storyCount} />
-        <AiDailySection />
+        <AiDailySection editions={dailyEditions} />
         <VismayProducts />
         <CompaniesGrid companies={companies} />
         <PeopleSection />

@@ -1,4 +1,4 @@
-import { Fraunces, JetBrains_Mono, Prata } from "next/font/google"
+import { Fraunces, JetBrains_Mono } from "next/font/google"
 
 // vizmaya.fyi's editorial type: Fraunces for display, JetBrains Mono for
 // kickers and data labels. Scoped to the vizmaya sections via CSS variables.
@@ -17,9 +17,3 @@ export const vizmayaMono = JetBrains_Mono({
 
 export const vizmayaFontVars = `${vizmayaSerif.variable} ${vizmayaMono.variable}`
 
-// The AI Daily edition's display face.
-export const aiDailySerif = Prata({
-  subsets: ["latin"],
-  weight: "400",
-  variable: "--font-dv-serif",
-})

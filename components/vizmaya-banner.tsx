@@ -1,7 +1,6 @@
 "use client"
 
 import { useEffect, useRef, useState } from "react"
-import Image from "next/image"
 import {
   ArrowRight,
   MapTrifold,
@@ -13,37 +12,29 @@ import { motion, AnimatePresence } from "framer-motion"
 import { FALLBACK_STORY_COUNT, withStoryCount } from "@/lib/vizmaya"
 import { vizmayaFontVars } from "@/lib/vizmaya-fonts"
 import { VizmayaLogo } from "@/components/vizmaya-logo"
-import { BrowserShot } from "@/components/browser-shot"
 
-const SHOTS = "/images/products/vismay"
+// One published story, loaded live from vizmaya.fyi.
+const EMBED_STORY = "airtel-fy26"
 
 const pillars: {
   icon: Icon
   title: string
   desc: string
-  shot: string
-  alt: string
 }[] = [
   {
     icon: MapTrifold,
     title: "Scroll-synced storytelling",
     desc: "Maps, ECharts visualizations, and prose driven by a single scroll position — the map flies, charts step, text snap-locks.",
-    shot: `${SHOTS}/vizmaya-story.webp`,
-    alt: "A vizmaya story with a payload-to-orbit bar chart beside its prose",
   },
   {
     icon: Books,
     title: "{stories} published narratives",
     desc: "Geopolitics, economics, and technology — from press freedom and GDP growth to the rise of GPU economies.",
-    shot: `${SHOTS}/vizmaya-archive.webp`,
-    alt: "The vizmaya.fyi archive listing every published story",
   },
   {
     icon: Palette,
     title: "Every story, its own theme",
     desc: "Stories and epics carry their own palette, type, and aura — authored in Markdown + YAML, rendered by the shared Vismay engine.",
-    shot: `${SHOTS}/vizmaya-themes.webp`,
-    alt: "The vizmaya.fyi bento grid of story cards, each in its own color theme",
   },
 ]
 
@@ -78,12 +69,7 @@ export function VizmayaBanner({
     <>
       {/* Full section */}
       <section ref={sectionRef} className={`relative z-10 ${vizmayaFontVars}`}>
-        <a
-          href="https://vizmaya.fyi"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="group block"
-        >
+        <div>
           <div className="relative overflow-hidden bg-[#F4F1EC] py-16 text-[#0C0C10] md:py-24">
             {/* Brand glows: the three circles of the vizmaya mark */}
             <div
@@ -140,20 +126,42 @@ export function VizmayaBanner({
                       </span>
                     ))}
                   </div>
-                  <div className="mt-8 inline-flex items-center gap-2 rounded-[3px] bg-[#0C0C10] px-5 py-3 font-[family-name:var(--font-vz-mono)] text-xs uppercase tracking-[0.14em] text-[#F4F1EC] transition-all group-hover:gap-3">
+                  <a
+                    href="https://vizmaya.fyi"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="mt-8 inline-flex items-center gap-2 rounded-[3px] bg-[#0C0C10] px-5 py-3 font-[family-name:var(--font-vz-mono)] text-xs uppercase tracking-[0.14em] text-[#F4F1EC] transition-all hover:gap-3"
+                  >
                     <span>Read the stories</span>
                     <ArrowRight className="h-4 w-4 text-[#0BBFAB]" weight="bold" />
-                  </div>
+                  </a>
                 </div>
 
-                {/* Live product screenshot */}
+                {/* One live story */}
                 <div className="lg:col-span-7">
-                  <BrowserShot
-                    src={`${SHOTS}/vizmaya-home.webp`}
-                    alt="The vizmaya.fyi home page: the studio statement beside a bento carousel of themed story cards"
-                    url="vizmaya.fyi"
-                    className="transition-transform duration-500 group-hover:-translate-y-1"
-                  />
+                  <div className="overflow-hidden rounded-xl border border-black/10 bg-white shadow-[0_40px_80px_-30px_rgba(12,12,16,0.45)]">
+                    <div className="flex items-center gap-3 border-b border-black/[0.07] bg-[#2A2824]/[0.04] px-3.5 py-2">
+                      <div className="flex gap-1.5">
+                        <span className="h-2 w-2 rounded-full bg-[#ff5f57]" />
+                        <span className="h-2 w-2 rounded-full bg-[#febc2e]" />
+                        <span className="h-2 w-2 rounded-full bg-[#28c840]" />
+                      </div>
+                      <a
+                        href={`https://vizmaya.fyi/story/${EMBED_STORY}`}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex-1 truncate rounded bg-black/[0.05] px-3 py-0.5 text-center font-mono text-[10px] text-black/45 hover:text-black/70"
+                      >
+                        vizmaya.fyi/story/{EMBED_STORY}
+                      </a>
+                    </div>
+                    <iframe
+                      src={`https://vizmaya.fyi/story/${EMBED_STORY}?embed=1`}
+                      title="A vizmaya story"
+                      loading="lazy"
+                      className="block aspect-[16/10] w-full border-0 bg-[#F4F1EC]"
+                    />
+                  </div>
                 </div>
               </div>
 
@@ -166,17 +174,8 @@ export function VizmayaBanner({
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true, margin: "-80px" }}
                     transition={{ duration: 0.5, delay: i * 0.1, ease: "easeOut" }}
-                    className="overflow-hidden rounded-2xl border border-[#0C0C10]/[0.08] bg-white/60 transition-colors group-hover:border-[#0BBFAB]/40"
+                    className="overflow-hidden rounded-2xl border border-[#0C0C10]/[0.08] bg-white/60"
                   >
-                    <div className="relative h-40 overflow-hidden border-b border-[#0C0C10]/[0.06] bg-[#0C0C10]">
-                      <Image
-                        src={pillar.shot}
-                        alt={pillar.alt}
-                        fill
-                        sizes="(min-width: 768px) 33vw, 100vw"
-                        className="object-cover object-top transition-transform duration-700 group-hover:scale-[1.03]"
-                      />
-                    </div>
                     <div className="flex items-start gap-3 p-4 md:p-5">
                       <pillar.icon
                         size={20}
@@ -197,7 +196,7 @@ export function VizmayaBanner({
               </div>
             </div>
           </div>
-        </a>
+        </div>
       </section>
 
       {/* Sticky banner after scrolling past section */}
