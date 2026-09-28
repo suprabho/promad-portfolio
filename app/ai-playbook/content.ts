@@ -14,6 +14,7 @@ import {
 } from "@phosphor-icons/react"
 import { Play } from "@phosphor-icons/react/dist/ssr"
 import type { ElementType } from "react"
+import figmaStats from "@/data/figma-plugin-stats.json"
 
 // ─── Types ────────────────────────────────────────────────────────
 
@@ -73,7 +74,7 @@ export const COLOR_PALETTE = [
 
 // ─── Figma Plugins ────────────────────────────────────────────────
 
-export const FIGMA_PLUGINS: LinkCardData[] = [
+const FIGMA_PLUGIN_LIST: LinkCardData[] = [
   {
     iconSource: "https://www.figma.com/community/resource/ae9863ef-b283-4dba-bd61-e23e4be81c08/icon",
     title: "Cross Collection Color Token Mapper",
@@ -107,6 +108,15 @@ export const FIGMA_PLUGINS: LinkCardData[] = [
     users: 364,
   },
 ]
+
+// User counts come from data/figma-plugin-stats.json, refreshed daily by
+// .github/workflows/figma-stats.yml; the numbers above are fallbacks.
+const pluginStats: Record<string, { users: number }> = figmaStats.plugins
+
+export const FIGMA_PLUGINS: LinkCardData[] = FIGMA_PLUGIN_LIST.map((plugin) => {
+  const id = plugin.href.match(/\/plugin\/(\d+)/)?.[1]
+  return { ...plugin, users: (id && pluginStats[id]?.users) || plugin.users }
+})
 
 // ─── Vibe-Coded Experiments ───────────────────────────────────────
 
