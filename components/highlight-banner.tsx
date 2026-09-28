@@ -6,9 +6,7 @@ import {
   ArrowRight,
   ArrowUpRight,
   Robot,
-  GitCommit,
   FigmaLogo,
-  FilmSlate,
   Sparkle,
   Code,
   DeviceMobile,
@@ -26,12 +24,6 @@ import {
 import { useTicker } from "@/hooks/use-ticker"
 
 const YELLOW = "#FAFF00"
-
-const stats = [
-  { value: "1,026", label: "Production commits", icon: GitCommit },
-  { value: "3", label: "Custom Figma plugins", icon: FigmaLogo },
-  { value: "100+", label: "Video variations", icon: FilmSlate },
-]
 
 const pillars = [
   {
@@ -106,25 +98,8 @@ export function HighlightBanner() {
                   </p>
                 </div>
 
-                <div className="lg:col-span-5">
-                  <div className="grid grid-cols-3 divide-x divide-black/15 border-y border-black/15">
-                    {stats.map((stat) => (
-                      <div key={stat.label} className="px-3 py-4 first:pl-0 md:px-5">
-                        <stat.icon
-                          size={18}
-                          weight="duotone"
-                          className="mb-2 text-black/50"
-                        />
-                        <div className="text-2xl font-bold tracking-tight text-black md:text-4xl">
-                          {stat.value}
-                        </div>
-                        <div className="mt-1 text-xs leading-snug text-black/55 md:text-sm">
-                          {stat.label}
-                        </div>
-                      </div>
-                    ))}
-                  </div>
-                  <div className="mt-6 inline-flex items-center gap-2 rounded-full bg-black px-5 py-3 font-medium text-[#FAFF00] transition-all group-hover:gap-3">
+                <div className="lg:col-span-5 lg:flex lg:justify-end">
+                  <div className="inline-flex items-center gap-2 rounded-full bg-black px-5 py-3 font-medium text-[#FAFF00] transition-all group-hover:gap-3">
                     <span>Explore the playbook</span>
                     <ArrowRight className="h-5 w-5" weight="bold" />
                   </div>
