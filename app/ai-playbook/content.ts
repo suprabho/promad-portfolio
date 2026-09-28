@@ -96,7 +96,7 @@ export const FIGMA_PLUGINS: LinkCardData[] = [
     description:
       "Duplicate entire text style hierarchies with custom mapping. Preserves folder structure across collections.",
     href: "https://www.figma.com/community/plugin/1574985201888606536/text-style-duplicator",
-    users: 67,
+    users: 105,
   },
   {
     iconSource: "https://s3-alpha-sig.figma.com/plugins/1638873804562766019/223208/c799880d-ab48-4ab6-9c89-275b720ce0d8-icon?Expires=1791763200&Key-Pair-Id=APKAQ4GOSFWCW27IBOMQ&Signature=eitbl1SMtV-Wqzfx9wUvud-41zhalCeL7cDxN~8f8bFVOONkqAFy-7Ouow4zN9QxS18MHhPysvHwTm2PWOZcVN3SB4itLCRwF0eT4Vwr9B5QsoGBhNftleT771PPXmhjOCm2sw1eigRrLBHG0e9VN~vLKMnrdjudH~-0Njy4StT~1lLO8nYKQ~ZWk6104ZwUR1lBLe6rSYvUUPQPjXuRdUNm4VK54jlJiPcMeMJci~h0MAQ8Fcmwjy8LASWF9EsnuxiJH68oPTlnFi9SgPFVNBhli2pwE6IzK0rvyZcBg8QkY-0swbQwRCsXLxMnzShb2arrVYfLk~XgEoH4U0YQMQ__",
