@@ -13,8 +13,8 @@ import { FALLBACK_STORY_COUNT, withStoryCount } from "@/lib/vizmaya"
 import { vizmayaFontVars } from "@/lib/vizmaya-fonts"
 import { VizmayaLogo } from "@/components/vizmaya-logo"
 
-// One published story, loaded live from vizmaya.fyi.
-const EMBED_STORY = "airtel-fy26"
+// The studio story vizmaya.fyi embeds on its own home page, loaded live.
+const EMBED_STORY = "vizmaya-studio"
 
 const pillars: {
   icon: Icon
@@ -157,7 +157,7 @@ export function VizmayaBanner({
                     </div>
                     <iframe
                       src={`https://vizmaya.fyi/story/${EMBED_STORY}?embed=1`}
-                      title="A vizmaya story"
+                      title="Vizmaya Studio"
                       loading="lazy"
                       className="block aspect-[16/10] w-full border-0 bg-[#F4F1EC]"
                     />

@@ -38,7 +38,7 @@ export function VismayProducts() {
             muted="text-[#8E8E99]"
             tagClass="border-[#F26A3C]/30 bg-[#F26A3C]/10 text-[#F26A3C]"
             ctaClass="bg-[#F26A3C] text-white"
-            visual={<FootshortsPhone />}
+            visual={<FootshortsCards />}
           />
           <ProductCard
             product={vizf1}
@@ -125,27 +125,41 @@ function useLiveVisual() {
   return { ref, live: inView && !reduce }
 }
 
-// ─── footshorts: the about-us page on a phone ─────────────────────
+// ─── footshorts: product cards from footshorts.com/about-us ───────
 
 const FOOTSHORTS_SHOTS = [
   {
-    src: `${SHOTS}/footshorts-about-hero.webp`,
-    alt: "footshorts.com/about-us: “Football, but only the good bits.”",
-    fit: "object-cover object-top",
+    src: `${SHOTS}/footshorts-matches.webp`,
+    alt: "footshorts match cards: results and upcoming fixtures from the Primeira Liga and Brasileirão",
+    width: 239,
+    height: 548,
+    // Already cut out card by card, so it keeps its own corners.
+    frame: "",
   },
   {
-    src: `${SHOTS}/footshorts-about-themes.webp`,
-    alt: "The three footshorts themes: Classic, Pitch and Terrace",
-    fit: "object-cover object-top",
+    src: `${SHOTS}/footshorts-watchlist.webp`,
+    alt: "The footshorts watchlist: follow clubs like Arsenal, Chelsea and Liverpool",
+    width: 662,
+    height: 475,
+    frame: "rounded-2xl",
   },
   {
-    src: `${SHOTS}/footshorts-about-cta.webp`,
-    alt: "The footshorts sign-up card: “Get the good bits.”",
-    fit: "object-contain object-center",
+    src: `${SHOTS}/footshorts-schedule.webp`,
+    alt: "The footshorts schedule: upcoming kick-off times for followed clubs",
+    width: 607,
+    height: 308,
+    frame: "rounded-2xl",
+  },
+  {
+    src: `${SHOTS}/footshorts-leagues.webp`,
+    alt: "Leagues footshorts covers, from the Premier League to the FIFA World Cup",
+    width: 868,
+    height: 493,
+    frame: "rounded-2xl",
   },
 ]
 
-function FootshortsPhone() {
+function FootshortsCards() {
   const { ref, live } = useLiveVisual()
   const index = useTicker(FOOTSHORTS_SHOTS.length, 3200, live)
   const shot = FOOTSHORTS_SHOTS[index]
@@ -153,7 +167,7 @@ function FootshortsPhone() {
   return (
     <div
       ref={ref}
-      className="absolute inset-0 flex items-end justify-center bg-gradient-to-br from-[#F26A3C] to-[#C2410C] pt-8"
+      className="absolute inset-0 overflow-hidden bg-gradient-to-br from-[#F26A3C] to-[#C2410C]"
     >
       {/* Pitch lines */}
       <svg
@@ -168,22 +182,26 @@ function FootshortsPhone() {
         <rect x="55" y="167" width="90" height="34" fill="none" stroke="white" strokeWidth="1.5" />
       </svg>
 
-      {/* Phone */}
-      <div className="relative h-[92%] w-[62%] max-w-[220px] translate-y-6 overflow-hidden rounded-t-[28px] border-[6px] border-b-0 border-[#0B0B0F] bg-[#0B0B0F] shadow-2xl transition-transform duration-500 group-hover/card:translate-y-3">
-        <AnimatePresence initial={false}>
-          <motion.div
-            key={index}
-            className="absolute inset-0"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.6 }}
-          >
-            <Image src={shot.src} alt={shot.alt} fill sizes="220px" className={shot.fit} />
-          </motion.div>
-        </AnimatePresence>
-      </div>
-      <CarouselDots count={FOOTSHORTS_SHOTS.length} index={index} className="bg-white" position="top-3" />
+      <AnimatePresence initial={false}>
+        <motion.div
+          key={index}
+          className="absolute inset-5 bottom-11 flex items-center justify-center"
+          initial={{ opacity: 0, y: 12, scale: 0.97 }}
+          animate={{ opacity: 1, y: 0, scale: 1 }}
+          exit={{ opacity: 0, y: -12, scale: 0.97 }}
+          transition={{ duration: 0.5 }}
+        >
+          <Image
+            src={shot.src}
+            alt={shot.alt}
+            width={shot.width}
+            height={shot.height}
+            sizes="(min-width: 1024px) 25vw, (min-width: 640px) 50vw, 100vw"
+            className={`max-h-full w-auto max-w-full object-contain drop-shadow-[0_12px_18px_rgba(0,0,0,0.3)] transition-transform duration-500 group-hover/card:-translate-y-1 ${shot.frame}`}
+          />
+        </motion.div>
+      </AnimatePresence>
+      <CarouselDots count={FOOTSHORTS_SHOTS.length} index={index} className="bg-white" />
     </div>
   )
 }
@@ -233,7 +251,7 @@ function SeasonModules() {
           />
         </motion.div>
       </AnimatePresence>
-      <CarouselDots count={VIZF1_SHOTS.length} index={index} className="bg-[#ff4346]" position="bottom-3" />
+      <CarouselDots count={VIZF1_SHOTS.length} index={index} className="bg-[#ff4346]" />
     </div>
   )
 }
@@ -242,15 +260,13 @@ function CarouselDots({
   count,
   index,
   className,
-  position,
 }: {
   count: number
   index: number
   className: string
-  position: "top-3" | "bottom-3"
 }) {
   return (
-    <div className={`absolute ${position} left-1/2 z-10 flex -translate-x-1/2 gap-1.5 rounded-full bg-black/30 px-2 py-1.5 backdrop-blur`}>
+    <div className="absolute bottom-3 left-1/2 z-10 flex -translate-x-1/2 gap-1.5 rounded-full bg-black/30 px-2 py-1.5 backdrop-blur">
       {Array.from({ length: count }, (_, i) => (
         <span
           key={i}
