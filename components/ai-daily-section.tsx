@@ -79,8 +79,8 @@ export function AiDailySection({ editions }: { editions: DailyEdition[] }) {
   if (!editions.length) return null
 
   return (
-    <section className={`relative z-10 bg-[#F4F1EC] pb-6 text-[#0C0C10] ${vizmayaFontVars}`}>
-      <div className="container mx-auto border-t border-[#0C0C10]/[0.08] px-4 pt-12">
+    <section className={`relative z-10 bg-[#0C0C10] pb-16 text-[#F4F1EC] md:pb-24 ${vizmayaFontVars}`}>
+      <div className="container mx-auto border-t border-white/10 px-4 pt-12">
         <div className="mb-4 flex flex-wrap items-baseline justify-between gap-4">
           <span className="inline-flex items-center gap-2.5 font-[family-name:var(--font-vz-mono)] text-[10.5px] uppercase tracking-[0.22em] text-[#0BBFAB]">
             <span className="h-px w-4 bg-current" />
@@ -95,7 +95,7 @@ export function AiDailySection({ editions }: { editions: DailyEdition[] }) {
             Every edition →
           </a>
         </div>
-        <p className="mb-6 max-w-[62ch] text-sm leading-relaxed text-[#4A4742]">
+        <p className="mb-6 max-w-[62ch] text-sm leading-relaxed text-[#F4F1EC]/60">
           Each morning vizmaya reads the previous day of AI data-centre, energy
           and sustainability news and scores it: a Boom Score out of 100, where
           50 is balanced.
@@ -108,8 +108,8 @@ export function AiDailySection({ editions }: { editions: DailyEdition[] }) {
               href={`${SERIES_URL}/${e.date}`}
               target="_blank"
               rel="noopener noreferrer"
-              className="group flex flex-col gap-5 rounded-lg border p-5 transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_22px_44px_-22px_rgba(12,12,16,0.55)] md:p-6"
-              style={{ backgroundColor: C.surface, borderColor: C.line, color: C.bone }}
+              className="group flex flex-col gap-5 rounded-lg border border-[#232b33] p-5 transition-all duration-300 hover:-translate-y-0.5 hover:border-[#22d3ee]/40 md:p-6"
+              style={{ backgroundColor: C.surface, color: C.bone }}
             >
               <div
                 className="flex justify-between font-[family-name:var(--font-vz-mono)] text-[9.5px] uppercase tracking-[0.14em]"
