@@ -8,6 +8,7 @@ import { ActionSection } from "@/components/action-section"
 import { PortfolioClient } from "@/components/portfolio-client"
 import { HighlightBanner } from "@/components/highlight-banner"
 import { VizmayaBanner } from "@/components/vizmaya-banner"
+import { VismayProducts } from "@/components/vismay-products"
 import { getCompaniesWithProjects } from "@/lib/payload"
 import { getVizmayaStoryCount } from "@/lib/vizmaya"
 
@@ -27,6 +28,7 @@ export default async function Portfolio() {
         <HeroSection />
         <HighlightBanner />
         <VizmayaBanner storyCount={storyCount} />
+        <VismayProducts />
         <CompaniesGrid companies={companies} />
         <PeopleSection />
         <SkillsGrid />
