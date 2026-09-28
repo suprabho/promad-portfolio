@@ -10,7 +10,7 @@ export function ActionSection() {
   const [openDialog2, setOpenDialog2] = useState(false)
 
   return (
-    <section className="container py-24 mx-auto mb-12 w-full space-y-8 bg-[#FAFF00] rounded-tl-[48px] rounded-br-[48px] border-tr-0 border-bl-0 p-8 md:p-12 shadow-2xl">
+    <section className="container py-24 mx-auto mt-16 md:mt-24 mb-12 w-full space-y-8 bg-[#FAFF00] rounded-tl-[48px] rounded-br-[48px] border-tr-0 border-bl-0 p-8 md:p-12 shadow-2xl">
       <div className="text-center mb-16">
         <h2 className="text-3xl md:text-4xl font-bold mb-4 text-black">Get in touch</h2>
         <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
