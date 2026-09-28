@@ -6,6 +6,8 @@
  * finishing positions).
  */
 
+import { vismayQuery } from "@/lib/vismay-supabase"
+
 const RACE_POINTS: Record<number, number> = {
   1: 25, 2: 18, 3: 15, 4: 12, 5: 10, 6: 8, 7: 6, 8: 4, 9: 2, 10: 1,
 }
@@ -82,24 +84,20 @@ function pointsFor(r: RawRow) {
 
 /** The season's standings and standings-by-round, refreshed every ten minutes. Null on any failure. */
 export async function getVizf1Data(): Promise<Vizf1Data | null> {
-  const url = process.env.VIZF1_SUPABASE_URL
-  const key = process.env.VIZF1_SUPABASE_ANON_KEY
-  if (!url || !key) return null
   const season = new Date().getFullYear()
 
   try {
-    const params = new URLSearchParams({
-      select: SELECT,
-      "vizf1_sessions.session_type": "in.(race,sprint)",
-      "vizf1_sessions.vizf1_races.season": `eq.${season}`,
-    })
-    const res = await fetch(`${url}/rest/v1/vizf1_session_results?${params}`, {
-      headers: { apikey: key, Authorization: `Bearer ${key}` },
-      next: { revalidate: 600 },
-      signal: AbortSignal.timeout(5000),
-    })
-    if (!res.ok) throw new Error(`vizf1_session_results: ${res.status}`)
-    const rows = ((await res.json()) as RawRow[]).filter((r) => r.drivers)
+    const rows = (
+      await vismayQuery<RawRow>(
+        "vizf1_session_results",
+        {
+          select: SELECT,
+          "vizf1_sessions.session_type": "in.(race,sprint)",
+          "vizf1_sessions.vizf1_races.season": `eq.${season}`,
+        },
+        600
+      )
+    ).filter((r) => r.drivers)
     if (!rows.length) return null
 
     // ── Season totals ──

@@ -4,6 +4,8 @@
  * Queries mirror apps/footshorts/web/app/about-us/page.tsx in the vismay repo.
  */
 
+import { vismayQuery } from "@/lib/vismay-supabase"
+
 export interface FootshortsTeam {
   id: string
   slug: string
@@ -86,18 +88,7 @@ const priority = (slug: string, list: string[]) => {
   return i === -1 ? Number.POSITIVE_INFINITY : i
 }
 
-async function query<T>(table: string, params: Record<string, string>): Promise<T[]> {
-  const url = process.env.FOOTSHORTS_SUPABASE_URL
-  const key = process.env.FOOTSHORTS_SUPABASE_ANON_KEY
-  if (!url || !key) throw new Error("footshorts Supabase env not set")
-  const res = await fetch(`${url}/rest/v1/${table}?${new URLSearchParams(params)}`, {
-    headers: { apikey: key, Authorization: `Bearer ${key}` },
-    next: { revalidate: 300 },
-    signal: AbortSignal.timeout(5000),
-  })
-  if (!res.ok) throw new Error(`footshorts ${table}: ${res.status}`)
-  return res.json()
-}
+const query = <T>(table: string, params: Record<string, string>) => vismayQuery<T>(table, params, 300)
 
 /** Everything the footshorts card shows, refreshed every five minutes. Empty on any failure. */
 export async function getFootshortsData(): Promise<FootshortsData> {
