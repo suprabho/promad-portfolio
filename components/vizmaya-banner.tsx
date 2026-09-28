@@ -11,7 +11,6 @@ import {
 import { motion, AnimatePresence } from "framer-motion"
 import { FALLBACK_STORY_COUNT, withStoryCount } from "@/lib/vizmaya"
 import { vizmayaFontVars } from "@/lib/vizmaya-fonts"
-import { VizmayaLogo } from "@/components/vizmaya-logo"
 
 // The studio story vizmaya.fyi embeds on its own home page, loaded live.
 const EMBED_STORY = "vizmaya-studio"
@@ -86,59 +85,10 @@ export function VizmayaBanner({
             />
 
             <div className="container relative mx-auto px-4">
-              <div className="mb-12 grid items-center gap-10 lg:grid-cols-12 lg:gap-14">
-                {/* Copy */}
-                <div className="lg:col-span-5">
-                  <div className="mb-6 flex items-center gap-3">
-                    <span className="rounded bg-[#0C0C10] px-1.5 py-0.5 font-[family-name:var(--font-vz-mono)] text-[10px] font-medium uppercase tracking-wider text-[#F4F1EC]">
-                      New
-                    </span>
-                    <span className="inline-flex items-center gap-2.5 font-[family-name:var(--font-vz-mono)] text-[10.5px] uppercase tracking-[0.22em] text-[#0BBFAB]">
-                      <span className="h-px w-4 bg-current" />
-                      Vizmaya Labs
-                    </span>
-                  </div>
-
-                  <h2 className="sr-only">vizmaya.fyi</h2>
-                  <VizmayaLogo className="-ml-1 h-[58px] w-[236px] md:h-[76px] md:w-[308px]" />
-
-                  <p className="mt-6 max-w-md font-[family-name:var(--font-vz-serif)] text-2xl font-semibold leading-[1.1] tracking-tight md:text-[34px]">
-                    We turn complex data into stories{" "}
-                    <em className="font-normal">impossible to ignore.</em>
-                  </p>
-                  <p className="mt-4 max-w-md text-base leading-relaxed text-[#4A4742]">
-                    A two-person data-journalism studio on geopolitics,
-                    technology, and the asymmetries reshaping markets. The map
-                    does the argument, the prose does the meaning.
-                  </p>
-                  <div className="mt-6 flex flex-wrap gap-2">
-                    {[
-                      `${storyCount}+ stories`,
-                      "Mapbox GL",
-                      "Apache ECharts",
-                      "Daily editions",
-                    ].map((t) => (
-                      <span
-                        key={t}
-                        className="rounded-full border border-[#0C0C10]/15 px-3 py-1 font-[family-name:var(--font-vz-mono)] text-[10px] uppercase tracking-[0.12em] text-[#4A4742]"
-                      >
-                        {t}
-                      </span>
-                    ))}
-                  </div>
-                  <a
-                    href="https://vizmaya.fyi"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="mt-8 inline-flex items-center gap-2 rounded-[3px] bg-[#0C0C10] px-5 py-3 font-[family-name:var(--font-vz-mono)] text-xs uppercase tracking-[0.14em] text-[#F4F1EC] transition-all hover:gap-3"
-                  >
-                    <span>Read the stories</span>
-                    <ArrowRight className="h-4 w-4 text-[#0BBFAB]" weight="bold" />
-                  </a>
-                </div>
-
+              <h2 className="sr-only">vizmaya.fyi</h2>
+              <div className="mb-12">
                 {/* One live story */}
-                <div className="lg:col-span-7">
+                <div>
                   <div className="overflow-hidden rounded-xl border border-black/10 bg-white shadow-[0_40px_80px_-30px_rgba(12,12,16,0.45)]">
                     <div className="flex items-center gap-3 border-b border-black/[0.07] bg-[#2A2824]/[0.04] px-3.5 py-2">
                       <div className="flex gap-1.5">
@@ -159,7 +109,7 @@ export function VizmayaBanner({
                       src={`https://vizmaya.fyi/story/${EMBED_STORY}?embed=1`}
                       title="Vizmaya Studio"
                       loading="lazy"
-                      className="block aspect-[16/10] w-full border-0 bg-[#F4F1EC]"
+                      className="block h-[clamp(360px,70vh,760px)] w-full border-0 bg-[#F4F1EC]"
                     />
                   </div>
                 </div>
