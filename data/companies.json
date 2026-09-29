@@ -217,14 +217,82 @@
                 },
                 {
                     "name": "Website design and development",
-                    "description": "Built responsive and interactive websites",
-                    "thumbnail": "/images/projects/kidzovo/project-image-5.jpg",
+                    "description": "Redesigned and rebuilt kidzovo.com from Webflow into a CMS-driven Next.js site with a content library, creator program and product landing pages",
+                    "thumbnail": "/images/projects/kidzovo/website-2026.jpg",
                     "tags": [
-                        "No-code",
                         "Web Design",
-                        "Responsive"
+                        "Next.js",
+                        "Strapi CMS",
+                        "Tailwind CSS",
+                        "Rive",
+                        "SEO"
                     ],
-                    "details": "Managed full lifecycle of website development using Webflow.",
+                    "details": {
+                        "title": "Case Study: Rebuilding kidzovo.com, from a Webflow brochure to a content platform",
+                        "projectOverview": "The original Kidzovo website was a Webflow brochure: a hero, a few feature blocks and app-store links. As Kidzovo grew into an award-winning Kids TV app with an AI buddy, the site had to do far more. It needed to show parents the actual content, win over content creators as partners, launch new products like Color with Ovo, and rank in search. I redesigned the site end to end and built it in code as a Next.js front end backed by a headless Strapi CMS.",
+                        "theChallenge": {
+                            "heading": "The Challenge: Outgrowing the Website Builder",
+                            "description": "Webflow got Kidzovo online quickly but became the bottleneck. Every new page was hand-built, the thousands of videos in the app could not be surfaced on the web, and marketing, product and partnerships all needed different stories from one site. The new site had to be:",
+                            "interfaceQualities": [
+                                "Playful but trustworthy: fun enough for a kids' brand, credible enough for parents deciding about screen time, with safety (COPPA, kidSAFE) front and centre.",
+                                "Content-first: the video library, subjects, topics and creators should be browsable and indexable, not locked inside the app.",
+                                "Editable without a developer: FAQs, videos, creators, blog posts and pages managed from a CMS.",
+                                "Fast and mobile-first: most parents arrive on a phone, so layouts, video and animation had to perform on mobile."
+                            ]
+                        },
+                        "ourApproach": {
+                            "heading": "Our Approach: Design System First, Then a Headless Build",
+                            "description": "I treated the website as a product: a codified brand system, reusable sections, and a CMS content model that maps to how Kidzovo actually organises learning.",
+                            "phases": [
+                                {
+                                    "name": "Phase 1: Brand System & Landing Page Redesign",
+                                    "points": [
+                                        "Codified the Kidzovo brand as design tokens: the rounded Fredoka typeface and full 50–950 colour scales (teal, pink, amber, lime and more) defined in the Tailwind v4 theme.",
+                                        "Rewrote the homepage story around the positioning 'The best learning companion for your child's screen-time, after you': an autoplaying 'Kids TV with AI Buddy' hero, award and trust badges, Safe AI value propositions and parent testimonials.",
+                                        "Designed an interactive section that demonstrates the in-app learning mechanics (tap to learn, speak, drag and drop, puzzles) instead of just describing them.",
+                                        "Shipped it section by section (hero, features, interactions, testimonials, FAQs), with dedicated mobile passes on the header and navigation."
+                                    ]
+                                },
+                                {
+                                    "name": "Phase 2: Headless CMS & Content Library",
+                                    "points": [
+                                        "Modelled Kidzovo's content in Strapi (videos, subjects, topics, creators, blog posts, FAQs and pages), kept in a pnpm monorepo alongside the web app.",
+                                        "Built an 'Our Content' hub with paginated video listings and dedicated pages for every video, subject, topic and creator, cross-linked with related videos and posts.",
+                                        "Used incremental static regeneration so pages are statically fast but refresh automatically when the team edits content in the CMS.",
+                                        "Added SEO foundations: per-page metadata, a generated sitemap and robots rules, plus GA4, AppsFlyer and Vercel Analytics / Speed Insights for measurement."
+                                    ]
+                                },
+                                {
+                                    "name": "Phase 3: Growth Pages & Product Launches",
+                                    "points": [
+                                        "Designed a 'Kidzovo for Creators' partner page ('Your videos. Our platform. Their first app.') pitching creators on turning their catalogue into a COPPA-certified interactive learning app with a new revenue stream.",
+                                        "Launched a dedicated landing page for Color with Ovo, Kidzovo's AI colouring app, with the Ovo mascot running live as an interactive Rive animation.",
+                                        "Built the supporting pages a real product needs: Our Story, Support, a blog, markdown-driven legal pages with a sticky table of contents, account deletion and a branded 404.",
+                                        "Added a mobile smart banner that turns web visits into app downloads."
+                                    ]
+                                }
+                            ]
+                        },
+                        "keyOutcomes": {
+                            "heading": "Key Outcomes",
+                            "points": [
+                                "From brochure to platform: the site now surfaces Kidzovo's video library, subjects, topics and 50+ partner creators (including SciShow Kids, Little Smart Planet, Learning Mole and English Tree TV) as indexable web pages.",
+                                "Content ships without code: the team updates videos, creators, FAQs and blog posts in Strapi and changes go live automatically.",
+                                "A launchpad for new products: Color with Ovo and the creator partnership programme each got a dedicated, on-brand landing page built from the same system.",
+                                "One consistent brand: tokens, typography and components are shared across every page, so new sections look like Kidzovo by default."
+                            ]
+                        },
+                        "lessonsLearned": {
+                            "heading": "Lessons Learned",
+                            "points": [
+                                "Know when to graduate from no-code: Webflow was right for launch, but once content and SEO became the growth lever, a headless setup paid for itself.",
+                                "Model content the way the product does: mirroring the app's subjects, topics and creators in the CMS made the web and app feel like one product.",
+                                "Show, don't tell: interactive demos and real video beat feature bullet points when explaining a kids' learning app to parents.",
+                                "Designing in code speeds up iteration: owning both design and build meant polish, mobile fixes and new pages shipped in hours, not handoff cycles."
+                            ]
+                        },
+                        "conclusion": "The new kidzovo.com turned the website from a static marketing page into a living extension of the product, one that tells the story to parents, recruits creators as partners and gives every new Kidzovo launch a home."
+                    },
                     "url": "https://kidzovo.com",
                     "urlName": "Visit Website"
                 }
