@@ -59,13 +59,16 @@ export async function readPluginUsers(page, id, url) {
     } catch {}
   })
 
-  await page.goto(url, { waitUntil: "networkidle", timeout: 60_000 })
+  // Figma pages keep background requests open, so "networkidle" may never
+  // arrive. Wait for the DOM, then give the network a bounded chance to settle.
+  await page.goto(url, { waitUntil: "domcontentloaded", timeout: 60_000 })
+  await page.waitForLoadState("networkidle", { timeout: 20_000 }).catch(() => {})
   if (fromApi != null) return fromApi
 
   const label = await page
     .getByText(/^[\d.,]+\s*[kKmM]?\s+users?$/i)
     .first()
-    .textContent({ timeout: 10_000 })
+    .textContent({ timeout: 20_000 })
     .catch(() => null)
   return label ? parseCount(label.replace(/users?/i, "")) : null
 }
@@ -85,11 +88,14 @@ async function main() {
   const next = {}
   const failures = []
   for (const id of ids) {
-    const page = await context.newPage()
-    const users = await readPluginUsers(page, id, `https://www.figma.com/community/plugin/${id}`).catch(
-      (err) => (console.error(`  ${id}: ${err.message}`), null)
-    )
-    await page.close()
+    let users = null
+    for (let attempt = 1; attempt <= 2 && users == null; attempt++) {
+      const page = await context.newPage()
+      users = await readPluginUsers(page, id, `https://www.figma.com/community/plugin/${id}`).catch(
+        (err) => (console.error(`  ${id} (attempt ${attempt}): ${err.message}`), null)
+      )
+      await page.close()
+    }
 
     const previous = stats.plugins[id]?.users
     if (users == null) failures.push(`${id}: no user count found`)
