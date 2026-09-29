@@ -18,6 +18,8 @@ const config: Config = {
 			'motion-display': ['var(--font-jakarta)', 'ui-sans-serif', 'system-ui', 'sans-serif'],
 			'motion-serif': ['var(--font-fraunces)', 'Georgia', 'serif'],
 			'motion-mono': ['var(--font-jetbrains-mono)', 'ui-monospace', 'monospace'],
+			// Pro Timeline page (/pro-timeline) – loaded in app/pro-timeline/page.tsx
+			pt: ['var(--font-instrument-sans)', 'system-ui', '-apple-system', 'Segoe UI', 'sans-serif'],
   		},
   		colors: {
   			background: 'hsl(var(--background))',
@@ -72,6 +74,16 @@ const config: Config = {
   				muted: 'var(--motion-muted)',
   				line: 'var(--motion-line)',
   				surface: 'var(--motion-surface)'
+  			},
+  			// Pro Timeline brand palette; the page is always graphite
+  			pt: {
+  				lime: '#C8F36B',
+  				graphite: '#121619',
+  				chalk: '#F3F5EF',
+  				sage: '#AAB4AA',
+  				surface: '#191E22',
+  				raised: '#20262B',
+  				line: '#2A3238'
   			},
   			sidebar: {
   				DEFAULT: 'hsl(var(--sidebar-background))',
