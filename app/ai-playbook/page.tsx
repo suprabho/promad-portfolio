@@ -1,6 +1,6 @@
 "use client"
 
-import { useEffect, useRef } from "react"
+import { useEffect, useRef, useState } from "react"
 import { motion, useInView, useMotionValue, useTransform, useReducedMotion, animate } from "framer-motion"
 import Image from "next/image"
 import Link from "next/link"
@@ -26,7 +26,6 @@ import {
   Stack,
   ArrowRight,
   DownloadSimple,
-  CaretDown,
   CaretRight,
 } from "@phosphor-icons/react"
 import {
@@ -244,50 +243,107 @@ function ProcessStep({
 
 // ─── Pro Timeline Preview ─────────────────────────────────────────
 
-/** Looping sketch of the panel: the open group slides in time while the playhead sweeps. */
+const ROW_HEIGHT = 28
+
+/** Panel states the preview cycles through; `label` names the action that led to each. */
+const PRO_TIMELINE_STEPS = [
+  { label: "Move", shift: 0, open: true, ms: 1600 },
+  { label: "Move", shift: 30, open: true, ms: 1400 },
+  { label: "Collapse", shift: 30, open: false, ms: 1800 },
+  { label: "Expand", shift: 30, open: true, ms: 1400 },
+]
+
+/** Looping sketch of the panel: the open group moves in time, collapses and expands again. */
 function ProTimelinePreview() {
   const reduceMotion = useReducedMotion()
-  const loop = { duration: 6, repeat: Infinity, ease: "easeInOut" as const }
-  const groupShift = reduceMotion ? undefined : { x: ["0%", "0%", "30%", "30%", "0%"] }
-  const playhead = reduceMotion ? undefined : { left: ["8%", "92%"] }
+  const ref = useRef<HTMLDivElement>(null)
+  const isInView = useInView(ref, { amount: 0.4 })
+  const [step, setStep] = useState(0)
+  const { label, shift, open, ms } = PRO_TIMELINE_STEPS[step]
+  const ease = [0.4, 0, 0.2, 1] as const
+
+  useEffect(() => {
+    if (reduceMotion || !isInView) return
+    const id = setTimeout(() => setStep((s) => (s + 1) % PRO_TIMELINE_STEPS.length), ms)
+    return () => clearTimeout(id)
+  }, [step, ms, reduceMotion, isInView])
+
+  // Members fold away when the group collapses; other rows keep their height
+  const rowHeight = (kind: string) => (kind === "member" && !open ? 0 : ROW_HEIGHT)
+  const minHeight = PRO_TIMELINE_LAYERS.length * ROW_HEIGHT
 
   return (
-    <div aria-hidden className="rounded-2xl border border-pt-line bg-pt-surface p-4 font-mono text-[11px]">
+    <div
+      ref={ref}
+      aria-hidden
+      className="rounded-2xl border border-pt-line bg-pt-surface p-4 font-mono text-[11px]"
+    >
       <div className="mb-3 flex items-center justify-between text-pt-sage">
         <span>Comp 1</span>
-        <span className="tabular-nums">0:00:04:12</span>
+        {!reduceMotion && (
+          <motion.span
+            key={step}
+            initial={{ opacity: 0, y: -4 }}
+            animate={{ opacity: 1, y: 0 }}
+            className="rounded-full border border-pt-lime/40 px-2 py-0.5 text-pt-lime"
+          >
+            {label}
+          </motion.span>
+        )}
       </div>
       <div className="flex gap-3">
         {/* Layer outline */}
-        <div className="w-[92px] shrink-0 pt-5 sm:w-[112px]">
+        <div className="w-[92px] shrink-0 pt-5 sm:w-[112px]" style={{ minHeight: minHeight + 20 }}>
           {PRO_TIMELINE_LAYERS.map((layer) => {
             const isGroup = layer.kind !== "member"
-            const Caret = layer.kind === "collapsed" ? CaretRight : CaretDown
             return (
-              <div
+              <motion.div
                 key={layer.name}
-                className={`flex h-7 items-center gap-1 ${isGroup ? "text-pt-chalk" : "pl-4 text-pt-sage"}`}
+                initial={false}
+                animate={{ height: rowHeight(layer.kind), opacity: rowHeight(layer.kind) ? 1 : 0 }}
+                transition={{ duration: 0.45, ease }}
+                className="overflow-hidden"
               >
-                {isGroup && <Caret size={10} weight="bold" className="shrink-0 text-pt-lime" />}
-                <span className="truncate">{layer.name}</span>
-              </div>
+                <div
+                  className={`flex h-7 items-center gap-1 ${isGroup ? "text-pt-chalk" : "pl-4 text-pt-sage"}`}
+                >
+                  {isGroup && (
+                    <motion.span
+                      initial={false}
+                      animate={{ rotate: layer.kind === "group" && open ? 90 : 0 }}
+                      transition={{ duration: 0.3, ease }}
+                      className="flex shrink-0 text-pt-lime"
+                    >
+                      <CaretRight size={10} weight="bold" />
+                    </motion.span>
+                  )}
+                  <span className="truncate">{layer.name}</span>
+                </div>
+              </motion.div>
             )
           })}
         </div>
 
         {/* Track area */}
-        <div className="relative min-w-0 grow overflow-hidden">
+        <div className="relative min-w-0 grow overflow-hidden" style={{ minHeight: minHeight + 20 }}>
           <div className="mb-2 flex h-3 justify-between border-b border-pt-line">
             {Array.from({ length: 9 }, (_, i) => (
               <span key={i} className={`w-px bg-pt-line ${i % 2 ? "h-1.5" : "h-2.5"}`} />
             ))}
           </div>
           {PRO_TIMELINE_LAYERS.map((layer) => (
-            <div key={layer.name} className="relative h-7">
+            <motion.div
+              key={layer.name}
+              initial={false}
+              animate={{ height: rowHeight(layer.kind), opacity: rowHeight(layer.kind) ? 1 : 0 }}
+              transition={{ duration: 0.45, ease }}
+              className="overflow-hidden"
+            >
               <motion.div
-                className="absolute inset-0"
-                animate={layer.kind === "collapsed" ? undefined : groupShift}
-                transition={{ ...loop, times: [0, 0.2, 0.45, 0.75, 1] }}
+                className="relative h-7"
+                initial={false}
+                animate={{ x: layer.kind === "collapsed" ? "0%" : `${shift}%` }}
+                transition={{ duration: 0.9, ease }}
               >
                 <span
                   className={`absolute top-1/2 h-3.5 -translate-y-1/2 rounded-[3px] ${
@@ -300,13 +356,13 @@ function ProTimelinePreview() {
                   style={{ left: `${layer.left}%`, width: `${layer.width}%` }}
                 />
               </motion.div>
-            </div>
+            </motion.div>
           ))}
           <motion.span
             className="absolute inset-y-0 w-px bg-pt-lime/80"
             style={{ left: "38%" }}
-            animate={playhead}
-            transition={{ ...loop, ease: "linear", repeatType: "reverse" }}
+            animate={reduceMotion ? undefined : { left: ["8%", "92%"] }}
+            transition={{ duration: 6, repeat: Infinity, ease: "linear", repeatType: "reverse" }}
           />
         </div>
       </div>
