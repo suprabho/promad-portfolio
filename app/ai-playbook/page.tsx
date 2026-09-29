@@ -10,7 +10,6 @@ import { Badge } from "@/components/ui/badge"
 import Header from "@/components/header"
 import { Footer } from "@/components/footer"
 import {
-  Palette,
   Gradient,
   FilmSlate,
   FilmScript,
@@ -85,6 +84,18 @@ function AnimatedCounter({ target, duration = 2 }: { target: number; duration?: 
 }
 
 // ─── Section Wrapper ──────────────────────────────────────────────
+
+/** Shadecraft mark (charcoal on its yellow tile), from the Shadecraft brand kit. */
+function ShadecraftMark({ size = 32 }: { size?: number }) {
+  return (
+    <svg width={size} height={size} viewBox="4 4 50 45" aria-hidden="true">
+      <path
+        fill="#221F1F"
+        d="M7 12H19V26H7ZM7 31H19V41H7ZM23 6H35V26H23ZM23 31H35V47H23ZM39 17H51V26H39ZM39 31H51V46H39Z"
+      />
+    </svg>
+  )
+}
 
 function Section({
   children,
@@ -308,7 +319,7 @@ export default function AIPlaybook() {
           subtitle="A unified pipeline from color definition to production code."
         />
 
-        {/* Featured: colors.promad.design */}
+        {/* Featured: Shadecraft (colors.promad.design) */}
         <motion.div variants={fadeUp} className="mb-10">
           <a
             href="https://colors.promad.design"
@@ -320,20 +331,24 @@ export default function AIPlaybook() {
               <div className="absolute inset-0 bg-gradient-to-br from-[#FAFF00]/10 via-transparent to-[#FAFF00]/5" />
               <CardHeader className="relative">
                 <div className="flex items-center gap-4 mb-2">
-                  <div className="w-14 h-14 rounded-2xl bg-[#FAFF00] text-black flex items-center justify-center">
-                    <Palette size={28} weight="duotone" />
+                  <div className="w-14 h-14 shrink-0 rounded-2xl bg-[#EDE23D] flex items-center justify-center">
+                    <ShadecraftMark size={38} />
                   </div>
                   <div>
-                    <CardTitle className="text-2xl flex items-center gap-2">
-                      colors.promad.design
+                    <CardTitle className="text-2xl flex flex-wrap items-center gap-x-2 gap-y-1">
+                      Shadecraft
+                      <span className="text-sm font-normal text-muted-foreground">
+                        colors.promad.design
+                      </span>
                       <ArrowSquareOut
                         size={18}
                         className="opacity-0 group-hover:opacity-100 transition-opacity text-muted-foreground"
                       />
                     </CardTitle>
                     <CardDescription className="text-base">
-                      Visualize and export Tailwind-compatible color palettes. The hub that
-                      feeds everything downstream.
+                      Color palette studio. Shape OKLCH color scales, preview them in an
+                      interface, and export to CSS, JSON, Dart or Figma. The hub that feeds
+                      everything downstream.
                     </CardDescription>
                   </div>
                 </div>

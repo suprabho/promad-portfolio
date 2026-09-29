@@ -142,9 +142,9 @@ export const SOLUTION_UNITS = [
     problem:
       "Every new client meant rebuilding the same foundations: color tokens, typography scales, spacing systems, design tokens — all manually, all fragile.",
     solution:
-      "Built 3 Figma plugins and a standalone color tool that generate Tailwind-compatible palettes, duplicate text styles across variants, and update nested tokens in bulk across component libraries. A personal design system that's fast, portable, and only needs to work for one person — but can be compared across projects to spot what's truly different.",
+      "Built 3 Figma plugins and Shadecraft, a standalone color palette studio, that generate Tailwind-compatible palettes, duplicate text styles across variants, and update nested tokens in bulk across component libraries. A personal design system that's fast, portable, and only needs to work for one person — but can be compared across projects to spot what's truly different.",
     impact: "1 week → 4 hours",
-    tools: ["colors.promad.design", "Cross-Collection Color Token Mapper", "Variant Selector", "Text Style Duplicator"],
+    tools: ["Shadecraft", "Cross-Collection Color Token Mapper", "Variant Selector", "Text Style Duplicator"],
   },
   {
     num: "02",
