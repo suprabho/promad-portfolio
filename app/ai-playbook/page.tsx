@@ -1,8 +1,9 @@
 "use client"
 
 import { useEffect, useRef } from "react"
-import { motion, useInView, useMotionValue, useTransform, animate } from "framer-motion"
+import { motion, useInView, useMotionValue, useTransform, useReducedMotion, animate } from "framer-motion"
 import Image from "next/image"
+import Link from "next/link"
 import { useVizmayaStoryCount } from "@/hooks/use-vizmaya-story-count"
 import { withStoryCount } from "@/lib/vizmaya"
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card"
@@ -23,6 +24,10 @@ import {
   MapTrifold,
   ChartLineUp,
   Stack,
+  ArrowRight,
+  DownloadSimple,
+  CaretDown,
+  CaretRight,
 } from "@phosphor-icons/react"
 import {
   COLOR_PALETTE,
@@ -38,7 +43,11 @@ import {
   TOTAL_LINES_REMOVED,
   VISMAY_CAPABILITIES,
   LAUNCHED_PRODUCTS,
+  PRO_TIMELINE_HIGHLIGHTS,
+  PRO_TIMELINE_LAYERS,
+  PRO_TIMELINE_TAGS,
 } from "./content"
+import { LATEST_ZXP_URL, LOGO_SRC as PRO_TIMELINE_LOGO } from "../pro-timeline/content"
 
 // ─── Animation Variants ───────────────────────────────────────────
 
@@ -230,6 +239,78 @@ function ProcessStep({
       </div>
       <p className="text-base md:text-lg pt-1.5">{title}</p>
     </motion.div>
+  )
+}
+
+// ─── Pro Timeline Preview ─────────────────────────────────────────
+
+/** Looping sketch of the panel: the open group slides in time while the playhead sweeps. */
+function ProTimelinePreview() {
+  const reduceMotion = useReducedMotion()
+  const loop = { duration: 6, repeat: Infinity, ease: "easeInOut" as const }
+  const groupShift = reduceMotion ? undefined : { x: ["0%", "0%", "30%", "30%", "0%"] }
+  const playhead = reduceMotion ? undefined : { left: ["8%", "92%"] }
+
+  return (
+    <div aria-hidden className="rounded-2xl border border-pt-line bg-pt-surface p-4 font-mono text-[11px]">
+      <div className="mb-3 flex items-center justify-between text-pt-sage">
+        <span>Comp 1</span>
+        <span className="tabular-nums">0:00:04:12</span>
+      </div>
+      <div className="flex gap-3">
+        {/* Layer outline */}
+        <div className="w-[92px] shrink-0 pt-5 sm:w-[112px]">
+          {PRO_TIMELINE_LAYERS.map((layer) => {
+            const isGroup = layer.kind !== "member"
+            const Caret = layer.kind === "collapsed" ? CaretRight : CaretDown
+            return (
+              <div
+                key={layer.name}
+                className={`flex h-7 items-center gap-1 ${isGroup ? "text-pt-chalk" : "pl-4 text-pt-sage"}`}
+              >
+                {isGroup && <Caret size={10} weight="bold" className="shrink-0 text-pt-lime" />}
+                <span className="truncate">{layer.name}</span>
+              </div>
+            )
+          })}
+        </div>
+
+        {/* Track area */}
+        <div className="relative min-w-0 grow overflow-hidden">
+          <div className="mb-2 flex h-3 justify-between border-b border-pt-line">
+            {Array.from({ length: 9 }, (_, i) => (
+              <span key={i} className={`w-px bg-pt-line ${i % 2 ? "h-1.5" : "h-2.5"}`} />
+            ))}
+          </div>
+          {PRO_TIMELINE_LAYERS.map((layer) => (
+            <div key={layer.name} className="relative h-7">
+              <motion.div
+                className="absolute inset-0"
+                animate={layer.kind === "collapsed" ? undefined : groupShift}
+                transition={{ ...loop, times: [0, 0.2, 0.45, 0.75, 1] }}
+              >
+                <span
+                  className={`absolute top-1/2 h-3.5 -translate-y-1/2 rounded-[3px] ${
+                    layer.kind === "group"
+                      ? "border border-pt-lime bg-pt-lime/15"
+                      : layer.kind === "collapsed"
+                        ? "border border-pt-sage/50"
+                        : "bg-pt-sage/50"
+                  }`}
+                  style={{ left: `${layer.left}%`, width: `${layer.width}%` }}
+                />
+              </motion.div>
+            </div>
+          ))}
+          <motion.span
+            className="absolute inset-y-0 w-px bg-pt-lime/80"
+            style={{ left: "38%" }}
+            animate={playhead}
+            transition={{ ...loop, ease: "linear", repeatType: "reverse" }}
+          />
+        </div>
+      </div>
+    </div>
   )
 }
 
@@ -447,6 +528,91 @@ export default function AIPlaybook() {
         <div className="absolute inset-0 z-0 overflow-hidden">
           <iframe title="Dark Abstract Header – Luminous Green Flow for Websites" src="https://aura.promad.design/embed/dark-abstract-header-luminous-green-flow-for-websites?hideText=true" style={{width:"100%", height:"800px"}} allowFullScreen></iframe>
         </div>
+      </Section>
+
+      {/* ── Pro Timeline ──────────────────────────────────── */}
+      <Section id="pro-timeline">
+        <SectionHeading
+          icon={FilmSlate}
+          title="Pro Timeline"
+          subtitle="Motion tooling — an After Effects panel for layer groups, built with AI from brand to release."
+        />
+
+        <motion.div variants={fadeUp} className="max-w-5xl mx-auto">
+          <div className="relative overflow-hidden rounded-3xl border border-pt-line bg-pt-graphite text-pt-chalk shadow-xl transition-all duration-500 hover:-translate-y-1 hover:shadow-2xl">
+            <div
+              className="absolute inset-0 pointer-events-none opacity-60"
+              style={{
+                background:
+                  "radial-gradient(circle at 85% 10%, rgba(200,243,107,0.14) 0%, transparent 50%)",
+              }}
+            />
+            <div className="relative grid gap-10 p-6 md:p-10 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.1fr)] lg:items-center">
+              <div>
+                <div className="flex items-center gap-4 mb-5">
+                  <Image
+                    src={PRO_TIMELINE_LOGO}
+                    alt="Pro Timeline logo"
+                    width={56}
+                    height={56}
+                    className="w-14 h-14 shrink-0"
+                  />
+                  <div>
+                    <h3 className="text-2xl font-semibold tracking-tight">Pro Timeline</h3>
+                    <p className="text-sm text-pt-sage">Layer groups for After Effects</p>
+                  </div>
+                </div>
+
+                <p className="text-base text-pt-sage leading-relaxed mb-6">
+                  After Effects has no native layer folders. Pro Timeline is a dockable panel
+                  that builds groups from ordinary layers, parenting and shy switches — so the
+                  project stays standard After Effects.
+                </p>
+
+                <ol className="space-y-3 mb-6">
+                  {PRO_TIMELINE_HIGHLIGHTS.map((h, i) => (
+                    <li key={h.verb} className="flex gap-3 text-sm">
+                      <span className="shrink-0 min-w-[7.5rem] font-mono font-medium tabular-nums text-pt-lime">
+                        0{i + 1} · {h.verb}
+                      </span>
+                      <span className="text-pt-sage">{h.detail}</span>
+                    </li>
+                  ))}
+                </ol>
+
+                <div className="flex flex-wrap gap-2 mb-8">
+                  {PRO_TIMELINE_TAGS.map((tag) => (
+                    <span
+                      key={tag}
+                      className="text-xs px-3 py-1.5 rounded-full border border-pt-line bg-pt-surface text-pt-sage"
+                    >
+                      {tag}
+                    </span>
+                  ))}
+                </div>
+
+                <div className="flex flex-wrap gap-3">
+                  <Link
+                    href="/pro-timeline"
+                    className="inline-flex h-11 items-center gap-2 rounded-lg bg-pt-lime px-5 text-[15px] font-medium text-pt-graphite transition-colors hover:bg-[#d4f78a]"
+                  >
+                    Explore Pro Timeline
+                    <ArrowRight size={16} weight="bold" />
+                  </Link>
+                  <a
+                    href={LATEST_ZXP_URL}
+                    className="inline-flex h-11 items-center gap-2 rounded-lg border border-pt-line px-5 text-[15px] font-medium text-pt-chalk transition-colors hover:bg-pt-raised"
+                  >
+                    <DownloadSimple size={16} weight="bold" />
+                    Download
+                  </a>
+                </div>
+              </div>
+
+              <ProTimelinePreview />
+            </div>
+          </div>
+        </motion.div>
       </Section>
 
       {/* ── Vismay Engine ─────────────────────────────────── */}

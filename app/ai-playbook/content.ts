@@ -220,6 +220,25 @@ export const VISMAY_CAPABILITIES: EngineCapability[] = [
   },
 ]
 
+// ─── Pro Timeline ─────────────────────────────────────────────────
+
+export const PRO_TIMELINE_HIGHLIGHTS = [
+  { verb: "Group", detail: "Organize related layers into groups that select, solo, lock and relabel as one." },
+  { verb: "Collapse", detail: "Hide a group's members to keep dense compositions readable." },
+  { verb: "Move", detail: "Drag a group bar to shift every member and its keyframes in one undo step." },
+]
+
+/** Outline rows for the animated panel preview; `member` rows sit inside the open group. */
+export const PRO_TIMELINE_LAYERS = [
+  { name: "Title card", kind: "group", left: 4, width: 62 },
+  { name: "Logo", kind: "member", left: 6, width: 38 },
+  { name: "Headline", kind: "member", left: 14, width: 48 },
+  { name: "Subhead", kind: "member", left: 22, width: 40 },
+  { name: "Background", kind: "collapsed", left: 0, width: 100 },
+] as const
+
+export const PRO_TIMELINE_TAGS = ["After Effects 2024+", "macOS + Windows", "Free"]
+
 // ─── Launched Products ────────────────────────────────────────────
 
 export const LAUNCHED_PRODUCTS: LaunchedProduct[] = [
