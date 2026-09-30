@@ -74,9 +74,11 @@ export const COLOR_PALETTE = [
 
 // ─── Figma Plugins ────────────────────────────────────────────────
 
+// Icons are self-hosted: Figma's icon URLs either change or are signed S3
+// links that expire, which left the cards with broken images.
 const FIGMA_PLUGIN_LIST: LinkCardData[] = [
   {
-    iconSource: "https://www.figma.com/community/resource/ae9863ef-b283-4dba-bd61-e23e4be81c08/icon",
+    iconSource: "/images/figma-plugins/cross-collection-color-token-mapper.png",
     title: "Cross Collection Color Token Mapper",
     description:
       "Transform color groups into semantic tokens. Create new collections, duplicate with remapping, update values across libraries.",
@@ -84,7 +86,7 @@ const FIGMA_PLUGIN_LIST: LinkCardData[] = [
     users: 51,
   },
   {
-    iconSource: "https://www.figma.com/community/resource/cf6e1e18-4d82-4ccd-8fee-91783079204a/icon",
+    iconSource: "/images/figma-plugins/variant-selector.png",
     title: "Variant Selector",
     description:
       "Filter variants by properties and select in bulk. Handle complex component sets with hundreds of variants.",
@@ -92,7 +94,7 @@ const FIGMA_PLUGIN_LIST: LinkCardData[] = [
     users: 151,
   },
   {
-    iconSource: "https://www.figma.com/community/resource/722beb9b-9897-4a15-90e5-31c76364d064/icon",
+    iconSource: "/images/figma-plugins/text-style-duplicator.png",
     title: "Text Style Duplicator",
     description:
       "Duplicate entire text style hierarchies with custom mapping. Preserves folder structure across collections.",
@@ -100,12 +102,20 @@ const FIGMA_PLUGIN_LIST: LinkCardData[] = [
     users: 105,
   },
   {
-    iconSource: "https://s3-alpha-sig.figma.com/plugins/1638873804562766019/223208/c799880d-ab48-4ab6-9c89-275b720ce0d8-icon?Expires=1791763200&Key-Pair-Id=APKAQ4GOSFWCW27IBOMQ&Signature=eitbl1SMtV-Wqzfx9wUvud-41zhalCeL7cDxN~8f8bFVOONkqAFy-7Ouow4zN9QxS18MHhPysvHwTm2PWOZcVN3SB4itLCRwF0eT4Vwr9B5QsoGBhNftleT771PPXmhjOCm2sw1eigRrLBHG0e9VN~vLKMnrdjudH~-0Njy4StT~1lLO8nYKQ~ZWk6104ZwUR1lBLe6rSYvUUPQPjXuRdUNm4VK54jlJiPcMeMJci~h0MAQ8Fcmwjy8LASWF9EsnuxiJH68oPTlnFi9SgPFVNBhli2pwE6IzK0rvyZcBg8QkY-0swbQwRCsXLxMnzShb2arrVYfLk~XgEoH4U0YQMQ__",
-    title: "Custom Mapabox Maps",
+    iconSource: "/images/figma-plugins/custom-mapbox-maps.png",
+    title: "Custom Mapbox Maps",
     description:
-      "Desgin and drop renders of Mapbox maps straight into Figma.",
+      "Design and drop renders of Mapbox maps straight into Figma.",
     href: "https://www.figma.com/community/plugin/1638873804562766019/custom-mapbox-maps-by-promad",
     users: 364,
+  },
+  {
+    iconSource: "/images/figma-plugins/shadescraft.png",
+    title: "Shadescraft",
+    description:
+      "Generate OKLCH shade scales from Tailwind defaults or your own colors, then push them into Figma as variables and paint styles.",
+    href: "https://www.figma.com/community/plugin/1686668398679195683/shadescraft-by-promad",
+    users: 1,
   },
 ]
 
