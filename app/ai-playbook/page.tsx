@@ -206,7 +206,7 @@ function LinkCard({
             {users != null && (
               <div className="flex items-center gap-1.5 mt-3 text-sm text-muted-foreground">
                 <Users size={16} />
-                <span>{users} users</span>
+                <span>{users} {users === 1 ? "user" : "users"}</span>
               </div>
             )}
           </CardHeader>
