@@ -163,6 +163,16 @@ export const WORK_GROUPS: WorkGroupData[] = [
         meta: "YouTube",
       },
       {
+        kind: "link",
+        size: "wide",
+        title: "Product explainer",
+        caption: "Custom 2D motion explainer",
+        // YouTube's own thumbnail until a poster is uploaded to the bucket
+        poster: "https://i.ytimg.com/vi/vQHv7fbGhyU/hqdefault.jpg",
+        href: "https://www.youtube.com/watch?v=vQHv7fbGhyU",
+        meta: "YouTube",
+      },
+      {
         kind: "video",
         size: "tall",
         title: "Dhyana — 21-minute session",
