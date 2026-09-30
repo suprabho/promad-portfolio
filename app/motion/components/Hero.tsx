@@ -38,25 +38,11 @@ export function Hero() {
           forward.
         </h1>
 
-        <div className="mt-7 grid items-end gap-8 min-[761px]:grid-cols-[1.2fr_0.8fr]">
-          <p className="max-w-[44ch] text-[clamp(17px,1.6vw,21px)] leading-[1.45]">
-            Seven years of motion work from Promad Design Studio: product teasers and explainers, course
-            and training video, UI micro-interactions, brand and social motion, and mascot rigs you can
-            play with right here on the page.
-          </p>
-          <dl className="grid grid-cols-[auto_1fr] gap-x-[18px] gap-y-1.5 border-t-[1.5px] border-motion-yellow-foreground pt-3.5 font-motion-mono text-[14px] tabular-nums">
-            <dt className="font-bold">Studio</dt>
-            <dd>Promad Design Studio, Gurgaon, India</dd>
-            <dt className="font-bold">Clients</dt>
-            <dd>Microsoft, 1mg, ClearTax, Merkle Science, TMPal, Dhyana</dd>
-            <dt className="font-bold">Contact</dt>
-            <dd>
-              <a href="mailto:hello@promad.design" className="hover:underline">
-                hello@promad.design
-              </a>
-            </dd>
-          </dl>
-        </div>
+        <p className="mt-7 max-w-[44ch] text-[clamp(17px,1.6vw,21px)] leading-[1.45]">
+          Seven years of motion work from Promad Design Studio: product teasers and explainers, course
+          and training video, UI micro-interactions, brand and social motion, and mascot rigs you can
+          play with right here on the page.
+        </p>
       </Wrap>
     </header>
   )
