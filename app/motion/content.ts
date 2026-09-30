@@ -102,6 +102,16 @@ export const WORK_GROUPS: WorkGroupData[] = [
       {
         kind: "link",
         size: "wide",
+        title: "Product explainer",
+        caption: "Custom 2D motion explainer",
+        // YouTube's own thumbnail until a poster is uploaded to the bucket
+        poster: "https://i.ytimg.com/vi/vQHv7fbGhyU/hqdefault.jpg",
+        href: "https://www.youtube.com/watch?v=vQHv7fbGhyU",
+        meta: "YouTube",
+      },
+      {
+        kind: "link",
+        size: "wide",
         title: "Merkle Science — Compass",
         caption: "Product film for a blockchain risk & compliance platform",
         poster: asset("yt_compass.jpg"),
@@ -160,16 +170,6 @@ export const WORK_GROUPS: WorkGroupData[] = [
         caption: "Startup product explainer",
         poster: asset("yt_cubical2.jpg"),
         href: "https://www.youtube.com/watch?v=DMRWIZrbWRI",
-        meta: "YouTube",
-      },
-      {
-        kind: "link",
-        size: "wide",
-        title: "Product explainer",
-        caption: "Custom 2D motion explainer",
-        // YouTube's own thumbnail until a poster is uploaded to the bucket
-        poster: "https://i.ytimg.com/vi/vQHv7fbGhyU/hqdefault.jpg",
-        href: "https://www.youtube.com/watch?v=vQHv7fbGhyU",
         meta: "YouTube",
       },
       {
