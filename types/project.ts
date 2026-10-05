@@ -39,6 +39,12 @@ export interface SimpleDetails {
   }
 }
 
+export interface GalleryImage {
+  image: string
+  caption?: string
+  alt?: string
+}
+
 export interface Project {
   name: string
   logo?: {
@@ -48,6 +54,7 @@ export interface Project {
   description: string
   thumbnail: string
   tags: string[]
+  gallery?: GalleryImage[]
   details?: string | CaseStudyDetails | SimpleDetails
   url?: string
   urlName?: string

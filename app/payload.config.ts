@@ -122,6 +122,19 @@ const buildAppConfig = async () => buildConfig({
         { name: 'url', type: 'text' },
         { name: 'urlName', type: 'text' },
         {
+          name: 'gallery',
+          type: 'array',
+          admin: {
+            description:
+              'Images shown on the project page between the description and the case study. Paths are relative to /public (e.g. /images/projects/kidzovo/branding/awards.png).',
+          },
+          fields: [
+            { name: 'image', type: 'text', required: true },
+            { name: 'caption', type: 'textarea' },
+            { name: 'alt', type: 'text' },
+          ],
+        },
+        {
           name: 'details',
           type: 'blocks',
           blocks: [

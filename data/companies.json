@@ -204,14 +204,133 @@
                 },
                 {
                     "name": "Branding, social media and growth",
-                    "description": "Developed engaging interactive animations for enhanced user engagement",
-                    "thumbnail": "/images/projects/kidzovo/project-image-4.jpg",
+                    "description": "Built the Kidzovo brand system and the creative behind its growth: App Store and Google Play listings, seasonal campaigns, social posts and paid ad sets across web, social and rewarded-ad networks",
+                    "thumbnail": "/images/projects/kidzovo/branding/campaign-hero.jpg",
                     "tags": [
-                        "Animation",
-                        "Interactive",
-                        "Rive"
+                        "Branding",
+                        "Art Direction",
+                        "App Store Creative",
+                        "Social Media",
+                        "Paid Ads",
+                        "Figma"
                     ],
-                    "details": "Utilized Rive for scalable and performant animations.",
+                    "gallery": [
+                        {
+                            "image": "/images/projects/kidzovo/branding/store-kids-tv-set.jpg",
+                            "caption": "App Store and Google Play listing for the 'Kids TV + AI Buddy' positioning. Each screen answers a parent's objection: mindless video watching, repetitive content, no offline mode, no visibility into what their child is doing.",
+                            "alt": "Eight Kidzovo store screenshots: Kids TV + AI Buddy, AI buddy learning games, endless content, connect with your child, offline mode, 1000+ coloring activities, 300+ puzzles and safe and trustworthy"
+                        },
+                        {
+                            "image": "/images/projects/kidzovo/branding/store-launch-set.jpg",
+                            "caption": "The original store listing: nine screens covering interactive learning, maths, science, language and colouring in one app, personalised learning, ad-free play, progress tracking, puzzles and offline mode.",
+                            "alt": "Nine Kidzovo launch store screenshots on bright teal, yellow, pink, blue and purple backgrounds"
+                        },
+                        {
+                            "image": "/images/projects/kidzovo/branding/store-winter-set.jpg",
+                            "caption": "Winter edition of the listing. Ovo gets a beanie and a sled, and every headline is rewritten around limited-time winter activities.",
+                            "alt": "Eight winter-themed Kidzovo store screenshots with Ovo the owl in a snowy setting"
+                        },
+                        {
+                            "image": "/images/projects/kidzovo/branding/store-holiday-set.jpg",
+                            "caption": "Holiday edition for the Christmas window, with Santa hats, a reindeer sleigh and festive puzzles, built from the same frames as the default set.",
+                            "alt": "Eight Christmas-themed Kidzovo store screenshots with Ovo the owl dressed as Santa"
+                        },
+                        {
+                            "image": "/images/projects/kidzovo/branding/web-banners.jpg",
+                            "caption": "Web and display banners testing three messages: 'Making screens good for kids', 'An Interactive YouTube for Kids' and 'Best companion for your child's screentime, after you'.",
+                            "alt": "Three wide Kidzovo web banners with Download Now buttons"
+                        },
+                        {
+                            "image": "/images/projects/kidzovo/branding/social-ads.jpg",
+                            "caption": "Square social and display ads that speak to parents about healthy screen time and the awards, plus a Color with Ovo creative for the colouring app.",
+                            "alt": "Four square Kidzovo ads featuring a child holding a Kidzovo tablet, Ovo the owl and a colouring screen"
+                        },
+                        {
+                            "image": "/images/projects/kidzovo/branding/carousel-ads.jpg",
+                            "caption": "Five-card paid-social carousel: playmate, engaging content, creativity, parent moments and trust, produced in 960x1200, 1200x628 and 1200x1200.",
+                            "alt": "Five square carousel ad cards for Kidzovo"
+                        },
+                        {
+                            "image": "/images/projects/kidzovo/branding/unity-ads.jpg",
+                            "caption": "Unity rewarded-ad set in portrait, square and landscape, all built from one mascot composition so the campaign feels like one brand across networks.",
+                            "alt": "Portrait, square and landscape Kidzovo ads on a purple background with Ovo the owl and a Download Now button"
+                        },
+                        {
+                            "image": "/images/projects/kidzovo/branding/awards.png",
+                            "caption": "The trust strip that appears on the first store screenshot, every end card and the website: Mom's Choice Awards, Parents' Picks Awards 2023, kidSAFE COPPA Certified, Educational App Store Certified and the 2023 National Parenting Product Awards winner.",
+                            "alt": "Five award and certification badges for Kidzovo"
+                        },
+                        {
+                            "image": "/images/projects/kidzovo/branding/awards-webby-edtech.jpg",
+                            "caption": "Recognition that followed: an EdTech Cool Tool Awards win for 'Kids TV with AI Buddy' and a 2025 Webby Award nomination, both folded back into the creative.",
+                            "alt": "Webby Award Nominee 2025 badge and EdTech Cool Tool Awards winner trophy for Kidzovo"
+                        }
+                    ],
+                    "details": {
+                        "title": "Case Study: Building the Kidzovo brand across stores, socials and paid growth",
+                        "projectOverview": "Kidzovo needed more than an app icon. As the product grew from an interactive learning app into 'Kids TV with an AI Buddy', the brand had to show up consistently in the App Store and Google Play, on social media, in paid ads across display, social and rewarded-ad networks, and on the website. I owned the visual identity and produced the creative system behind all of it: store listings for iPhone, iPad and Android, seasonal campaigns, web banners, ad sets in every placement size, and the trust badges parents look for before they download.",
+                        "theChallenge": {
+                            "heading": "The Challenge: One Brand, Dozens of Placements, Two Audiences",
+                            "description": "Kids' apps are bought by parents and used by children, so every asset had to charm a five-year-old and reassure the adult holding the phone. At the same time the brand had to flex across formats that have nothing in common: a 1284x2778 App Store screenshot, a 1200x628 feature graphic, a 300px-tall web banner and a Unity end card. The creative system had to be:",
+                            "interfaceQualities": [
+                                "Instantly recognisable: Ovo the owl, chunky rounded display type and a small palette of teal, pink, amber and violet had to carry the brand on their own, even at thumbnail size.",
+                                "Parent-first in message: headlines like 'Say NO to mindless video watching' and 'Ad-free always' speak to what parents worry about, while the imagery stays joyful for kids.",
+                                "Production-friendly: dozens of sizes and seasonal variants had to be produced quickly by a tiny team without redesigning from scratch each time.",
+                                "Trust-building: certifications and awards (kidSAFE COPPA, Educational App Store, Mom's Choice, Parents' Picks, NAPPA) needed a consistent, prominent home in every layout."
+                            ]
+                        },
+                        "ourApproach": {
+                            "heading": "Our Approach: A Component-Based Creative System in Figma",
+                            "description": "I built the brand as a Figma library of reusable parts (mascot poses, device mockups, badge strips, headline styles and backgrounds) and assembled every store, social and ad asset from those parts. The same story could then be told at every size and refreshed each season in days rather than weeks.",
+                            "phases": [
+                                {
+                                    "name": "Phase 1: Brand System & Store Listings",
+                                    "points": [
+                                        "Defined the visual language: Ovo the owl as the hero character in dozens of poses and outfits, bold rounded display type, and saturated gradient backgrounds (teal, pink, amber, violet) that read instantly in a store carousel.",
+                                        "Designed the complete App Store and Google Play listing in all three device sizes (iPhone 1284x2778, iPad 2048x2732 and Android 1080x1920): interactive learning, maths-science-language-colouring in one app, personalised learning powered by AI, all-round development, fun and engaging, ad-free always, progress tracking, puzzles and offline mode.",
+                                        "Repositioned the listing when the product became 'Kids TV + AI Buddy': new screens for 'Say NO to mindless video watching', 'Say NO to limited, repetitive content apps', 1000+ colouring activities, 300+ puzzles and worksheets, 'Connect with your child' and 'Safe and trustworthy'.",
+                                        "Built a reusable awards strip (Mom's Choice Awards, Parents' Picks 2023, kidSAFE COPPA Certified, Educational App Store Certified, 2023 National Parenting Product Awards winner) that appears on the first screenshot, every end card and the website."
+                                    ]
+                                },
+                                {
+                                    "name": "Phase 2: Seasonal Campaigns & Social Media",
+                                    "points": [
+                                        "Created Winter and Holiday editions of the entire store listing, re-dressing Ovo (snowman, sled, Santa hat, reindeer sleigh) and rewriting every headline ('This Winter, Learning is Fun!', 'Solve Festive Puzzles & Christmas Games!', 'Limited-Time Holiday Activities') to drive seasonal downloads.",
+                                        "Designed social posts and square ads that talk directly to parents: 'Hey Parents, We've Got Kidzovo, the Perfect Learning App for Kids' Screen Time!' and 'The Award-Winning Learning App for 2-8 Year olds'.",
+                                        "Produced a five-card carousel ('Your kids' playmate, for their digital journey', 'Engaging & interactive content', 'Foster creativity & self-expression', 'See and share your proudest moments as a parent', 'Learning is a hoot with Ovo the owl') in 960x1200, 1200x628 and 1200x1200 for every placement.",
+                                        "Extended the system to product launches such as Color with Ovo, with its own ad creative and A4 print collateral with QR codes."
+                                    ]
+                                },
+                                {
+                                    "name": "Phase 3: Paid Growth Creative",
+                                    "points": [
+                                        "Designed the full Unity ad set (portrait, square and landscape in standard and tall sizes) and Iron Source end cards for phone and tablet in portrait and landscape, all from a single mascot composition so the campaign feels like one brand across networks.",
+                                        "Built web and display banners to test the core message: 'An Interactive YouTube for Kids', 'Making screens good for kids' and 'Best companion for your child's screentime, after you', the line that became the brand's positioning on kidzovo.com.",
+                                        "Kept every asset in one shared Figma library so a new size, season or message could be produced by duplicating a frame and swapping components."
+                                    ]
+                                }
+                            ]
+                        },
+                        "keyOutcomes": {
+                            "heading": "Key Outcomes",
+                            "points": [
+                                "One brand everywhere: stores, socials, paid ads, website and print share the same mascot, type, colour and badge system, so parents recognise Kidzovo wherever they meet it.",
+                                "A listing that sells the new product: the store screenshots lead with the 'Kids TV + AI Buddy' positioning and answer parent objections (mindless video, repetitive content, ads, safety) before they are raised.",
+                                "Seasonal refresh in days: Winter and Holiday editions of the listing and ads were produced from the existing system rather than designed from scratch.",
+                                "Recognition the brand grew into: the award and certification set expanded from kidSAFE COPPA to Mom's Choice, Parents' Picks, NAPPA, the EdTech Cool Tool Awards and a 2025 Webby nomination, each folded back into the creative."
+                            ]
+                        },
+                        "lessonsLearned": {
+                            "heading": "Lessons Learned",
+                            "points": [
+                                "Design for the parent, delight the child: in a kids' app the buyer and the user are different people, and every asset has to work for both.",
+                                "Systems beat one-offs: a component library of mascot poses, mockups and badge strips made dozens of ad sizes and seasonal variants sustainable for a tiny team.",
+                                "Say the objection out loud: naming what parents actually worry about ('mindless video watching', 'repetitive content', ads) makes sharper creative than listing features.",
+                                "Trust marks are creative, not fine print: certifications and awards earned a consistent, prominent slot in every layout because they answer a parent's first question: is this safe?"
+                            ]
+                        },
+                        "conclusion": "Branding Kidzovo meant building a system, not a logo: a mascot, a voice and a kit of parts that could show up in a store screenshot, a six-second rewarded ad or a holiday campaign and still feel like the same friendly owl. That system is what let a small team keep the brand fresh across every channel while the product kept evolving."
+                    },
                     "url": "https://linktr.ee/kidzovo",
                     "urlName": "See Socials"
                 },
