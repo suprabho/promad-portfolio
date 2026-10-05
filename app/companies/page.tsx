@@ -1,4 +1,4 @@
-import { getCompaniesWithProjects } from '@/lib/payload'
+import { getCompanies } from '@/lib/portfolio'
 import Link from 'next/link'
 import Image from 'next/image'
 import Header from '@/components/header'
@@ -6,15 +6,13 @@ import { Footer } from '@/components/footer'
 import { Card } from '@/components/ui/card'
 import type { Metadata } from 'next'
 
-export const dynamic = 'force-dynamic'
-
 export const metadata: Metadata = {
   title: 'Companies | Promad Design',
   description: 'Explore all the companies we have worked with and our contributions to their success.',
 }
 
-export default async function CompaniesPage() {
-  const companies = await getCompaniesWithProjects()
+export default function CompaniesPage() {
+  const companies = getCompanies()
 
   return (
     <div className="min-h-screen bg-background">
@@ -31,8 +29,8 @@ export default async function CompaniesPage() {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {companies.map((company) => (
               <Link
-                key={company.id}
-                href={`/companies/${company.slug || company.id}`}
+                key={company.slug}
+                href={`/companies/${company.slug}`}
                 className="group"
               >
                 <Card className="overflow-hidden h-full hover:shadow-xl transition-all duration-300 hover:scale-[1.02]">

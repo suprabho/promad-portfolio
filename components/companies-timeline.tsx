@@ -12,10 +12,10 @@ import {
   DialogTrigger,
 } from "@/components/ui/dialog"
 import { Expand, Building2, Calendar } from "lucide-react"
-import type { CompanyWithProjects } from "@/lib/payload"
+import type { Company } from "@/lib/portfolio"
 
 interface CompaniesTimelineProps {
-  companies: CompanyWithProjects[]
+  companies: Company[]
 }
 
 export function CompaniesTimeline({ companies }: CompaniesTimelineProps) {
@@ -35,13 +35,8 @@ export function CompaniesTimeline({ companies }: CompaniesTimelineProps) {
 
           <div className="space-y-12">
             {companies.map((company) => {
-              // Transform tags for display
-              const getProjectTags = (project: CompanyWithProjects['projects'][0]) => {
-                return project.tags?.map(t => t.tag).filter(Boolean) || []
-              }
-
               return (
-                <div key={company.id} className="relative flex items-start gap-8">
+                <div key={company.slug} className="relative flex items-start gap-8">
                   {/* Timeline dot */}
                   <div className="relative z-10 flex-shrink-0">
                     <div className="w-16 h-16 bg-primary rounded-full flex items-center justify-center shadow-lg">
@@ -74,11 +69,11 @@ export function CompaniesTimeline({ companies }: CompaniesTimelineProps) {
                             </DialogHeader>
                             <div className="grid gap-6 mt-6">
                               {company.projects.map((project) => (
-                                <div key={project.id} className="space-y-3">
+                                <div key={project.slug} className="space-y-3">
                                   <h4 className="text-lg font-semibold text-primary">{project.name}</h4>
                                   <p className="text-muted-foreground">{project.description}</p>
                                   <div className="flex flex-wrap gap-2">
-                                    {getProjectTags(project).map((tag, index) => (
+                                    {project.tags.map((tag, index) => (
                                       <Badge 
                                         key={index}
                                         variant="secondary" 
@@ -99,7 +94,7 @@ export function CompaniesTimeline({ companies }: CompaniesTimelineProps) {
                       <p className="text-muted-foreground mb-4">{company.description}</p>
                       <div className="flex flex-wrap gap-2">
                         {company.projects.slice(0, 3).map((project) => (
-                          <Badge key={project.id} variant="outline">
+                          <Badge key={project.slug} variant="outline">
                             {project.name}
                           </Badge>
                         ))}
