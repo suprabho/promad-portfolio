@@ -132,6 +132,41 @@ export default async function ProjectPage({
           </div>
         )}
 
+        {/* Gallery Section */}
+        {project.gallery && project.gallery.length > 0 && (
+          <div className="container mx-auto px-4 py-8">
+            <div className="max-w-6xl mx-auto space-y-10">
+              {project.gallery.map((item, index) => (
+                item.image && (
+                  <figure key={index} className="space-y-3">
+                    <a
+                      href={item.image}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="block overflow-hidden rounded-xl border bg-muted/30"
+                      title="Open full-size image"
+                    >
+                      <Image
+                        src={item.image}
+                        alt={item.alt || item.caption || `${project.name} image ${index + 1}`}
+                        width={1600}
+                        height={900}
+                        className="h-auto w-full"
+                        sizes="(min-width: 1280px) 1152px, 100vw"
+                      />
+                    </a>
+                    {item.caption && (
+                      <figcaption className="text-sm text-muted-foreground leading-relaxed">
+                        {item.caption}
+                      </figcaption>
+                    )}
+                  </figure>
+                )
+              ))}
+            </div>
+          </div>
+        )}
+
         {/* Case Study Section */}
         {caseStudyBlock && (
           <div className="container mx-auto px-4 py-8">

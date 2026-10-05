@@ -43,6 +43,7 @@ interface ProjectData {
   description: string
   thumbnail: string
   tags: string[]
+  gallery?: { image: string; caption?: string; alt?: string }[]
   details?: string | ProjectDetails
   url?: string
   urlName?: string
@@ -191,6 +192,7 @@ async function seed() {
           tags,
           url: project.url || '',
           urlName: project.urlName || '',
+          gallery: project.gallery || [],
           details: detailsBlocks,
         },
       })

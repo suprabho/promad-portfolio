@@ -18,6 +18,12 @@ export interface CompanyFromCMS {
   } | null
 }
 
+export interface GalleryImageFromCMS {
+  image: string | null
+  caption: string | null
+  alt: string | null
+}
+
 export interface ProjectFromCMS {
   id: string
   name: string
@@ -28,6 +34,7 @@ export interface ProjectFromCMS {
   tags: { tag: string | null }[] | null
   url: string | null
   urlName: string | null
+  gallery: GalleryImageFromCMS[] | null
   details: any[] | null
 }
 
@@ -89,6 +96,7 @@ export async function getCompaniesWithProjects(): Promise<CompanyWithProjects[]>
         tags: project.tags ?? null,
         url: project.url ?? null,
         urlName: project.urlName ?? null,
+        gallery: project.gallery ?? null,
         details: project.details ?? null,
       })),
     }
@@ -145,6 +153,7 @@ export async function getProjects(): Promise<ProjectFromCMS[]> {
     tags: project.tags ?? null,
     url: project.url ?? null,
     urlName: project.urlName ?? null,
+    gallery: project.gallery ?? null,
     details: project.details ?? null,
   }))
 }
@@ -200,6 +209,7 @@ export async function getCompanyBySlug(slug: string): Promise<CompanyWithProject
       tags: project.tags ?? null,
       url: project.url ?? null,
       urlName: project.urlName ?? null,
+      gallery: project.gallery ?? null,
       details: project.details ?? null,
     })),
   }
@@ -237,6 +247,7 @@ export async function getProjectBySlug(slug: string): Promise<ProjectFromCMS | n
     tags: project.tags ?? null,
     url: project.url ?? null,
     urlName: project.urlName ?? null,
+    gallery: project.gallery ?? null,
     details: project.details ?? null,
   }
 }
