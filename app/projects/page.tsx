@@ -1,4 +1,4 @@
-import { getProjects, type CompanyFromCMS } from '@/lib/payload'
+import { getProjects } from '@/lib/portfolio'
 import Link from 'next/link'
 import Image from 'next/image'
 import Header from '@/components/header'
@@ -7,15 +7,13 @@ import { Card } from '@/components/ui/card'
 import { Badge } from '@/components/ui/badge'
 import type { Metadata } from 'next'
 
-export const dynamic = 'force-dynamic'
-
 export const metadata: Metadata = {
   title: 'Projects | Promad Design',
   description: 'Browse all our projects and case studies across various companies and industries.',
 }
 
-export default async function ProjectsPage() {
-  const projects = await getProjects()
+export default function ProjectsPage() {
+  const projects = getProjects()
 
   return (
     <div className="min-h-screen bg-background">
@@ -31,14 +29,12 @@ export default async function ProjectsPage() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {projects.map((project) => {
-              const companyData = typeof project.company === 'object' 
-                ? project.company as CompanyFromCMS 
-                : null
+              const companyData = project.company
 
               return (
                 <Link
-                  key={project.id}
-                  href={`/projects/${project.slug || project.id}`}
+                  key={project.slug}
+                  href={`/projects/${project.slug}`}
                   className="group"
                 >
                   <Card className="overflow-hidden h-full hover:shadow-xl transition-all duration-300 hover:scale-[1.02]">
@@ -69,12 +65,10 @@ export default async function ProjectsPage() {
                       )}
                       {project.tags && project.tags.length > 0 && (
                         <div className="flex flex-wrap gap-2 mb-4">
-                          {project.tags.slice(0, 3).map((tagObj, tagIndex) => (
-                            tagObj.tag && (
-                              <Badge key={tagIndex} variant="secondary" className="text-xs">
-                                {tagObj.tag}
-                              </Badge>
-                            )
+                          {project.tags.slice(0, 3).map((tag, tagIndex) => (
+                            <Badge key={tagIndex} variant="secondary" className="text-xs">
+                              {tag}
+                            </Badge>
                           ))}
                           {project.tags.length > 3 && (
                             <Badge variant="outline" className="text-xs">

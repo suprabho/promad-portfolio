@@ -1,4 +1,4 @@
-import { getProjectBySlug, type CompanyFromCMS } from '@/lib/payload'
+import { getProjectBySlug, getProjects } from '@/lib/portfolio'
 import { notFound } from 'next/navigation'
 import Image from 'next/image'
 import Link from 'next/link'
@@ -9,8 +9,13 @@ import { Button } from '@/components/ui/button'
 import { Card, CardContent } from '@/components/ui/card'
 import { ArrowLeft, ArrowSquareOut } from '@phosphor-icons/react/dist/ssr'
 import type { Metadata } from 'next'
+import type { CaseStudyDetails, SimpleDetails } from '@/types/project'
 
-export const dynamic = 'force-dynamic'
+export const dynamicParams = false
+
+export function generateStaticParams() {
+  return getProjects().map((project) => ({ slug: project.slug }))
+}
 
 // Generate metadata for each project page
 export async function generateMetadata({
@@ -19,7 +24,7 @@ export async function generateMetadata({
   params: Promise<{ slug: string }>
 }): Promise<Metadata> {
   const { slug } = await params
-  const project = await getProjectBySlug(slug)
+  const project = getProjectBySlug(slug)
 
   if (!project) {
     return {
@@ -39,23 +44,18 @@ export default async function ProjectPage({
   params: Promise<{ slug: string }>
 }) {
   const { slug } = await params
-  const project = await getProjectBySlug(slug)
+  const project = getProjectBySlug(slug)
 
   if (!project) {
     notFound()
   }
 
-  const companyData = typeof project.company === 'object'
-    ? project.company as CompanyFromCMS
-    : null
+  const companyData = project.company
 
-  // Get case study data if available
-  const caseStudyBlock = project.details?.find(
-    (block: any) => block.blockType === 'caseStudy'
-  )
-  const simpleDetailsBlock = project.details?.find(
-    (block: any) => block.blockType === 'simpleDetails'
-  )
+  // A case study has a title; simpler write-ups have only a heading.
+  const details = typeof project.details === 'object' ? project.details : undefined
+  const caseStudyBlock = details && 'title' in details ? (details as CaseStudyDetails) : undefined
+  const simpleDetailsBlock = details && !caseStudyBlock ? (details as SimpleDetails) : undefined
 
   return (
     <div className="min-h-screen bg-background">
@@ -86,7 +86,7 @@ export default async function ProjectPage({
               </h1>
               {companyData && (
                 <Link
-                  href={`/companies/${companyData.slug || companyData.id}`}
+                  href={`/companies/${companyData.slug}`}
                   className="inline-flex items-center gap-2 font-mono text-lg text-primary hover:underline"
                 >
                   @ {companyData.name}
@@ -100,12 +100,10 @@ export default async function ProjectPage({
         <div className="container mx-auto px-4 py-8 border-b">
           <div className="flex flex-wrap items-center justify-between gap-4">
             <div className="flex flex-wrap gap-2">
-              {project.tags?.map((tagObj, index) => (
-                tagObj.tag && (
-                  <Badge key={index} variant="secondary">
-                    {tagObj.tag}
-                  </Badge>
-                )
+              {project.tags?.map((tag, index) => (
+                <Badge key={index} variant="secondary">
+                  {tag}
+                </Badge>
               ))}
             </div>
             {project.url && (
@@ -190,14 +188,14 @@ export default async function ProjectPage({
                   <p className="text-muted-foreground mb-6">
                     {caseStudyBlock.theChallenge.description}
                   </p>
-                  {(caseStudyBlock.theChallenge.interfaceQualities?.length > 0 || 
-                    caseStudyBlock.theChallenge.animationGoals?.length > 0) && (
+                  {(!!caseStudyBlock.theChallenge.interfaceQualities?.length ||
+                    !!caseStudyBlock.theChallenge.animationGoals?.length) && (
                     <ul className="list-disc pl-6 space-y-2 text-muted-foreground">
-                      {caseStudyBlock.theChallenge.interfaceQualities?.map((q: any, i: number) => (
-                        <li key={`iq-${i}`}>{q.item}</li>
+                      {caseStudyBlock.theChallenge.interfaceQualities?.map((q, i) => (
+                        <li key={`iq-${i}`}>{q}</li>
                       ))}
-                      {caseStudyBlock.theChallenge.animationGoals?.map((g: any, i: number) => (
-                        <li key={`ag-${i}`}>{g.item}</li>
+                      {caseStudyBlock.theChallenge.animationGoals?.map((g, i) => (
+                        <li key={`ag-${i}`}>{g}</li>
                       ))}
                     </ul>
                   )}
@@ -215,13 +213,13 @@ export default async function ProjectPage({
                   </p>
                   {caseStudyBlock.ourApproach.phases?.length > 0 && (
                     <div className="grid gap-4">
-                      {caseStudyBlock.ourApproach.phases.map((phase: any, index: number) => (
+                      {caseStudyBlock.ourApproach.phases.map((phase, index) => (
                         <Card key={index}>
                           <CardContent className="pt-6">
                             <h4 className="font-semibold text-lg mb-3">{phase.name}</h4>
                             <ul className="list-disc pl-6 space-y-2 text-muted-foreground">
-                              {phase.points?.map((point: any, pointIndex: number) => (
-                                <li key={pointIndex}>{point.point}</li>
+                              {phase.points?.map((point, pointIndex) => (
+                                <li key={pointIndex}>{point}</li>
                               ))}
                             </ul>
                           </CardContent>
@@ -239,8 +237,8 @@ export default async function ProjectPage({
                     {caseStudyBlock.keyOutcomes.heading || 'Key Outcomes'}
                   </h2>
                   <ul className="list-disc pl-6 space-y-2 text-muted-foreground">
-                    {caseStudyBlock.keyOutcomes.points?.map((point: any, index: number) => (
-                      <li key={index}>{point.point}</li>
+                    {caseStudyBlock.keyOutcomes.points?.map((point, index) => (
+                      <li key={index}>{point}</li>
                     ))}
                   </ul>
                 </section>
@@ -253,8 +251,8 @@ export default async function ProjectPage({
                     {caseStudyBlock.lessonsLearned.heading || 'Lessons Learned'}
                   </h2>
                   <ul className="list-disc pl-6 space-y-2 text-muted-foreground">
-                    {caseStudyBlock.lessonsLearned.points?.map((point: any, index: number) => (
-                      <li key={index}>{point.point}</li>
+                    {caseStudyBlock.lessonsLearned.points?.map((point, index) => (
+                      <li key={index}>{point}</li>
                     ))}
                   </ul>
                 </section>
@@ -289,12 +287,12 @@ export default async function ProjectPage({
               )}
               {simpleDetailsBlock.phases && simpleDetailsBlock.phases.length > 0 && (
                 <div className="space-y-6">
-                  {simpleDetailsBlock.phases.map((phase: any, index: number) => (
+                  {simpleDetailsBlock.phases.map((phase, index) => (
                     <div key={index} className="border-l-2 border-primary pl-6">
                       <h3 className="font-semibold text-lg mb-2">{phase.name}</h3>
                       <ul className="list-disc list-inside space-y-1 text-muted-foreground">
-                        {phase.points?.map((point: any, pointIndex: number) => (
-                          <li key={pointIndex}>{point.point}</li>
+                        {phase.points?.map((point, pointIndex) => (
+                          <li key={pointIndex}>{point}</li>
                         ))}
                       </ul>
                     </div>
@@ -307,8 +305,8 @@ export default async function ProjectPage({
                     {simpleDetailsBlock.keyOutcomes.heading || 'Key Outcomes'}
                   </h3>
                   <ul className="list-disc list-inside space-y-2 text-muted-foreground">
-                    {simpleDetailsBlock.keyOutcomes.points?.map((point: any, index: number) => (
-                      <li key={index}>{point.point}</li>
+                    {simpleDetailsBlock.keyOutcomes.points?.map((point, index) => (
+                      <li key={index}>{point}</li>
                     ))}
                   </ul>
                 </div>
@@ -327,7 +325,7 @@ export default async function ProjectPage({
               </Button>
             </Link>
             {companyData && (
-              <Link href={`/companies/${companyData.slug || companyData.id}`}>
+              <Link href={`/companies/${companyData.slug}`}>
                 <Button variant="outline">
                   More from {companyData.name}
                 </Button>

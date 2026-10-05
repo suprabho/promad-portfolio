@@ -1,4 +1,4 @@
-import { getCompanyBySlug } from '@/lib/payload'
+import { getCompanies, getCompanyBySlug } from '@/lib/portfolio'
 import { notFound } from 'next/navigation'
 import Image from 'next/image'
 import Link from 'next/link'
@@ -10,7 +10,11 @@ import { Button } from '@/components/ui/button'
 import { ArrowLeft } from '@phosphor-icons/react/dist/ssr'
 import type { Metadata } from 'next'
 
-export const dynamic = 'force-dynamic'
+export const dynamicParams = false
+
+export function generateStaticParams() {
+  return getCompanies().map((company) => ({ slug: company.slug }))
+}
 
 // Generate metadata for each company page
 export async function generateMetadata({
@@ -19,7 +23,7 @@ export async function generateMetadata({
   params: Promise<{ slug: string }>
 }): Promise<Metadata> {
   const { slug } = await params
-  const company = await getCompanyBySlug(slug)
+  const company = getCompanyBySlug(slug)
 
   if (!company) {
     return {
@@ -39,7 +43,7 @@ export default async function CompanyPage({
   params: Promise<{ slug: string }>
 }) {
   const { slug } = await params
-  const company = await getCompanyBySlug(slug)
+  const company = getCompanyBySlug(slug)
 
   if (!company) {
     notFound()
@@ -113,10 +117,10 @@ export default async function CompanyPage({
             <p className="text-muted-foreground">No projects available yet.</p>
           ) : (
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-              {company.projects.map((project, index) => (
+              {company.projects.map((project) => (
                 <Link
-                  key={project.id}
-                  href={`/projects/${project.slug || project.id}`}
+                  key={project.slug}
+                  href={`/projects/${project.slug}`}
                   className="group"
                 >
                   <Card className="overflow-hidden h-full hover:shadow-xl transition-all duration-300">
@@ -142,12 +146,10 @@ export default async function CompanyPage({
                         )}
                         {project.tags && project.tags.length > 0 && (
                           <div className="flex flex-wrap gap-2 mb-4">
-                            {project.tags.slice(0, 4).map((tagObj, tagIndex) => (
-                              tagObj.tag && (
-                                <Badge key={tagIndex} variant="secondary">
-                                  {tagObj.tag}
-                                </Badge>
-                              )
+                            {project.tags.slice(0, 4).map((tag, tagIndex) => (
+                              <Badge key={tagIndex} variant="secondary">
+                                {tag}
+                              </Badge>
                             ))}
                             {project.tags.length > 4 && (
                               <Badge variant="outline">+{project.tags.length - 4}</Badge>

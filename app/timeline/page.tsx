@@ -1,11 +1,8 @@
 import { CompaniesTimeline } from "@/components/companies-timeline"
-import { getCompaniesWithProjects } from "@/lib/payload"
+import { getCompanies } from "@/lib/portfolio"
 
-export const dynamic = 'force-dynamic'
-
-export default async function TimelinePage() {
-  // Fetch data from Payload CMS
-  const companies = await getCompaniesWithProjects()
+export default function TimelinePage() {
+  const companies = getCompanies()
 
   return (
     <div className="min-h-screen bg-background">

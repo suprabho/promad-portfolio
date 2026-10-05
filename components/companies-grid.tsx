@@ -16,75 +16,16 @@ import {
 import { ProjectDisplay } from "@/components/project-display"
 import { XIcon } from "@phosphor-icons/react/dist/ssr"
 import { sendAnalyticsEvent } from "@/lib/analytics"
-import type { CompanyWithProjects } from "@/lib/payload"
-import type { CaseStudyDetails, SimpleDetails } from "@/types/project"
-
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-function transformDetails(details: any[] | null): string | CaseStudyDetails | SimpleDetails | undefined {
-  if (!details || details.length === 0) return undefined
-
-  const block = details[0]
-
-  if (block.blockType === 'textDetails') {
-    return block.content || undefined
-  }
-
-  if (block.blockType === 'caseStudy') {
-    return {
-      title: block.title,
-      projectOverview: block.projectOverview,
-      theChallenge: {
-        heading: block.theChallenge?.heading,
-        description: block.theChallenge?.description,
-        interfaceQualities: block.theChallenge?.interfaceQualities?.map((q: { item: string }) => q.item).filter(Boolean),
-        animationGoals: block.theChallenge?.animationGoals?.map((g: { item: string }) => g.item).filter(Boolean),
-      },
-      ourApproach: {
-        heading: block.ourApproach?.heading,
-        description: block.ourApproach?.description,
-        phases: block.ourApproach?.phases?.map((p: { name: string; points: { point: string }[] }) => ({
-          name: p.name,
-          points: p.points?.map(pt => pt.point).filter(Boolean) || [],
-        })) || [],
-      },
-      keyOutcomes: {
-        heading: block.keyOutcomes?.heading,
-        points: block.keyOutcomes?.points?.map((p: { point: string }) => p.point).filter(Boolean) || [],
-      },
-      lessonsLearned: {
-        heading: block.lessonsLearned?.heading,
-        points: block.lessonsLearned?.points?.map((p: { point: string }) => p.point).filter(Boolean) || [],
-      },
-      conclusion: block.conclusion,
-    } as CaseStudyDetails
-  }
-
-  if (block.blockType === 'simpleDetails') {
-    return {
-      heading: block.heading,
-      description: block.description,
-      phases: block.phases?.map((p: { name: string; points: { point: string }[] }) => ({
-        name: p.name,
-        points: p.points?.map(pt => pt.point).filter(Boolean) || [],
-      })),
-      keyOutcomes: block.keyOutcomes ? {
-        heading: block.keyOutcomes.heading,
-        points: block.keyOutcomes.points?.map((p: { point: string }) => p.point).filter(Boolean) || [],
-      } : undefined,
-    } as SimpleDetails
-  }
-
-  return undefined
-}
+import type { Company } from "@/lib/portfolio"
 
 interface CompaniesGridProps {
-  companies: CompanyWithProjects[]
+  companies: Company[]
 }
 
 export function CompaniesGrid({ companies }: CompaniesGridProps) {
-  const [selectedCompany, setSelectedCompany] = useState<CompanyWithProjects | null>(null)
+  const [selectedCompany, setSelectedCompany] = useState<Company | null>(null)
   const { resolvedTheme } = useTheme()
-  const logoFor = (logo: CompanyWithProjects['logo']) => {
+  const logoFor = (logo: Company['logo']) => {
     if (!logo) return null
     const preferred = resolvedTheme === 'dark' ? logo.dark : logo.light
     return preferred || logo.dark || logo.light || null
@@ -156,23 +97,11 @@ export function CompaniesGrid({ companies }: CompaniesGridProps) {
               const targetCompanies = new Set(['Microsoft', '1mg', 'goStops', 'The Manufacturing Project', 'myAIcademy', 'Proffy'])
               const isTargetCompany = targetCompanies.has(company.name)
 
-              // Transform project data for ProjectDisplay component
-              const transformedProjects = company.projects
-                .map(project => ({
-                  name: project.name,
-                  description: project.description || '',
-                  thumbnail: project.thumbnail || '',
-                  tags: project.tags?.map(t => t.tag || '').filter(Boolean) || [],
-                  details: transformDetails(project.details),
-                  url: project.url || '',
-                  urlName: project.urlName || '',
-                }))
-
               const objectTopRightIndices = new Set([1, 2, 3, 4, 7, 8])
               const imagePositionClass = objectTopRightIndices.has(index) ? 'object-cover object-right-top' : 'object-cover'
 
               return (
-                <Sheet key={company.id}>
+                <Sheet key={company.slug}>
                   <SheetTrigger asChild onClick={() => {
                     sendAnalyticsEvent('company_card_click', {
                       company_name: company.name,
@@ -226,7 +155,7 @@ export function CompaniesGrid({ companies }: CompaniesGridProps) {
                       </SheetHeader>
                     </div>
                     <div className="p-6 mt-2 space-y-8">
-                      {transformedProjects.map((project, projectIndex) => (
+                      {company.projects.map((project, projectIndex) => (
                         <div key={projectIndex}>
                           <ProjectDisplay project={project} index={projectIndex} />
                         </div>
