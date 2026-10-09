@@ -1,18 +1,38 @@
 {
-    "team": [{
+    "team": [
+        {
             "name": "Suprabho Dhenki",
             "role": "Founder",
             "image": "/images/team/supro.jpeg",
             "linkedin": "https://linkedin.com/in/shuprobho",
             "profilePage": "/career",
-            "skills": ["Product Design", "Product Management", "Branding", "Motion Design"]
+            "skills": [
+                "Product Design",
+                "Product Management",
+                "Branding",
+                "Motion Design"
+            ]
         },
         {
             "name": "Vanshika Garg",
             "role": "Lead Visual Designer",
             "image": "/images/team/vanshika.jpeg",
             "linkedin": "https://linkedin.com/in/vanshika-garg-creative/",
-            "skills": ["Visual Design", "Branding", "UI Design"]
+            "skills": [
+                "Visual Design",
+                "Branding",
+                "UI Design"
+            ]
+        },
+        {
+            "name": "Shashank A. Pandey",
+            "role": "Data Storyteller",
+            "image": "/images/team/shashank.webp",
+            "skills": [
+                "Data Storytelling",
+                "Visual Journalism",
+                "Research"
+            ]
         }
     ]
 }
