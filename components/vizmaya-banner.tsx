@@ -97,16 +97,16 @@ export function VizmayaBanner({
                         <span className="h-2 w-2 rounded-full bg-[#28c840]" />
                       </div>
                       <a
-                        href={`https://vizmaya.fyi/story/${EMBED_STORY}`}
+                        href={`https://www.vizmaya.fyi/s/${EMBED_STORY}`}
                         target="_blank"
                         rel="noopener noreferrer"
                         className="flex-1 truncate rounded bg-black/[0.05] px-3 py-0.5 text-center font-mono text-[10px] text-black/45 hover:text-black/70"
                       >
-                        vizmaya.fyi/story/{EMBED_STORY}
+                        vizmaya.fyi/s/{EMBED_STORY}
                       </a>
                     </div>
                     <iframe
-                      src={`https://vizmaya.fyi/story/${EMBED_STORY}?embed=1`}
+                      src={`https://www.vizmaya.fyi/s/${EMBED_STORY}#step=1`}
                       title="Vizmaya Studio"
                       loading="lazy"
                       className="block h-[clamp(360px,70vh,760px)] w-full border-0 bg-[#F4F1EC]"
