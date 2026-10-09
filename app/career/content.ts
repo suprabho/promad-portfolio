@@ -144,7 +144,7 @@ export const SOLUTION_UNITS = [
     solution:
       "Built 3 Figma plugins and Shadecraft, a standalone color palette studio, that generate Tailwind-compatible palettes, duplicate text styles across variants, and update nested tokens in bulk across component libraries. A personal design system that's fast, portable, and only needs to work for one person — but can be compared across projects to spot what's truly different.",
     impact: "1 week → 4 hours",
-    tools: ["Shadecraft", "Cross-Collection Color Token Mapper", "Variant Selector", "Text Style Duplicator"],
+    tools: ["Shadecraft", "RePalette", "Variant Selector", "Text Style Duplicator"],
   },
   {
     num: "02",
@@ -208,7 +208,7 @@ export const COMPANIES = [
 export const STATS = [
   { number: "1000+",   label: "Code Commits" },
   { number: "400K+",    label: "Lines of Code" },
-  { number: "3",       label: "Figma Plugins Built" },
+  { number: "6",       label: "Figma Plugins Built" },
 ]
 
 // ─── Footer ───────────────────────────────────────────────────────
