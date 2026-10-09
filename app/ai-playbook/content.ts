@@ -78,12 +78,12 @@ export const COLOR_PALETTE = [
 // links that expire, which left the cards with broken images.
 const FIGMA_PLUGIN_LIST: LinkCardData[] = [
   {
-    iconSource: "/images/figma-plugins/cross-collection-color-token-mapper.png",
-    title: "Cross Collection Color Token Mapper",
+    iconSource: "/images/figma-plugins/repalette.png",
+    title: "RePalette",
     description:
-      "Transform color groups into semantic tokens. Create new collections, duplicate with remapping, update values across libraries.",
-    href: "https://www.figma.com/community/plugin/1570424472381396729/cross-collection-color-token-mapper",
-    users: 51,
+      "Remap color variables to semantic tokens or Tailwind in one click. Create new collections, duplicate with remapping, update values across libraries.",
+    href: "https://www.figma.com/community/plugin/1570424472381396729/repalette-by-promad",
+    users: 52,
   },
   {
     iconSource: "/images/figma-plugins/variant-selector.png",
@@ -115,6 +115,14 @@ const FIGMA_PLUGIN_LIST: LinkCardData[] = [
     description:
       "Generate OKLCH shade scales from Tailwind defaults or your own colors, then push them into Figma as variables and paint styles.",
     href: "https://www.figma.com/community/plugin/1686668398679195683/shadescraft-by-promad",
+    users: 3,
+  },
+  {
+    iconSource: "/images/figma-plugins/aura-backgrounds.png",
+    title: "Aura Backgrounds",
+    description:
+      "Browse 400+ generative scenes (aurora, mesh, waves, ribbons and more) and render them pixel-exact to any frame.",
+    href: "https://www.figma.com/community/plugin/1686649354096247797/aura-backgrounds-by-promad",
     users: 1,
   },
 ]

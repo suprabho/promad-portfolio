@@ -514,7 +514,7 @@ export default function AIPlaybook() {
         <motion.div variants={fadeUp} className="mb-6">
           <h3 className="text-xl font-semibold text-center mb-1">Figma Plugins</h3>
           <p className="text-sm text-muted-foreground text-center">
-            Custom tools for design system management
+            Custom tools for design systems, maps and generative backgrounds
           </p>
         </motion.div>
         <motion.div
