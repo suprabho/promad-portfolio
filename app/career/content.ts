@@ -88,7 +88,7 @@ export const TIMELINE: TimelineRow[] = [
       { phase: "pm",      flex: 1, shortName: "PM + Growth",      shortOpacity: 0.25, shortFontSize: "0.65rem" },
       { phase: "builder", flex: 1, shortName: "Builder & Creative Technologist", shortOpacity: 0.6, shortFontSize: "0.85rem",
         label: "Phase 06 — Today", title: "Builder & Creative Technologist",
-        companies: "Kidzovo  ·  Promad  ·  Vismay (vizmaya.fyi · FootShort · vizF1)",
+        companies: "Kidzovo  ·  Promad  ·  Vismay (vizmaya.fyi · FootShort · vizF1 · VizNBA)",
         skills: ["AI Workflows", "Figma Plugins", "Video Production", "Vibe Building", "Data Storytelling", "Viz Engine"] },
     ],
   },
@@ -188,10 +188,10 @@ export const SOLUTION_UNITS = [
     accentBg: "rgba(96,165,250,0.12)",
     title: "Vismay — one engine, many verticals",
     problem:
-      "Once vizmaya.fyi worked, every new domain — football news, F1 racing — wanted the same scroll-driven mechanics. Rebuilding each as a one-off would have meant duplicated maps, duplicated chart steppers, duplicated capture pipelines, and three diverging codebases drifting apart over time.",
+      "Once vizmaya.fyi worked, every new domain — football news, F1 racing, the NBA — wanted the same scroll-driven mechanics. Rebuilding each as a one-off would have meant duplicated maps, duplicated chart steppers, duplicated capture pipelines, and a pile of diverging codebases drifting apart over time.",
     solution:
-      "Extracted the viz engine into Vismay — a monorepo with a slot registry, dispatchers for maps/charts/prose, a shared asset pipeline, and a capture pipeline. Stories stay in Markdown + YAML, themed per-vertical via CSS variables. The same primitives now power vizmaya.fyi (geopolitics, economics, tech), footshorts.com (InShorts-style football news with AI summaries), and vizf1.com (F1 race recaps and editorial).",
-    impact: "1 engine → 3 live verticals",
+      "Extracted the viz engine into Vismay — a monorepo with a slot registry, dispatchers for maps/charts/prose, a shared asset pipeline, and a capture pipeline. Stories stay in Markdown + YAML, themed per-vertical via CSS variables. The same primitives now power vizmaya.fyi (geopolitics, economics, tech), footshorts.com (InShorts-style football news with AI summaries), vizf1.com (F1 race recaps and editorial), and VizNBA (NBA game recaps, margin charts, and AI-tagged news).",
+    impact: "1 engine → 4 live verticals",
     tools: ["Vismay monorepo", "Slot registry", "Mapbox + ECharts + Next/RN", "Markdown + YAML stories", "Per-vertical theming"],
   },
 ]

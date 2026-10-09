@@ -676,7 +676,7 @@ export default function AIPlaybook() {
         <SectionHeading
           icon={Stack}
           title="Vismay — The Viz Engine"
-          subtitle="A reusable visualization and storytelling engine. One registry, one scroll model, one asset pipeline — powering three verticals so far."
+          subtitle="A reusable visualization and storytelling engine. One registry, one scroll model, one asset pipeline — powering four verticals so far."
         />
 
         <motion.div variants={fadeUp} className="max-w-4xl mx-auto mb-10">
@@ -692,7 +692,7 @@ export default function AIPlaybook() {
                   <CardDescription className="text-base">
                     A monorepo viz engine — registry, slot dispatchers, asset
                     pipeline, capture pipeline — composed once and reused across
-                    vizmaya.fyi, footshorts.com, and vizf1.com.
+                    vizmaya.fyi, footshorts.com, vizf1.com, and VizNBA.
                   </CardDescription>
                 </div>
               </div>
@@ -732,7 +732,7 @@ export default function AIPlaybook() {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, amount: 0.2 }}
-          className="grid md:grid-cols-3 gap-6 max-w-6xl mx-auto"
+          className="grid md:grid-cols-2 xl:grid-cols-4 gap-6 max-w-6xl mx-auto"
         >
           {LAUNCHED_PRODUCTS.map((product) => {
             const Icon = product.icon

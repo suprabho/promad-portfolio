@@ -9,6 +9,7 @@ import {
   Compass,
   SoccerBall,
   FlagCheckered,
+  Basketball,
   Lightning,
   Robot,
 } from "@phosphor-icons/react"
@@ -293,6 +294,20 @@ export const LAUNCHED_PRODUCTS: LaunchedProduct[] = [
     surface: "#160708",
     border: "rgba(239,68,68,0.4)",
     tags: ["Race recaps", "Live timing", "Editorial CMS"],
+  },
+  {
+    title: "VizNBA",
+    logo: "/images/products/viznba-icon.svg",
+    href: "https://nba.vizmaya.fyi",
+    description:
+      "NBA, mobile-first — swipeable game recaps with score-margin charts, followed-team cards, a game calendar, and editorial standings, all on ESPN's live data. News is AI-summarized and tagged to teams and players. Built on Vismay.",
+    icon: Basketball,
+    accent: "#ff8a3d",
+    accentSoft: "rgba(255,138,61,0.15)",
+    accentText: "#fff4ec",
+    surface: "#150b05",
+    border: "rgba(255,138,61,0.4)",
+    tags: ["Margin charts", "Live scores", "AI news tagging"],
   },
 ]
 
