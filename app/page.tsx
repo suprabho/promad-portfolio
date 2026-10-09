@@ -14,16 +14,18 @@ import { getCompanies } from "@/lib/portfolio"
 import { getLatestDailyEditions, getVizmayaStoryCount } from "@/lib/vizmaya"
 import { getFootshortsData } from "@/lib/footshorts"
 import { getVizf1Data } from "@/lib/vizf1"
+import { getViznbaData } from "@/lib/viznba"
 
 export const dynamic = 'force-dynamic'
 
 export default async function Portfolio() {
   const companies = getCompanies()
-  const [storyCount, dailyEditions, footshortsData, vizf1Data] = await Promise.all([
+  const [storyCount, dailyEditions, footshortsData, vizf1Data, viznbaData] = await Promise.all([
     getVizmayaStoryCount(),
     getLatestDailyEditions(),
     getFootshortsData(),
     getVizf1Data(),
+    getViznbaData(),
   ])
 
   return (
@@ -37,7 +39,7 @@ export default async function Portfolio() {
         <SkillsGrid />
         <VizmayaBanner storyCount={storyCount} />
         <AiDailySection editions={dailyEditions} />
-        <VismayProducts footshortsData={footshortsData} vizf1Data={vizf1Data} />
+        <VismayProducts footshortsData={footshortsData} vizf1Data={vizf1Data} viznbaData={viznbaData} />
         <ActionSection />
         <Footer />
       </div>

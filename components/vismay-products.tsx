@@ -13,9 +13,11 @@ import { useTicker } from "@/hooks/use-ticker"
 import { LAUNCHED_PRODUCTS, type LaunchedProduct } from "@/app/ai-playbook/content"
 import type { FootshortsData } from "@/lib/footshorts"
 import type { Vizf1Data } from "@/lib/vizf1"
+import type { ViznbaData } from "@/lib/viznba"
 import { productFontVars } from "@/lib/vismay-product-fonts"
 import { LeagueGrid, MatchStrip, Schedule, Watchlist } from "@/components/footshorts-live"
 import { ConstructorPodium, DriverPodium, StandingsChart } from "@/components/vizf1-live"
+import { ConferenceTable, DiffBars, Scoreboard } from "@/components/viznba-live"
 
 const byTitle = (title: string) =>
   LAUNCHED_PRODUCTS.find((p) => p.title === title) as LaunchedProduct
@@ -23,12 +25,15 @@ const byTitle = (title: string) =>
 export function VismayProducts({
   footshortsData,
   vizf1Data,
+  viznbaData,
 }: {
   footshortsData: FootshortsData
   vizf1Data: Vizf1Data | null
+  viznbaData: ViznbaData
 }) {
   const footshorts = byTitle("footshorts.com")
   const vizf1 = byTitle("vizf1.com")
+  const viznba = byTitle("VizNBA")
 
   // Live modules from each product's own data; a slide drops out when its data is missing.
   const footshortsSlides = [
@@ -51,6 +56,16 @@ export function VismayProducts({
         ),
       ].filter(Boolean) as ReactNode[])
     : []
+
+  const viznbaSlides = [
+    viznbaData.games.length > 0 && <Scoreboard key="scores" games={viznbaData.games} day={viznbaData.gamesDay} />,
+    ...viznbaData.conferences.map(
+      (c) => c.rows.length > 0 && <ConferenceTable key={c.name} name={c.name} rows={c.rows} season={viznbaData.season} />
+    ),
+    viznbaData.conferences.length > 0 && (
+      <DiffBars key="diff" rows={viznbaData.conferences.flatMap((c) => c.rows)} season={viznbaData.season} />
+    ),
+  ].filter(Boolean) as ReactNode[]
 
   return (
     <section
@@ -93,6 +108,21 @@ export function VismayProducts({
                 logo={vizf1.logo}
                 className="border-t border-[#1f2330] bg-[#0b0d12] sm:border-l sm:border-t-0"
                 dotClass="bg-[#ff4346]"
+              />
+            }
+          />
+          <ProductCard
+            product={viznba}
+            className="border border-[#1f2330] bg-[#0b0d12] text-[#f5f5f5] lg:col-span-2 lg:grid-cols-[1fr_1.4fr]"
+            muted="text-[#f5f5f5]/55"
+            tagClass="border-[#ff8a3d]/30 bg-[#ff8a3d]/10 text-[#ff8a3d]"
+            ctaClass="bg-[#ff8a3d] text-[#0b0d12]"
+            visual={
+              <LiveCarousel
+                slides={viznbaSlides}
+                logo={viznba.logo}
+                className="border-t border-[#1f2330] bg-[radial-gradient(ellipse_at_top,#ff8a3d26,transparent_65%)] sm:border-l sm:border-t-0"
+                dotClass="bg-[#ff8a3d]"
               />
             }
           />
