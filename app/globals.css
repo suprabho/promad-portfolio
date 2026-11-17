@@ -63,6 +63,9 @@
         --motion-muted: #6b6b5c;
         --motion-line: #e4e4d6;
         --motion-surface: #ffffff;
+        --motion-surface-2: #f4f4e8;
+        --motion-leaf: #1f7a4d;
+        --motion-leaf-soft: #e3f2e8;
     }
     .dark {
         /* Career page tokens – dark mode */
@@ -83,6 +86,9 @@
         --motion-muted: #a3a392;
         --motion-line: #2a2a24;
         --motion-surface: #191917;
+        --motion-surface-2: #1f1f1b;
+        --motion-leaf: #5fd39a;
+        --motion-leaf-soft: #16271d;
         --background: 222.2 84% 4.9%;
         --foreground: 210 40% 98%;
         --card: 222.2 84% 4.9%;

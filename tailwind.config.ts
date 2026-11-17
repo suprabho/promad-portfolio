@@ -73,7 +73,12 @@ const config: Config = {
   				foreground: 'var(--motion-foreground)',
   				muted: 'var(--motion-muted)',
   				line: 'var(--motion-line)',
-  				surface: 'var(--motion-surface)'
+  				surface: 'var(--motion-surface)',
+  				'surface-2': 'var(--motion-surface-2)',
+  				leaf: {
+  					DEFAULT: 'var(--motion-leaf)',
+  					soft: 'var(--motion-leaf-soft)'
+  				}
   			},
   			// Pro Timeline brand palette; the page is always graphite
   			pt: {
