@@ -12,7 +12,10 @@ const STATE_MACHINE = "State Machine Main"
 const BUTTON =
   "rounded-lg px-3 py-2 text-[13px] font-bold transition-transform duration-100 hover:-translate-y-px focus-visible:outline focus-visible:outline-[3px] focus-visible:outline-offset-2 focus-visible:outline-[#141412] motion-reduce:transition-none"
 
-export function OvoMascot() {
+const DEFAULT_DESCRIPTION =
+  "One character, fourteen states and five swappable costume layers, driven by a single state machine so the product team can trigger any mood from code. Built in Rive, it ships at about 1.4 MB and runs on canvas in web and native apps."
+
+export function OvoMascot({ description = DEFAULT_DESCRIPTION }: { description?: string }) {
   const stageRef = useRef<HTMLDivElement>(null)
   const [nearViewport, setNearViewport] = useState(false)
   const [rigReady, setRigReady] = useState(false)
@@ -50,11 +53,7 @@ export function OvoMascot() {
       </div>
 
       <div className="min-w-0">
-        <p className="max-w-[52ch] text-[15.5px] leading-normal">
-          One character, fourteen states and five swappable costume layers, driven by a single state machine
-          so the product team can trigger any mood from code. Built in Rive, it ships at about 1.4 MB and runs
-          on canvas in web and native apps.
-        </p>
+        <p className="max-w-[52ch] text-[15.5px] leading-normal">{description}</p>
 
         <div role="group" aria-label="Ovo's states" className="mt-4 flex flex-wrap gap-2">
           {OVO_STATES.map(({ value, label }) => (

@@ -1,7 +1,7 @@
 import Link from "next/link"
 import { Wrap } from "./Wrap"
 
-export function MotionFooter() {
+export function MotionFooter({ note = "Video & Motion · Selected work · Sept 2026" }: { note?: string }) {
   return (
     <footer className="bg-motion-ink py-10 text-motion-paper">
       <Wrap className="flex flex-wrap items-center justify-between gap-6">
@@ -16,7 +16,7 @@ export function MotionFooter() {
             promad.design
           </Link>
         </p>
-        <p className="font-motion-mono text-[13px] opacity-70">Video &amp; Motion · Selected work · Sept 2026</p>
+        <p className="font-motion-mono text-[13px] opacity-70">{note}</p>
       </Wrap>
     </footer>
   )
